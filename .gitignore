@@ -27,12 +27,14 @@ twocolumn
 
 *~
 
-
+SyncToMaster.sh
+SyncFromMaster.sh
 FaradayProtocol.pdf
 *_edited.*
 *.rtf
 FaradayProtocol*original).pdf
 FaradayProtocolNotes.*
+Sync.sh
 
 SubmissionPreview*.pdf
 Referee_response.*
