@@ -1,0 +1,279 @@
+\documentclass[preprint,aps,pra,onecolumn,superscriptaddress]{revtex4-1} %reprint
+%\tightenlines
+
+%\draft
+\usepackage{etex}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{bbm}
+\usepackage{listings}
+% % \textwidth 16cm \textheight 23.5cm
+% \renewcommand{\baselinestretch}{1.2}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage{multirow}
+\usepackage[colorlinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{calc}
+\usepackage{natbib} %[numbers]
+\usepackage{bibentry}
+
+% todo list and commands
+%\usepackage{todonotes}
+%% to avoid the conflict with amths package % not working
+%\makeatletter
+%\providecommand\@dotsep{5}
+%\makeatother
+%\listoftodos\relax
+%\usepackage{makeidx}
+%\allowdisplaybreaks
+%% for eps transfering to pdf.
+%\usepackage[update,prepend]{epstopdf}
+%\usepackage{ifpdf}
+%
+%\ifpdf
+%   \usepackage{graphicx}
+%   \usepackage{epstopdf}
+%   \epstopdfsetup{suffix=}
+%   \DeclareGraphicsRule{.eps}{pdf}{.pdf}{`epstopdf #1}
+%   \pdfcompresslevel=9
+%\else
+%   \usepackage{graphicx}
+%\fi
+% subfig
+%\usepackage{mwe}
+%\usepackage{subfig}
+% to fix a figure's position using [H] option of thec figure.
+%\usepackage{float}
+% to use \lesssim and other math symbols
+%\usepackage{amssymb}
+
+
+% self-defined short-cuts and commands
+%\input{Mydef.tex}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\dt}[1]{\frac{{\mathrm d} {#1}}{{\mathrm d}t}}
+\def\br{\mathbf{r}}
+\def\bra#1{\langle{#1}\rvert}%{\mathinner{\langle{#1}\rvert}}
+\def\ket#1{\lvert{#1}\rangle}%{\mathinner{\lvert{#1}\rangle}}
+\def\Braket#1#2{\mathinner{\langle{#1}\! \mid\! {#2} \rangle}}
+%========================================================================================
+\newcommand{\erf}[1]{Eq.~(\ref{#1})}
+\newcommand{\frf}[1]{Fig.~\ref{#1}}
+\newcommand{\srf}[1]{Sec.~\ref{#1}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+%========================================================================================
+% General quantum mechanics macros
+%========================================================================================
+\newcommand{\op}[2]{\ket{#1}\bra{#2}}
+\newcommand{\expt}[1]{\langle{#1}\rangle}
+\newcommand{\dg}{^\dagger}
+\newcommand{\smallfrac}[2]{\mbox{$\frac{#1}{#2}$}}
+\newcommand{\Tr}{\mbox{Tr}}
+%========================================================================================
+\newcommand{\expect}[1]{\big\langle #1 \big\rangle}
+\newcommand{\eff}{\text{eff}}
+
+
+
+% Redefine the tensor command.
+%\renewcommand{\tensor}[1]{\boldsymbol{#1}}
+
+
+%==== Ben's new macros ======
+%\newcommand{\srf}[1]{Sec. \ref{#1}}
+\newcommand{\half}{\smallfrac{1}{2}}
+
+%==== subscripts ======
+\newcommand{\oneD}{{\rm 1D}}
+\newcommand{\vac}{{\rm vac}}
+\newcommand{\cav}{{\rm cav}}
+\newcommand{\inp}{{\rm in}}
+\newcommand{\out}{{\rm out}}
+\newcommand{\inter}{{\rm int}}
+\newcommand{\scs}{{\rm SCS}}
+\newcommand{\fwd}{+}
+\newcommand{\bwd}{-}
+\newcommand{\trans}{+}
+\newcommand{\refl}{-}
+
+ %==== operators/moments ======
+\newcommand{\der}[1]{\frac{d {#1}}{dt}}
+\newcommand{\unittens}{\tensor{\mathbf{I}}}
+\newcommand{\poltens}{\hat{\tensor{\boldsymbol{\alpha}}}}
+\newcommand{\varz}{\Delta J_3^2}
+\newcommand{\jx}{\hat{J}_1}
+\newcommand{\jz}{\hat{J}_3}
+\newcommand{\shotnoise}{\Delta \mathcal{M}^2 |_{\rm SN}}
+\newcommand{\projnoise}{\Delta \mathcal{M}^2_{\rm PN}}
+\newcommand{\polcomp}{\hat{K}} % p,p' component of the tensor polarizability
+
+%==== physical parameters ======
+\newcommand{\Eamp}{\mathcal{F}_0^{(+)}}
+\newcommand{\charpol}{\alpha_0(\Delta_{f\!f'})}
+\newcommand{\qaxis}{\mathbf{e}_{\tilde{z}}}
+\newcommand{\qangle}{\varphi}
+\newcommand{\magic}[1]{\tilde{\omega}_{#1}}
+\newcommand{\chiN}{\chi_{N}}
+\newcommand{\NA}{N_C}
+\newcommand{\chieff}{\chi_{\raisebox{-.1pt}{\tiny $J_3$}}}
+
+%==== scattering and optical pumping rates ====%
+\newcommand{\gammauu}{\gamma_{\uparrow \rightarrow \uparrow}}
+\newcommand{\gammadd}{\gamma_{\downarrow \rightarrow \downarrow}}
+\newcommand{\gammaud}{\gamma_{\uparrow \rightarrow \downarrow}}
+\newcommand{\gammadu}{\gamma_{\downarrow \rightarrow \uparrow}}
+\newcommand{\gammau}{\gamma_{\uparrow}}
+\newcommand{\gammad}{\gamma_{\downarrow}}
+
+%==== effective areas ======
+\newcommand{\Ain}{A_{\rm in}}
+\newcommand{\Abir}{A_N}
+
+%==== eigenfunctions ======
+\newcommand{\eigenf}{\mbf{f}_\eta}
+\newcommand{\eigenfp}{\mbf{f}_{\eta'}}
+\newcommand{\eigeng}{\mbf{g}_\eta}
+\newcommand{\eigengp}{\mbf{g}_{\eta'}}
+
+%==== field operators ======
+\newcommand{\awg}{\hat{a}_{b,p}(\omega)}
+\newcommand{\awr}{\hat{a}_{m,p}(\omega,\beta)}
+
+%==== colors for editing ======
+\newcommand{\change}[1]{{\color{RoyalBlue} #1}}
+\newcommand{\comment}[1]{{\color{Maroon} #1}}
+\newcommand{\error}[1]{{\color{red} #1}}
+
+% =============================================================================
+
+
+\begin{document}
+\title{The nanofiber and waveguide platforms are promising towards non-Gaussian spin states}
+\author{Xiaodong Qi}
+\affiliation{Center for Quantum Information and Control, University of New Mexico, Albuquerque, New Mexico 87131, USA}
+\author{Ezad}
+\affiliation{Center for Quantum Information and Control, University of New Mexico, Albuquerque, New Mexico 87131, USA}
+\author{Poul S. Jessen}
+\affiliation{Center for Quantum Information and Control, University of Arizona, Tucson, Arizona 87521, USA}
+\author{Ivan H. Deutsch}
+\affiliation{Center for Quantum Information and Control, University of New Mexico, Albuquerque, New Mexico 87131, USA}
+\author{Yuan-Yu Jau}
+\affiliation{Sandia National Laboratories, Albuquerque, New Mexico 87185, USA}
+\date{\today}
+\pacs{42.50.Lc, 03.67.Bg, 42.50.Dv, 42.81.Gs}
+
+%================================================================%
+\begin{abstract}
+We study the strong coupling between photons and atoms that can be achieved in an optical nanofiber geometry in the dispersive regime.
+We propose a quantum nondemolition measurement and spin squeezing protocol using a nanofiber with an atom ensemble trapped nearby.
+We established a general theory to calculate the spin squeezing dynamics and show that $7dB$ of spin squeezing may be achievable with $2500$ atoms trapped $1.8$ times of the fiber radius from the fiber axis.
+Compared to the spin squeezing protocol in free space, the nanofiber platform enables us to increase
+the photon-atom coupling strength dramatically while to reduce the decoherence due to photon scattering process at the same time,
+and hence can achieve a high peak spin squeezing effect.
+Compared to the Birefringence protocol using the nanofiber we have studied earlier,
+the Faraday interaction protocol does not require a sophisticated search for the magic frequency and can avoid the difficulty of preparing the atoms on the less desired clock state,
+and hence is more robust and easy to implement.
+To achieve an even stronger spin squeezing effect towards a non-Gaussian collective spin state, we also studied the possibility of using other waveguide geometries.
+\end{abstract}
+
+\maketitle
+
+%===================INTRODUCTION=====================%
+\section{Introduction}
+
+Strong coupling between atoms and photons via nanophotonic structures and such.
+
+The difficulty and challenges.
+
+Our protocol and the structure of this paper.
+
+
+%========================== Theory ===================================%
+\section{Theory} \label{Sec::Theory}
+
+
+
+%=================== Simulations with waveguides =====================%
+\section{Discussions} \label{Sec::Discussions}
+
+
+
+%============================ nanofiber ==============================%
+\subsection{QND measurement and spin squeezing with nanofibers} \label{Sec::Nanofiber}
+
+
+%=================== Atom number measurement =====================%
+\subsection{Spin squeezing with rectangular waveguide and general criteria in optimizing spin squeezing effect} \label{Sec::Waveguide}
+
+
+%====== SECTION: Summary and outlook ======%
+\section{Summary and Outlook} \label{Sec::Conclusion}
+
+
+ACKNOWLEDGMENTS
+We thank the UNM Center for Advanced Research Computing for computational resources used in this work.
+This work was support by the NSF, under grants PHY-1212445, xxxxx.
+%\bibliography{Nanofiber}
+
+
+%=========== APPENDIX ===========%
+\begin{appendix}
+
+%===================APPENDIX: Photon scattering and optical pumping rates =====================%
+\section{Photon scattering and optical pumping rates} \label{Appendix::Rates}
+
+In this Appendix we give the explicit expressions for the photon scattering rates used in Sec.~\ref{Sec::QNDMeasurement} following the formalism given in~\cite{deutsch_quantum_2010}.  The total rate of photon scattering by an atom in the clock state $\ket{f,0}$ is
+	\begin{equation}\label{Eq::gammaf}
+		\gamma_{f}=- \frac{2}{\hbar} {\rm Im} \big[ \bra{f,0} \hat{h}_{\rm eff}\ket{f,0} \big] ,
+	\end{equation}
+where the effective non-Hermitian light-shift Hamiltonian for one atom is
+\begin{align}
+\hat{h}_{\rm eff} = - \hat{\mathbf{E}}^{(-)}_{\rm in}(\mathbf{r}' ; t ) \cdot \poltens \cdot \hat{\mathbf{E}}^{(+)}_{\rm in}(\mathbf{r}' ;t )
+\end{align}
+as follows from \erf{Eq::LightShiftHam}, where $\charpol = -\frac{\sigma_0}{8\pi k_0}\frac{\Gamma}{\Delta_{ff'}+i\Gamma/2}$ is the complex polarizability and the irreducible tensor operator $ \hat{\tensor{\mbf{A}}}(f,f') $ is given in \erf{Eq::PolarizabilityIrrep}.
+
+
+The rate of optical pumping between clock states $\ket{f,0} \rightarrow \ket{\tilde{f},0}$ is
+	\begin{equation}\label{Eq::gammaff}
+		\gamma_{f \rightarrow \tilde{f} }
+		=\sum_{q}\big| \bra{\tilde{f},0} \hat{W}_q^{\tilde{f}f} \ket{f,0} \big|^2,
+	\end{equation}
+where $ \hat{W}_q^{\tilde{f}f} = \sum_{f'}\frac{\Omega/2}{\Delta_{f'\tilde{f}}+i\Gamma/2}(\mathbf{e}_q^*\cdot\hat{\mathbf{D}}_{\tilde{f} f'} )(\mathbf{e}_{\rm in}\cdot \hat{\mathbf{D}}^\dagger_{f'f} ) $ are the Lindblad jump operators for optical pumping between ground levels $ f\rightarrow \tilde{f} $~\cite{deutsch_quantum_2010}.
+Each jump operator $\hat{W}_q^{\tilde{f}f}$ is associated with absorption of the probe photon polarized along $ \mathbf{e}_{\rm in} $ followed by spontaneous emission of a photon with polarization $ \mathbf{e}_q $, where $q= \{0,\pm 1\}$ labels spherical basis elements for $\pi$ and $ \sigma_\pm$ transitions.
+
+To find the dependence on the input field intensity, we define a characteristic photon scattering rate, $\gamma_s \equiv \frac{\Gamma\Omega^2}{4\Delta_{J_3}^2}= \frac{\sigma_0}{A_{\rm in}}\frac{\Gamma^2}{4 \Delta_{J_3}^2} \dot{N}_L $, with Rabi frequency $ \Omega=2\bra{j}|d|\ket{j'}\mathcal{E}^{(+)}_{\rm in}/\hbar $, reduced optical dipole matrix element $\bra{j}|d|\ket{j'}$, and field amplitude $ \mathcal{E}^{(+)}_{\rm in}=|\mathbf{E}_{\rm in}^{(+)}(\br')| $.
+Eqs.~\eqref{Eq::gammaf} and~\eqref{Eq::gammaff} yield,
+\begin{subequations}
+	\begin{align}
+		\gamma_f &=n_g\dot{N}_L  \sum_{f'} \sigma (\Delta_{ff'} ) \mathbf{u}^*_\inp(\br'_\perp)\cdot \bra{f,0} \hat{\tensor{\mbf{A}}}(f,f') \ket{f,0}  \cdot \mathbf{u}_\inp(\br'_\perp)\\
+		&\approx  \gamma_s \sum_{f'} \frac{\Delta_{J_3}^2}{\Delta_{ff'}^2}\sum_q \big| o_{jf}^{j'f'}C_{f'q}^{f0;1 q} \big|^2 \mathbf{e}_q^* \cdot (\mathbf{e}_{\rm in}\mathbf{e}_{\rm in}^* )\cdot \mathbf{e}_q,
+	\end{align}
+\end{subequations}
+	\begin{align}
+		\gamma_{f \rightarrow \tilde{f}}
+		&\approx \gamma_s \sum_{f'} \frac{\Delta_{J_3}^2}{\Delta_{ff'}^2}\sum_q \big| o_{j\tilde{f}}^{j'f'} o_{jf}^{j'f'}C_{f'q}^{\tilde{f}0;1 q}C_{f'q}^{f0;1q} \big|^2 \mathbf{e}_q^* \cdot (\mathbf{e}_{\rm in}\mathbf{e}_{\rm in}^* )\cdot \mathbf{e}_q,
+	\end{align}
+where $ \sigma (\Delta_{ff'} )  = \sigma_0 \Gamma^2/4\Delta^2_{f' f}$ is the the scattering cross section at the probe detuning, $ C_{f'q}^{f0;1 q}=\Braket{f'q}{f0;1q}$ are the Clebsch-Gordan coefficients, and
+\begin{equation}
+\big| o_{jf}^{j'f'} \big|^2=(2j'+1)(2f+2) \bigg\{
+\begin{array}{ccc}
+f' & 7/2 & j' \\
+ j & 1 & f
+ \end{array}
+ \bigg\}
+\end{equation}
+are the relative oscillator strengths determined by the relevant Wigner 6-$J$ symbol.
+
+%===================APPENDIX: Equations of motion =====================%
+\section{Derivation of the equations of motion for the moments} \label{Appendix::OpticalPumping}
+
+In this Appendix we provide, for reference, the detailed equations to describe the QND measurement and spin squeezing dynamics. 
+
+
+\end{appendix}
+
+\end{document}

@@ -1,0 +1,37 @@
+#Not tracked folders and files
+
+Ivan
+Ezad
+Qi
+twocolumn
+
+
+
+#TempFiles for tex.
+
+*.aux
+
+*.ilg
+
+*.log
+
+*.synctex.gz
+
+*.out
+
+*.blg
+
+*.dvi
+
+*.bak
+
+*~
+
+
+FaradayProtocol.pdf
+*_edited.*
+*.rtf
+FaradayProtocol*original).pdf
+
+SubmissionPreview*.pdf
+Referee_response.*
