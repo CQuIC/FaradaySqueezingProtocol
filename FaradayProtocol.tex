@@ -152,7 +152,7 @@
 
 
 \begin{document}
-\title{The nanofiber and waveguide platforms are promising towards non-Gaussian spin states}
+\title{Decoupling photon-atom coupling strength from decoherence towards efficient quantum interface using nanophotonic waveguides and atomic ensembles}
 \author{Xiaodong Qi}
 \affiliation{Center for Quantum Information and Control, University of New Mexico, Albuquerque, New Mexico 87131, USA}
 \author{Ezad}
@@ -168,16 +168,17 @@
 
 %================================================================%
 \begin{abstract}
-We study the strong coupling between photons and atoms that can be achieved in an optical nanofiber geometry in the dispersive regime.
-We propose a quantum nondemolition measurement and spin squeezing protocol using a nanofiber with an atom ensemble trapped nearby.
-We established a general theory to calculate the spin squeezing dynamics and show that $7dB$ of spin squeezing may be achievable with $2500$ atoms trapped $1.8$ times of the fiber radius from the fiber axis.
-Compared to the spin squeezing protocol in free space, the nanofiber platform enables us to increase
-the photon-atom coupling strength dramatically while to reduce the decoherence due to photon scattering process at the same time,
-and hence can achieve a high peak spin squeezing effect.
-Compared to the Birefringence protocol using the nanofiber we have studied earlier,
-the Faraday interaction protocol does not require a sophisticated search for the magic frequency and can avoid the difficulty of preparing the atoms on the less desired clock state,
-and hence is more robust and easy to implement.
-To achieve an even stronger spin squeezing effect towards a non-Gaussian collective spin state, we also studied the possibility of using other waveguide geometries.
+We study the strong coupling between photons and atoms that can be achieved in nanophotonic geometries in the dispersive regime to implement efficient quantum interface with neutral atoms.
+First, we extend our previous work on spin squeezing and quantum nondemolition (QND) measurement with the birefringence protocol using a nanofiber to a more commonly considered protocol using the Faraday interaction.
+We established a general theory to calculate the spin squeezing dynamics and show that $7dB$ of spin squeezing may be achievable with $2500$ atoms trapped $1.8$ times of the fiber radius from the fiber axis, in comparison with $~5dB$ of spin squeezing using the birefringence protocol.
+The Faraday interaction protocol does not require a sophisticated search for the magic frequencies and can avoid the difficulty of preparing the atoms on the harder-to-prepare clock states as we did for the birefringence protocol,
+and hence is more robust and easier to implement.
+Meanwhile, compared to the spin squeezing protocol using Faraday interaction in free space, the nanofiber platform enables us to increase
+the photon-atom coupling strength dramatically while to reduce the decoherence due to photon scattering process simultaneously,
+and hence can achieve a high peak spin squeezing efficiently.
+To achieve an even stronger spin squeezing effect towards a non-Gaussian collective spin state, for example, we propose a generalized optical depth per atom concept applicable to general nanophotonic waveguides and explicitly separate the photon-atom coupling strength from the decoherence characteristic parameter, which can be used to guide the design of novel nanophotonic quantum interfaces and protocols towards efficient quantum control and measurement of atomic states as well as preparing non-Gaussian atomic ensemble states.
+We also study the decoherence mechanism for atoms with arbitrary total angular momentum quantum number $f$ with the nanofiber interface, and confirm $f=1$ is the optimal case for the Faraday protocol we study.
+Finally, we give an example of analysing a nanophotonic waveguide interface with square cross-section to implement efficiently strong photon-atom coupling and discuss the challenges of using waveguides without cylindrical symmetry beyond optical nanofibers towards efficient photon-atom coupling.
 \end{abstract}
 
 \maketitle
@@ -195,7 +196,9 @@ Our protocol and the structure of this paper.
 %========================== Theory ===================================%
 \section{Theory} \label{Sec::Theory}
 
+Spin dynamics in the QND measurement process using Faraday interaction.
 
+Decoherence and total angular momentum quantum number of atoms.
 
 %=================== Simulations with waveguides =====================%
 \section{Discussions} \label{Sec::Discussions}
@@ -205,10 +208,18 @@ Our protocol and the structure of this paper.
 %============================ nanofiber ==============================%
 \subsection{QND measurement and spin squeezing with nanofibers} \label{Sec::Nanofiber}
 
+Optimal choice of atom position.
+
+Squeezing results.
+
+Comparison with free space and birefringence.
 
 %=================== Atom number measurement =====================%
 \subsection{Spin squeezing with rectangular waveguide and general criteria in optimizing spin squeezing effect} \label{Sec::Waveguide}
 
+Generalized OD/$N_A$ using Green function method (or may be just with two orthogonal mode bases.)
+
+Coupling strength and decoherence analysis based on the modes of the squared waveguides.
 
 %====== SECTION: Summary and outlook ======%
 \section{Summary and Outlook} \label{Sec::Conclusion}
@@ -228,7 +239,8 @@ This work was support by the NSF, under grants PHY-1212445, xxxxx.
 
 In this Appendix we give the explicit expressions for the photon scattering rates used in Sec.~\ref{Sec::QNDMeasurement} following the formalism given in~\cite{deutsch_quantum_2010}.  The total rate of photon scattering by an atom in the clock state $\ket{f,0}$ is
 	\begin{equation}\label{Eq::gammaf}
-		\gamma_{f}=- \frac{2}{\hbar} {\rm Im} \big[ \bra{f,0} \hat{h}_{\rm eff}\ket{f,0} \big] ,
+		\gamma_{f}=
+		%- \frac{2}{\hbar} {\rm Im} \big[ \bra{f,0} \hat{h}_{\rm eff}\ket{f,0} \big] ,
 	\end{equation}
 where the effective non-Hermitian light-shift Hamiltonian for one atom is
 \begin{align}
@@ -240,7 +252,7 @@ as follows from \erf{Eq::LightShiftHam}, where $\charpol = -\frac{\sigma_0}{8\pi
 The rate of optical pumping between clock states $\ket{f,0} \rightarrow \ket{\tilde{f},0}$ is
 	\begin{equation}\label{Eq::gammaff}
 		\gamma_{f \rightarrow \tilde{f} }
-		=\sum_{q}\big| \bra{\tilde{f},0} \hat{W}_q^{\tilde{f}f} \ket{f,0} \big|^2,
+		%=\sum_{q}\big| \bra{\tilde{f},0} \hat{W}_q^{\tilde{f}f} \ket{f,0} \big|^2,
 	\end{equation}
 where $ \hat{W}_q^{\tilde{f}f} = \sum_{f'}\frac{\Omega/2}{\Delta_{f'\tilde{f}}+i\Gamma/2}(\mathbf{e}_q^*\cdot\hat{\mathbf{D}}_{\tilde{f} f'} )(\mathbf{e}_{\rm in}\cdot \hat{\mathbf{D}}^\dagger_{f'f} ) $ are the Lindblad jump operators for optical pumping between ground levels $ f\rightarrow \tilde{f} $~\cite{deutsch_quantum_2010}.
 Each jump operator $\hat{W}_q^{\tilde{f}f}$ is associated with absorption of the probe photon polarized along $ \mathbf{e}_{\rm in} $ followed by spontaneous emission of a photon with polarization $ \mathbf{e}_q $, where $q= \{0,\pm 1\}$ labels spherical basis elements for $\pi$ and $ \sigma_\pm$ transitions.
@@ -249,13 +261,14 @@ To find the dependence on the input field intensity, we define a characteristic 
 Eqs.~\eqref{Eq::gammaf} and~\eqref{Eq::gammaff} yield,
 \begin{subequations}
 	\begin{align}
-		\gamma_f &=n_g\dot{N}_L  \sum_{f'} \sigma (\Delta_{ff'} ) \mathbf{u}^*_\inp(\br'_\perp)\cdot \bra{f,0} \hat{\tensor{\mbf{A}}}(f,f') \ket{f,0}  \cdot \mathbf{u}_\inp(\br'_\perp)\\
-		&\approx  \gamma_s \sum_{f'} \frac{\Delta_{J_3}^2}{\Delta_{ff'}^2}\sum_q \big| o_{jf}^{j'f'}C_{f'q}^{f0;1 q} \big|^2 \mathbf{e}_q^* \cdot (\mathbf{e}_{\rm in}\mathbf{e}_{\rm in}^* )\cdot \mathbf{e}_q,
+		\gamma_f 
+		%&=n_g\dot{N}_L  \sum_{f'} \sigma (\Delta_{ff'} ) \mathbf{u}^*_\inp(\br'_\perp)\cdot \bra{f,0} \hat{\tensor{\mbf{A}}}(f,f') \ket{f,0}  \cdot \mathbf{u}_\inp(\br'_\perp)\\
+		%&\approx  \gamma_s \sum_{f'} \frac{\Delta_{J_3}^2}{\Delta_{ff'}^2}\sum_q \big| o_{jf}^{j'f'}C_{f'q}^{f0;1 q} \big|^2 \mathbf{e}_q^* \cdot (\mathbf{e}_{\rm in}\mathbf{e}_{\rm in}^* )\cdot \mathbf{e}_q,
 	\end{align}
 \end{subequations}
 	\begin{align}
 		\gamma_{f \rightarrow \tilde{f}}
-		&\approx \gamma_s \sum_{f'} \frac{\Delta_{J_3}^2}{\Delta_{ff'}^2}\sum_q \big| o_{j\tilde{f}}^{j'f'} o_{jf}^{j'f'}C_{f'q}^{\tilde{f}0;1 q}C_{f'q}^{f0;1q} \big|^2 \mathbf{e}_q^* \cdot (\mathbf{e}_{\rm in}\mathbf{e}_{\rm in}^* )\cdot \mathbf{e}_q,
+		%&\approx \gamma_s \sum_{f'} \frac{\Delta_{J_3}^2}{\Delta_{ff'}^2}\sum_q \big| o_{j\tilde{f}}^{j'f'} o_{jf}^{j'f'}C_{f'q}^{\tilde{f}0;1 q}C_{f'q}^{f0;1q} \big|^2 \mathbf{e}_q^* \cdot (\mathbf{e}_{\rm in}\mathbf{e}_{\rm in}^* )\cdot \mathbf{e}_q,
 	\end{align}
 where $ \sigma (\Delta_{ff'} )  = \sigma_0 \Gamma^2/4\Delta^2_{f' f}$ is the the scattering cross section at the probe detuning, $ C_{f'q}^{f0;1 q}=\Braket{f'q}{f0;1q}$ are the Clebsch-Gordan coefficients, and
 \begin{equation}
@@ -271,7 +284,7 @@ are the relative oscillator strengths determined by the relevant Wigner 6-$J$ sy
 %===================APPENDIX: Equations of motion =====================%
 \section{Derivation of the equations of motion for the moments} \label{Appendix::OpticalPumping}
 
-In this Appendix we provide, for reference, the detailed equations to describe the QND measurement and spin squeezing dynamics. 
+In this Appendix we provide, for reference, the detailed equations to describe the QND measurement and spin squeezing dynamics.
 
 
 \end{appendix}
