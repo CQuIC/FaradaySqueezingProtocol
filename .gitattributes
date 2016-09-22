@@ -3,5 +3,7 @@
 *.bib text eol=lf
 README text eol=lf
 .git* text eol=lf
+Makefile text eol=lf
+*.sh text eol=lf
 
 *.pdf binary
