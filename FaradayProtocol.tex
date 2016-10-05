@@ -197,13 +197,21 @@ Our protocol and the structure of this paper.
 \section{Theory} \label{Sec::Theory}
 
 \subsection{Spin squeezing dynamics in the QND measurement process using Faraday interaction}
-To fully describe the spin squeezing dynamics in the process of QND measurement, we will need a set of quantities that characterize the ensemble state of the atoms. 
+We use the spin squeezing parameter defined by Wineland {\emph{et al.}}~\cite{Wineland1992},
 \begin{align}
-\expect{\Delta F_\parallel^2} &= N_A \expect{\Delta f_\parallel^2}+\frac{N_A(N_A-1)}{2}\left. \expect{\Delta f_\parallel^{(i)}\Delta f_\parallel^{(j)}}_s\right|_{i\neq j}\\
-\expect{\hat{F}_\perp } &= \sum_i^{N_A} \hat{f}_\perp ^{(i)}=N_A \hat{f}_\perp.
+\zeta^2 &\equiv \frac{\expect{\hat{F}_\parallel(t=0)}^2}{\Delta F_\perp^2(t=0)} \frac{\Delta F_\perp^2}{\expect{\hat{F}_\parallel}^2},
 \end{align}
-As have been shown earlier, the QND measurement and spin squeezing process generates pairwise entanglement among atoms~\cite{Wang2003Spin}.
-We assume there is an exchange symmetry in the ensemble and bring in the spin coherence operator $\hat{\sigma}_{ba}=\ket{b}\bra{a}$, and hence the ensemble state can be characterized by the expectation value of single-body spin operators $\expect{\hat{\sigma}_{ba}}$, the symmetric two-body correlations $\expect{\Delta \sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)} }_s$, the symmetric three-body correlations $\expect{\Delta \sigma^{(1)}_{b_1a_1}\Delta \sigma^{(2)}_{b_2a_2}\Delta \sigma^{(3)}_{b_3a_3} }_s$ and so on. Here, the superscripts indicate the ... the subscript $s$ indicates symmetric permitations... As higher-order correlations becomes negligible, one can cut off the correlation terms at a certain order.
+which requires to calculate the expectation value of the collective atomic angular momentum operator in parallel with the total atomic angular momentum vector in the generalized Bloch sphere, $ \expect{\hat{F}_\parallel} $, as well as the variance of the collective atomic angular momentum operator perpendicular to the total atomic angular momentum operator, $ \Delta F_\perp^2 $. 
+Assume the atom number is $ N_A $, these two quantities can be given by 
+\begin{align}
+\expect{\Delta F_\perp^2} &= N_A \expect{\Delta f_\perp^2}+\frac{N_A(N_A-1)}{2}\left. \expect{\Delta f_\perp^{(i)}\Delta f_\perp^{(j)}}_s\right|_{i\neq j}\label{eq:DeltaFz2}\\
+\expect{\hat{F}_\parallel } &= \sum_i^{N_A} \hat{f}_\parallel ^{(i)}=N_A \hat{f}_\parallel,\label{eq:expectFx}
+\end{align}
+where the first term of Eq.~\eqref{eq:DeltaFz2} and Eq.~\eqref{eq:expectFx} are solely determined by single-body operators, $ \hat{f}_\perp=\hat{f}_\perp^{(i)} $ and $ \hat{f}_\parallel=\hat{f}_\parallel^{(i)} $ with atom label $ i=1,\cdots,N_A $; the second term of Eq.~\eqref{eq:DeltaFz2} is determined by symmetric two-body covariance terms, $ \left.\expect{\Delta f_\perp^{(i)}\Delta f_\perp^{(j)}}_s\right|_{i\neq j}=\expect{\Delta f_\perp^{(1)}\Delta f_\perp^{(2)}}_s\equiv \expect{\hat{f}_\perp^{(1)}\hat{f}_\perp^{(2)}}_s-\left( \expect{\hat{f}_\perp^{(1)}} \expect{\hat{f}_\perp^{(1)}}\right)_s $, which generate the pairwise entanglement among atoms and eventually yield spin squeezing~\cite{Wang2003Spin}.
+Above, we have assumed there is a pairwise exchange symmetry among atoms. 
+We can bring in the spin coherence operator $\hat{\sigma}_{ba}=\ket{b}\bra{a}$ to represent the matrix element of any atomic angular momentum operator $ \hat{f}_m $ of a single atom, and hence the spin squeezing dynamics can be characterized by the expectation value of single-body spin coherence operators $\expect{\hat{\sigma}_{ba}}$ and the symmetric two-body covariances $\expect{\Delta \sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)} }_s$. 
+%the symmetric three-body correlations $\expect{\Delta \sigma^{(1)}_{b_1a_1}\Delta \sigma^{(2)}_{b_2a_2}\Delta \sigma^{(3)}_{b_3a_3} }_s$ and so on. 
+Here, the superscripts indicate the ... the subscript $s$ indicates symmetric permitations... As higher-order correlations becomes negligible, one can cut off the correlation terms at a certain order.
 
 The number of equations needed...
 
@@ -270,7 +278,7 @@ Relation to cooling efficiency and fictitious magnetic field applications.
 ACKNOWLEDGMENTS
 We thank the UNM Center for Advanced Research Computing for computational resources used in this work.
 This work was support by the NSF, under grants PHY-1212445, xxxxx.
-\bibliography{Archive}
+\bibliography{refs/Archive}
 
 
 %=========== APPENDIX ===========%
