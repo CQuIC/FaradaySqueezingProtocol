@@ -1,34 +1,25 @@
 #Not tracked folders and files
-
 Ivan
 Ezad
 Qi
 twocolumn
 
-
-
 #TempFiles for tex.
-
 *.aux
-
 *.ilg
-
 *.log
-
 *.synctex.gz
-
 *.out
-
 *.blg
-
+*.bbl
 *.dvi
-
 *.bak
-
 *~
 
 SyncToMaster.sh
 SyncFromMaster.sh
+UpdateSubmoduleToMaster.sh
+UpdateSubmoduleFromRemote.sh
 FaradayProtocol.pdf
 *_edited.*
 *.rtf
