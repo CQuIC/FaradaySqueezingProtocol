@@ -196,7 +196,7 @@ Our protocol and the structure of this paper.
 %========================== Theory ===================================%
 \section{Theory} \label{Sec::Theory}
 
-\subsection{Spin squeezing dynamics in the QND measurement process using Faraday interaction}
+\subsection{Method to calculate spin squeezing dynamics in a QND measurement process}
 We use the spin squeezing parameter defined by Wineland {\emph{et al.}}~\cite{Wineland1992},
 \begin{align}
 \zeta^2 &\equiv \frac{\expect{\hat{F}_\parallel(t=0)}^2}{\Delta F_\perp^2(t=0)} \frac{\Delta F_\perp^2}{\expect{\hat{F}_\parallel}^2},
@@ -207,15 +207,12 @@ Assume the atom number is $ N_A $, these two quantities can be given by
 \expect{\Delta F_\perp^2} &= N_A \expect{\Delta f_\perp^2}+\frac{N_A(N_A-1)}{2}\left. \expect{\Delta f_\perp^{(i)}\Delta f_\perp^{(j)}}_s\right|_{i\neq j}\label{eq:DeltaFz2}\\
 \expect{\hat{F}_\parallel } &= \sum_i^{N_A} \hat{f}_\parallel ^{(i)}=N_A \hat{f}_\parallel,\label{eq:expectFx}
 \end{align}
-where the first term of Eq.~\eqref{eq:DeltaFz2} and Eq.~\eqref{eq:expectFx} are solely determined by single-body operators, $ \hat{f}_\perp=\hat{f}_\perp^{(i)} $ and $ \hat{f}_\parallel=\hat{f}_\parallel^{(i)} $ with atom labels $ i=1,\cdots,N_A $; the second term of Eq.~\eqref{eq:DeltaFz2} is determined by symmetric two-body covariance terms, $ \left.\expect{\Delta f_\perp^{(i)}\Delta f_\perp^{(j)}}_s\right|_{i\neq j}=\expect{\Delta f_\perp^{(1)}\Delta f_\perp^{(2)}}_s\equiv \expect{\hat{f}_\perp^{(1)}\hat{f}_\perp^{(2)}}_s-\left( \expect{\hat{f}_\perp^{(1)}} \expect{\hat{f}_\perp^{(1)}}\right)_s $, which generate the pairwise entanglement among atoms and eventually yield spin squeezing~\cite{Wang2003Spin}.
+where the first term of Eq.~\eqref{eq:DeltaFz2} and Eq.~\eqref{eq:expectFx} are solely determined by a symmetric sum over $N_A$ identical spin-$f$ single-body operators, $ \hat{f}_\perp=\hat{f}_\perp^{(i)} $ and $ \hat{f}_\parallel=\hat{f}_\parallel^{(i)} $ with atom labels $ i=1,\cdots,N_A $; the second term of Eq.~\eqref{eq:DeltaFz2} is determined by symmetric two-body covariance terms, $ \left.\expect{\Delta f_\perp^{(i)}\Delta f_\perp^{(j)}}_s\right|_{i\neq j}=\expect{\Delta f_\perp^{(1)}\Delta f_\perp^{(2)}}_s\equiv \expect{\hat{f}_\perp^{(1)}\hat{f}_\perp^{(2)}}_s-\left( \expect{\hat{f}_\perp^{(1)}} \expect{\hat{f}_\perp^{(1)}}\right)_s $, which generate the pairwise entanglement among atoms and eventually yield spin squeezing~\cite{Wang2003Spin}.
 Above, we have assumed there is a pairwise exchange symmetry among atoms so that we only care about symmetrized quantities like $ \expect{\Delta f_\perp^{(1)}\Delta f_\perp^{(2)}}_s=\left(\expect{\Delta f_\perp^{(1)}\Delta f_\perp^{(2)}} + \expect{\Delta f_\perp^{(2)}\Delta f_\perp^{(1)}} \right)/2 $. 
 We can bring in the spin coherence operator $\hat{\sigma}_{ba}=\ket{b}\bra{a}$ to represent the matrix element of any atomic angular momentum operator $ \hat{f}_m $ of a single atom, and hence the spin squeezing dynamics can be characterized by the expectation value of single-body spin coherence operators $\expect{\hat{\sigma}_{ba}}$ and the symmetric two-body covariances $\expect{\Delta \sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)} }_s$. 
 %the symmetric three-body correlations $\expect{\Delta \sigma^{(1)}_{b_1a_1}\Delta \sigma^{(2)}_{b_2a_2}\Delta \sigma^{(3)}_{b_3a_3} }_s$ and so on. 
 %As higher-order correlations becomes negligible, one can cut off the correlation terms at a certain order.
 
-To use the Faraday interaction to implement QND measurement and spin squeezing, we consider a spin coherent state (SCS) of $ ^{133} $Cs atoms initially prepared in a stretch state of the ground manifold in the $ x $-basis. 
-That is to say the initial state of one atom is defined as the fiducial state by $ \ket{\phi_0}=\ket{\uparrow}_x = \ket{6S_{1/2},f=4,m_x=4} $ and the collective SCS is $ \ket{\Psi_0}=\ket{\uparrow}_x^{\otimes N_A} $.
-The coupled state...
 
 The stochastic master equation of the QND measurement process can be given by
 \begin{align}
@@ -269,6 +266,18 @@ In our case, we assume the state of the ensemble can be well captured in the sym
 \left.d\expect{\Delta \sigma_{ba}^{(1)} \Delta \sigma_{dc}^{(2)}}\right|_\mathcal{L} &= 0.
 \end{align}
 \end{subequations}
+
+\subsection{A spin squeezing protocol using Faraday interaction with spin coherent states}
+Beside the case we have discussed in our previous work, we propose here a spin squeezing protocol based on Faraday interaction.
+We define the fiber axis as the quantization or $ z $-axis, and set $ \hat{F}_\parallel=\hat{F}_z $ as the squeezing operator. 
+We consider a spin coherent state (SCS) of $ ^{133} $Cs atoms initially prepared in a stretch state of the ground manifold in the $ x $-basis. 
+That is to say the initial state of one atom is defined as the fiducial state by $ \ket{\phi_0}=\ket{\uparrow}_x = \ket{6S_{1/2},f=4,m_x=4} $ and the collective SCS is $ \ket{\Psi_0}=\ket{\uparrow}_x^{\otimes N_A} $.
+The coupled state is defined by $ \hat{f}_z\ket{\uparrow}_x $.
+In our case, the coupled state can be defined as $ \ket{\downarrow}_x=\ket{6S_{1/2},f=4,m_x=3} $.
+Similarly, to include the transfer of coherence in the squeezing process, we define the transfer state as $ \ket{T}_x=\ket{6S_{1/2},f=4,m_x=2} $ as a result of applying the squeezing operator $ \hat{f}_z$ on the coupled state. 
+For simplicity, we remove all the subscript $ x $ of quantum states and always work in the $ x $-basis if no explicit notations. 
+
+The light-atom coupling strength can not be defined as...
 
 The number of equations needed...
 
