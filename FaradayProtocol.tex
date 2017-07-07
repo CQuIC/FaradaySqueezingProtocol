@@ -20,6 +20,7 @@
 \usepackage{calc}
 \usepackage{natbib} %[numbers]
 \usepackage{bibentry}
+\usepackage{bbm}
 
 % todo list and commands
 %\usepackage{todonotes}
@@ -396,8 +397,8 @@ This work was support by the NSF, under grants PHY-1212445, xxxxx.
 
 %===================APPENDIX: Hamiltonian =====================%
 \section{Faraday interaction Hamiltonian} \label{Appendix::FaradayInteractionHamiltonian}
-In the Faraday interaction spin squeezing protocol, we define the fiducial, coupled and transfer states by $ \ket{\uparrow}=\ket{f=4,m=4} $, $ \ket{\downarrow}=\ket{f=4,m=3} $ and $ \ket{T}=\ket{f=4,m=2} $ respectively. 
-In the $ x $-basis, a set of spin operators projected onto the truncated qutrit subspace spanned by these three basis states can be defined by
+In the Faraday interaction spin squeezing protocol, we define the fiducial, coupled and transfer states by $ \ket{\uparrow}=\ket{f=4,f_x=4} $, $ \ket{\downarrow}=\ket{f=4,f_x=3} $ and $ \ket{T}=\ket{f=4,f_x=2} $ respectively in the $ x $-basis. 
+A set of spin operators projected onto the truncated qutrit subspace spanned by these three basis states can be defined by
 \begin{align}
 \hat{f_x} &= -f \ket{\uparrow}\bra{\uparrow} -(f-1)\ket{\downarrow}\bra{\downarrow}-(f-2)\ket{T}\bra{T},\\
 \hat{f_y} &=i\left[\sqrt{\frac{f}{2}}\left(\ket{\downarrow}\bra{\uparrow}-\ket{\uparrow}\bra{\downarrow}\right) +\sqrt{\frac{2f-1}{2}}\left(\ket{T}\bra{\downarrow}-\ket{\downarrow}\bra{T} \right) \right] ,\\
@@ -419,40 +420,100 @@ The local electric field at $ (r\!_\perp,\phi,z) $ with a diagonally polarized i
 %===================APPENDIX: Photon scattering and optical pumping rates =====================%
 \section{Photon scattering and optical pumping rates} \label{Appendix::Rates}
 
-In this Appendix we give the explicit expressions for the photon scattering rates used in Sec.~\ref{Sec::QNDMeasurement} following the formalism given in~\cite{deutsch_quantum_2010}.  The total rate of photon scattering by an atom in the clock state $\ket{f,0}$ is
+In this Appendix we give the explicit expressions for the photon scattering rates following the formalism given in~\cite{Deutsch2010a} and ~\cite{Qi2016} while also considering the modification of decay rates of atoms due to the presence of the nanophotonic structures. 
+
+We define the Green's function tensor in presence of a dielectric medium satisfying the equation~\cite{Qi2016},
+	\begin{align} \label{Eq::GreensDiffEq}
+		\left[ -\nabla\times\nabla\times + n^2(\mbf{r}) k_0^2 \right] \tensor{\mathbf{G}}(\br, \br';\omega_0) &= -4\pi 
+k_0^2 \delta^{(3)}(\mathbf{r}-\mathbf{r}') \unittens,
+	\end{align}
+where $\unittens$ is the unit tensor.
+Under the Born approximation, the field at $\br$ due to an input field $ \mathbf{E}_{\inp}(\br) $ and a dipole source placed at $\br'$ can then be written as
+\begin{align}
+		\mathbf{E}_{\out}(\br) 
+		&\approx \mathbf{E}_{\inp}(\br)+ \tensor{\mathbf{G}}^{(+)}(\br , \br'; \omega_0) \cdot 
+\tensor{\boldsymbol{\alpha}}\cdot \mathbf{E}_{\inp}(\br'), \label{Eq::ScatteredField}
+\end{align}
+where $ \tensor{\boldsymbol{\alpha}} $ is the polarizability of the dipole source.
+We can specify the dipole source as an atom with arbitrary excited state level $ e $ and ground level $ g $ in the hyperfine structure manifold. 
+The atomic decay rate of the excited level $ e $ will be modified due to the presence of the nanophotonic structure and can be given by
+\begin{align}
+\Gamma_e &= \sum_g \bra{e}\hat{\mathbf{d}}\ket{g} \cdot \mathrm{Im}\left[\tensor{\mathbf{G}}(\br',\br';\omega_{eg}) \right]\cdot \bra{g}\hat{\mathbf{d}}\ket{e}
+\end{align}
+with the total Green's function tensor as a combination of the contributions from the guided modes and radiative modes, $ \tensor{\mathbf{G}}(\br',\br';\omega_{eg})=\tensor{\mathbf{G}}_{gyd}(\br',\br';\omega_{eg})+\tensor{\mathbf{G}}_{rad}(\br',\br';\omega_{eg}) $.
+For simplicity, we will hide the frequency-dependence part from the Green's function tensors below.
+Correspondingly, $ \Gamma_e=\Gamma_{e,gyd}+\Gamma_{e,rad} $ can also be decomposed into the guided mode and radiative mode contribution parts. 
+In the free space, the local Green's function tensor has a divergent real part and the imaginary part in the CGS units can be given by 
+$\tensor{\mathbf{G}}_0=G_0\tensor{\mathbbm{1}}$ with $G_0(\mathbf{r}',\mathbf{r}';\omega_{eg})=\frac{2}{3}k_0^3$.
+In presence of a waveguide, the Green's function tensor due to the radiative modes can be decomposed into the free-space or homogeneous radiation contribution and the waveguide-induced radiation contribution, that is $ \tensor{\mathbf{G}}_{rad}(\br',\br')=\tensor{\mathbf{G}}_0(\br',\br')+\tensor{\mathbf{G}}_{ind,rad}(\br',\br';\omega_{eg}) $.
+The waveguide-induced Green's function tensor elements due to the radiative modes can be calculated by
+$$G_{ind,rad}^{ij}(\mathbf{r}',\mathbf{r}')=\frac{2k_0^2}{3\pi^2}\int_{-k_0}^{k_0} d\beta E_j^i(\mathbf{r}')=\frac{4k_0^2}{3\pi^2}\int_{0}^{k_0} d\beta E_j^i(\mathbf{r}')$$
+once $ E_j^i(\mathbf{r}') $--the $i$-th electric field component measured at the dipole position by putting a unit dipole orientated along $j$ direction--can be obtain using numerical methods like boundary element method (BEM) or analytically.
+
+    
+What we are interested in is the relative ratio between the modified decay rates for a given $e\rightarrow g$ decay transition and the natural linewidth, $ \Gamma_0 $, of the atoms, that is $ \Gamma_e^q/\Gamma_0 $. 
+We can define an equivalent classical dipole, $ \mathbf{d}=\bra{g}\hat{\mathbf{d}}\ket{e} $, corresponding the $ e\rightarrow g $ decay transition which is along the $ \mathbf{e}_q $ ($q=\{\pm,0\}$) unit vector direction in the spherical irreducible harmonic basis, where
+\begin{align}
+    \mathbf{e}_\pm &=\mp \frac{\mathbf{e}_{\tilde{x}}\pm i\mathbf{e}_{\tilde{y}}}{\sqrt{2}}\\
+    \mathbf{e}_0 &=\mathbf{e}_{\tilde{z}}
+\end{align}
+correspond to the $\sigma_\pm$ and $\pi$ transitions, respectively.
+We have defined $ (\tilde{x},\tilde{y},\tilde{z}) $ as the quantization basis.
+In our simulation of the square waveguide case, we have used $\varepsilon=4$ (without loss) to calculate the radiative mode induced Green's function tensor elements.
+Therefore, the radiative mode caused decay rates can be calculated by
+\begin{align}
+\frac{\Gamma_{e,rad}^{q}}{\Gamma_0} &= 1+ \frac{\mathrm{Im}\left[\mathbf{e}_q^*\cdot \tensor{\mathbf{G}}_{ind,rad}(\mathbf{r}',\mathbf{r}')\cdot \mathbf{e}_q\right]}{ \mathrm{Im}\left[\mathbf{e}_q^*\cdot \tensor{\mathbf{G}}_0(\mathbf{r}',\mathbf{r}')\cdot \mathbf{e}_q\right]}
+=1+ \frac{\mathrm{Im}\left[\mathbf{e}_q^*\cdot \tensor{\mathbf{G}}_{ind,rad}(\mathbf{r}',\mathbf{r}')\cdot \mathbf{e}_q\right]}{\mathrm{Im}\left[G_0(\mathbf{r}',\mathbf{r}')\right]}.
+\end{align}
+Similarly, the guided mode contribution to the decay rates can be given by
+\begin{align}
+\frac{\Gamma_{e,gyd}^{q}}{\Gamma_0} &= \frac{\mathrm{Im}\left[\mathbf{e}_q^*\cdot \tensor{\mathbf{G}}_{gyd}(\mathbf{r}',\mathbf{r}')\cdot \mathbf{e}_q\right]}{ \mathrm{Im}\left[\mathbf{e}_q^*\cdot \tensor{\mathbf{G}}_0(\mathbf{r}',\mathbf{r}')\cdot \mathbf{e}_q\right]}.
+\end{align}
+As has been derived in Ref~\cite{Qi2016},
+\begin{align}
+\mathrm{Im}[\tensor{\mathbf{G}}_{gyd}(\br',\br')] &= \pi \frac{\omega_{eg}}{v_g } \sum_{b, p} 
+		\mathbf{u}_{b, p} (\br_{\!\perp}^\prime)\mathbf{u}^*_{b , p} (\br_{\!\perp}^\prime),
+\end{align}
+where $\mathbf{u}_{b, p} (\br_{\!\perp}^\prime)$ is the guided mode with propagation direction $ b=\pm 1 $ and polarization degeneracy index $ p $ at the dipole position in the transverse plane of the waveguide crossing section perpendicular to the waveguide axis.
+$v_g$ is the group velocity of the degenerate guided modes.
+For the nanofiber case, $ p=\pm 1 $ correspond to the right- and left-circularly polarized fundamental $\mathrm{HE}_{11}$ modes; 
+for the SWG case, $ p=\mathrm{H}/\mathrm{V} $ corresponding to the H- and V-modes chosen for the spin squeeze protocol.
+
+ 
+
+The total rate of photon scattering by an atom in the $(f,f_x=m)$ hyperfine structure manifold states in the $x$-basis is
 	\begin{equation}\label{Eq::gammaf}
-		\gamma_{f}=
-		%- \frac{2}{\hbar} {\rm Im} \big[ \bra{f,0} \hat{h}_{\rm eff}\ket{f,0} \big] ,
+		\gamma_{m}=- \frac{2}{\hbar} {\rm Im} \big[ \bra{f,m} \hat{h}_{\rm eff}\ket{f,m} \big] ,
 	\end{equation}
 where the effective non-Hermitian light-shift Hamiltonian for one atom is
 \begin{align}
 \hat{h}_{\rm eff} = - \hat{\mathbf{E}}^{(-)}_{\rm in}(\mathbf{r}' ; t ) \cdot \poltens \cdot \hat{\mathbf{E}}^{(+)}_{\rm in}(\mathbf{r}' ;t )
 \end{align}
-as follows from \erf{Eq::LightShiftHam}, where $\charpol = -\frac{\sigma_0}{8\pi k_0}\frac{\Gamma}{\Delta_{ff'}+i\Gamma/2}$ is the complex polarizability and the irreducible tensor operator $ \hat{\tensor{\mbf{A}}}(f,f') $ is given in \erf{Eq::PolarizabilityIrrep}.
+where $\charpol = -\frac{\sigma_0}{8\pi k_0}\frac{\Gamma}{\Delta_{ff'}+i\Gamma_{f'}/2}$ is the complex polarizability.
 
 
-The rate of optical pumping between clock states $\ket{f,0} \rightarrow \ket{\tilde{f},0}$ is
-	\begin{equation}\label{Eq::gammaff}
-		\gamma_{f \rightarrow \tilde{f} }
-		%=\sum_{q}\big| \bra{\tilde{f},0} \hat{W}_q^{\tilde{f}f} \ket{f,0} \big|^2,
+The rate of optical pumping between clock states $\ket{f,m} \rightarrow \ket{f,\tilde{m}}$ is
+	\begin{equation}\label{Eq::gammaff_Faraday}
+		\gamma_{\tilde{m}m }
+		=\sum_{q}\big| \bra{f,\tilde{m}} \hat{W}_q^{\tilde{m}m} \ket{f,m} \big|^2,
 	\end{equation}
-where $ \hat{W}_q^{\tilde{f}f} = \frac{1}{\gamma_s}\sum_{f'}\frac{\Omega/2}{\Delta_{f'\tilde{f}}+i\Gamma/2}(\mathbf{e}_q^*\cdot\hat{\mathbf{D}}_{\tilde{f} f'} )(\mathbf{e}_{\rm in}\cdot \hat{\mathbf{D}}^\dagger_{f'f} ) $ are the Lindblad jump operators for optical pumping between ground levels $ f\rightarrow \tilde{f} $~\cite{deutsch_quantum_2010}.
-Each jump operator $\hat{W}_q^{\tilde{f}f}$ is associated with absorption of the probe photon polarized along $ \mathbf{e}_{\rm in} $ followed by spontaneous emission of a photon with polarization $ \mathbf{e}_q $, where $q= \{0,\pm 1\}$ labels spherical basis elements for $\pi$ and $ \sigma_\pm$ transitions.
+where $ \hat{W}_q^{\tilde{m}m} = \frac{1}{\gamma_s}\sum_{f'}\frac{\Omega/2}{\Delta_{f'f}+i\Gamma_{f'}/2}(\mathbf{e}_q^*\cdot\hat{\mathbf{D}}_{f\tilde{m}, f'm'} )(\mathbf{e}_{\rm in}\cdot \hat{\mathbf{D}}^\dagger_{f'm',fm} ) $ are the Lindblad jump operators for optical pumping between ground levels $ (f,m)\rightarrow (f,\tilde{m}) $~\cite{Deutsch2010a}.
+Each jump operator $\hat{W}_q^{\tilde{m}m}$ is associated with absorption of the probe photon polarized along $ \mathbf{e}_{\rm in} $ followed by spontaneous emission of a photon with polarization $ \mathbf{e}_q $, where $q= \{0,\pm 1\}$ labels spherical basis elements for $\pi$ and $ \sigma_\pm$ transitions.
 
-To find the dependence on the input field intensity, we define a characteristic photon scattering rate, $\gamma_s \equiv \frac{\Gamma\Omega^2}{4\Delta_{J_3}^2}= \frac{\sigma_0}{A_{\rm in}}\frac{\Gamma^2}{4 \Delta_{J_3}^2} \dot{N}_L $, with Rabi frequency $ \Omega=2\bra{j}|d|\ket{j'}\mathcal{E}^{(+)}_{\rm in}/\hbar $, reduced optical dipole matrix element $\bra{j}|d|\ket{j'}$, and field amplitude $ \mathcal{E}^{(+)}_{\rm in}=|\mathbf{E}_{\rm in}^{(+)}(\br')| $.
-Eqs.~\eqref{Eq::gammaf} and~\eqref{Eq::gammaff} yield,
+To find the dependence on the input field intensity, we define a characteristic photon scattering rate, $\gamma_s \equiv \frac{\Gamma_{avg}\Omega^2}{4\Delta_{F}^2}= \frac{\sigma_0}{A_{\rm in}}\frac{\Gamma_{avg}^2}{4 \Delta_{F}^2} \dot{N}_L $, with Rabi frequency $ \Omega=2\bra{j}|d|\ket{j'}\mathcal{E}^{(+)}_{\rm in}/\hbar $, reduced optical dipole matrix element $\bra{j}|d|\ket{j'}$, and field amplitude $ \mathcal{E}^{(+)}_{\rm in}=|\mathbf{E}_{\rm in}^{(+)}(\br')| $.
+Eqs.~\eqref{Eq::gammaf} and~\eqref{Eq::gammaff_Faraday} yield,
 \begin{subequations}
 	\begin{align}
-		\gamma_f 
-		%&=n_g\dot{N}_L  \sum_{f'} \sigma (\Delta_{ff'} ) \mathbf{u}^*_\inp(\br'_\perp)\cdot \bra{f,0} \hat{\tensor{\mbf{A}}}(f,f') \ket{f,0}  \cdot \mathbf{u}_\inp(\br'_\perp)\\
-		%&\approx  \gamma_s \sum_{f'} \frac{\Delta_{J_3}^2}{\Delta_{ff'}^2}\sum_q \big| o_{jf}^{j'f'}C_{f'q}^{f0;1 q} \big|^2 \mathbf{e}_q^* \cdot (\mathbf{e}_{\rm in}\mathbf{e}_{\rm in}^* )\cdot \mathbf{e}_q,
+		\gamma_m 
+		&=n_g\dot{N}_L  \sum_{f',m'} \sigma (\Delta_{ff'} ) \mathbf{u}^*_\inp(\br'_\perp)\cdot \bra{f,m} \hat{\tensor{\mbf{A}}}(fm,f'm') \ket{f,0}  \cdot \mathbf{u}_\inp(\br'_\perp)\\
+		&\approx  \gamma_s \sum_{f',m'} \frac{\Delta_{F}^2}{\Delta_{ff'}^2}\sum_q \big| o_{jf}^{j'f'}C_{f',m+q}^{f,m;1, q} \big|^2 \mathbf{e}_q^* \cdot (\mathbf{e}_{\rm in}\mathbf{e}_{\rm in}^* )\cdot \mathbf{e}_q,
 	\end{align}
 \end{subequations}
 	\begin{align}
-		\gamma_{f \rightarrow \tilde{f}}
-		%&\approx \gamma_s \sum_{f'} \frac{\Delta_{J_3}^2}{\Delta_{ff'}^2}\sum_q \big| o_{j\tilde{f}}^{j'f'} o_{jf}^{j'f'}C_{f'q}^{\tilde{f}0;1 q}C_{f'q}^{f0;1q} \big|^2 \mathbf{e}_q^* \cdot (\mathbf{e}_{\rm in}\mathbf{e}_{\rm in}^* )\cdot \mathbf{e}_q,
+		\gamma_{\tilde{m}m}
+		&\approx \gamma_s \sum_{f',m'} \frac{\Delta_{F}^2}{\Delta_{ff'}^2}\sum_q \big| o_{j\tilde{f}}^{j'f'} o_{jf}^{j'f'}C_{f'q}^{f,\tilde{m};1 q}C_{f',m+q}^{f,m;1,q} \big|^2 \mathbf{e}_q^* \cdot (\mathbf{e}_{\rm in}\mathbf{e}_{\rm in}^* )\cdot \mathbf{e}_q,
 	\end{align}
-where $ \sigma (\Delta_{ff'} )  = \sigma_0 \Gamma^2/4\Delta^2_{f' f}$ is the the scattering cross section at the probe detuning, $ C_{f'q}^{f0;1 q}=\Braket{f'q}{f0;1q}$ are the Clebsch-Gordan coefficients, and
+where $ \sigma (\Delta_{ff'} )  = \sigma_0 \Gamma_{avg}^2/4\Delta^2_{f' f}$ is the the scattering cross section at the probe detuning, $ C_{f',m+q}^{f,m;1, q}=\Braket{f',m+q}{f,m;1,q}$ are the Clebsch-Gordan coefficients, and
 \begin{equation}
 \big| o_{jf}^{j'f'} \big|^2=(2j'+1)(2f+2) \bigg\{
 \begin{array}{ccc}
@@ -462,21 +523,7 @@ f' & 7/2 & j' \\
  \bigg\}
 \end{equation}
 are the relative oscillator strengths determined by the relevant Wigner 6-$J$ symbol.
-
-%===================APPENDIX: Equations of motion =====================%
-\section{Modified atomic decay rates in presence of a nanophotonic waveguide} \label{Appendix::decayratesimulation}
-The key is to calculate the Green's function tensor (GFT) of the nanophotonic waveguide structure. 
-One can prove that the imaginary part of the total GFT responded at the atom position $\mathbf{r}$ is semidefinite and can be decomposed into its eigen basis by
-\begin{align}
-\mathrm{Im}\left[\tensor{G}(\br,\br)\right] &=\sum_{i=1,2,3} g_i\hat{e}_i\hat{e}_i^*,
-\end{align}
-where $\hat{e}_i$ $(i=1,2,3)$ are the three eigen vector of the tensor and $g_i\ge 0$ are the corresponding eigenvalues.
-
-We also know that $\mathrm{Im}[\tensor{G}(\br,\br)]=\mathrm{Im}[\tensor{G}_{rad}(\br,\br)]+\mathrm{Im}[\tensor{G}_{gyd}(\br,\br)]$ and the guided mode contribution part $\mathrm{Im}[\tensor{G}_{gyd}(\br,\br)]$ can be calculated by
-\begin{align}
-\mathrm{Im}[\tensor{G}_{gyd}(\br,\br)] &= \frac{\omega}{n_g} \cdots
-\end{align}
-The total modified decay rates can be calculated using the guided mode contribution part plus the LDOS of the radiation mode contribution generated by dipoles orientated along the three eigen vector directions numerically via boundary element method (BEM).
+The polarizability related term $\hat{\tensor{\mbf{A}}}(fm,f'm')$ is mainly determined by the vector interaction between the atoms and light due to the atomic polarizability...
 
 
 %===================APPENDIX: Equations of motion =====================%
