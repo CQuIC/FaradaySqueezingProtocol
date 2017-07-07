@@ -116,6 +116,7 @@
 %==== physical parameters ======
 \newcommand{\Eamp}{\mathcal{F}_0^{(+)}}
 \newcommand{\charpol}{\alpha_0(\Delta_{f\!f'})}
+\newcommand{\charpolq}{\alpha_0(\Delta_{f\!f'}^q)}
 \newcommand{\qaxis}{\mathbf{e}_{\tilde{z}}}
 \newcommand{\qangle}{\varphi}
 \newcommand{\magic}[1]{\tilde{\omega}_{#1}}
@@ -444,8 +445,8 @@ with the total Green's function tensor as a combination of the contributions fro
 For simplicity, we will hide the frequency-dependence part from the Green's function tensors below.
 Correspondingly, $ \Gamma_e=\Gamma_{e,gyd}+\Gamma_{e,rad} $ can also be decomposed into the guided mode and radiative mode contribution parts. 
 In the free space, the local Green's function tensor has a divergent real part and the imaginary part in the CGS units can be given by 
-$\tensor{\mathbf{G}}_0=G_0\tensor{\mathbbm{1}}$ with $G_0(\mathbf{r}',\mathbf{r}';\omega_{eg})=\frac{2}{3}k_0^3$.
-In presence of a waveguide, the Green's function tensor due to the radiative modes can be decomposed into the free-space or homogeneous radiation contribution and the waveguide-induced radiation contribution, that is $ \tensor{\mathbf{G}}_{rad}(\br',\br')=\tensor{\mathbf{G}}_0(\br',\br')+\tensor{\mathbf{G}}_{ind,rad}(\br',\br';\omega_{eg}) $.
+$\mathrm{Im}\left[\tensor{\mathbf{G}}_0\right]=G_0\tensor{\mathbbm{1}}$ with $G_0(\mathbf{r}',\mathbf{r}';\omega_{eg})=\frac{2}{3}k_0^3$.
+In presence of a waveguide, the Green's function tensor due to the radiative modes can be decomposed into the free-space or homogeneous radiation contribution and the waveguide-induced radiation contribution, that is $ \mathrm{Im}\left[\tensor{\mathbf{G}}_{rad}(\br',\br')\right]=\tensor{\mathbf{G}}_0(\br',\br')+\tensor{\mathbf{G}}_{ind,rad}(\br',\br';\omega_{eg}) $.
 The waveguide-induced Green's function tensor elements due to the radiative modes can be calculated by
 $$G_{ind,rad}^{ij}(\mathbf{r}',\mathbf{r}')=\frac{2k_0^2}{3\pi^2}\int_{-k_0}^{k_0} d\beta E_j^i(\mathbf{r}')=\frac{4k_0^2}{3\pi^2}\int_{0}^{k_0} d\beta E_j^i(\mathbf{r}')$$
 once $ E_j^i(\mathbf{r}') $--the $i$-th electric field component measured at the dipole position by putting a unit dipole orientated along $j$ direction--can be obtain using numerical methods like boundary element method (BEM) or analytically.
@@ -463,11 +464,12 @@ In our simulation of the square waveguide case, we have used $\varepsilon=4$ (wi
 Therefore, the radiative mode caused decay rates can be calculated by
 \begin{align}
 \frac{\Gamma_{e,rad}^{q}}{\Gamma_0} &= 1+ \frac{\mathrm{Im}\left[\mathbf{e}_q^*\cdot \tensor{\mathbf{G}}_{ind,rad}(\mathbf{r}',\mathbf{r}')\cdot \mathbf{e}_q\right]}{ \mathrm{Im}\left[\mathbf{e}_q^*\cdot \tensor{\mathbf{G}}_0(\mathbf{r}',\mathbf{r}')\cdot \mathbf{e}_q\right]}
-=1+ \frac{\mathrm{Im}\left[\mathbf{e}_q^*\cdot \tensor{\mathbf{G}}_{ind,rad}(\mathbf{r}',\mathbf{r}')\cdot \mathbf{e}_q\right]}{\mathrm{Im}\left[G_0(\mathbf{r}',\mathbf{r}')\right]}.
+=1+ \frac{\mathbf{e}_q^*\cdot \mathrm{Im}\left[\tensor{\mathbf{G}}_{ind,rad}(\mathbf{r}',\mathbf{r}')\right]\cdot \mathbf{e}_q}{G_0(\mathbf{r}',\mathbf{r}')}.
 \end{align}
 Similarly, the guided mode contribution to the decay rates can be given by
 \begin{align}
-\frac{\Gamma_{e,gyd}^{q}}{\Gamma_0} &= \frac{\mathrm{Im}\left[\mathbf{e}_q^*\cdot \tensor{\mathbf{G}}_{gyd}(\mathbf{r}',\mathbf{r}')\cdot \mathbf{e}_q\right]}{ \mathrm{Im}\left[\mathbf{e}_q^*\cdot \tensor{\mathbf{G}}_0(\mathbf{r}',\mathbf{r}')\cdot \mathbf{e}_q\right]}.
+\frac{\Gamma_{e,gyd}^{q}}{\Gamma_0} &= \frac{\mathrm{Im}\left[\mathbf{e}_q^*\cdot \tensor{\mathbf{G}}_{gyd}(\mathbf{r}',\mathbf{r}')\cdot \mathbf{e}_q\right]}{ \mathrm{Im}\left[\mathbf{e}_q^*\cdot \tensor{\mathbf{G}}_0(\mathbf{r}',\mathbf{r}')\cdot \mathbf{e}_q\right]}
+= \frac{\mathbf{e}_q^*\cdot \mathrm{Im}\left[ \tensor{\mathbf{G}}_{gyd}(\mathbf{r}',\mathbf{r}')\right]\cdot \mathbf{e}_q}{ G_0(\mathbf{r}',\mathbf{r}')}.
 \end{align}
 As has been derived in Ref~\cite{Qi2016},
 \begin{align}
@@ -489,7 +491,10 @@ where the effective non-Hermitian light-shift Hamiltonian for one atom is
 \begin{align}
 \hat{h}_{\rm eff} = - \hat{\mathbf{E}}^{(-)}_{\rm in}(\mathbf{r}' ; t ) \cdot \poltens \cdot \hat{\mathbf{E}}^{(+)}_{\rm in}(\mathbf{r}' ;t )
 \end{align}
-where $\charpol = -\frac{\sigma_0}{8\pi k_0}\frac{\Gamma}{\Delta_{ff'}+i\Gamma_{f'}/2}$ is the complex polarizability.
+where $\charpolq = -\frac{\sigma_0}{8\pi k_0}\frac{\Gamma_{f'}^q}{\Delta_{ff'}^q+i\Gamma_{f'}^q/2}$ is the complex polarizability and the polarizability operator $  \poltens=\sum_{f',q}\charpolq\hat{\tensor{\mathbf{A}}}$ with elements of $ \hat{\tensor{\mathbf{A}}} $ given by
+\begin{align} \label{Eq::PolarizabilityIrrep}
+		\hat{A}_{ij}(f,f')&=  C_{ff'}^{(0)} \delta_{i,j}+ iC_{ff'}^{(1)}\epsilon_{ijk}\hat{f}_k+ C_{ff'}^{(2)} \Big[ \smallfrac{1}{2} ( \hat{f}_i\hat{f}_j +\hat{f}_j\hat{f}_i )-\smallfrac{1}{3} \hat{\mathbf{f}}\!\cdot\!\hat{\mathbf{f}} \delta_{i,j} \Big]. 
+\end{align}
 
 
 The rate of optical pumping between clock states $\ket{f,m} \rightarrow \ket{f,\tilde{m}}$ is
@@ -497,7 +502,7 @@ The rate of optical pumping between clock states $\ket{f,m} \rightarrow \ket{f,\
 		\gamma_{\tilde{m}m }
 		=\sum_{q}\big| \bra{f,\tilde{m}} \hat{W}_q^{\tilde{m}m} \ket{f,m} \big|^2,
 	\end{equation}
-where $ \hat{W}_q^{\tilde{m}m} = \frac{1}{\gamma_s}\sum_{f'}\frac{\Omega/2}{\Delta_{f'f}+i\Gamma_{f'}/2}(\mathbf{e}_q^*\cdot\hat{\mathbf{D}}_{f\tilde{m}, f'm'} )(\mathbf{e}_{\rm in}\cdot \hat{\mathbf{D}}^\dagger_{f'm',fm} ) $ are the Lindblad jump operators for optical pumping between ground levels $ (f,m)\rightarrow (f,\tilde{m}) $~\cite{Deutsch2010a}.
+where $ \hat{W}_q^{\tilde{m}m} = \frac{1}{\gamma_s}\sum_{f',q}\frac{\Omega/2}{\Delta_{f'f}^q+i\Gamma_{f'}^q/2}(\mathbf{e}_q^*\cdot\hat{\mathbf{D}}_{f\tilde{m}, f'm'} )(\mathbf{e}_{\rm in}\cdot \hat{\mathbf{D}}^\dagger_{f'm',fm} ) $ are the Lindblad jump operators for optical pumping between ground levels $ (f,m)\rightarrow (f,\tilde{m}) $~\cite{Deutsch2010a}.
 Each jump operator $\hat{W}_q^{\tilde{m}m}$ is associated with absorption of the probe photon polarized along $ \mathbf{e}_{\rm in} $ followed by spontaneous emission of a photon with polarization $ \mathbf{e}_q $, where $q= \{0,\pm 1\}$ labels spherical basis elements for $\pi$ and $ \sigma_\pm$ transitions.
 
 To find the dependence on the input field intensity, we define a characteristic photon scattering rate, $\gamma_s \equiv \frac{\Gamma_{avg}\Omega^2}{4\Delta_{F}^2}= \frac{\sigma_0}{A_{\rm in}}\frac{\Gamma_{avg}^2}{4 \Delta_{F}^2} \dot{N}_L $, with Rabi frequency $ \Omega=2\bra{j}|d|\ket{j'}\mathcal{E}^{(+)}_{\rm in}/\hbar $, reduced optical dipole matrix element $\bra{j}|d|\ket{j'}$, and field amplitude $ \mathcal{E}^{(+)}_{\rm in}=|\mathbf{E}_{\rm in}^{(+)}(\br')| $.
