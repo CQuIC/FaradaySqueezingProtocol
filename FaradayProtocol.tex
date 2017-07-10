@@ -405,6 +405,7 @@ A set of spin operators projected onto the truncated qutrit subspace spanned by 
 \hat{f_y} &=i\left[\sqrt{\frac{f}{2}}\left(\ket{\downarrow}\bra{\uparrow}-\ket{\uparrow}\bra{\downarrow}\right) +\sqrt{\frac{2f-1}{2}}\left(\ket{T}\bra{\downarrow}-\ket{\downarrow}\bra{T} \right) \right] ,\\
 \hat{f_z} &= \sqrt{\frac{f}{2}}\left(\ket{\downarrow}\bra{\uparrow}+\ket{\uparrow}\bra{\downarrow}\right) +\sqrt{\frac{2f-1}{2}}\left(\ket{T}\bra{\downarrow}+\ket{\downarrow}\bra{T} \right).
 \end{align}
+
 We also define a set of Stokes operators as below,
 \begin{align}
 \hat{S}_0 &= \smallfrac{1}{2}\big[ \hat{a}^\dag_H(t) \hat{a}_H(t)+\hat{a}^\dag_V(t) \hat{a}_V(t) \big],\\
@@ -417,6 +418,8 @@ The local electric field at $ (r\!_\perp,\phi,z) $ with a diagonally polarized i
 \begin{align}
 \hat{\mathbf{E}}^{(+)}(r\!_\perp,\phi,z;t) &= \sum_{b,p} \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \mathbf{u}_{b,p}(r\!_\perp,\phi) \hat{a}_{b,p}(z,t)  e^{i b \beta_0 z}.
 \end{align}
+
+\comment{Todo: Rewrite the effective Hamiltonian using the collective operators defined above.}
 
 %===================APPENDIX: Photon scattering and optical pumping rates =====================%
 \section{Photon scattering and optical pumping rates} \label{Appendix::Rates}
@@ -482,29 +485,30 @@ For the nanofiber case, $ p=\pm 1 $ correspond to the right- and left-circularly
 for the SWG case, $ p=\mathrm{H}/\mathrm{V} $ corresponding to the H- and V-modes chosen for the spin squeeze protocol.
 
  
-
-The total rate of photon scattering by an atom in the $(f,f_x=m)$ hyperfine structure manifold states in the $x$-basis is
+To find the dependence on the input field intensity, we define a characteristic photon scattering rate, $\gamma_s \equiv \frac{\Gamma_0\Omega^2}{4\Delta_{F}^2}= \frac{\sigma_0}{A_{\rm in}}\frac{\Gamma_0^2}{4 \Delta_{F}^2} \dot{N}_L $ with an effective detuning $ \Delta_F $.
+We have also defined Rabi frequency $ \Omega=2\bra{j}|d|\ket{j'}\mathcal{E}^{(+)}_{\rm in}/\hbar $ with reduced optical dipole matrix element $\bra{j}|d|\ket{j'}$ and field amplitude $ \mathcal{E}^{(+)}_{\rm in}=|\mathbf{E}_{\rm in}^{(+)}(\br')| $.
+The total rate of photon scattering by an atom from the $\ket{a}\equiv \ket{f,f_x=a}$ to $ \ket{b}\equiv\ket{f,f_x=b} $ hyperfine ground state in the $x$-basis is
 	\begin{equation}\label{Eq::gammaf}
 		\gamma_{ba}=- \frac{2}{\hbar} {\rm Im} \big[ \bra{f,b} \hat{h}_{\rm eff}\ket{f,a} \big] ,
 	\end{equation}
-where the effective non-Hermitian light-shift Hamiltonian for one atom is
+where the effective non-Hermitian light-shift Hamiltonian for one atom is given by
 \begin{align}
-\hat{h}_{\rm eff} &= - \hat{\mathbf{E}}^{(-)}_{\rm in}(\mathbf{r}' ; t ) \cdot \poltens \cdot \hat{\mathbf{E}}^{(+)}_{\rm in}(\mathbf{r}' ;t ),
+\gamma_s\hat{h}_{\rm eff} &= - \hat{\mathbf{E}}^{(-)}_{\rm in}(\mathbf{r}' ; t ) \cdot \poltens \cdot \hat{\mathbf{E}}^{(+)}_{\rm in}(\mathbf{r}' ;t ),
 \end{align}
-where $\charpolq = -\frac{\sigma_0}{8\pi k_0}\frac{\Gamma_{f'}^q}{\Delta_{ff'}^q+i\Gamma_{f'}^q/2}$ is the complex polarizability and the polarizability operator $  \poltens=\sum_{f',q}\charpolq\hat{\tensor{\mathbf{A}}}(f,f')$ with elements of $ \hat{\tensor{\mathbf{A}}} $ given by
+where $\charpolq = -\frac{\sigma_0}{8\pi k_0\gamma_s}\frac{\Gamma_{f'}^q}{\Delta_{ff'}^q+i\Gamma_{f'}^q/2}$ is the complex polarizability and the polarizability operator $  \poltens=\sum_{f',q}\charpolq\hat{\tensor{\mathbf{A}}}(f,f')$ with elements of $ \hat{\tensor{\mathbf{A}}} $ given by
 \begin{align} \label{Eq::PolarizabilityIrrep}
-		\hat{A}_{ij}(f,f')&=  C_{ff'}^{(0)} \delta_{i,j}+ iC_{ff'}^{(1)}\epsilon_{ijk}\hat{f}_k+ C_{ff'}^{(2)} \Big[ \smallfrac{1}{2} ( \hat{f}_i\hat{f}_j +\hat{f}_j\hat{f}_i )-\smallfrac{1}{3} \hat{\mathbf{f}}\!\cdot\!\hat{\mathbf{f}} \delta_{i,j} \Big]. 
+		\hat{A}_{ij}(f,f')&\equiv \hat{e}_i^*\cdot\hat{\mathbf{D}}_{ff'}\hat{\mathbf{D}}_{f'f}^\dagger \cdot \hat{e}_j \\
+		&=  C_{ff'}^{(0)} \delta_{i,j}\hat{\mathbbm{1}}+ iC_{ff'}^{(1)}\epsilon_{ijk}\hat{f}_k+ C_{ff'}^{(2)} \Big[ \smallfrac{1}{2} ( \hat{f}_i\hat{f}_j +\hat{f}_j\hat{f}_i )-\smallfrac{1}{3} \hat{\mathbf{f}}\!\cdot\!\hat{\mathbf{f}} \delta_{i,j} \Big]. 
 \end{align}
 In the Faraday interaction protocols, the polarizability induced light response and hence the measurement backaction is mainly determined by the vector interaction term as the second term of the equation above.
 Definitions of the $ C_{ff'}^{(n)} $ can be found in Ref~\cite{Qi2016}.
 
-The rate of optical pumping between clock states $\ket{f,m} \rightarrow \ket{f,\tilde{m}}$ is
-	\begin{equation}\label{Eq::gammaff_Faraday}
-		\gamma_{\tilde{m}m }
-		=\sum_{q}\big| \bra{f,\tilde{m}} \hat{W}_q^{\tilde{m}m} \ket{f,m} \big|^2,
-	\end{equation}
-where $ \hat{W}_q^{\tilde{m}m} = \frac{1}{\gamma_s}\sum_{f'}\frac{\Omega/2}{\Delta_{f'f}^q+i\Gamma_{f'}^q/2}(\mathbf{e}_q^*\cdot\hat{\mathbf{D}}_{ff'} )(\mathbf{e}_{\rm in}\cdot \hat{\mathbf{D}}^\dagger_{f'f} ) $ are the Lindblad jump operators for optical pumping between ground levels $ (f,m)\rightarrow (f,\tilde{m}) $~\cite{Deutsch2010a}.
-Each jump operator $\hat{W}_q^{\tilde{m}m}$ is associated with absorption of the probe photon polarized along $ \mathbf{e}_{\rm in} $ followed by spontaneous emission of a photon with polarization $ \mathbf{e}_q $, where $q= \{0,\pm 1\}$ labels spherical basis elements for $\pi$ and $ \sigma_\pm$ transitions. 
+We define the Lindblad jump operators of optical pumping among ground states $\ket{a}\equiv \ket{f,a} \rightarrow \ket{b}\equiv \ket{f,b}$ and generating a $q$ photon emission as~\cite{Deutsch2010a}
+	\begin{align}\label{Eq::Wq_Faraday}
+		\hat{W}_q &= \frac{1}{\sqrt{\gamma_s}}\sum_{f'}\frac{\Omega/2}{\Delta_{f'f}^q+i\Gamma_{f'}^q/2}\mathbf{e}_q^*\cdot(\hat{\mathbf{D}}_{ff'}  \hat{\mathbf{D}}^\dagger_{f'f} )\cdot\mathbf{e}_{\rm in}\\
+		&=\sum_{f',m',q',a,b} w_{baq }^{f'm'q'}\ket{b}\bra{a}.
+	\end{align}
+Each jump operator $\hat{W}_q$ is associated with absorption of the probe photon polarized along $ \mathbf{e}_{\rm in} $ followed by spontaneous emission of a photon with polarization $ \mathbf{e}_q $, where $q= \{0,\pm 1\}$ labels spherical basis elements for $\pi$ and $ \sigma_\pm$ transitions. 
 Here the dimensionless raising operator $ \mathbf{e}_q\cdot\hat{\mathbf{D}}_{f'f}^\dagger= \sum_{m',m} o_{jf}^{j'f'} C_{f',m'}^{f,m;1, q}\ket{f',m'}\bra{f,m} $,
 where $ C_{f',m'}^{f,m;1, q}=0 $ unless $ m'=m+q $ with $ C_{f',m+q}^{f,m;1, q}=\Braket{f',m+q}{f,m;1,q}$ being the Clebsch-Gordan coefficients, and
 \begin{equation}
@@ -516,36 +520,36 @@ f' & 7/2 & j' \\
  \bigg\}
 \end{equation}
 are the relative oscillator strengths determined by the relevant Wigner 6-$J$ symbol.
-We have also defined Rabi frequency $ \Omega=2\bra{j}|d|\ket{j'}\mathcal{E}^{(+)}_{\rm in}/\hbar $ with reduced optical dipole matrix element $\bra{j}|d|\ket{j'}$ and field amplitude $ \mathcal{E}^{(+)}_{\rm in}=|\mathbf{E}_{\rm in}^{(+)}(\br')| $.
 In our protocols, we assume the probe light is so far-detuned from any of the atomic resonances that the tilting of the hyperfine structure levels due to an external magnetic field becomes irrelevant and we can set $ \Delta_{ff'}^q=\Delta_{ff'} $ and $ \Delta_{ff'}\gg \Gamma_f'^q $ for arbitrary $ f' $ and $ q $.
 
-To find the dependence on the input field intensity, we define a characteristic photon scattering rate, $\gamma_s \equiv \frac{\Gamma_0\Omega^2}{4\Delta_{F}^2}= \frac{\sigma_0}{A_{\rm in}}\frac{\Gamma_0^2}{4 \Delta_{F}^2} \dot{N}_L $.
+
 The optical pumping dynamics of the $ j $-th atom are governed by 
 \begin{align}
-\left.\dt{\hat{\rho}^{(j)}}\right|_{op} &= \mathcal{D}[\hat{\rho}^{(j)}]=-\frac{i}{\hbar}\left\{\hat{h}^{\rm loss}_{\rm eff},\hat{\rho}^{(j)} \right\}_+ + \sum_{q,q',a,b,c,d}\hat{W}_q^{dc}(\br'_j)\hat{\rho}^{(j)}\hat{W}_q^{ba}(\br'_j)\\
+\left.\dt{\hat{\rho}^{(j)}}\right|_{op} &= \gamma_s\mathcal{D}[\hat{\rho}^{(j)}]=-\frac{i\gamma_s}{\hbar}\left\{\hat{h}^{\rm loss}_{\rm eff},\hat{\rho}^{(j)} \right\}_+ + \gamma_s\sum_{q}\hat{W}_q(\br'_j)\hat{\rho}^{(j)}\hat{W}_q(\br'_j)\\
 \\
-&=-\gamma_s\frac{1}{2}\sum_{a,b}\frac{\gamma_{ba}}{\gamma_s}\ket{b}\bra{a}+
-\!\!\!\!\!\!\sum_{q,q',q'',a,b,c,d,f',f'',m',m''}\!\!\!\!\!\! W_{dcq}^{f''m''q''}\left(W_{abq}^{f'm'q'}\right)^*\ket{d}\bra{c}\hat{\rho}^{(i)}\ket{b}\bra{a}
+&=-\gamma_s\frac{1}{2}\sum_{a,b}\gamma_{ba}\ket{b}\bra{a}+
+\!\!\!\!\!\!\sum_{q,q',q'',a,b,c,d,f',f'',m',m''}\!\!\!\!\!\! \gamma_sw_{dcq}^{f''m''q''}\left(w_{abq}^{f'm'q'}\right)^*\ket{d}\bra{c}\hat{\rho}^{(i)}\ket{b}\bra{a}
 \end{align}
-Eqs.~\eqref{Eq::gammaf} and~\eqref{Eq::gammaff_Faraday} yield,
+Eqs.~\eqref{Eq::gammaf} and~\eqref{Eq::Wq_Faraday} yield,
 \begin{subequations}
 	\begin{align}
-		\gamma_m 
-		&=n_g\dot{N}_L  \sum_{f',q,m'=m+q} \sigma (\Delta_{ff'} ) \mathbf{u}^*_\inp(\br'_\perp)\cdot \bra{f,m} \hat{\tensor{\mbf{A}}}(f,f') \ket{f,m}  \cdot \mathbf{u}_\inp(\br'_\perp)\\
-		&\approx  \gamma_s \sum_{f',m'} \frac{\Delta_{F}^2}{\Delta_{ff'}^2}\sum_q \big| o_{jf}^{j'f'}C_{f',m+q}^{f,m;1, q} \big|^2 \mathbf{e}_q^* \cdot (\mathbf{e}_{\rm in}\mathbf{e}_{\rm in}^* )\cdot \mathbf{e}_q,
+		\gamma_{ba} 
+		&=\frac{n_g\dot{N}_L}{\gamma_s}  \sum_{f',q} \sigma (\Delta_{ff'} ) \mathbf{u}^*_\inp(\br'_\perp)\cdot \bra{b} \hat{\tensor{\mbf{A}}}(f,f') \ket{a}  \cdot \mathbf{u}_\inp(\br'_\perp)\\
+		&\approx  \sum_{f',m'} \frac{\Delta_{F}^2}{\Delta_{ff'}^2}\sum_{q,q'} \big| o_{jf}^{j'f'} \big|^2C_{f',b+q'}^{f,b;1, q'}C_{f',a+q}^{f,a;1, q} \mathbf{e}_{q'}^* \cdot (\mathbf{e}_{\rm in}\mathbf{e}_{\rm in}^* )\cdot \mathbf{e}_q,
 	\end{align}
 \end{subequations}
 	\begin{align}
-		\gamma_{\tilde{m}m}
-		&\approx \gamma_s \sum_{f',m'} \frac{\Delta_{F}^2}{\Delta_{ff'}^2}\sum_q \big| o_{j\tilde{f}}^{j'f'} o_{jf}^{j'f'}C_{f'q}^{f,\tilde{m};1 q}C_{f',m+q}^{f,m;1,q} \big|^2 \mathbf{e}_q^* \cdot (\mathbf{e}_{\rm in}\mathbf{e}_{\rm in}^* )\cdot \mathbf{e}_q,
+		w_{baq}^{f'm'q'}
+		&\approx  \frac{\Delta_{F}}{\Delta_{ff'}+i\Gamma_{f'}^q/2} \big| o_{jf}^{j'f'}  \big|^2 C_{f'm'}^{f,b;1 q}C_{f',m'}^{f,a;1,q'} (\mathbf{e}_{q'}^* \cdot \mathbf{e}_{\rm in}),
 	\end{align}
 where $ \sigma (\Delta_{ff'} )  = \sigma_0 \Gamma_0^2/4\Delta^2_{f' f}$ is the the scattering cross section at the probe detuning in free space. 
 
+\comment{Todo: Optical pumping in the rotating frame. See handwritten notes: QND measurement and spin squeezing using Faraday interactions (part VIII).}
 
 %===================APPENDIX: Equations of motion =====================%
-\section{Derivation of the equations of motion for the moments} \label{Appendix::OpticalPumping}
+\section{Relationship between some collective operators and the first- and second-moments in the symmetric subspace} \label{Appendix::OpticalPumping}
 
-In this Appendix we provide, for reference, the detailed equations to describe the QND measurement and spin squeezing dynamics.
+\comment{Todo: Relations between collective angular momentum operators and microscopic $\sigma_{ba}$ operators in the qubit and qutrit symmetric subspace. See handwritten notes: QND measurement and spin squeezing using Faraday interactions (part IV).}
 
 
 \end{appendix}
