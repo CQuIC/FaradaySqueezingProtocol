@@ -1,0 +1,194 @@
+\documentclass[preprint,aps,pra,onecolumn,superscriptaddress]{revtex4-1} %reprint
+%\tightenlines
+
+%\draft
+\usepackage{etex}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{bbm}
+\usepackage{listings}
+% % \textwidth 16cm \textheight 23.5cm
+% \renewcommand{\baselinestretch}{1.2}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{multirow}
+\usepackage[colorlinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{calc}
+\usepackage{natbib} %[numbers]
+\usepackage{bibentry}
+\usepackage{bbm}
+
+% todo list and commands
+%\usepackage{todonotes}
+%% to avoid the conflict with amths package % not working
+%\makeatletter
+%\providecommand\@dotsep{5}
+%\makeatother
+%\listoftodos\relax
+%\usepackage{makeidx}
+%\allowdisplaybreaks
+%% for eps transfering to pdf.
+%\usepackage[update,prepend]{epstopdf}
+%\usepackage{ifpdf}
+%
+%\ifpdf
+%   \usepackage{graphicx}
+%   \usepackage{epstopdf}
+%   \epstopdfsetup{suffix=}
+%   \DeclareGraphicsRule{.eps}{pdf}{.pdf}{`epstopdf #1}
+%   \pdfcompresslevel=9
+%\else
+%   \usepackage{graphicx}
+%\fi
+% subfig
+%\usepackage{mwe}
+%\usepackage{subfig}
+% to fix a figure's position using [H] option of thec figure.
+%\usepackage{float}
+% to use \lesssim and other math symbols
+%\usepackage{amssymb}
+
+
+% self-defined short-cuts and commands
+%\input{Mydef.tex}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\dt}[1]{\frac{{\mathrm d} {#1}}{{\mathrm d}t}}
+\def\br{\mathbf{r}}
+\def\bra#1{\langle{#1}\rvert}%{\mathinner{\langle{#1}\rvert}}
+\def\ket#1{\lvert{#1}\rangle}%{\mathinner{\lvert{#1}\rangle}}
+\def\Braket#1#2{\mathinner{\langle{#1}\! \mid\! {#2} \rangle}}
+%========================================================================================
+\newcommand{\erf}[1]{Eq.~(\ref{#1})}
+\newcommand{\frf}[1]{Fig.~\ref{#1}}
+\newcommand{\srf}[1]{Sec.~\ref{#1}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+%========================================================================================
+% General quantum mechanics macros
+%========================================================================================
+\newcommand{\op}[2]{\ket{#1}\bra{#2}}
+\newcommand{\expt}[1]{\langle{#1}\rangle}
+\newcommand{\dg}{^\dagger}
+\newcommand{\smallfrac}[2]{\mbox{$\frac{#1}{#2}$}}
+\newcommand{\Tr}{\mbox{Tr}}
+%========================================================================================
+\newcommand{\expect}[1]{\big\langle #1 \big\rangle}
+\newcommand{\eff}{\text{eff}}
+
+
+
+% Redefine the tensor command.
+%\renewcommand{\tensor}[1]{\boldsymbol{#1}}
+
+
+%==== Ben's new macros ======
+%\newcommand{\srf}[1]{Sec. \ref{#1}}
+\newcommand{\half}{\smallfrac{1}{2}}
+
+%==== subscripts ======
+\newcommand{\oneD}{{\rm 1D}}
+\newcommand{\vac}{{\rm vac}}
+\newcommand{\cav}{{\rm cav}}
+\newcommand{\inp}{{\rm in}}
+\newcommand{\out}{{\rm out}}
+\newcommand{\inter}{{\rm int}}
+\newcommand{\scs}{{\rm SCS}}
+\newcommand{\fwd}{+}
+\newcommand{\bwd}{-}
+\newcommand{\trans}{+}
+\newcommand{\refl}{-}
+
+ %==== operators/moments ======
+\newcommand{\der}[1]{\frac{d {#1}}{dt}}
+\newcommand{\unittens}{\tensor{\mathbf{I}}}
+\newcommand{\poltens}{\hat{\tensor{\boldsymbol{\alpha}}}}
+\newcommand{\varz}{\Delta J_3^2}
+\newcommand{\jx}{\hat{J}_1}
+\newcommand{\jz}{\hat{J}_3}
+\newcommand{\shotnoise}{\Delta \mathcal{M}^2 |_{\rm SN}}
+\newcommand{\projnoise}{\Delta \mathcal{M}^2_{\rm PN}}
+\newcommand{\polcomp}{\hat{K}} % p,p' component of the tensor polarizability
+
+%==== physical parameters ======
+\newcommand{\Eamp}{\mathcal{F}_0^{(+)}}
+\newcommand{\charpol}{\alpha_0(\Delta_{f\!f'})}
+\newcommand{\charpolq}{\alpha_0(\Delta_{f\!f'}^q)}
+\newcommand{\qaxis}{\mathbf{e}_{\tilde{z}}}
+\newcommand{\qangle}{\varphi}
+\newcommand{\magic}[1]{\tilde{\omega}_{#1}}
+\newcommand{\chiN}{\chi_{N}}
+\newcommand{\NA}{N_C}
+\newcommand{\chieff}{\chi_{\raisebox{-.1pt}{\tiny $J_3$}}}
+
+%==== scattering and optical pumping rates ====%
+\newcommand{\gammauu}{\gamma_{\uparrow \rightarrow \uparrow}}
+\newcommand{\gammadd}{\gamma_{\downarrow \rightarrow \downarrow}}
+\newcommand{\gammaud}{\gamma_{\uparrow \rightarrow \downarrow}}
+\newcommand{\gammadu}{\gamma_{\downarrow \rightarrow \uparrow}}
+\newcommand{\gammau}{\gamma_{\uparrow}}
+\newcommand{\gammad}{\gamma_{\downarrow}}
+
+%==== effective areas ======
+\newcommand{\Ain}{A_{\rm in}}
+\newcommand{\Abir}{A_N}
+
+%==== eigenfunctions ======
+\newcommand{\eigenf}{\mbf{f}_\eta}
+\newcommand{\eigenfp}{\mbf{f}_{\eta'}}
+\newcommand{\eigeng}{\mbf{g}_\eta}
+\newcommand{\eigengp}{\mbf{g}_{\eta'}}
+
+%==== field operators ======
+\newcommand{\awg}{\hat{a}_{b,p}(\omega)}
+\newcommand{\awr}{\hat{a}_{m,p}(\omega,\beta)}
+
+%==== colors for editing ======
+\newcommand{\change}[1]{{\color{RoyalBlue} #1}}
+\newcommand{\comment}[1]{{\color{Maroon} #1}}
+\newcommand{\error}[1]{{\color{red} #1}}
+
+% =============================================================================
+
+
+\begin{document}
+\title{Enhanced cooperativity for QND  measurement-induced spin squeezing of atoms coupled to a nanophotonic waveguide}
+\author{Xiaodong Qi}
+\affiliation{Center for Quantum Information and Control, University of New Mexico, Albuquerque, New Mexico 87131, USA}
+\author{Ivan H. Deutsch}
+\affiliation{Center for Quantum Information and Control, University of New Mexico, Albuquerque, New Mexico 87131, USA}
+\author{Yuan-Yu Jau}
+\affiliation{Sandia National Laboratories, Albuquerque, New Mexico 87185, USA}
+\date{\today}
+\pacs{42.50.Lc, 03.67.Bg, 42.50.Dv, 42.81.Gs}
+
+%================================================================%
+\begin{abstract}
+We study the enhancement of cooperativity in the atom-light interface near a nanophotonic waveguide for application to QND measurement of atomic spins.  Here the cooperativity per atom is determined by the ratio between the  measurement strength and the decoherence rate.  Counterintuitively, by placing the atoms azimuthally where the anisotropic guided probe mode has the lowest intensity, we increase the cooperativity.  This arises because the QND homodyne measurement strength depends on the interference between the probe and scattered signal, while the decoherence rate depends on the local intensity of the probe.  Thus the ratio of good to bad scattering can be strongly enhanced for highly anisotropic modes. We apply this to study spin squeezing for two nanophotonic geometries, a cylindrical nanofiber and square waveguide, and for two QND interactions, linear and circular birefringence (Faraday interaction), based on a full stochastic master equation model.  We find…
+\end{abstract}
+
+\maketitle
+
+%===================INTRODUCTION=====================%
+\section{Introduction}
+
+Cooperativity is the essential measure of the entangling strength of the atom-light interface is quantum optics.  Originally introduced in cavity QED, the cooperativity/atom can be expressed in terms of the ratio of the coherent coupling to decoherence rate, $C_1 = g^2/(\Gamma_c \Gamma_A)$ where $g$ is the vacuum Rabi frequency,  $\Gamma_c$ is the cavity decay rate, and and $\Gamma_A$ is atomic spontaneous emission rate out of the cavity.  Alternatively, we can express $C_1 = (\sigma_0/A) \mathcal{F}$, where $\sigma_0$ is the resonant photon scattering cross section of the atom, $A$ is the cavity mode area, and $\mathcal{F}$ is the cavity finesse.  Expressed this way, cooperativity is seen to arise due to scattering of photons preferentially into the cavity mode, compared to emission into free space, here enhanced by the finesses due to the Purcell effect. Strong coupling dynamics seen in pioneering in atomic cavity QED~\cite{?} is now a mainstay in quantum information processing in circuit QED for quantum information processing~\cite{}.  The $N_A$ atom cooperativity, $C_N = (N_A \sigma_0/A) \mathcal{F} = OD \mathcal{F}$, where $OD$ is the resonant optical depth.  In this configuration, collective degrees of the atom can be manipulated by its common coupling to the cavity mode.
+
+Cooperativity also characterizes the atom-light interface in the absence of a cavity.  In free space, an atom at the waist of a laser beam will scatter into the forward direction at a rate $\kappa = (\sigma_0/A) \gamma_s$, where $\gamma_s$ is the photon scattering rate into $4 \pi$ steradians.  Here the single atom cooperativity can be expressed of the ratio of these rates, $C_1 = \kappa/\gamma_s = sigma_0/A$.  The $N_A$ atom cooperativity, in a plane wave approximation, ignoring effects of diffraction and cloud geometry, $C_N = N_A \sigma_0/A = OD$.  To be self-consistent, here the beam area must be very large, so $C_1$ is very small, e.g. $C_1 \sim 10^-6$, but for a sufficiently large ensemble, $C_N$ can be large and lead to entanglement between the collective atomic degrees of freedom and the light~\cite{?}.
+
+In recent years, nanophotonic waveguides have emerged as new geometry that complements cavity QED, and can lead to strong cooperativity~\cite{}.  Notably, the effective area of a tightly guided mode can be must smaller than free space and propagate at for long distances without diffraction.  As such,  $sigma_0/A$ can be orders of magnitude larger than in free space, e.g., $sigma_0/A \sim 0.1$, and contribute collectively for a large ensemble of $N_A$ atoms trapped near the surface of the waveguide.  Moreover, in some cases the Purcell effect can further enhance forward scattering into the guided mode when compared with scattering into free space.  Taken together, these features make  nanophotonic waveguides a promising platform for a quantum atom-light interface.
+ 
+In this paper we show that one can achieve an additional enhancement to the cooperativity in a nanophotonic geometry that is not possible in free space. In particular, we consider QND measurement of the atomic spin via polarization spectroscopy.  The enhancement arises from the anisotropy of the guided modes.  By appropriate choice of geometry we can reduce the decoherence occurring by diffuse photon scattering at the rate $\gamma_s$ while maintaining a large guided scattering rate which defines the measurement strength, $\kappa$, thereby increasing $C_1 = \kappa/\gamma_s$.  Through this enhanced cooperativity, QND measurement can lead to substantial squeezing, greater than 10 dB, for 2500 atoms.   
+
+
+
+
+%========================== Theory ===================================%
+\section{Theory} \label{Sec::Theory}
+
+
+
+\end{document}
