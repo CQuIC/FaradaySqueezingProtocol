@@ -113,6 +113,35 @@
 \newcommand{\projnoise}{\Delta \mathcal{M}^2_{\rm PN}}
 \newcommand{\polcomp}{\hat{K}} % p,p' component of the tensor polarizability
 
+%==== Microscopic moments for the qubit/qutrit subspace ====
+\newcommand{\sigmauu}{\hat{\sigma}_{\uparrow\uparrow}}
+\newcommand{\sigmaud}{\hat{\sigma}_{\uparrow\downarrow}}
+\newcommand{\sigmaut}{\hat{\sigma}_{\uparrow \mathrm{T}}}
+\newcommand{\sigmadu}{\hat{\sigma}_{\downarrow\uparrow}}
+\newcommand{\sigmadd}{\hat{\sigma}_{\downarrow\downarrow}}
+\newcommand{\sigmadt}{\hat{\sigma}_{\downarrow \mathrm{T}}}
+\newcommand{\sigmatu}{\hat{\sigma}_{\mathrm{T}\uparrow}}
+\newcommand{\sigmatd}{\hat{\sigma}_{\mathrm{T}\downarrow}}
+\newcommand{\sigmatt}{\hat{\sigma}_{\mathrm{T}\mathrm{T}}}
+\newcommand{\sigmaab}{\hat{\sigma}_{ab}}
+\newcommand{\sigmaba}{\hat{\sigma}_{ba}}
+\newcommand{\sigmadc}{\hat{\sigma}_{dc}}
+\newcommand{\sigmacd}{\hat{\sigma}_{cd}}
+
+\newcommand{\Dsigmauu}{\Delta\sigma_{\uparrow\uparrow}}
+\newcommand{\Dsigmaud}{\Delta\sigma_{\uparrow\downarrow}}
+\newcommand{\Dsigmaut}{\Delta\sigma_{\uparrow \mathrm{T}}}
+\newcommand{\Dsigmadu}{\Delta\sigma_{\downarrow\uparrow}}
+\newcommand{\Dsigmadd}{\Delta\sigma_{\downarrow\downarrow}}
+\newcommand{\Dsigmadt}{\Delta\sigma_{\downarrow \mathrm{T}}}
+\newcommand{\Dsigmatu}{\Delta\sigma_{\mathrm{T}\uparrow}}
+\newcommand{\Dsigmatd}{\Delta\sigma_{\mathrm{T}\downarrow}}
+\newcommand{\Dsigmatt}{\Delta\sigma_{\mathrm{T}\mathrm{T}}}
+\newcommand{\Dsigmaab}{\Delta\sigma_{ab}}
+\newcommand{\Dsigmaba}{\Delta\sigma_{ba}}
+\newcommand{\Dsigmadc}{\Delta\sigma_{dc}}
+\newcommand{\Dsigmacd}{\Delta\sigma_{cd}}
+
 %==== physical parameters ======
 \newcommand{\Eamp}{\mathcal{F}_0^{(+)}}
 \newcommand{\charpol}{\alpha_0(\Delta_{f\!f'})}
@@ -135,6 +164,9 @@
 %==== effective areas ======
 \newcommand{\Ain}{A_{\rm in}}
 \newcommand{\Abir}{A_N}
+\newcommand{\AF}{A_F} % for the Faraday protocol.
+\newcommand{\Ai}{A_0} % for the input light.
+\newcommand{\Aint}{A_{\rm int}} % for the interaction area.
 
 %==== eigenfunctions ======
 \newcommand{\eigenf}{\mbf{f}_\eta}
@@ -550,6 +582,20 @@ where $ \sigma (\Delta_{ff'} )  = \sigma_0 \Gamma_0^2/4\Delta^2_{f' f}$ is the t
 \section{Relationship between some collective operators and the first- and second-moments in the symmetric subspace} \label{Appendix::OpticalPumping}
 
 \comment{Todo: Relations between collective angular momentum operators and microscopic $\sigma_{ba}$ operators in the qubit and qutrit symmetric subspace. See handwritten notes: QND measurement and spin squeezing using Faraday interactions (part IV).}
+\begin{subequations}
+	\begin{align}
+	\expect{\hat{F}_x} &= \sum_i^{N_A}\expect{\hat{f}_x}\nonumber\\
+	&= -N_A \left[f\expect{\sigmauu}+(f-1)\expect{\sigmadd}+(f-2)\expect{\sigmatt } \right]\\
+	\Delta F_z^2 &= N_A\expect{\Delta f_z^2} + N_A(N_A-1)\expect{\Delta f_z^{(1)}\Delta f_z^{(2)} }_s\nn\\
+	&=N_A\left\{ \frac{f}{2}\left(\expect{\sigmauu}+\expect{\sigmadd}-2\expect{\sigmaud}\expect{\sigmadu}-\expect{\sigmaud}^2-\expect{\sigmadu}^2 \right)\right. \nn\\
+	&\quad\quad+ \frac{2f-1}{2}\left(\expect{\sigmadd}+\expect{\sigmatt}-2\expect{\sigmadt}\expect{\sigmatd}-\expect{\sigmadt}^2-\expect{\sigmatd}^2 \right)\nn\\
+	&\quad\quad +\left. \frac{\sqrt{f(2f-1)}}{2}\left[\expect{\sigmaut }+\expect{\sigmatu} -2\expect{\sigmaud}(\expect{\sigmadt}+\expect{\sigmatd}) -2\expect{\sigmadu}(\expect{\sigmadt}+\expect{\sigmatd} ) \right] \right\}\nn\\
+	&\quad +N_A(N_A-1)\left[\frac{f}{2}(\expect{\Dsigmaud^{(1)}\Dsigmaud^{(2)} }_s +2\expect{\Dsigmaud^{(1)}\Dsigmadu^{(2)} }_s+\expect{\Dsigmadu^{(1)}\Dsigmadu^{(2)} }_s )\right.\\
+	&\quad\quad + \frac{2f-1}{2}(\expect{\Dsigmadt^{(1)}\Dsigmadt^{(2)} }_s +2\expect{\Dsigmadt^{(1)}\Dsigmatd^{(2)} }_s +\expect{\Dsigmatd^{(1)}\Dsigmatd^{(2)} }_s) \nn\\
+	&\quad\quad + \left. \sqrt{f(2f-1)}(\expect{\Dsigmaud^{(1)}\Dsigmadt^{(2)} }_s +\expect{\Dsigmaud^{(1)}\Dsigmatd^{(2)} }_s +\expect{\Dsigmadu^{(1)}\Dsigmadt^{(2)} }_s+\expect{\Dsigmadu^{(1)}\Dsigmatd^{(2)} }_s )\right]\nn
+	\end{align}
+\end{subequations}
+
 
 
 \end{appendix}
