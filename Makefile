@@ -3,45 +3,46 @@
 # On Windows, it requires Make tool and you may be able to add this tool by adding the MinGW to path:
 #  PATH=$PATH:/MINGW/msys/1.0/bin
 # where /MINGW is where MinGW is installed. The line ending should be LF.
-PROJECT=FaradayProtocol
+PROJECT=FaradayProtocol CopperativityEnhancement
 LATEXFLAGS?=-interaction=nonstopmode -file-line-error
+TEMPSUFFS=ps log aux out dvi bbl blg
 
 #pdf: ps
-#	ps2pdf ${PROJECT}.ps
+#	$(foreach proj,$(PROJECT),ps2pdf ${proj}.ps;)
 
 #pdf-print: ps
-#	ps2pdf -dColorConversionStrategy=/LeaveColorUnchanged -dPDFSETTINGS=/printer ${PROJECT}.ps
+#	$(foreach proj,$(PROJECT),ps2pdf -dColorConversionStrategy=/LeaveColorUnchanged -dPDFSETTINGS=/printer ${proj}.ps;)
 
 #text: html
-#	html2text -width 100 -style pretty ${PROJECT}/${PROJECT}.html | sed -n '/./,$$p' | head -n-2 >${PROJECT}.txt
+#	$(foreach proj,$(PROJECT),html2text -width 100 -style pretty ${proj}/${proj}.html | sed -n '/./,$$p' | head -n-2 >${proj}.txt;)
 
 #html:
-#	@#latex2html -split +0 -info "" -no_navigation ${PROJECT}
-#	htlatex ${PROJECT}
+#	$(foreach proj,$(PROJECT),@#latex2html -split +0 -info "" -no_navigation ${proj}; \
+#	htlatex ${proj};)
 
 #ps:	dvi
-#	dvips -t letter ${PROJECT}.dvi
+#	$(foreach proj,$(PROJECT),dvips -t letter ${proj}.dvi;)
 
 #dvi:
-#	latex ${PROJECT}
-#	bibtex ${PROJECT}||true
-#	latex ${PROJECT}
-#	latex ${PROJECT}
+#	$(foreach proj,$(PROJECT),latex ${proj}; \
+#	bibtex ${proj}||true; \
+#	latex ${proj}; \
+#	latex ${proj};)
 
 .DEFAULT: all
 .PHONY: all clean
 
 all:
-	pdflatex $(LATEXFLAGS) $(PROJECT)
-	bibtex $(PROJECT)||true
-	pdflatex $(LATEXFLAGS) $(PROJECT)
-	pdflatex $(LATEXFLAGS) $(PROJECT)
+	$(foreach proj,$(PROJECT), pdflatex $(LATEXFLAGS) $(proj); \
+	bibtex $(proj)||true; \
+	pdflatex $(LATEXFLAGS) $(proj); \
+	pdflatex $(LATEXFLAGS) $(proj);)
 
 read:
-	evince ${PROJECT}.pdf &
+	evince $(foreach proj,$(PROJECT),${proj}.pdf ) &
 
 aread:
-	acroread ${PROJECT}.pdf
+	acroread $(foreach proj,$(PROJECT),${proj}.pdf )
 
 clean:
-	rm -f ${PROJECT}.{ps,log,aux,out,dvi,bbl,blg}
+	rm -f $(foreach proj,$(PROJECT),$(foreach suff, $(TEMPSUFFS), $(proj).${suff}))
