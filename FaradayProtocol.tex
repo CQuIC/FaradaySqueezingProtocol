@@ -578,6 +578,26 @@ where $ \sigma (\Delta_{ff'} )  = \sigma_0 \Gamma_0^2/4\Delta^2_{f' f}$ is the t
 
 \comment{Todo: Optical pumping in the rotating frame. See handwritten notes: QND measurement and spin squeezing using Faraday interactions (part VIII).}
 
+Now, we consider a static magnetic field is applied to the atoms to fix the quantization axis to direction $ \mathbf{e}_{\tilde{z}} $ along the waveguide axis.
+We assume the magnetic field is so strong that the Larmor processing is much faster than the atomic decay and atom-photon interaction processes and the transverse components of the atomic angular momentum operators will be averaged out in the process of spin squeezing dynamics.
+In theory, this leads us to transfer the master equations of the collective spin dynamics to the rotating frame determined by the fast-rotating transform operator
+\begin{align}
+\hat{U}_B(t) &= e^{-i\Omega_Bt\hat{f}_z},
+\end{align}
+where $ \Omega_B $ is the Larmor processing frequency of the external magnetic field.
+In the rotating frame, a quantum operator $ \hat{A} $ is transfered into $ \hat{A}' $ through $ \hat{A}'=\expect{\hat{U}_B^\dagger\hat{A}\hat{U}_B }_T $, where the notation $ \expect{\cdot}_T=\frac{1}{T}\int\cdot dt $ is the time average of observables in a period $ T $.
+Similarly, the density operator is transfered to the rotating frame through $ \hat{\rho}'=\expect{\hat{U}_B^\dagger\hat{\rho}\hat{U}_B }_T $.
+We can solve the transformed master equations by employing the Baker–Campbell–Hausdorff formula that $ e^{\lambda\hat{A}}\hat{B}e^{-\lambda\hat{A}}=\sum_{n=0}^\infty\frac{\lambda^n}{n!}\hat{C}_n $, where $ \hat{C}_0=\hat{B} $ and $ \hat{C}_n=\left[\hat{A},\hat{C}_{n-1} \right] $ for $ n>1 $, and the commutators of atomic angular momentum operators, $ \left[\hat{f}_z, \hat{f}_x\right]=i\hat{f}_y $, $ \left[\hat{f}_z,\hat{f}_y　\right]=-i\hat{f}_x $.
+The following transformation relationships can be proved easily:
+\begin{subequations}
+	\begin{align}
+	\hat{f}_x^\prime&=\hat{f}_y^\prime=0, \quad \hat{f}_z^\prime=\hat{f}_z, \quad \hat{f}_z^{\prime 2}=\hat{f}_z^2,\\
+	\hat{f}^{\prime 2}_x &= \hat{f}^{\prime 2}_x=\frac{1}{2}(\hat{f}^2-\hat{f}_z^2),\\
+	\hat{f}_x^\prime\hat{f}_y^\prime &=\frac{1}{2}\hat{f}_z,\quad \hat{f}_y^\prime\hat{f}_x^\prime=-\frac{1}{2}\hat{f}_z,\quad \hat{f}_{i=x,y}^\prime\hat{f}_z^\prime=0.
+	\end{align}
+\end{subequations}
+
+
 %===================APPENDIX: Equations of motion =====================%
 \section{Relationship between some collective operators and the first- and second-moments in the symmetric subspace} \label{Appendix::OpticalPumping}
 
