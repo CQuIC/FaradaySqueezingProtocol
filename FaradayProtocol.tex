@@ -585,8 +585,8 @@ In theory, this leads us to transfer the master equations of the collective spin
 \hat{U}_B(t) &= e^{-i\Omega_Bt\hat{f}_z},
 \end{align}
 where $ \Omega_B $ is the Larmor processing frequency of the external magnetic field.
-In the rotating frame, a quantum operator $ \hat{A} $ is transfered into $ \hat{A}' $ through $ \hat{A}'=\expect{\hat{U}_B^\dagger\hat{A}\hat{U}_B }_T $, where the notation $ \expect{\cdot}_T=\frac{1}{T}\int\cdot dt $ is the time average of observables in a period $ T $.
-Similarly, the density operator is transfered to the rotating frame through $ \hat{\rho}'=\expect{\hat{U}_B^\dagger\hat{\rho}\hat{U}_B }_T $.
+In the rotating frame, a quantum operator $ \hat{A} $ is transfered into $ \hat{A}' $ through $ \hat{A}'\rightarrow \expect{\hat{U}_B^\dagger\hat{A}\hat{U}_B }_T $, where the notation $ \expect{\cdot}_T=\frac{1}{T}\int\cdot dt $ is the time average of observables in a period $ T $.
+Similarly, the density operator is transfered to the rotating frame through $ \hat{\rho}'\rightarrow \expect{\hat{U}_B^\dagger\hat{\rho}\hat{U}_B }_T $.
 We can solve the transformed master equations by employing the Baker–Campbell–Hausdorff formula that $ e^{\lambda\hat{A}}\hat{B}e^{-\lambda\hat{A}}=\sum_{n=0}^\infty\frac{\lambda^n}{n!}\hat{C}_n $, where $ \hat{C}_0=\hat{B} $ and $ \hat{C}_n=\left[\hat{A},\hat{C}_{n-1} \right] $ for $ n>1 $, and the commutators of atomic angular momentum operators, $ \left[\hat{f}_z, \hat{f}_x\right]=i\hat{f}_y $, $ \left[\hat{f}_z,\hat{f}_y　\right]=-i\hat{f}_x $.
 The following transformation relationships can be proved easily:
 \begin{subequations}
@@ -597,9 +597,23 @@ The following transformation relationships can be proved easily:
 	\end{align}
 \end{subequations}
 
+Given the geometry of the Faraday spin squeezing protocols with optical nanofiber and square waveguides, we only consider a linearly polarized local field at the atom position. 
+By denoting the local field is polarized along $ x'$-direction, the effective loss Hamiltonian in a static reference frame can be written as 
+\begin{align}
+\hat{h}_{\rm loss} &= -\frac{i\hbar}{2}\sum_{f'} \gamma_s \left[C_{j'ff'}^{(0)}\hat{\mathbbm{1}}+C_{j'ff'}^{(2)}(\hat{f}_{x'}^2-\frac{\hat{f}^2}{3} ) \right],
+\end{align}
+where the characteristic photon scattering rate in the far-detuning regime $ \gamma'_s=\frac{\Gamma_{f'}\Omega^2}{4(\Delta_{ff'}^2+\Gamma_{f'}^2/4 )} \approx \frac{\Gamma_0\Omega^2}{4\Delta_{\rm eff}}=\frac{\sigma_0}{\Ain}\left(\frac{\Gamma_0}{2\Delta_{\rm eff}} \right)^2\dot{N}_L $.
+In the last two steps, we have used the averaged decay rate $ \Gamma_0 $ to replace the hyperfine structure dependent decay rate $ \Gamma_{f'} $ for all excited levels in a fine structure manifold $ j' $; the effective detuning is also an averaged detuning from the fine structure excited level $ j' $ to the ground fine structure manifold $ j $ with resonant frequency $ \omega_D $--that is $ \Delta_{\rm eff}=\omega -\omega_D $ with probe frequency at $ \omega $ in vacuum. 
+Compared to the normal characteristic photon scattering rate $ \gamma_s $, we can see they are defined in different scales.
+
 
 %===================APPENDIX: Equations of motion =====================%
-\section{Relationship between some collective operators and the first- and second-moments in the symmetric subspace} \label{Appendix::OpticalPumping}
+\section{Generalized master equation for spin squeezing dynamics with arbitrary spin number $f$} \label{Appendix::OpticalPumpingForGeneralF}
+\comment{Todo: see notes on QND measurement and spin squeezing using Faraday interactions (part VI).}
+
+
+%===================APPENDIX: Relationships between collective spin operators and microscopic operators =====================%
+\section{Relationships between some collective operators and the first- and second-moments in the symmetric subspace} \label{Appendix::collectivespinoperators}
 
 \comment{Todo: Relations between collective angular momentum operators and microscopic $\sigma_{ba}$ operators in the qubit and qutrit symmetric subspace. See handwritten notes: QND measurement and spin squeezing using Faraday interactions (part IV).}
 \begin{subequations}
