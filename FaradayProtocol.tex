@@ -263,8 +263,8 @@ The first process is the optical pumping dynamics on each individual atom $i$ po
 \left.\dt{\hat{\rho}^{(i)}}\right|_{op} &=\gamma_s\mathcal{D}^{(i)}\\
 &= -\frac{i\gamma_s}{\hbar} \left\{\hat{h}_{\rm loss},\hat{\rho}^{i} \right\} + \gamma_s\sum_q \hat{W}_q(\br')\hat{\rho}^{i}\hat{W}_q(\br'),
 \end{align}
-where the characteristic photon scattering rate $ \gamma_s\equiv \frac{\Gamma_0\Omega^2}{4\Delta_F}=\frac{\sigma_0}{A_{in}}\frac{\Gamma_0^2}{4\Delta_F^2}\dot{N}_L $ with the effective input mode area $ A_{in}=1/n_g|u_{\mathrm{in}}(\br'\!_\perp)|^2 $.
-$\gamma_s$ characterizes the rate of decoherent processes.
+where the characteristic photon scattering rate $ \gamma_s\equiv \frac{\Gamma_0\Omega^2}{4\Delta_F}=\frac{\sigma_0}{A_{in}}\frac{\Gamma_0^2}{4\Delta_F^2}\dot{N}_L $ with the effective input mode area $ A_{in}=1/n_g|u_{\mathrm{in}}(\br'\!_\perp)|^2 $ and the effective detuning $ \Delta_F $ defined by $ \frac{1}{\Delta_F}=\sum_{f'}\frac{C_{f'ff'}^{(1)}}{\Delta_{ff'}} $ and $ \Delta_{ff'}=\omega-\omega_{ff'} $, where $ \omega_{ff'} $ is the resonance angular frequency between the ground hyperfine structure level $ f $ and the excited hyperfine structure level $ f' $, and $ C_{j'ff'}^{(K)} $ are the coefficients for irreducible rank-$K$ components defined in \cite{Deutsch2010a}.
+$\gamma_s$ characterizes the rate of decoherent processes and is proportional to the local photon flux $ \dot{N}_L $.
 The second term on the right-hand side of Eq.\eqref{eq:totaldrhodt} gives raise the collective spin dynamics due to QND measurement,
 \begin{align}
 \left.\dt{\hat{\rho}}\right|_{QND} &= \sqrt{\frac{\kappa}{4}}\mathcal{H}\left[\hat{\rho} \right]dW + \frac{\kappa}{4}\mathcal{L}\left[ \hat{\rho}\right]dt.
@@ -517,7 +517,7 @@ For the nanofiber case, $ p=\pm 1 $ correspond to the right- and left-circularly
 for the SWG case, $ p=\mathrm{H}/\mathrm{V} $ corresponding to the H- and V-modes chosen for the spin squeeze protocol.
 
  
-To find the dependence on the input field intensity, we define a characteristic photon scattering rate, $\gamma_s \equiv \frac{\Gamma_0\Omega^2}{4\Delta_{F}^2}= \frac{\sigma_0}{A_{\rm in}}\frac{\Gamma_0^2}{4 \Delta_{F}^2} \dot{N}_L $ with an effective detuning $ \Delta_F $.
+To find the dependence on the input field intensity, we define a characteristic photon scattering rate, $\gamma_s \equiv \frac{\Gamma_0\Omega^2}{4\Delta_{F}^2}= \frac{\sigma_0}{A_{\rm in}}\frac{\Gamma_0^2}{4 \Delta_{F}^2} \dot{N}_L $ with an effective detuning $ \Delta_F $ defined by $ \frac{1}{\Delta_F}=\sum_{f'}\frac{C_{f'ff'}^{(1)}}{\Delta_{ff'}} $ and $ \Delta_{ff'}=\omega-\omega_{ff'} $.
 We have also defined Rabi frequency $ \Omega=2\bra{j}|d|\ket{j'}\mathcal{E}^{(+)}_{\rm in}/\hbar $ with reduced optical dipole matrix element $\bra{j}|d|\ket{j'}$ and field amplitude $ \mathcal{E}^{(+)}_{\rm in}=|\mathbf{E}_{\rm in}^{(+)}(\br')| $.
 The total rate of photon scattering by an atom from the $\ket{a}\equiv \ket{f,f_x=a}$ to $ \ket{b}\equiv\ket{f,f_x=b} $ hyperfine ground state in the $x$-basis is
 	\begin{equation}\label{Eq::gammaf}
@@ -530,8 +530,9 @@ where the effective non-Hermitian light-shift Hamiltonian for one atom is given 
 where $\charpolq = -\frac{\sigma_0}{8\pi k_0\gamma_s}\frac{\Gamma_{f'}^q}{\Delta_{ff'}^q+i\Gamma_{f'}^q/2}$ is the complex polarizability and the polarizability operator $  \poltens=\sum_{f',q}\charpolq\hat{\tensor{\mathbf{A}}}(f,f')$ with elements of $ \hat{\tensor{\mathbf{A}}} $ given by
 \begin{align} \label{Eq::PolarizabilityIrrep}
 		\hat{A}_{ij}(f,f')&\equiv \hat{e}_i^*\cdot\hat{\mathbf{D}}_{ff'}\hat{\mathbf{D}}_{f'f}^\dagger \cdot \hat{e}_j \\
-		&=  C_{ff'}^{(0)} \delta_{i,j}\hat{\mathbbm{1}}+ iC_{ff'}^{(1)}\epsilon_{ijk}\hat{f}_k+ C_{ff'}^{(2)} \Big[ \smallfrac{1}{2} ( \hat{f}_i\hat{f}_j +\hat{f}_j\hat{f}_i )-\smallfrac{1}{3} \hat{\mathbf{f}}\!\cdot\!\hat{\mathbf{f}} \delta_{i,j} \Big]. 
+		&=  C_{ff'}^{(0)} \delta_{i,j}\hat{\mathbbm{1}}+ iC_{ff'}^{(1)}\epsilon_{ijk}\hat{f}_k+ C_{ff'}^{(2)} \Big[ \smallfrac{1}{2} ( \hat{f}_i\hat{f}_j +\hat{f}_j\hat{f}_i )-\smallfrac{1}{3} \hat{\mathbf{f}}\!\cdot\!\hat{\mathbf{f}} \delta_{i,j} \Big], 
 \end{align}
+where $\hat{\mathbf{f}}$ is the atomic spin operator in hyperfine multiplet $f$, and $ \epsilon_{ijk} $ is the Levi-Civita symbol. 
 In the Faraday interaction protocols, the polarizability induced light response and hence the measurement backaction is mainly determined by the vector interaction term as the second term of the equation above.
 Definitions of the $ C_{ff'}^{(n)} $ can be found in Ref~\cite{Qi2016}.
 
@@ -585,26 +586,80 @@ In theory, this leads us to transfer the master equations of the collective spin
 \hat{U}_B(t) &= e^{-i\Omega_Bt\hat{f}_z},
 \end{align}
 where $ \Omega_B $ is the Larmor processing frequency of the external magnetic field.
-In the rotating frame, a quantum operator $ \hat{A} $ is transfered into $ \hat{A}' $ through $ \hat{A}'\rightarrow \expect{\hat{U}_B^\dagger\hat{A}\hat{U}_B }_T $, where the notation $ \expect{\cdot}_T=\frac{1}{T}\int\cdot dt $ is the time average of observables in a period $ T $.
-Similarly, the density operator is transfered to the rotating frame through $ \hat{\rho}'\rightarrow \expect{\hat{U}_B^\dagger\hat{\rho}\hat{U}_B }_T $.
-We can solve the transformed master equations by employing the Baker–Campbell–Hausdorff formula that $ e^{\lambda\hat{A}}\hat{B}e^{-\lambda\hat{A}}=\sum_{n=0}^\infty\frac{\lambda^n}{n!}\hat{C}_n $, where $ \hat{C}_0=\hat{B} $ and $ \hat{C}_n=\left[\hat{A},\hat{C}_{n-1} \right] $ for $ n>1 $, and the commutators of atomic angular momentum operators, $ \left[\hat{f}_z, \hat{f}_x\right]=i\hat{f}_y $, $ \left[\hat{f}_z,\hat{f}_y　\right]=-i\hat{f}_x $.
-The following transformation relationships can be proved easily:
-\begin{subequations}
+In the rotating frame, a quantum operator $ \hat{A} $ is transfered into $ \hat{A}' $ through $ \hat{A}\rightarrow \hat{A}'=\expect{\hat{U}_B^\dagger\hat{A}\hat{U}_B }_T $, where the notation $ \expect{\cdot}_T=\frac{1}{T}\int\cdot dt $ is the time average of observables in a period $ T $.
+Similarly, the density operator is transfered to the rotating frame through $ \hat{\rho}\rightarrow \hat{\rho}'= \expect{\hat{U}_B^\dagger\hat{\rho}\hat{U}_B }_T $.
+We can solve the transformed master equations by employing the Baker-Campbell-Hausdorff formula that $ e^{\lambda\hat{A}}\hat{B}e^{-\lambda\hat{A}}=\sum_{n=0}^\infty\frac{\lambda^n}{n!}\hat{C}_n $, where $ \hat{C}_0=\hat{B} $ and $ \hat{C}_n=\left[\hat{A},\hat{C}_{n-1} \right] $ for $ n>1 $, and the commutators of atomic angular momentum operators, $ \left[\hat{f}_m, \hat{f}_n\right]=i\sum_p\epsilon_{mnp}\hat{f}_p $.
+The following static-rotating frame transformation relationships can be proved easily:
+\begin{subequations}\label{eq:rotationtransf}
 	\begin{align}
-	\hat{f}_x^\prime&=\hat{f}_y^\prime=0, \quad \hat{f}_z^\prime=\hat{f}_z, \quad \hat{f}_z^{\prime 2}=\hat{f}_z^2,\\
-	\hat{f}^{\prime 2}_x &= \hat{f}^{\prime 2}_x=\frac{1}{2}(\hat{f}^2-\hat{f}_z^2),\\
-	\hat{f}_x^\prime\hat{f}_y^\prime &=\frac{1}{2}\hat{f}_z,\quad \hat{f}_y^\prime\hat{f}_x^\prime=-\frac{1}{2}\hat{f}_z,\quad \hat{f}_{i=x,y}^\prime\hat{f}_z^\prime=0.
+	\hat{f}_{x}&=\hat{f}_{y} \rightarrow 0, \quad \hat{f}_{z}\rightarrow\hat{f}_z, \quad \hat{f}_{z}^ 2\rightarrow\hat{f}_z^2,\\
+	\hat{f}^2_{x} &= \hat{f}^ 2_{y} \rightarrow \frac{1}{2}(\hat{\mathbf{f}}^2-\hat{f}_z^2),\\
+	\hat{f}_{x}\hat{f}_{y} &\rightarrow\frac{1}{2}\hat{f}_z,\quad \hat{f}_{y}\hat{f}_{x}\rightarrow -\frac{1}{2}\hat{f}_z,\quad \hat{f}_{i=x,y}\hat{f}_{z}\rightarrow 0.
 	\end{align}
 \end{subequations}
+We can see that, in the rotating frame, the transverse components of the atomic angular momentum operators got averaged out due to symmetry.
 
 Given the geometry of the Faraday spin squeezing protocols with optical nanofiber and square waveguides, we only consider a linearly polarized local field at the atom position. 
 By denoting the local field is polarized along $ x'$-direction, the effective loss Hamiltonian in a static reference frame can be written as 
 \begin{align}
-\hat{h}_{\rm loss} &= -\frac{i\hbar}{2}\sum_{f'} \gamma_s \left[C_{j'ff'}^{(0)}\hat{\mathbbm{1}}+C_{j'ff'}^{(2)}(\hat{f}_{x'}^2-\frac{\hat{f}^2}{3} ) \right],
+\hat{h}_{\rm loss} &= -\frac{i\hbar}{2}\sum_{f'} \gamma'_s \left[C_{j'ff'}^{(0)}\hat{\mathbbm{1}}+C_{j'ff'}^{(2)}(\hat{f}_{x'}^2-\frac{\hat{\mathbf{f}}^2}{3} ) \right],
 \end{align}
 where the characteristic photon scattering rate in the far-detuning regime $ \gamma'_s=\frac{\Gamma_{f'}\Omega^2}{4(\Delta_{ff'}^2+\Gamma_{f'}^2/4 )} \approx \frac{\Gamma_0\Omega^2}{4\Delta_{\rm eff}}=\frac{\sigma_0}{\Ain}\left(\frac{\Gamma_0}{2\Delta_{\rm eff}} \right)^2\dot{N}_L $.
 In the last two steps, we have used the averaged decay rate $ \Gamma_0 $ to replace the hyperfine structure dependent decay rate $ \Gamma_{f'} $ for all excited levels in a fine structure manifold $ j' $; the effective detuning is also an averaged detuning from the fine structure excited level $ j' $ to the ground fine structure manifold $ j $ with resonant frequency $ \omega_D $--that is $ \Delta_{\rm eff}=\omega -\omega_D $ with probe frequency at $ \omega $ in vacuum. 
 Compared to the normal characteristic photon scattering rate $ \gamma_s $, we can see they are defined in different scales.
+In general, they are related given a transition between ground hyperfine structure level $ f $ and excited hyperfine structure level $ f' $ by 
+\begin{align}
+\gamma'_s(f')=\gamma_s \frac{\Delta_F^2}{\Delta_{ff'}},
+\end{align}
+and hence $ \frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}\pm i\Gamma_{f'}/2}\approx \frac{\sqrt{\Gamma_0}\Omega/2}{\Delta_{ff'}}=\sqrt{\gamma_s}\frac{\Delta_F}{\Delta_{ff'}} $ in the far-detuning regime.
+
+Using the transformation relationships defined in Eqs.\eqref{eq:rotationtransf}, the loss Hamiltonian in the rotating frame becomes
+\begin{subequations}\label{eq:rotationtransf_hloss}
+\begin{align}
+\hat{h}_{\rm loss} =-\frac{i\hbar}{2} \sum_{f'}\gamma'_s \left[C_{j'ff'}^{(0)}\hat{\mathbbm{1}} + \frac{C_{j'ff'}^{(2)}}{6}(\hat{\mathbf{f}}^2-3\hat{f}_z^2 ) \right],
+\end{align}
+\end{subequations}
+where $ z $-direction is the waveguide axis direction, and $ \hat{\mathbf{f}}^2=\hat{\mathbf{f}}\cdot\hat{\mathbf{f}} $.
+
+Similarly, in the static frame, the jump operators can be given by
+\begin{align}
+\hat{W}_q &= \sum_{f'} \frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2}\mathbf{e}_q^*\cdot \hat{\mathbf{D}}_{ff'} \hat{\mathbf{D}}_{f'f}^\dagger \cdot \mathbf{e}_L \nn \\
+&= \sum_{f'k} \frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2} \left[\delta_{qx'}C_{j'ff'}^{(0)}\hat{\mathbbm{1}} + iC_{j'ff'}^{(1)}\epsilon_{qx'k}\hat{f}_k + C_{j'ff'}^{(2)}\left(\frac{\hat{f}_q\hat{f}_{x'}+\hat{f}_{x'}\hat{f}_q }{2} - \frac{\delta_{qx'}}{3}\hat{\mathbf{f}}^2 \right) \right].
+\end{align}
+Therefore, in the static $ \left\{x',y',z \right\} $ basis, we have
+\begin{align}
+\hat{W}_{x'} &= \sum_{f'} \frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2} \left[C_{j'ff'}^{(0)}\hat{\mathbbm{1}} + C_{j'ff'}^{(2)}\left(\hat{f}_{x'}^2-\frac{1}{3}\hat{\mathbf{f}}^2 \right) \right]\\
+\hat{W}_{y'} &= \sum_{f'} \frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2} \left(-iC_{j'ff'}^{(1)}\hat{f}_z + C_{j'ff'}^{(2)}\frac{\hat{f}_{x'}\hat{f}_{y'}+\hat{f}_{y'}\hat{f}_{x'}}{2} \right)\\
+\hat{W}_{z} &= \sum_{f'} \frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2} \left(iC_{j'ff'}^{(1)}\hat{f}_{y'} + C_{j'ff'}^{(2)}\frac{\hat{f}_z\hat{f}_{x'}+\hat{f}_{x'}\hat{f}_z}{2}  \right).
+\end{align}
+By using the transformation relationships of Eqs.\eqref{eq:rotationtransf}, the jump operators become 
+\begin{subequations}\label{eq:rotationtransf_Wxyz}
+\begin{align}
+\hat{W}_{x'} &= \sum_{f'} \frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2} \left[C_{j'ff'}^{(0)}\hat{\mathbbm{1}} + \frac{C_{j'ff'}^{(2)}}{6}\left(\hat{\mathbf{f}}^2-3\hat{f}_{z}^2 \right) \right]\\
+\hat{W}_{y'} &= \sum_{f'} -\frac{i\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2} C_{j'ff'}^{(1)}\hat{f}_z  \\
+\hat{W}_{z} &= 0.
+\end{align}
+\end{subequations}
+
+By using the fact that 
+\begin{subequations}
+\begin{align}
+\hat{\mathbf{f}}^2 &=f(f+1)\hat{\mathbbm{1}}\\
+\hat{f}_z &= \left(
+    \begin{array}{ccccccc}
+    f                                      		\\
+      & f-1           &      & &      &\text{\huge0}\\
+      &               &\ddots& 					\\
+      &               &      &0                	\\
+      &               &      & &\ddots          \\
+      & \text{\huge0} &      & &      &-(f-1)   \\
+      &               &      & &      &      &-f
+    \end{array}
+    \right)=\sum_{m=1}^{2f+1}(f-m+1)\hat{\sigma}_{mm}\\
+\hat{f}_z^2 &= \sum_{m=1}^{2f+1}(f-m+1)^2\hat{\sigma}_{mm}
+\end{align}
+\end{subequations}
+Eqs.\eqref{eq:rotationtransf_hloss} and~\eqref{eq:rotationtransf_Wxyz} can be simplified as
 
 
 %===================APPENDIX: Equations of motion =====================%
