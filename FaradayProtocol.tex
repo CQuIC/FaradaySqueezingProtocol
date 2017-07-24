@@ -112,6 +112,14 @@
 \newcommand{\shotnoise}{\Delta \mathcal{M}^2 |_{\rm SN}}
 \newcommand{\projnoise}{\Delta \mathcal{M}^2_{\rm PN}}
 \newcommand{\polcomp}{\hat{K}} % p,p' component of the tensor polarizability
+\newcommand{\fo}{\hat{\mathbf{f}}}
+\newcommand{\fx}{\hat{f}_x}
+\newcommand{\fy}{\hat{f}_y}
+\newcommand{\fz}{\hat{f}_z}
+\newcommand{\Fx}{\hat{F}_x}
+\newcommand{\Fy}{\hat{F}_y}
+\newcommand{\Fz}{\hat{F}_z}
+\newcommand{\rhoo}{\hat{\rho}}
 
 %==== Microscopic moments for the qubit/qutrit subspace ====
 \newcommand{\sigmauu}{\hat{\sigma}_{\uparrow\uparrow}}
@@ -577,7 +585,7 @@ Eqs.~\eqref{Eq::gammaf} and~\eqref{Eq::Wq_Faraday} yield,
 	\end{align}
 where $ \sigma (\Delta_{ff'} )  = \sigma_0 \Gamma_0^2/4\Delta^2_{f' f}$ is the the scattering cross section at the probe detuning in free space. 
 
-\comment{Todo: Optical pumping in the rotating frame. See handwritten notes: QND measurement and spin squeezing using Faraday interactions (part VIII).}
+\comment{Todo: Need to unify and correct the factor of $\gamma_s$ in the optical pumping master equations and related quantities. The following content is mainly from Optical pumping in the rotating frame in the handwritten notes: QND measurement and spin squeezing using Faraday interactions (part VIII).}
 
 Now, we consider a static magnetic field is applied to the atoms to fix the quantization axis to direction $ \mathbf{e}_{\tilde{z}} $ along the waveguide axis.
 We assume the magnetic field is so strong that the Larmor processing is much faster than the atomic decay and atom-photon interaction processes and the transverse components of the atomic angular momentum operators will be averaged out in the process of spin squeezing dynamics.
@@ -659,8 +667,33 @@ By using the fact that
 \hat{f}_z^2 &= \sum_{m=1}^{2f+1}(f-m+1)^2\hat{\sigma}_{mm}
 \end{align}
 \end{subequations}
-Eqs.\eqref{eq:rotationtransf_hloss} and~\eqref{eq:rotationtransf_Wxyz} can be simplified as
-
+in the rotating frame, both $ \hat{h}_{\rm loss} $ and $ \hat{W}_{q} $ become diagonal, and Eqs.\eqref{eq:rotationtransf_hloss} and~\eqref{eq:rotationtransf_Wxyz} can be simplified as
+\begin{subequations}
+\begin{align}
+\hat{h}_{\rm loss} &= -\frac{i\hbar}{2} \sum_{f'} \gamma'_s(f') \sum_{m=-f}^f\left[C_{j'ff'}^{(0)} + \frac{C_{j'ff'}^{(2) }}{6}(f(f+1)-3m^2) \right]\hat{\sigma}_{mm}\\
+\hat{W}_{x'} &= \sum_{f'} \frac{\sqrt{\Gamma_{f'} }\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2 } \sum_{m=-f}^f\left[C_{j'ff'}^{(0)} + \frac{C_{j'ff'}^{(2) }}{6}(f(f+1)-3m^2) \right]\hat{\sigma}_{mm}\\
+\hat{W}_{y'} &= -i \sum_{f'} \frac{\sqrt{\Gamma_{f'} }\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2 } \sum_{m=-f}^f C_{f'ff'}^{(1)}m\hat{\sigma}_{mm}\\
+\hat{W}_z &=0.
+\end{align}
+\end{subequations}
+By further replacing $ \hat{\rho}\rightarrow \expect{\hat{U}_B^\dagger \hat{\rho}\hat{U}_B }_T$ and $ \left. \dt{\hat{\rho}}\right|_{\rm op}\rightarrow \expect{\left.\dt{\hat{U}_B^\dagger}\right|_{\rm op}\hat{\rho}\hat{U}_B}_T + \expect{\hat{U}_B^\dagger\hat{\rho}\left. \dt{\hat{U}_B}\right|_{\rm op}}_T +\expect{\hat{U}_B^\dagger\left.\dt{\hat{\rho}}\right|_{\rm op}\hat{U}_B}_T= \expect{\hat{U}_B^\dagger\left.\dt{\hat{\rho}}\right|_{\rm op}\hat{U}_B}_T$, one can obtain the optical pumping master equation in the rotating frame as
+\begin{align}
+\left. \dt{\hat{\rho}}\right|_{\rm op} &= \expect{\hat{U}_B^\dagger\left.\dt{\hat{\rho}}\right|_{\rm op}\hat{U}_B}_T\nn\\
+&= \expect{\hat{U}_B^\dagger\gamma_s\mathcal{D}\left[\hat{\rho} \right]\hat{U}_B}_T\nn\\
+&= - \sum_{f'} \gamma'_s(f') \left[\left(C_{j'ff'}^{(0)}+\frac{f(f+1)}{12}C_{j'ff'}^{(2)} \right)\hat{\rho}-\frac{C_{j'ff'}^{(2)}}{4}(\hat{f}_z^2\hat{\rho}+\hat{\rho}\hat{f}_z^2) \right]\nn\\
+&\quad+\sum_{f',f''} \frac{\sqrt{\Gamma_{f'}\Gamma_{f''} }\Omega^2/4 }{\Delta_{ff'}\Delta_{ff''}+\Gamma_{f'}\Gamma_{f''}/4+i(\Delta_{ff''}\Gamma_{f'}-\Delta_{ff'}\Gamma_{f''} ) }\nn\\
+&\quad\cdot\left\{C_{f'ff'}^{(0)}C_{f'ff''}^{(0)}\hat{\rho}+ C_{j'ff'}^{(0)}C_{j'ff''}^{(2)}\frac{\hat{\rho}}{6}(\fo^2-3\hat{f}_z^2) + C_{j'ff''}^{(0)}C_{j'ff'}^{(2)}(\fo^2-3\hat{f}_z^2)\frac{\hat{\rho}}{6} \right.\nn\\
+&\quad\quad + \frac{1}{2}C_{j'ff'}^{(1)}C_{j'ff''}^{(1)}(\hat{f}_x\hat{\rho}\hat{f}_x+\hat{f}_y\hat{\rho}\hat{f}_y+2\hat{f}_z\hat{\rho}\hat{f}_z )\nn\\
+&\quad\quad -\frac{1}{4}C_{j'ff'}^{(1)}C_{f'ff''}^{(2)}(\fx\rhoo\fx-\fy\rhoo\fy-2i\fx\rhoo\fz\fy+2i\fy\rhoo\fx\fz )\nn\\
+&\quad\quad +\frac{1}{4}C_{j'ff''}^{(1)}C_{f'ff'}^{(2)}(\fx\rhoo\fx-\fy\rhoo\fy-2i\fz\fy\rhoo\fx+2i\fx\fz\rhoo\fy ) \nn\\
+&\quad +C_{j'ff'}^{(2)}C_{j'ff''}^{(2)}\left[\frac{1}{4}f^2(f+1)^2\rhoo-\frac{f(f+1)}{6}(\fo^2-\fz^2)\rhoo-\frac{f(f+1)}{6}\rhoo(\fo^2-\fz^2) \right.\nn\\
+&\quad\quad\quad+\frac{1}{2}\fx^2\rhoo\fx^2+\frac{1}{2}\fy^2\rhoo\fy^2+\frac{1}{4}(i\fz+2\fy\fx)\rhoo(i\fz+2\fy\fx)\nn\\
+&\left.\left.\quad\quad\quad +\frac{1}{8}(i\fy+2\fx\fz)\rhoo(i\fy+2\fx\fz)+\frac{1}{8}(i\fx+2\fz\fy)\rhoo(i\fx+2\fz\fy) \right]\right\}.
+\end{align}
+In the far-detuning regime, the detuning on hyperfine sublevels will be degenerate and $ f'=f'' $ so that we can ignore all tensor polarizability terms, and the optical pumping part of the master equation above becomes
+\begin{align}
+\left.\dt{\rhoo}\right|_{\rm op} = \gamma'_s \sum_{f'} \left[C_{j'ff'}^{(0)}(C_{j'ff'}^{(0)}-1)\rhoo+\frac{1}{2}(C_{j'ff'}^{(1)})^2(\fx\rhoo\fx+\fy\rhoo\fy+2\fz\rhoo\fz ) \right].
+\end{align}
 
 %===================APPENDIX: Equations of motion =====================%
 \section{Generalized master equation for spin squeezing dynamics with arbitrary spin number $f$} \label{Appendix::OpticalPumpingForGeneralF}
