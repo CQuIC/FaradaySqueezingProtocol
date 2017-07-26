@@ -112,6 +112,43 @@
 \newcommand{\shotnoise}{\Delta \mathcal{M}^2 |_{\rm SN}}
 \newcommand{\projnoise}{\Delta \mathcal{M}^2_{\rm PN}}
 \newcommand{\polcomp}{\hat{K}} % p,p' component of the tensor polarizability
+\newcommand{\fo}{\hat{\mathbf{f}}}
+\newcommand{\fx}{\hat{f}_x}
+\newcommand{\fy}{\hat{f}_y}
+\newcommand{\fz}{\hat{f}_z}
+\newcommand{\Fx}{\hat{F}_x}
+\newcommand{\Fy}{\hat{F}_y}
+\newcommand{\Fz}{\hat{F}_z}
+\newcommand{\rhoo}{\hat{\rho}}
+
+%==== Microscopic moments for the qubit/qutrit subspace ====
+\newcommand{\sigmauu}{\hat{\sigma}_{\uparrow\uparrow}}
+\newcommand{\sigmaud}{\hat{\sigma}_{\uparrow\downarrow}}
+\newcommand{\sigmaut}{\hat{\sigma}_{\uparrow \mathrm{T}}}
+\newcommand{\sigmadu}{\hat{\sigma}_{\downarrow\uparrow}}
+\newcommand{\sigmadd}{\hat{\sigma}_{\downarrow\downarrow}}
+\newcommand{\sigmadt}{\hat{\sigma}_{\downarrow \mathrm{T}}}
+\newcommand{\sigmatu}{\hat{\sigma}_{\mathrm{T}\uparrow}}
+\newcommand{\sigmatd}{\hat{\sigma}_{\mathrm{T}\downarrow}}
+\newcommand{\sigmatt}{\hat{\sigma}_{\mathrm{T}\mathrm{T}}}
+\newcommand{\sigmaab}{\hat{\sigma}_{ab}}
+\newcommand{\sigmaba}{\hat{\sigma}_{ba}}
+\newcommand{\sigmadc}{\hat{\sigma}_{dc}}
+\newcommand{\sigmacd}{\hat{\sigma}_{cd}}
+
+\newcommand{\Dsigmauu}{\Delta\sigma_{\uparrow\uparrow}}
+\newcommand{\Dsigmaud}{\Delta\sigma_{\uparrow\downarrow}}
+\newcommand{\Dsigmaut}{\Delta\sigma_{\uparrow \mathrm{T}}}
+\newcommand{\Dsigmadu}{\Delta\sigma_{\downarrow\uparrow}}
+\newcommand{\Dsigmadd}{\Delta\sigma_{\downarrow\downarrow}}
+\newcommand{\Dsigmadt}{\Delta\sigma_{\downarrow \mathrm{T}}}
+\newcommand{\Dsigmatu}{\Delta\sigma_{\mathrm{T}\uparrow}}
+\newcommand{\Dsigmatd}{\Delta\sigma_{\mathrm{T}\downarrow}}
+\newcommand{\Dsigmatt}{\Delta\sigma_{\mathrm{T}\mathrm{T}}}
+\newcommand{\Dsigmaab}{\Delta\sigma_{ab}}
+\newcommand{\Dsigmaba}{\Delta\sigma_{ba}}
+\newcommand{\Dsigmadc}{\Delta\sigma_{dc}}
+\newcommand{\Dsigmacd}{\Delta\sigma_{cd}}
 
 %==== physical parameters ======
 \newcommand{\Eamp}{\mathcal{F}_0^{(+)}}
@@ -135,6 +172,9 @@
 %==== effective areas ======
 \newcommand{\Ain}{A_{\rm in}}
 \newcommand{\Abir}{A_N}
+\newcommand{\AF}{A_F} % for the Faraday protocol.
+\newcommand{\Ai}{A_0} % for the input light.
+\newcommand{\Aint}{A_{\rm int}} % for the interaction area.
 
 %==== eigenfunctions ======
 \newcommand{\eigenf}{\mbf{f}_\eta}
@@ -183,7 +223,7 @@ In recent years, nanophotonic waveguides have emerged as new geometry that compl
  
 In this paper we show that one can achieve an additional enhancement to the cooperativity in a nanophotonic geometry that is not possible in free space. In particular, we consider QND measurement of the atomic spin via polarization spectroscopy.  Counterintuitively, we will see that the strongest cooperativity arises when the atom is placed at the position of {\em minimum} intensity of the azimuthally anisotropic probe mode.  This arises because decoherence due to photon scattering into unguided $4 \pi$ steradians occurs at a rate $\gamma_s$ dominated by the probe {\em intensity}.  In contrast, the measurement strength in polarization polarization spectroscopy arises from a homodyne measurement, where the probe is ``local oscillator" and the signal is the light scattered into the orthogonally polarized guided mode.  The the measurement strength depends only on the {\em amplitude} of the probe. Nonetheless, the spatial overlap of these probe and signal modes can be large, even when the local oscillator small.  The net result can be substantial enhancement of  $C_1 = \kappa/\gamma_s$, especially for highly anisotropic guided modes.  
 
-We study this effect for two nanophotonic geometries: a cylindrical nanofiber formed by tapering a standard optical fiber, as currently employed in a variety of experimental studies~\cite{?}, and a square waveguide, currently nanofabricated at Sandia National Laboratories.  For each geometry we study QND measurement-induced squeezing of collective spins of cesium atoms in two protocols: squeezing the pseudo-spin clock transition by measuring the induced birefringence~\cite{?}, and squeezing the physical spin in the stretched state by measuring the induced Faraday rotation~\cite{?}.  Through the enhanced cooperativity, QND measurement can lead to substantial squeezing, greater than 10 dB in some geometries, for 2500 atoms.
+We study this effect for two nanophotonic geometries: a cylindrical nanofiber formed by tapering a standard optical fiber, as currently employed in a variety of experimental studies~\cite{?}, and a square waveguide, currently nanofabricated at Sandia National Laboratories.  For each geometry we study QND measurement-induced squeezing of collective spins of cesium atoms in two protocols: squeezing the pseudo-spin clock transition by measuring the induced birefringence~\cite{Qi2016}, and squeezing the physical spin in the stretched state by measuring the induced Faraday rotation~\cite{?}.  Through the enhanced cooperativity, QND measurement can lead to substantial squeezing, greater than 10 dB in some geometries, for 2500 atoms.
 
 The remainder of the paper is organized as follows.  In Sec. II we lay out the theoretical description of the QND measurement and the relevant measurement strength.  In addition we describe how decoherence is included in the model through a first-principles stochastic master equation description.  From this we will see the cooperativity emerge as the key parameter that characterizes the squeezing.  We calculate in Sec. III the squeezing dynamics for the different nanophotonic waveguides, atomic preparations, and measurement protocols.  We conclude with a summary and outlook for future work.
 
@@ -194,6 +234,6 @@ The remainder of the paper is organized as follows.  In Sec. II we lay out the t
 %========================== Theory ===================================%
 \section{Theory} \label{Sec::Theory}
 
-
+\bibliography{refs/Archive}
 
 \end{document}
