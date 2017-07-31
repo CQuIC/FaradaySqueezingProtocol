@@ -1,0 +1,385 @@
+\documentclass[aps,pra,twocolumn,superscriptaddress]{revtex4-1} %reprint
+%\tightenlines
+
+%\draft
+\usepackage{etex}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{bbm}
+\usepackage{listings}
+% % \textwidth 16cm \textheight 23.5cm
+% \renewcommand{\baselinestretch}{1.2}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{multirow}
+\usepackage[colorlinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{calc}
+\usepackage{natbib} %[numbers]
+\usepackage{bibentry}
+\usepackage{bbm}
+
+% todo list and commands
+%\usepackage{todonotes}
+%% to avoid the conflict with amths package % not working
+%\makeatletter
+%\providecommand\@dotsep{5}
+%\makeatother
+%\listoftodos\relax
+%\usepackage{makeidx}
+%\allowdisplaybreaks
+%% for eps transfering to pdf.
+%\usepackage[update,prepend]{epstopdf}
+%\usepackage{ifpdf}
+%
+%\ifpdf
+%   \usepackage{graphicx}
+%   \usepackage{epstopdf}
+%   \epstopdfsetup{suffix=}
+%   \DeclareGraphicsRule{.eps}{pdf}{.pdf}{`epstopdf #1}
+%   \pdfcompresslevel=9
+%\else
+%   \usepackage{graphicx}
+%\fi
+% subfig
+%\usepackage{mwe}
+%\usepackage{subfig}
+% to fix a figure's position using [H] option of thec figure.
+%\usepackage{float}
+% to use \lesssim and other math symbols
+%\usepackage{amssymb}
+
+
+% self-defined short-cuts and commands
+%\input{Mydef.tex}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\dt}[1]{\frac{{\mathrm d} {#1}}{{\mathrm d}t}}
+\def\br{\mathbf{r}}
+\def\bra#1{\langle{#1}\rvert}%{\mathinner{\langle{#1}\rvert}}
+\def\ket#1{\lvert{#1}\rangle}%{\mathinner{\lvert{#1}\rangle}}
+\def\Braket#1#2{\mathinner{\langle{#1}\! \mid\! {#2} \rangle}}
+%========================================================================================
+\newcommand{\erf}[1]{Eq.~(\ref{#1})}
+\newcommand{\frf}[1]{Fig.~\ref{#1}}
+\newcommand{\srf}[1]{Sec.~\ref{#1}}
+\newcommand{\nn}{\nonumber}
+\newcommand{\mbf}[1]{\mathbf{#1}}
+%========================================================================================
+% General quantum mechanics macros
+%========================================================================================
+\newcommand{\op}[2]{\ket{#1}\bra{#2}}
+\newcommand{\expt}[1]{\langle{#1}\rangle}
+\newcommand{\dg}{^\dagger}
+\newcommand{\smallfrac}[2]{\mbox{$\frac{#1}{#2}$}}
+\newcommand{\Tr}{\mbox{Tr}}
+%========================================================================================
+\newcommand{\expect}[1]{\big\langle #1 \big\rangle}
+\newcommand{\eff}{\text{eff}}
+
+
+
+% Redefine the tensor command.
+%\renewcommand{\tensor}[1]{\boldsymbol{#1}}
+
+
+%==== Ben's new macros ======
+%\newcommand{\srf}[1]{Sec. \ref{#1}}
+\newcommand{\half}{\smallfrac{1}{2}}
+
+%==== subscripts ======
+\newcommand{\oneD}{{\rm 1D}}
+\newcommand{\vac}{{\rm vac}}
+\newcommand{\cav}{{\rm cav}}
+\newcommand{\inp}{{\rm in}}
+\newcommand{\out}{{\rm out}}
+\newcommand{\inter}{{\rm int}}
+\newcommand{\scs}{{\rm SCS}}
+\newcommand{\fwd}{+}
+\newcommand{\bwd}{-}
+\newcommand{\trans}{+}
+\newcommand{\refl}{-}
+
+ %==== operators/moments ======
+\newcommand{\der}[1]{\frac{d {#1}}{dt}}
+\newcommand{\unittens}{\tensor{\mathbf{I}}}
+\newcommand{\poltens}{\hat{\tensor{\boldsymbol{\alpha}}}}
+\newcommand{\varz}{\Delta J_3^2}
+\newcommand{\jx}{\hat{J}_1}
+\newcommand{\jz}{\hat{J}_3}
+\newcommand{\shotnoise}{\Delta \mathcal{M}^2 |_{\rm SN}}
+\newcommand{\projnoise}{\Delta \mathcal{M}^2_{\rm PN}}
+\newcommand{\polcomp}{\hat{K}} % p,p' component of the tensor polarizability
+\newcommand{\fo}{\hat{\mathbf{f}}}
+\newcommand{\fx}{\hat{f}_x}
+\newcommand{\fy}{\hat{f}_y}
+\newcommand{\fz}{\hat{f}_z}
+\newcommand{\Fx}{\hat{F}_x}
+\newcommand{\Fy}{\hat{F}_y}
+\newcommand{\Fz}{\hat{F}_z}
+\newcommand{\rhoo}{\hat{\rho}}
+
+%==== Microscopic moments for the qubit/qutrit subspace ====
+\newcommand{\sigmauu}{\hat{\sigma}_{\uparrow\uparrow}}
+\newcommand{\sigmaud}{\hat{\sigma}_{\uparrow\downarrow}}
+\newcommand{\sigmaut}{\hat{\sigma}_{\uparrow \mathrm{T}}}
+\newcommand{\sigmadu}{\hat{\sigma}_{\downarrow\uparrow}}
+\newcommand{\sigmadd}{\hat{\sigma}_{\downarrow\downarrow}}
+\newcommand{\sigmadt}{\hat{\sigma}_{\downarrow \mathrm{T}}}
+\newcommand{\sigmatu}{\hat{\sigma}_{\mathrm{T}\uparrow}}
+\newcommand{\sigmatd}{\hat{\sigma}_{\mathrm{T}\downarrow}}
+\newcommand{\sigmatt}{\hat{\sigma}_{\mathrm{T}\mathrm{T}}}
+\newcommand{\sigmaab}{\hat{\sigma}_{ab}}
+\newcommand{\sigmaba}{\hat{\sigma}_{ba}}
+\newcommand{\sigmadc}{\hat{\sigma}_{dc}}
+\newcommand{\sigmacd}{\hat{\sigma}_{cd}}
+
+\newcommand{\Dsigmauu}{\Delta\sigma_{\uparrow\uparrow}}
+\newcommand{\Dsigmaud}{\Delta\sigma_{\uparrow\downarrow}}
+\newcommand{\Dsigmaut}{\Delta\sigma_{\uparrow \mathrm{T}}}
+\newcommand{\Dsigmadu}{\Delta\sigma_{\downarrow\uparrow}}
+\newcommand{\Dsigmadd}{\Delta\sigma_{\downarrow\downarrow}}
+\newcommand{\Dsigmadt}{\Delta\sigma_{\downarrow \mathrm{T}}}
+\newcommand{\Dsigmatu}{\Delta\sigma_{\mathrm{T}\uparrow}}
+\newcommand{\Dsigmatd}{\Delta\sigma_{\mathrm{T}\downarrow}}
+\newcommand{\Dsigmatt}{\Delta\sigma_{\mathrm{T}\mathrm{T}}}
+\newcommand{\Dsigmaab}{\Delta\sigma_{ab}}
+\newcommand{\Dsigmaba}{\Delta\sigma_{ba}}
+\newcommand{\Dsigmadc}{\Delta\sigma_{dc}}
+\newcommand{\Dsigmacd}{\Delta\sigma_{cd}}
+
+%==== physical parameters ======
+\newcommand{\Eamp}{\mathcal{F}_0^{(+)}}
+\newcommand{\charpol}{\alpha_0(\Delta_{f\!f'})}
+\newcommand{\charpolq}{\alpha_0(\Delta_{f\!f'}^q)}
+\newcommand{\qaxis}{\mathbf{e}_{\tilde{z}}}
+\newcommand{\qangle}{\varphi}
+\newcommand{\magic}[1]{\tilde{\omega}_{#1}}
+\newcommand{\chiN}{\chi_{N}}
+\newcommand{\NA}{N_C}
+\newcommand{\chieff}{\chi_{\raisebox{-.1pt}{\tiny $J_3$}}}
+
+%==== scattering and optical pumping rates ====%
+\newcommand{\gammauu}{\gamma_{\uparrow \rightarrow \uparrow}}
+\newcommand{\gammadd}{\gamma_{\downarrow \rightarrow \downarrow}}
+\newcommand{\gammaud}{\gamma_{\uparrow \rightarrow \downarrow}}
+\newcommand{\gammadu}{\gamma_{\downarrow \rightarrow \uparrow}}
+\newcommand{\gammau}{\gamma_{\uparrow}}
+\newcommand{\gammad}{\gamma_{\downarrow}}
+
+%==== effective areas ======
+\newcommand{\Ain}{A_{\rm in}}
+\newcommand{\Abir}{A_N}
+\newcommand{\AF}{A_F} % for the Faraday protocol.
+\newcommand{\Ai}{A_0} % for the input light.
+\newcommand{\Aint}{A_{\rm int}} % for the interaction area.
+
+%==== eigenfunctions ======
+\newcommand{\eigenf}{\mbf{f}_\eta}
+\newcommand{\eigenfp}{\mbf{f}_{\eta'}}
+\newcommand{\eigeng}{\mbf{g}_\eta}
+\newcommand{\eigengp}{\mbf{g}_{\eta'}}
+
+%==== field operators ======
+\newcommand{\awg}{\hat{a}_{b,p}(\omega)}
+\newcommand{\awr}{\hat{a}_{m,p}(\omega,\beta)}
+
+%==== colors for editing ======
+\newcommand{\change}[1]{{\color{RoyalBlue} #1}}
+\newcommand{\comment}[1]{{\color{Maroon} #1}}
+\newcommand{\error}[1]{{\color{red} #1}}
+
+% =============================================================================
+
+
+\begin{document}
+\title{Enhanced cooperativity for QND measurement-induced spin squeezing of atoms coupled to a nanophotonic waveguide}
+\author{Xiaodong Qi}
+\affiliation{Center for Quantum Information and Control, University of New Mexico, Albuquerque, New Mexico 87131, USA}
+\author{Yuan-Yu Jau}
+\affiliation{Center for Quantum Information and Control, Sandia National Laboratories, Albuquerque, New Mexico 87185, USA}
+\author{Ivan H. Deutsch}
+\affiliation{Center for Quantum Information and Control, University of New Mexico, Albuquerque, New Mexico 87131, USA}
+\date{\today}
+\pacs{42.50.Lc, 03.67.Bg, 42.50.Dv, 42.81.Gs}
+
+%================================================================%
+\begin{abstract}
+We study the enhancement of cooperativity in the atom-light interface near a nanophotonic waveguide for application to QND measurement of atomic spins.  Here the cooperativity per atom is determined by the ratio between the  measurement strength and the decoherence rate.  Counterintuitively, by placing the atoms at an azimuthal position where the guided probe mode has the lowest intensity, we increase the cooperativity.  This arises because the QND measurement strength depends on the interference between the probe and scattered light guided into an orthogonal polarization mode, while the decoherence rate depends on the local intensity of the probe.  Thus, by proper choice of geometry, the ratio of good to bad scattering can be strongly enhanced for highly anisotropic modes. We apply this to study spin squeezing for two nanophotonic geometries, a cylindrical nanofiber and square waveguide, and for two QND interactions, linear and circular birefringence (Faraday interaction), based on a full stochastic master equation model.  We find?\end{abstract}
+
+\maketitle
+
+%===================INTRODUCTION=====================%
+\section{Introduction}
+
+Cooperativity is the essential measure of the entangling strength of the atom-light interface in quantum optics.  Originally introduced in cavity QED, the cooperativity per atom can be expressed in terms of the ratio of the coherent coupling to decoherence rate, $C_1 = g^2/(\Gamma_c \Gamma_A)$ where $g$ is the vacuum Rabi frequency,  $\Gamma_c$ is the cavity decay rate, and and $\Gamma_A$ is atomic spontaneous emission rate out of the cavity.  Alternatively, we can write $C_1 = (\sigma_0/A) \mathcal{F}$, where $\sigma_0$ is the resonant photon scattering cross section of the atom, $A$ is the cavity mode area, and $\mathcal{F}$ is the cavity finesse.  Expressed this way, cooperativity is seen to arise due to scattering of photons preferentially into the cavity mode, compared to emission into free space, here enhanced by the finesses due to the Purcell effect. Strong coupling dynamics seen in pioneering in atomic cavity QED~\cite{?} is now a mainstay in quantum information processing in systems ranging from quantum dots~\cite{?} to circuit QED~\cite{}.  The $N_A$ atom cooperativity, $C_N = (N_A \sigma_0/A) \mathcal{F} =( OD) \mathcal{F}$, where $OD$ is the resonant optical depth.  In this configuration, collective degrees of the atom can be manipulated by its common coupling to the cavity mode.
+
+Cooperativity also characterizes the atom-light interface in the absence of a cavity.  In free space, an atom at the waist of a laser beam will scatter into the forward direction at a rate $\kappa = (\sigma_0/A) \gamma_s$, where $\gamma_s$ is the photon scattering rate into $4 \pi$ steradians.  Here the single atom cooperativity can be expressed of the ratio of these rates, $C_1 = \kappa/\gamma_s = \sigma_0/A$.  The $N_A$ atom cooperativity, in a plane wave approximation, ignoring effects of diffraction and cloud geometry, $C_N = N_A \sigma_0/A = OD$.  To be self-consistent, here the beam area must be very large, so $C_1$ is very small, e.g. $C_1 \sim 10^{-6}$, but for a sufficiently large ensemble, the $OD$ can be large enough to lead to entanglement between the collective atomic degrees of freedom and the light~\cite{?}.  In that situation, measurement of the light leads to back action on the ensemble, and for an appropriate QND interaction, results in squeezing of the collective spin~\cite{?}.
+
+In recent years, nanophotonic waveguides have emerged as new geometry that complements cavity QED, and can lead to strong cooperativity~\cite{?}.  Notably, the effective area of a tightly guided mode can be much smaller than free space and propagate for long distances without diffraction.  As such,  $\sigma_0/A$ can be orders of magnitude larger than in free space, e.g., $\sigma_0/A \sim 0.1$, and contribute collectively for a modest ensemble of a few thousand atoms trapped near the surface of the waveguide.  Moreover, in some cases the Purcell effect can further enhance forward scattering into the guided mode when compared with scattering into free space.  Taken together, these features make  nanophotonic waveguides a promising platform for a quantum atom-light interface~\cite{?}.
+ 
+In this paper we show that one can achieve an additional enhancement to the cooperativity in a nanophotonic geometry that is not possible in free space. In particular, we consider QND measurement of the atomic spin via polarization spectroscopy.  Counterintuitively, we will see that the strongest cooperativity arises when the atom is placed at the position of {\em minimum} intensity of the azimuthally anisotropic probe mode.  This arises because decoherence due to photon scattering into unguided $4 \pi$ steradians occurs at a rate $\gamma_s$ dominated by the probe {\em intensity}.  In contrast, the measurement strength in polarization polarization spectroscopy arises from a homodyne measurement, where the probe is ``local oscillator" and the signal is the light scattered into the orthogonally polarized guided mode.  The the measurement strength depends only on the {\em amplitude} of the probe. Nonetheless, the spatial overlap of these probe and signal modes can be large, even when the local oscillator small.  The net result can be substantial enhancement of  $C_1 = \kappa/\gamma_s$, especially for highly anisotropic guided modes.  
+
+We study this effect for two nanophotonic geometries: a cylindrical nanofiber formed by tapering a standard optical fiber, as currently employed in a variety of experimental studies~\cite{?}, and a square waveguide, currently nanofabricated at Sandia National Laboratories.  For each geometry we study QND measurement-induced squeezing of collective spins of cesium atoms in two protocols: squeezing the pseudo-spin clock transition by measuring the induced birefringence~\cite{Qi2016}, and squeezing the physical spin in the stretched state by measuring the induced Faraday rotation~\cite{?}.  Through the enhanced cooperativity, QND measurement can lead to substantial squeezing, greater than 10 dB in some geometries, for 2500 atoms.
+
+The remainder of the paper is organized as follows.  In Sec. II we lay out the theoretical description of the QND measurement and the relevant measurement strength.  In addition we describe how decoherence is included in the model through a first-principles stochastic master equation description.  From this we will see the cooperativity emerge as the key parameter that characterizes the squeezing.  We calculate in Sec. III the squeezing dynamics for the different nanophotonic waveguides, atomic preparations, and measurement protocols.  We conclude with a summary and outlook for future work.
+
+
+
+
+
+%========================== Theory ===================================%
+\section{Theory} \label{Sec::Theory}
+To study the spin dynamics of the QND measurement process, it is usually valid to calculate the density if the dimension is small. 
+For a large ensemble of atoms, however, it requires a big dimension to store the density matrix and it becomes extremely difficult to calculate the evolution of the density operator.
+Below, we outline our general method to study the spin dynamics and the spin squeezing evolution without calculating the density operator.
+
+A \textit{squeezed coherent spin state}\index{squeezed spin state!squeezed coherent spin state} is a spin state that the uncertainty principle of two quadratures of collective spin operators saturates and one quadrature is smaller than the other. 
+For example, a squeezed coherent spin state may satisfy $ \Delta F_1\Delta F_2=\frac{1}{2} $ (we set $ \hbar=1 $) and $ \Delta F_1<\Delta F_2 $, where $ \hat{F}_1 $ and $ \hat{F}_2 $ are two collective spin operators. 
+In general, a \textit{squeezed spin state}\index{squeezed spin state} always satisfies the uncertainty principle relationship $ \Delta F_1\Delta F_2\ge\frac{1}{2} $.
+We call the operator that yields the smaller quadrature as the atomic angular momentum operator $ \hat{F}_\perp $ and 
+recall the spin squeezing parameter defined by Wineland {\emph{et al.}}~\cite{Wineland1992},
+\begin{align}
+\zeta^2 &\equiv \frac{\expect{\hat{F}_\parallel(t=0)}^2}{\Delta F_\perp^2(t=0)} \frac{\Delta F_\perp^2}{\expect{\hat{F}_\parallel}^2},
+\end{align}
+which only requires to calculate the expectation value of the collective atomic angular momentum operator in parallel with the total atomic angular momentum vector in the generalized Bloch sphere, $ \expect{\hat{F}_\parallel} $, as well as the variance of the collective atomic angular momentum operator perpendicular to the total atomic angular momentum operator, $ \Delta F_\perp^2 $. 
+Assume the atom number is $ N_A $, these two collective quantities can be decomposed into microscopic quantities by 
+\begin{align}
+\expect{\Delta F_\perp^2} &= N_A \expect{\Delta f_\perp^2}+\frac{N_A(N_A-1)}{2}\left. \expect{\Delta f_\perp^{(i)}\Delta f_\perp^{(j)}}_s\right|_{i\neq j}\label{eq:DeltaFz2}\\
+\expect{\hat{F}_\parallel } &= \sum_i^{N_A} \expect{\hat{f}_\parallel ^{(i)}}=N_A \expect{\hat{f}_\parallel},\label{eq:expectFx}
+\end{align}
+where the first term of Eq.~\eqref{eq:DeltaFz2} and Eq.~\eqref{eq:expectFx} are solely determined by a symmetric sum over $N_A$ identical spin-$f$ single-body operators, $ \hat{f}_\perp=\hat{f}_\perp^{(i)} $ and $ \hat{f}_\parallel=\hat{f}_\parallel^{(i)} $ with atom labels $ i=1,\cdots,N_A $; the second term of Eq.~\eqref{eq:DeltaFz2} is determined by symmetric two-body covariance terms, $ \left.\expect{\Delta f_\perp^{(i)}\Delta f_\perp^{(j)}}_s\right|_{i\neq j}=\expect{\Delta f_\perp^{(1)}\Delta f_\perp^{(2)}}_s\equiv \expect{\hat{f}_\perp^{(1)}\hat{f}_\perp^{(2)}}_s-\left( \expect{\hat{f}_\perp^{(1)}} \expect{\hat{f}_\perp^{(1)}}\right)_s $, which correspond to the pairwise entanglement among atoms and eventually yield spin squeezing~\cite{Wang2003Spin}.
+Above, we have assumed there is a pairwise exchange symmetry among atoms so that we only care about the symmetrized quantities like $ \expect{\Delta f_\perp^{(1)}\Delta f_\perp^{(2)}}_s=\left(\expect{\Delta f_\perp^{(1)}\Delta f_\perp^{(2)}} + \expect{\Delta f_\perp^{(2)}\Delta f_\perp^{(1)}} \right)/2 $. 
+Note that the collective state of atoms can be treated as pairwise-symmetric if the detuning is far off resonance or the numbers of atoms is not that large so that the photon scattering among atoms~\cite{Asenjo-Garcia2017Atom,Asenjo-Garcia2017Exponential} can be ignored compared to the measurement backaction which generates spin squeezing as we will discuss later.
+In this paper, we will work in the dispersive regime with a few thousands of atoms and ignore the atom-atom interaction caused by photon scattering, and hence the collective atomic system satisfy the exchange symmetry. 
+
+
+To study the spin dynamics, we formally define a stochastic master equation of the atomic ensemble by
+\begin{align}\label{eq:totaldrhodt}
+\mathrm{d}\hat{\rho}=\left.\mathrm{d}\hat{\rho}\right|_{op} + \left.\mathrm{d}\hat{\rho}\right|_{QND}.
+\end{align}
+It includes two collective spin dynamic processes. 
+The first process is the optical pumping dynamics on each individual atom $i$ positioned at $\br'$ which yields the $\mathrm{d}\hat{\rho}|_{op}=\sum_i^{N_A} \left.\mathrm{d}\hat{\rho}^{(i)}\right|_{op} $ term given by
+\begin{align}
+&\quad\left.\mathrm{d}\hat{\rho}^{(i)}\right|_{op} =\gamma_s\mathcal{D}^{(i)}\mathrm{d}t\\
+&= -\frac{i\gamma_s}{\hbar} \left\{\hat{h}_{\rm loss},\hat{\rho}^{i} \right\}\mathrm{d}t + \gamma_s\sum_q \hat{W}_q(\br')\hat{\rho}^{i}\hat{W}_q(\br')\mathrm{d}t,
+\end{align}
+where the characteristic photon scattering rate $ \gamma_s\equiv \frac{\Gamma_0\Omega^2}{4\Delta_F}=\frac{\sigma_0}{A_{in}}\frac{\Gamma_0^2}{4\Delta_F^2}\dot{N}_L $ with the effective input mode area $ A_{in}=1/n_g|u_{\mathrm{in}}(\br'\!_\perp)|^2 $ and the effective detuning $ \Delta_F $ defined by $ \frac{1}{\Delta_F}=\sum_{f'}\frac{C_{f'ff'}^{(1)}}{\Delta_{ff'}} $ and $ \Delta_{ff'}=\omega-\omega_{ff'} $, where $ \omega_{ff'} $ is the resonance angular frequency between the ground hyperfine structure level $ f $ and the excited hyperfine structure level $ f' $, and $ C_{j'ff'}^{(K)} $ are the coefficients for irreducible rank-$K$ components defined in \cite{Deutsch2010a}.
+$\gamma_s$ characterizes the rate of decoherence dynamics and is proportional to the local photon flux of the probe light, $ \dot{N}_L $.
+
+The second term on the right-hand side of Eq.\eqref{eq:totaldrhodt} gives rise to the collective spin dynamics due to QND measurement,
+\begin{align}
+\left.\mathrm{d}\hat{\rho}\right|_{QND} &= \sqrt{\frac{\kappa}{4}}\mathcal{H}\left[\hat{\rho} \right]\mathrm{d}W + \frac{\kappa}{4}\mathcal{L}\left[ \hat{\rho}\right]\mathrm{d}t.
+\end{align}
+Above, we have defined the measurement strength $\kappa \equiv |\chi|^2\dot{N}_L\equiv \frac{\sigma_0A_{in}}{A_{int}^2}\gamma_s $ determining the rate of the spin squeezing in absence of decoherent processes, where $\dot{N}_L$ is the photon number flux, $\chi$ is the light-atom coupling strength and $A_{int}$ is the effective interaction mode area which can be specified for a particular QND measurement protocol. We have also assumed the measurement backation is a stochastic Weiner process where $\mathrm{d}W$ is the increment satisfying $\mathrm{d}W^2 = \mathrm{d}t$. The conditional dynamics responding to the measurement evolve under the superoperator
+\begin{align}
+\mathcal{H}\left[ \hat{\rho}\right] &= \hat{F}_\perp\hat{\rho} + \hat{\rho}\hat{F}_\perp -2\expect{\hat{F}_\perp}\hat{\rho}
+\end{align}
+and the collective Lindblad map due to the direct photon scattering of the guided modes from the atoms
+\begin{align}
+\mathcal{L}\left[ \hat{\rho} \right] &= \hat{F}_\perp\hat{\rho}\hat{F}_\perp-\frac{1}{2}\left(\hat{\rho}\hat{F}_\perp^2+\hat{F}_\perp^2\hat{\rho} \right)=\frac{1}{2}\left[\hat{F}_\perp,\left[\hat{\rho},\hat{F}_\perp \right] \right].
+\end{align}
+
+As shown in the equations above, the spin squeezing dynamics is a competition between the coherent squeezing process and all decoherent processes which are characterized by $\kappa$ and $\gamma_s$, respectively. 
+If we define an effective cooperativity or optical depth (OD) per atom quantity for the spin squeezing dynamics by
+\begin{align}
+\frac{\mathrm{OD}_{\rm eff}}{N_A} \equiv \frac{\kappa}{\gamma_s}=\frac{\sigma_0A_{in}}{A_F^2},
+\end{align}
+the peaking spin squeezing dynamics can then be characterized by $\frac{\mathrm{OD}_{\rm eff}}{N_A}$, and the geometry of the spin squeezing protocol can then be roughly designed with the goal to maximize $\frac{\mathrm{OD}_{\rm eff}}{N_A}$ by minimizing $A_{in}$ and maximizing $A_{int}$.  
+
+We can bring in the spin coherence operator $\hat{\sigma}_{ba}=\ket{b}\bra{a}$ to represent the matrix element of any atomic angular momentum operator $ \hat{f}_m $ ($ m=x,y,z $) of a single atom, and hence the spin squeezing dynamics can be characterized by the expectation value of single-body spin coherence operators $\expect{\hat{\sigma}_{ba}}$ and the symmetric two-body covariances $\expect{\Delta \sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)} }_s$. 
+%the symmetric three-body correlations $\expect{\Delta \sigma^{(1)}_{b_1a_1}\Delta \sigma^{(2)}_{b_2a_2}\Delta \sigma^{(3)}_{b_3a_3} }_s$ and so on. 
+%As higher-order correlations becomes negligible, one can cut off the correlation terms at a certain order.
+If one can truncate the spin dynamics up to the two-body correlations, we only need the following two sets of stochastic differential equations:
+\begin{subequations}
+\begin{align}
+d\expect{\hat{\sigma}_{ba}} &=\left. d{\expect{\hat{\sigma}_{ba}}}\right|_{op} + \left. d{\expect{\hat{\sigma}_{ba}}}\right|_{\mathcal{H}}+\left. d{\expect{\hat{\sigma}_{ba}}}\right|_{\mathcal{L}} \\
+d\expect{\Delta \sigma_{ba}^{(1)}\Delta \sigma_{dc}^{(2)}}_s &= \left. d{\expect{\Delta \sigma_{ba}^{(1)}\Delta \sigma_{dc}^{(2)}}_s}\right|_{op} + \left. d{\expect{\Delta \sigma_{ba}^{(1)}\Delta \sigma_{dc}^{(2)}}_s}\right|_{\mathcal{H}} + \left. d{\expect{\Delta \sigma_{ba}^{(1)}\Delta \sigma_{dc}^{(2)}}_s}\right|_{\mathcal{L}}.
+\end{align}
+\end{subequations}
+
+In details, the optical dynamics part can be given by
+\begin{align}
+\left. \dt{\expect{\hat{\sigma}_{ba}}}\right|_{op} &= \gamma_s\expect{\mathcal{D}^\dagger \left[ \hat{\sigma}_{ba}\right]}\\
+&= \gamma_s\sum_{d,c}\tr\left(\mathcal{D}^\dagger \left[ \hat{\sigma}_{ba}\right]\hat{\sigma}_{dc} \right)\expect{\hat{\sigma}_{dc} }\\
+\left. \dt{\expect{\Delta \sigma_{ba}^{(1)}\Delta \sigma_{dc}^{(2)}}_s}\right|_{op} &=\gamma_s\expect{\Delta\mathcal{D}^\dagger[\hat{\sigma}_{ba}^{(1)}]\Delta\sigma_{dc}^{(2)} }_s + \gamma_s\expect{\Delta\sigma_{ba}^{(1)}\Delta\mathcal{D}^\dagger[\hat{\sigma}_{dc}^{(2)}] }_s\\
+&= \gamma_s\sum_{m,n}\tr\left(\mathcal{D}^\dagger[\hat{\sigma}_{ba}]\hat{\sigma}_{mn} \right)\expect{\Delta \sigma_{mn}^{(1)}\Delta \sigma_{dc}^{(2)} }_s + \gamma_s\sum_{m,n}\tr\left(\mathcal{D}^\dagger[\hat{\sigma}_{dc}]\hat{\sigma}_{mn} \right) \expect{\Delta \sigma_{ba}^{(1)}\Delta \sigma_{mn}^{(2)} }_s.
+\end{align} 
+Similarly, we will need the one- and two-body correlations due to the $ \mathcal{H} $ and $ \mathcal{L} $ superoperators given by the following.
+\begin{subequations}
+\begin{align}
+\left.d\expect{\hat{\sigma}_{ba}}\right|_\mathcal{H} &=\sqrt{\frac{\kappa}{4}}\expect{\mathcal{H}^\dagger\left[\hat{\sigma}_{ba} \right]}dW \\
+\left.d\expect{\hat{\sigma}_{ba}}\right|_\mathcal{L} &= \frac{\kappa}{4}\expect{\mathcal{L}^\dagger\left[\hat{\sigma}_{ba} \right]}dt
+\end{align}
+\end{subequations}
+In principle, the two-body covariance terms can be coupled to high-order many-body terms. 
+In our case, we assume the state of the ensemble can be well captured in the symmetric Gaussian state limit, and hence the two-body covariance equations due to the collective measurement can be given by
+\begin{subequations}
+\begin{align}
+\left.d\expect{\Delta \sigma_{ba}^{(1)} \Delta \sigma_{dc}^{(2)}} \right|_\mathcal{H} &= -\kappa\expect{\Delta\sigma_{ba}^{(1)}\Delta F_\perp }_s \expect{\Delta F_\perp \Delta \sigma_{dc}^{(2)} }dt \\
+\left.d\expect{\Delta \sigma_{ba}^{(1)} \Delta \sigma_{dc}^{(2)}}\right|_\mathcal{L} &= 0.
+\end{align}
+\end{subequations}
+
+%========================== Theory ===================================%
+\section{Spin squeezing protocols based on birefrigence and Faraday interactions} \label{Sec::comparison}
+
+Besides the case we have discussed in our previous work, we propose here a spin squeezing protocol based on Faraday interaction.
+We define the fiber axis or $ z $-axis as the quantization axis and set $ \hat{F}_\perp=\hat{F}_z $ as the squeezing operator. 
+Let us consider an ensemble of $ ^{133} $Cs atoms initially prepared as a spin coherent state (SCS) with every atom in the stretch state of the $ 6S_{1/2}$ $f=4 $ ground manifold in the $ x $-basis, where the quantization $ x $-direction is along the diagonal or $ \phi=\pi/4 $ direction in the $ H $-$ V $ Cartesian coordinate system sitting on the fiber axis.
+We call the initial state of one atom as the fiducial state or $ \ket{\phi_0}=\ket{\uparrow}_x = \ket{6S_{1/2},f=4,m_x=4} $ and the collective SCS is $ \ket{\Psi_0}=\ket{\uparrow}_x^{\otimes N_A} $.
+We define the coupled state by applying the individual squeezing operator $ \hat{f}_z$ on the fiducial state $\ket{\uparrow}_x $.
+In our case, the coupled state can be defined as $ \ket{\downarrow}_x=\ket{6S_{1/2},f=4,m_x=3} $.
+Similarly, to include the transfer of coherence in the squeezing process, we define the transfer state as $ \ket{T}_x=\ket{6S_{1/2},f=4,m_x=2} $ as a result of applying $ \hat{f}_z$ on the coupled state. 
+For simplicity, we remove all the subscript $ x $ of quantum states and always work in the $ x $-basis if no explicit notations for the Faraday interaction protocol. 
+
+Following the process demonstrated in our previous work~\cite{Qi2016}, the light-atom interaction Hamiltonian can be written as
+\begin{align}
+\hat{H} &= \hbar \left[\left(\chi_{RR\uparrow} + \chi_{RR\downarrow} +\chi_{LL\uparrow}+\chi_{LL\downarrow} \right)\hat{F}_0\hat{S}_0 \right.\nonumber\\
+&\quad+\left(\chi_{RR\uparrow} + \chi_{RR\downarrow} -\chi_{LL\uparrow}-\chi_{LL\downarrow} \right)\hat{F}_0\hat{S}_3\nonumber\\
+&\quad+\left(\chi_{RR\uparrow} + \chi_{LL\uparrow} -\chi_{RR\downarrow}-\chi_{LL\downarrow} \right)\hat{F}_3\hat{S}_0\nonumber\\
+&\quad+\left(\chi_{RR\uparrow} - \chi_{RR\downarrow} +\chi_{LL\downarrow}-\chi_{LL\uparrow} \right)\hat{F}_3\hat{S}_3\nonumber\\
+&\quad+i\left(\chi_{LR\uparrow} - \chi_{RL\uparrow} +\chi_{RL\downarrow}-\chi_{RL\downarrow} \right)\hat{F}_0\hat{S}_1\nonumber\\
+&\quad+\left(\chi_{RL\uparrow} + \chi_{LR\uparrow} +\chi_{RL\downarrow}+\chi_{LR\downarrow} \right)\hat{F}_0\hat{S}_2\nonumber\\
+&\quad+i\left(\chi_{LR\uparrow} - \chi_{RL\uparrow} +\chi_{RL\downarrow}-\chi_{LR\downarrow} \right)\hat{F}_3\hat{S}_1\nonumber\\
+&\quad+\left.\left(\chi_{LR\uparrow} + \chi_{RL\uparrow} -\chi_{LR\downarrow}-\chi_{RL\downarrow} \right)\hat{F}_3\hat{S}_2 \right]\\
+&=\hbar\sum_{i,j=0}^3 \chi_{ij}\hat{F}_i\hat{S}_j,
+\end{align}
+where $ \hat{S}_i $ are the Stokes vector operators of the light indicating its polarization, and the mode-atom coupling strengths
+\begin{align}
+\chi_{pp'm} 
+%&=-\frac{2\pi \omega}{v_g}\mathbf{u}_{p'}^*(r'\!_perp,\phi')\cdot \bra{f=4,m}\hat{\tensor{\alpha}}\ket{f=4,m}\cdot \mathbf{u}_p(r'\!_perp,\phi')
+&= \sum_{f'} \frac{n_g\sigma_0}{4}\frac{\Gamma_{f'}}{\Delta_{ff'}+i\Gamma_{f'}/2}\cdot \left\{ C_{jj'ff'}^{(0)}\mathbf{u}_p^*(r'\!_\perp)\cdot \mathbf{u}_{p'}(r'\!_\perp)+imC_{jj'ff'}^{(1)}\left(\mathbf{u}_p^*(r'\!_\perp)\times\mathbf{u}_{p'}(r'\!_\perp) \right)\cdot \hat{e}_{\tilde{z}} \right. \nonumber\\
+&\left.+C_{jj'ff'}^{(2)}\left[\mathbf{u}_p^*(r'\!_\perp)\cdot \mathbf{u}_{p'}(r'\!_\perp)\left(\frac{f(f+1)}{6}-\frac{m^2}{2} \right)+\mathbf{u}_p^*(r'\!_\perp)\cdot (\hat{e}^*_{\tilde{z}}\hat{e}_{\tilde{z}})\cdot \mathbf{u}_{p'}(r'\!_\perp)\left(\frac{3m^2}{2}-\frac{f(f+1)}{2} \right) \right] \right\}
+\end{align}
+with the right(R)- and left(L)-circularly polarized fundamental fiber modes, $ \mathbf{u}_p(r'\!_\perp) $, at the atom position $ \br'=(r'\!_\perp,\phi',z') $ defined in the appendix of our previous paper~\cite{Qi2016}. 
+
+
+To implement a pure Faraday interaction with the minimum impact from Birefringence effect due to the presence of the nanofiber, it is necessary to position atoms at places where the Birefringence effect vanishes. 
+We consider working in the far-detuning regime where the Birefringence effect due to the atomic tensor polarizability can be ignored~\cite{Deutsch2010a}. 
+Based on the symmetry of the fiber modes, with a linearly polarized $H$ ($x$)- and $V$ ($ y $)-modes inputs to form a diagonally polarized $ D $-mode, the optimal position of atoms with vanished Birefringence effect due to the intensity difference of the local $ H $- and $ V $-modes could be along the $ \phi'=n\pi/4 $ ($ n=1,3,5,7 $) radial directions. 
+
+In the far-detuning regime, we can also set the decay rates of the excited levels $ \Gamma_{f'}= \Gamma_0$ as constant for all $ f' $ in the same fine structure manifold.
+By ignoring the tensor coupling strength related to $ C_{jj'ff'}^{(2)} $~\cite{Deutsch2010a} at the potential optimal trapping positions discussed above, the Faraday interaction coupling strength can be simplified as
+\begin{align}
+\chi_{33} &= -\sum_{f'}n_g\sigma_0\frac{\Gamma_0}{\Delta_{ff'}+i\Gamma_0/2}C_{jj'ff'}^{(1)}u_{r\!_\perp}(r'\!_\perp)u_\phi(r'\!_\perp)\\
+&=\frac{\sigma_0}{A_F}\frac{\Gamma_0}{\Delta_F},
+\end{align}
+where the effective Faraday interaction mode area $ A_F=1/2n_g|u_{r\!_\perp}(r'\!_\perp)u_\phi(r\!_\perp)| $, and the effective detuning $ \Delta_F=\sum_{f'}\frac{-C_{jj'ff'}^{(1)}}{\Delta_{ff'}} $.
+The measurement strength is now defined as
+\begin{align}
+\kappa\equiv|\chi_{33}|^2\dot{N}_L=\frac{\sigma_0A_{in}}{A_F^2}\gamma_s,
+\end{align}
+where the characteristic photon scattering rate $ \gamma_s\equiv \frac{\Gamma_0\Omega^2}{4\Delta_F}=\frac{\sigma_0}{A_{in}}\frac{\Gamma_0^2}{4\Delta_F^2}\dot{N}_L $ and the effective mode area $ A_{in}=1/n_g|u_{\mathrm{in}}(\br'\!_\perp)|^2 $.
+Now we can define the OD per atom for the Faraday interaction using SCS by
+\begin{align}
+\frac{\mathrm{OD}}{N_A} \equiv \frac{\kappa}{\gamma_s}=\frac{\sigma_0A_{in}}{A_F^2}.
+\end{align}
+
+The optimal position of the atom should be chosen so that $ A_{\mathrm{in}} $ reaches the minimum value, which yields $ \phi'=3\pi/4 $ or $ 7\pi/4 $ where $ A_{\mathrm{in}}=1/2n_g|u_\phi(r'\!_\perp)|^2 $.
+
+\bibliography{refs/Archive}
+
+\end{document}

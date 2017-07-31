@@ -3,7 +3,7 @@
 # On Windows, it requires Make tool and you may be able to add this tool by adding the MinGW to path:
 #  PATH=$PATH:/MINGW/msys/1.0/bin
 # where /MINGW is where MinGW is installed. The line ending should be LF.
-PROJECT=FaradayProtocol CopperativityEnhancement
+PROJECT=FaradayProtocol CooperativityEnhancement
 LATEXFLAGS?=-interaction=nonstopmode -file-line-error
 TEMPSUFFS=ps log aux out dvi bbl blg
 
