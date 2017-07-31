@@ -325,16 +325,7 @@ In our case, we assume the state of the ensemble can be well captured in the sym
 \end{subequations}
 
 %========================== Theory ===================================%
-\section{Spin squeezing protocols based on birefrigence and Faraday interactions} \label{Sec::comparison}
-
-Besides the case we have discussed in our previous work, we propose here a spin squeezing protocol based on Faraday interaction.
-We define the fiber axis or $ z $-axis as the quantization axis and set $ \hat{F}_\perp=\hat{F}_z $ as the squeezing operator. 
-Let us consider an ensemble of $ ^{133} $Cs atoms initially prepared as a spin coherent state (SCS) with every atom in the stretch state of the $ 6S_{1/2}$ $f=4 $ ground manifold in the $ x $-basis, where the quantization $ x $-direction is along the diagonal or $ \phi=\pi/4 $ direction in the $ H $-$ V $ Cartesian coordinate system sitting on the fiber axis.
-We call the initial state of one atom as the fiducial state or $ \ket{\phi_0}=\ket{\uparrow}_x = \ket{6S_{1/2},f=4,m_x=4} $ and the collective SCS is $ \ket{\Psi_0}=\ket{\uparrow}_x^{\otimes N_A} $.
-We define the coupled state by applying the individual squeezing operator $ \hat{f}_z$ on the fiducial state $\ket{\uparrow}_x $.
-In our case, the coupled state can be defined as $ \ket{\downarrow}_x=\ket{6S_{1/2},f=4,m_x=3} $.
-Similarly, to include the transfer of coherence in the squeezing process, we define the transfer state as $ \ket{T}_x=\ket{6S_{1/2},f=4,m_x=2} $ as a result of applying $ \hat{f}_z$ on the coupled state. 
-For simplicity, we remove all the subscript $ x $ of quantum states and always work in the $ x $-basis if no explicit notations for the Faraday interaction protocol. 
+\section{Spin squeezing protocols based on birefringence and Faraday interactions} \label{Sec::comparison}
 
 Following the process demonstrated in our previous work~\cite{Qi2016}, the light-atom interaction Hamiltonian can be written as
 \begin{align}
@@ -352,18 +343,46 @@ Following the process demonstrated in our previous work~\cite{Qi2016}, the light
 %&\quad+\left(\chi_{RL\uparrow} + \chi_{LR\uparrow} +\chi_{RL\downarrow}+\chi_{LR\downarrow} \right)\hat{F}_0\hat{S}_2\nonumber\\
 %&\quad+i\left(\chi_{LR\uparrow} - \chi_{RL\uparrow} +\chi_{RL\downarrow}-\chi_{LR\downarrow} \right)\hat{F}_3\hat{S}_1\nonumber\\
 %&\quad+\left.\left(\chi_{LR\uparrow} + \chi_{RL\uparrow} -\chi_{LR\downarrow}-\chi_{RL\downarrow} \right)\hat{F}_3\hat{S}_2 \right]\\
-&=\hbar\sum_{i,j=0}^3 \chi_{ij}\hat{F}_i\hat{S}_j,
+&=\hbar\sum_{i,j=0}^3 \color{red}{\chi_{ij}}\hat{F}_i\hat{S}_j,
 \end{align}
-where $ \hat{S}_i $ are the Stokes vector operators of the light indicating its polarization, and the mode-atom coupling strengths
+where $ \hat{S}_i $ are the Stokes vector operators of the light indicating its polarization, and the mode-atom coupling operator
 \begin{align}
 \hat{\chi}_{pp'} 
 &=-\frac{2\pi \omega}{v_g}\mathbf{u}_{p}^*(r'\!_perp,\phi')\cdot \hat{\tensor{\alpha}}\cdot \mathbf{u}_{p'}(r'\!_perp,\phi')\\
 &= \sum_{f'} \frac{n_g\sigma_0}{4}\frac{\Gamma_{f'}}{\Delta_{ff'}+i\Gamma_{f'}/2}\cdot \left\{ C_{j'ff'}^{(0)}\mathbf{u}_p^*(r'\!_\perp)\cdot \mathbf{u}_{p'}(r'\!_\perp)\hat{\mathbbm{1}}+iC_{j'ff'}^{(1)}\left(\mathbf{u}_p^*(r'\!_\perp)\times\mathbf{u}_{p'}(r'\!_\perp) \right)\cdot \hat{\mathbf{f}} \right. \nonumber\\
-&\quad\quad\left. C_{j'ff'}^{(2)}\sum_{i,j}\left[u^*_{p,i}u_{p',j}(\frac{\hat{f}_i\hat{f}_j+\hat{f}_j\hat{f}_i}{2}-\frac{\delta_{ij}}{3}\hat{\mathbf{f}}\cdot\hat{\mathbf{f}}) \right]\right\}
+&\quad\quad\left. + C_{j'ff'}^{(2)}\sum_{i,j}\left[u^*_{p,i}u_{p',j}(\frac{\hat{f}_i\hat{f}_j+\hat{f}_j\hat{f}_i}{2}-\frac{\delta_{ij}}{3}\hat{\mathbf{f}}\cdot\hat{\mathbf{f}}) \right]\right\}
 %&\left.+C_{jj'ff'}^{(2)}\left[\mathbf{u}_p^*(r'\!_\perp)\cdot \mathbf{u}_{p'}(r'\!_\perp)\left(\frac{f(f+1)}{6}-\frac{m^2}{2} \right)+\mathbf{u}_p^*(r'\!_\perp)\cdot (\hat{e}^*_{\tilde{z}}\hat{e}_{\tilde{z}})\cdot \mathbf{u}_{p'}(r'\!_\perp)\left(\frac{3m^2}{2}-\frac{f(f+1)}{2} \right) \right] \right\}
+\label{eq:chippp}
 \end{align}
-with the horizontally(H)- and vertically(V)-linearly polarized fundamental fiber modes, $ \mathbf{u}_p(r'\!_\perp) $, at the atom position $ \br'=(r'\!_\perp,\phi',z') $ defined in the appendix of our previous paper~\cite{Qi2016}. 
+with the horizontally(H)- and vertically(V)-linearly polarized guided modes, $ \mathbf{u}_p(r'\!_\perp) $, at the atom position $ \br'=(r'\!_\perp,\phi',z') $. 
+The fundamental guided modes of an optical nanofiber has been defined in the appendix of our previous paper~\cite{Qi2016}. 
+In general, for a cylindrical waveguide, the H- and V-modes are the guided modes adiabatically transferred from a corresponding linearly polarized input light from one end of the waveguide, where H- and V-directions are orthogonal to each other in the transverse plane.
+The coupling operator or Eq.\eqref{eq:chippp} includes three terms corresponding to scalar, vector and tensor interactions between atoms and the probe light which are proportional to $ C_{j'ff'}^{(K)} $ with $ K=0,\,1,\,2 $, respectively.
 
+\comment{Discussion on birefringence interaction protocol: basic geometry, optimal choice of atom position and quantization axis.}
+
+Besides the birefringence protocols, one can also generate a spin squeezed state based on Faraday interaction.
+Faraday interaction is the interaction when the helicity of the input and output of the light signal is preserved. 
+In the context of QND measurement, a Faraday interaction based protocol is the protocol when the phase change of the output light on the equator of the Poincar\'e sphere with a linear polarization input is used to calibrate the spin state after the atom-light interaction.
+One can prove that the strength of the Faraday interaction is dominated by the vector interaction term in Eq.\eqref{eq:chippp}.
+This implies that, to maximize the Faraday interaction, it is optimal to choose a quantization axis along the direction of $ \left(\mathbf{u}_p^*(r'\!_\perp)\times\mathbf{u}_{p'}(r'\!_\perp) \right) $ given $ p $ and $ p' $ are the two orthogonal mode bases. 
+In reality, this product of modes can be elliptical with one direction component is imaginary while others are real.
+Since the quantization axis is the direction in which a magnetic field is pointing to in 3D real space, the optimal choice of quantization axis is the direction corresponding to the largest component of the $ \left(\mathbf{u}_p^*(r'\!_\perp)\times\mathbf{u}_{p'}(r'\!_\perp) \right) $ product. 
+Take the example of a nanofiber, at an arbitrary position $ (r\!_\perp,\phi) $ of atoms in the transverse plane,
+\begin{align}
+\mathbf{u}_H^*(r\!_\perp,\phi)\times \mathbf{u}_V(r\!_\perp,\phi) &= 2u_{r\!_\perp} u_\phi\mathbf{e}_z - 2iu_zu_{r\!_\perp}\sin2\phi \mathbf{e}_\phi + 2iu_\phi u_z\cos2\phi \mathbf{e}_{r\!_\perp},
+\end{align}
+where $ u_{r\!_\perp}=u_{r\!_\perp}(r\!_\perp) $, $ u_\phi=u_\phi(r\!_\perp) $ and $ u_z=u_z(r\!_\perp) $ are the circularly polarized mode components independent of longitudinal and azimuthal positions defined in the appendix A of Ref~\cite{Qi2016}.
+Based on this equation, when $ u_z(r\!_\perp) $ is smaller than the geometric average of $ u_{r\!_\perp}(r\!_\perp) $ and $ u_\phi(r\!_\perp) $, choosing $ z $-direction as the quantization axis is optimal for the QND measurement and spin squeezing protocol.
+This conclusion may be generalized to weakly confined cylindrical waveguides at large.
+
+We define the fiber axis or $ z $-axis as the quantization axis and set $ \hat{F}_\perp=\hat{F}_z $ as the squeezing operator. 
+Let us consider an ensemble of $ ^{133} $Cs atoms initially prepared as a spin coherent state (SCS) with every atom in the stretch state of the $ 6S_{1/2}$ $f=4 $ ground manifold in the $ x $-basis, where the quantization $ x $-direction is along the diagonal or $ \phi=\pi/4 $ direction in the $ H $-$ V $ Cartesian coordinate system sitting on the fiber axis.
+We call the initial state of one atom as the fiducial state or $ \ket{\phi_0}=\ket{\uparrow}_x = \ket{6S_{1/2},f=4,m_x=4} $ and the collective SCS is $ \ket{\Psi_0}=\ket{\uparrow}_x^{\otimes N_A} $.
+We define the coupled state by applying the individual squeezing operator $ \hat{f}_z$ on the fiducial state $\ket{\uparrow}_x $.
+In our case, the coupled state can be defined as $ \ket{\downarrow}_x=\ket{6S_{1/2},f=4,m_x=3} $.
+Similarly, to include the transfer of coherence in the squeezing process, we define the transfer state as $ \ket{T}_x=\ket{6S_{1/2},f=4,m_x=2} $ as a result of applying $ \hat{f}_z$ on the coupled state. 
+For simplicity, we remove all the subscript $ x $ of quantum states and always work in the $ x $-basis if no explicit notations for the Faraday interaction protocol. 
 
 To implement a pure Faraday interaction with the minimum impact from Birefringence effect due to the presence of the nanofiber, it is necessary to position atoms at places where the Birefringence effect vanishes. 
 We consider working in the far-detuning regime where the Birefringence effect due to the atomic tensor polarizability can be ignored~\cite{Deutsch2010a}. 
