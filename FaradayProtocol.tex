@@ -338,48 +338,93 @@ In our case, we assume the state of the ensemble can be well captured in the sym
 \subsection{A spin squeezing protocol using Faraday interaction with spin coherent states}
 \comment{To be done: Double check all equations in this section.}
 
-Besides the case we have discussed in our previous work, we propose here a spin squeezing protocol based on Faraday interaction.
-We define the fiber axis or $ z $-axis as the quantization axis and set $ \hat{F}_\perp=\hat{F}_z $ as the squeezing operator. 
+Following the process demonstrated in our previous work~\cite{Qi2016}, the light-atom interaction Hamiltonian with one atom can be written as
+\begin{align}
+\hat{h}_\eff &= -\hat{\mathbf{E}}^{(-)}(\br')\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot\hat{\mathbf{E}}^{(+)}(\br')\nn\\
+&= -\frac{2\pi\hbar\omega}{v_g}\left[\mathbf{u}_H^*\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot \mathbf{u}_H\hat{a}_H^\dagger\hat{a}_H\right.
++ \mathbf{u}_H^*\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot \mathbf{u}_V\hat{a}_H^\dagger\hat{a}_V\nn\\
+&\quad\quad + \mathbf{u}_V^*\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot \mathbf{u}_H\hat{a}_V^\dagger\hat{a}_H 
+\left. + \mathbf{u}_V^*\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot \mathbf{u}_V\hat{a}_V^\dagger\hat{a}_V\right]\\
+&= \hbar\left[(\hat{\chi}_{HH}+\hat{\chi}_{VV})\hat{S}_0 + (\hat{\chi}_{HH}-\hat{\chi}_{VV})\hat{S}_1 + (\hat{\chi}_{HV}+\hat{\chi}_{VH})\hat{S}_2 + i(\hat{\chi}_{HV}-\hat{\chi}_{VH})\hat{S}_3 \right]\\
+%\hbar \left[\left(\chi_{RR\uparrow} + \chi_{RR\downarrow} +\chi_{LL\uparrow}+\chi_{LL\downarrow} \right)\hat{F}_0\hat{S}_0 \right.\nonumber\\
+%&\quad+\left(\chi_{RR\uparrow} + \chi_{RR\downarrow} -\chi_{LL\uparrow}-\chi_{LL\downarrow} \right)\hat{F}_0\hat{S}_3\nonumber\\
+%&\quad+\left(\chi_{RR\uparrow} + \chi_{LL\uparrow} -\chi_{RR\downarrow}-\chi_{LL\downarrow} \right)\hat{F}_3\hat{S}_0\nonumber\\
+%&\quad+\left(\chi_{RR\uparrow} - \chi_{RR\downarrow} +\chi_{LL\downarrow}-\chi_{LL\uparrow} \right)\hat{F}_3\hat{S}_3\nonumber\\
+%&\quad+i\left(\chi_{LR\uparrow} - \chi_{RL\uparrow} +\chi_{RL\downarrow}-\chi_{RL\downarrow} \right)\hat{F}_0\hat{S}_1\nonumber\\
+%&\quad+\left(\chi_{RL\uparrow} + \chi_{LR\uparrow} +\chi_{RL\downarrow}+\chi_{LR\downarrow} \right)\hat{F}_0\hat{S}_2\nonumber\\
+%&\quad+i\left(\chi_{LR\uparrow} - \chi_{RL\uparrow} +\chi_{RL\downarrow}-\chi_{LR\downarrow} \right)\hat{F}_3\hat{S}_1\nonumber\\
+%&\quad+\left.\left(\chi_{LR\uparrow} + \chi_{RL\uparrow} -\chi_{LR\downarrow}-\chi_{RL\downarrow} \right)\hat{F}_3\hat{S}_2 \right]\\
+&=\hbar\sum_{i=0}^3 \hat{\chi}_{i}\hat{S}_i\\
+&=\hbar\sum_{i,j=0} \chi_{ij}\hat{f}_i\hat{S}_j,
+\end{align}
+where $ \hat{S}_i $ are the Stokes vector operators of the light indicating its polarization, and the mode-atom coupling operator
+\begin{align}
+\hat{\chi}_{pp'} 
+&=-\frac{2\pi \omega}{v_g}\mathbf{u}_{p}^*(r'\!_perp,\phi')\cdot \hat{\tensor{\alpha}}\cdot \mathbf{u}_{p'}(r'\!_perp,\phi')\\
+&= \sum_{f'} \frac{n_g\sigma_0}{4}\frac{\Gamma_{f'}}{\Delta_{ff'}+i\Gamma_{f'}/2}\cdot \left\{ C_{j'ff'}^{(0)}\mathbf{u}_p^*(r'\!_\perp)\cdot \mathbf{u}_{p'}(r'\!_\perp)\hat{\mathbbm{1}}\right.\nn\\
+&\quad\quad +iC_{j'ff'}^{(1)}\left(\mathbf{u}_p^*(r'\!_\perp)\times\mathbf{u}_{p'}(r'\!_\perp) \right)\cdot \hat{\mathbf{f}} \nonumber\\
+&\quad\quad\left. + C_{j'ff'}^{(2)}\sum_{i,j}\left[u^*_{p,i}u_{p',j}(\frac{\hat{f}_i\hat{f}_j+\hat{f}_j\hat{f}_i}{2}-\frac{\delta_{ij}}{3}\hat{\mathbf{f}}\cdot\hat{\mathbf{f}}) \right]\right\}
+%&\left.+C_{jj'ff'}^{(2)}\left[\mathbf{u}_p^*(r'\!_\perp)\cdot \mathbf{u}_{p'}(r'\!_\perp)\left(\frac{f(f+1)}{6}-\frac{m^2}{2} \right)+\mathbf{u}_p^*(r'\!_\perp)\cdot (\hat{e}^*_{\tilde{z}}\hat{e}_{\tilde{z}})\cdot \mathbf{u}_{p'}(r'\!_\perp)\left(\frac{3m^2}{2}-\frac{f(f+1)}{2} \right) \right] \right\}
+\label{eq:chippp}
+\end{align}
+with the horizontally(H)- and vertically(V)-linearly polarized guided modes, $ \mathbf{u}_p(r'\!_\perp) $, at the atom position $ \br'=(r'\!_\perp,\phi',z') $. 
+$ \chi_{ij}=\tr[\hat{f}_i\hat{\chi}_j]/(2f+1) $ is the coupling strength between spin operator $ \hat{f}_i $ and Stokes operator $ \hat{S}_j $. 
+For example, $ \chi_{33} $ is the coupling strength between $ \hat{f}_z $ and $ \hat{S}_3 $.
+The fundamental guided modes of an optical nanofiber has been defined in the appendix of our previous paper~\cite{Qi2016}. 
+In general, for a cylindrical waveguide, the H- and V-modes are the guided modes adiabatically transferred from a corresponding linearly polarized input light from one end of the waveguide, where H- and V-directions are orthogonal to each other in the transverse plane.
+The coupling operator or Eq.\eqref{eq:chippp} includes three terms corresponding to scalar, vector and tensor interactions between atoms and the probe light which are proportional to $ C_{j'ff'}^{(K)} $ with $ K=0,\,1,\,2 $, respectively.
+
+Faraday interaction is the interaction when the helicity of the input and output of the light signal is preserved. 
+In the context of QND measurement, a Faraday interaction based protocol is the protocol when the phase change of the output light on the equator of the \Poincare sphere with a linear polarization input is used to calibrate the spin state after the atom-light interaction.
+This phase change of light polarization corresponds to a rotation about $ \mathbf{S}_3 $ axis on the \Poincare sphere. 
+From Eq.\eqref{eq:chippp}, the coupling atomic term is proportional to 
+\begin{align}
+\hat{\chi}_{i3} &= \hat{\chi}_{HV}-\hat{\chi}_{VH}=\hat{\chi}_{RR}-\hat{\chi}_{LL},
+\end{align}
+where the last step is derived in appendix~\ref{Appendix:LRbases}. These relationships indicate the Faraday effect is generated by the intensity or photon number difference between the right- and left-polarized modes or by the phase difference between two linearly polarized modes due to the polarizability of the atoms.
+One can prove that the strength of the Faraday interaction is dominated by the vector interaction term in Eq.\eqref{eq:chippp}.
+This implies that, to maximize the Faraday interaction, it is optimal to choose a quantization axis along the direction of $ \mathbf{v}_F=\mathbf{u}_H^*(\br'\!_\perp)\!\times\!\mathbf{u}_{V}(\br'\!_\perp)\!-\!\mathbf{u}_V^*(\br'\!_\perp)\!\times\!\mathbf{u}_{H}(\br'\!_\perp)$ given the atoms are placed at $ \br'\!_\perp $ position in the transverse plane of the waveguide. 
+In reality, this product of modes may be elliptical with at least one direction component is imaginary while others are real.
+If this happens, since the quantization axis is the direction in which a magnetic field is pointing to in 3D real space, the optimal choice of quantization axis should be the direction corresponding to the largest component of the $ \mathbf{v}_F $ vector. 
+For a cylindrical waveguide, this doesn't seem to happen.
+Take the example of a nanofiber, at an arbitrary position $ \br'\!_\perp=(r'\!_\perp,\phi') $ of atoms in the transverse plane,
+\begin{align}
+\mathbf{u}_H^*(r'\!_\perp,\phi')\times \mathbf{u}_V(r'\!_\perp,\phi') &= 2u_{r\!_\perp} u_\phi\mathbf{e}_z - 2iu_zu_{r\!_\perp}\sin2\phi \mathbf{e}_\phi + 2iu_\phi u_z\cos2\phi \mathbf{e}_{r\!_\perp} \\
+\mathbf{u}_V^*(r'\!_\perp,\phi')\times \mathbf{u}_H(r'\!_\perp,\phi') &= -2u_{r\!_\perp} u_\phi\mathbf{e}_z - 2iu_zu_{r\!_\perp}\sin2\phi \mathbf{e}_\phi + 2iu_\phi u_z\cos2\phi \mathbf{e}_{r\!_\perp},
+\end{align}
+and therefore,
+\begin{align}\label{eq:Faradayaxis}
+\mathbf{v}_F=\mathbf{u}_H^*(\br'\!_\perp)\!\times\!\mathbf{u}_{V}(\br'\!_\perp)\!-\!\mathbf{u}_V^*(\br'\!_\perp)\!\times\!\mathbf{u}_{H}(\br'\!_\perp) = 4u_{r\!_\perp} u_\phi\mathbf{e}_z,
+\end{align}
+where $ u_{r\!_\perp}=u_{r\!_\perp}(r'\!_\perp) $, $ u_\phi=u_\phi(r'\!_\perp) $ and $ u_z=u_z(r'\!_\perp) $ are the right-circularly polarized mode components independent of longitudinal and azimuthal positions defined in the appendix A of Ref~\cite{Qi2016} or the corresponding appendix in this dissertation.
+Based on this result, choosing $ z $-direction as the quantization axis is optimal for the QND measurement and spin squeezing protocol for atoms trapped near an optical nanofiber.
+
+This conclusion can be generalized to cylindrical waveguides at large, which have a smooth or slow change of index of refraction along the light propagation direction in the wavelength scale while the cross-section of the waveguides can be arbitrary.
+From the perspective of transformation optics~\cite{Leonhardt2006Optical,Kundtz2011Electromagnetic}, we can consider a set of $H$- and $V$-modes for the new waveguide are generated by adiabatically transforming the orthogonal set of modes from a cylindrical nanofiber to the target cross-section shape of the waveguide.
+Since the transformation is approximately limited to the $xy$-plane of the coordinate system transformation determined by a Jacobian matrix, Eq.\eqref{eq:Faradayaxis} will preserve the form in the new waveguide coordinate system where only $ z $-component is non-zero and should be chosen as the optimal choice of the quantization axis.
+
+With the quantization axis chosen along $ \mathbf{e}_{\tilde{z}}=\mathbf{e}_z $, one can define the effective QND measurement Hamiltonian for an atomic ensemble by
+\begin{align}
+\hat{H}_F &= \hbar \chi_{33}\hat{F}_z \hat{S}_3,
+\end{align}
+where $ \chi_{33} $ is the measurement strength characterizing the entanglement between the collective spin state of $ \hat{F}_z $ and the probe's polarization state of $ \hat{S}_3 $.
+Now that $ \hat{F}_\perp=\hat{F}_z $ is the squeezing operator. 
 Let us consider an ensemble of $ ^{133} $Cs atoms initially prepared as a spin coherent state (SCS) with every atom in the stretch state of the $ 6S_{1/2}$ $f=4 $ ground manifold in the $ x $-basis, where the quantization $ x $-direction is along the diagonal or $ \phi=\pi/4 $ direction in the $ H $-$ V $ Cartesian coordinate system sitting on the fiber axis.
-We call the initial state of one atom as the fiducial state or $ \ket{\phi_0}=\ket{\uparrow}_x = \ket{6S_{1/2},f=4,m_x=4} $ and the collective SCS is $ \ket{\Psi_0}=\ket{\uparrow}_x^{\otimes N_A} $.
+One can show that a stretch state can generate the maximum coupling between atoms and light when all atoms are prepared in a SCS.
+We call this initial state of one atom as the fiducial state or $ \ket{\phi_0}=\ket{\uparrow}_x = \ket{6S_{1/2},f=4,m_x=4} $ and the collective SCS can be written as $ \ket{\Psi_0}=\ket{\uparrow}_x^{\otimes N_A} $.
 We define the coupled state by applying the individual squeezing operator $ \hat{f}_z$ on the fiducial state $\ket{\uparrow}_x $.
 In our case, the coupled state can be defined as $ \ket{\downarrow}_x=\ket{6S_{1/2},f=4,m_x=3} $.
-Similarly, to include the transfer of coherence in the squeezing process, we define the transfer state as $ \ket{T}_x=\ket{6S_{1/2},f=4,m_x=2} $ as a result of applying $ \hat{f}_z$ on the coupled state. 
-For simplicity, we remove all the subscript $ x $ of quantum states and always work in the $ x $-basis if no explicit notations for the Faraday interaction protocol. 
+Similarly, to include the transfer of coherence in the squeezing process, we define the transfer state as $ \ket{T}_x=\ket{6S_{1/2},f=4,m_x=2} $ resulted from applying $ \hat{f}_z$ on the coupled state. 
+For simplicity, we remove all the subscript $ x $ of quantum states and assume we always work in the $ x $-basis if no explicit notations for the Faraday interaction protocol. 
 
-Following the process demonstrated in our previous work~\cite{Qi2016}, the light-atom interaction Hamiltonian can be written as
-\begin{align}
-\hat{H} &= \hbar \left[\left(\chi_{RR\uparrow} + \chi_{RR\downarrow} +\chi_{LL\uparrow}+\chi_{LL\downarrow} \right)\hat{F}_0\hat{S}_0 \right.\nonumber\\
-&\quad+\left(\chi_{RR\uparrow} + \chi_{RR\downarrow} -\chi_{LL\uparrow}-\chi_{LL\downarrow} \right)\hat{F}_0\hat{S}_3\nonumber\\
-&\quad+\left(\chi_{RR\uparrow} + \chi_{LL\uparrow} -\chi_{RR\downarrow}-\chi_{LL\downarrow} \right)\hat{F}_3\hat{S}_0\nonumber\\
-&\quad+\left(\chi_{RR\uparrow} - \chi_{RR\downarrow} +\chi_{LL\downarrow}-\chi_{LL\uparrow} \right)\hat{F}_3\hat{S}_3\nonumber\\
-&\quad+i\left(\chi_{LR\uparrow} - \chi_{RL\uparrow} +\chi_{RL\downarrow}-\chi_{RL\downarrow} \right)\hat{F}_0\hat{S}_1\nonumber\\
-&\quad+\left(\chi_{RL\uparrow} + \chi_{LR\uparrow} +\chi_{RL\downarrow}+\chi_{LR\downarrow} \right)\hat{F}_0\hat{S}_2\nonumber\\
-&\quad+i\left(\chi_{LR\uparrow} - \chi_{RL\uparrow} +\chi_{RL\downarrow}-\chi_{LR\downarrow} \right)\hat{F}_3\hat{S}_1\nonumber\\
-&\quad+\left.\left(\chi_{LR\uparrow} + \chi_{RL\uparrow} -\chi_{LR\downarrow}-\chi_{RL\downarrow} \right)\hat{F}_3\hat{S}_2 \right]\\
-&=\hbar\sum_{i,j=0}^3 \chi_{ij}\hat{F}_i\hat{S}_j,
-\end{align}
-where $ \hat{S}_i $ are the Stokes vector operators of the light indicating its polarization, and the mode-atom coupling strengths
-\begin{align}
-\chi_{pp'm} 
-%&=-\frac{2\pi \omega}{v_g}\mathbf{u}_{p'}^*(r'\!_perp,\phi')\cdot \bra{f=4,m}\hat{\tensor{\alpha}}\ket{f=4,m}\cdot \mathbf{u}_p(r'\!_perp,\phi')
-&= \sum_{f'} \frac{n_g\sigma_0}{4}\frac{\Gamma_{f'}}{\Delta_{ff'}+i\Gamma_{f'}/2}\cdot \left\{ C_{jj'ff'}^{(0)}\mathbf{u}_p^*(r'\!_\perp)\cdot \mathbf{u}_{p'}(r'\!_\perp)+imC_{jj'ff'}^{(1)}\left(\mathbf{u}_p^*(r'\!_\perp)\times\mathbf{u}_{p'}(r'\!_\perp) \right)\cdot \hat{e}_{\tilde{z}} \right. \nonumber\\
-&\left.+C_{jj'ff'}^{(2)}\left[\mathbf{u}_p^*(r'\!_\perp)\cdot \mathbf{u}_{p'}(r'\!_\perp)\left(\frac{f(f+1)}{6}-\frac{m^2}{2} \right)+\mathbf{u}_p^*(r'\!_\perp)\cdot (\hat{e}^*_{\tilde{z}}\hat{e}_{\tilde{z}})\cdot \mathbf{u}_{p'}(r'\!_\perp)\left(\frac{3m^2}{2}-\frac{f(f+1)}{2} \right) \right] \right\}
-\end{align}
-with the right(R)- and left(L)-circularly polarized fundamental fiber modes, $ \mathbf{u}_p(r'\!_\perp) $, at the atom position $ \br'=(r'\!_\perp,\phi',z') $ defined in the appendix of our previous paper~\cite{Qi2016}. 
-\comment{Introduce other parameters or make a glossary in the appendix?}
-
-To implement a pure Faraday interaction with the minimum impact from Birefringence effect due to the presence of the nanofiber, it is necessary to position atoms at places where the Birefringence effect vanishes. 
-We consider working in the far-detuning regime where the Birefringence effect due to the atomic tensor polarizability can be ignored~\cite{Deutsch2010a}. 
-Based on the symmetry of the fiber modes, with a linearly polarized $H$ ($x$)- and $V$ ($ y $)-modes inputs to form a diagonally polarized $ D $-mode, the optimal position of atoms with vanished Birefringence effect due to the intensity difference of the local $ H $- and $ V $-modes could be along the $ \phi'=n\pi/4 $ ($ n=1,3,5,7 $) radial directions. 
-
-In the far-detuning regime, we can also set the decay rates of the excited levels $ \Gamma_{f'}= \Gamma_0$ as constant for all $ f' $ in the same fine structure manifold.
-By ignoring the tensor coupling strength related to $ C_{jj'ff'}^{(2)} $~\cite{Deutsch2010a} at the potential optimal trapping positions discussed above, the Faraday interaction coupling strength can be simplified as
+We consider the far-detuning regime, where we may be able to set the decay rates of the excited levels $ \Gamma_{f'}= \Gamma_0$ as constant for all $ f' $ in the same fine structure manifold, where we consider $ \Gamma_0 $ as the averaged modified decay rates from the excite fine structure level to the ground level when atoms are in a completely mixed state for simplicity.
+We also ignore the tensor coupling strength related to $ C_{jj'ff'}^{(2)} $ terms in Eq.\eqref{eq:chippp} as the tensor interaction strength ($ \sim 1/\Delta^2 $) is relatively small compared to the vector interaction strength ($ \sim 1/\Delta $)~\cite{Deutsch2010a}. 
+For a nanofiber geometry, the Faraday interaction coupling strength is independent of the azimuthal position of the atoms and can be simplified as
 \begin{align}
 \chi_{33} &= -\sum_{f'}n_g\sigma_0\frac{\Gamma_0}{\Delta_{ff'}+i\Gamma_0/2}C_{jj'ff'}^{(1)}u_{r\!_\perp}(r'\!_\perp)u_\phi(r'\!_\perp)\\
 &=\frac{\sigma_0}{A_F}\frac{\Gamma_0}{\Delta_F},
 \end{align}
-where the effective Faraday interaction mode area $ A_F=1/2n_g|u_{r\!_\perp}(r'\!_\perp)u_\phi(r\!_\perp)| $, and the effective detuning $ \Delta_F=\sum_{f'}\frac{-C_{jj'ff'}^{(1)}}{\Delta_{ff'}} $.
+where the effective Faraday interaction mode area $ A_F=1/2n_g|u_{r\!_\perp}(r'\!_\perp)u_\phi(r\!_\perp)| $, and the effective detuning $ \Delta_F=\sum_{f'}\frac{-C_{j'ff'}^{(1)}}{\Delta_{ff'}} $.
 The measurement strength is now defined as
 \begin{align}
 \kappa\equiv|\chi_{33}|^2\dot{N}_L=\frac{\sigma_0A_{in}}{A_F^2}\gamma_s,
@@ -390,7 +435,12 @@ Now we can define the OD per atom for the Faraday interaction using SCS by
 \frac{\mathrm{OD}}{N_A} \equiv \frac{\kappa}{\gamma_s}=\frac{\sigma_0A_{in}}{A_F^2}.
 \end{align}
 
-The optimal position of the atom should be chosen so that $ A_{\mathrm{in}} $ reaches the minimum value, which yields $ \phi'=3\pi/4 $ or $ 7\pi/4 $ where $ A_{\mathrm{in}}=1/2n_g|u_\phi(r'\!_\perp)|^2 $.
+Since the Faraday measurement strength doesn't depend on the azimuthal direction of the atom position, ideally, to implement an optimal Faraday interaction geometry, it is preferable to place atoms along some azimuthal direction with the minimum impact from birefringence effects as well as the decoherence due to the presence of the nanofiber. 
+
+Firstly, in the far-detuning regime, since the birefringence effect is dominated by the scalar coupling which is proportional to the intensity difference between the $H$ ($x$)- and $V$ ($ y $)-mode components at the atom positions, both diagonal and anti-diagonal directions in the transverse plane yields a minimum birefringence effect where the intensity of the $ H $- and $ V $-mode components are equal, based on the symmetry of the fiber and given a diagonally polarized $ D $-mode input.
+That is the optimal position of atoms with vanished birefringence effect due to the intensity difference of the local $ H $- and $ V $-modes could be along the $ \phi'=n\pi/4 $ ($ n=1,3,5,7 $) radial directions. 
+Secondly, to minimize the decoherence damages to spin squeezing, the optimal position of the atom should be chosen so that $ A_{\mathrm{in}} $ reaches the minimum value, which yields $ \phi'=3\pi/4 $ or $ 7\pi/4 $ where $ A_{\mathrm{in}}=1/2n_g|u_\phi(r'\!_\perp)|^2 $.
+Combining these two factors, we find the optimal choice of atoms' azimuthal positions are along the anti-diagonal direction, that is $\phi'=3\pi/4 $ or $ 7\pi/4 $.
 
 The number of equations needed to include different subspace...
 
@@ -705,6 +755,44 @@ In the far-detuning regime, the detuning on hyperfine sublevels will be degenera
 \begin{align}
 \left.\dt{\rhoo}\right|_{\rm op} = \gamma'_s \sum_{f'} \left[C_{j'ff'}^{(0)}(C_{j'ff'}^{(0)}-1)\rhoo+\frac{1}{2}(C_{j'ff'}^{(1)})^2(\fx\rhoo\fx+\fy\rhoo\fy+2\fz\rhoo\fz ) \right].
 \end{align}
+
+%===================APPENDIX: Circular VS linear polarization mode bases =====================%
+\section{Circular V.S. linear polarization bases}\label{Appendix:LRbases}
+\comment{This content is mainly typed from my notes on Faraday Interaction in The Nanofiber Geometry. More can be done here.}
+
+We define a set of polarization vector transformation relationships by 
+\begin{subequations}
+\begin{align}
+\hat{a}_H &= \frac{1}{\sqrt{2}}(\hat{a}_R+\hat{a}_L )\\
+\hat{a}_V &= \frac{i}{\sqrt{2}}(\hat{a}_R-\hat{a}_L ),
+\end{align}
+\end{subequations}
+or the inverse
+\begin{subequations}
+\begin{align}
+\hat{a}_R &= \frac{1}{\sqrt{2}}(\hat{a}_H-i\hat{a}_V )\\
+\hat{a}_L &= \frac{1}{\sqrt{2}}(\hat{a}_H+i\hat{a}_V ),
+\end{align}
+\end{subequations}
+where $ R $($ L $) indicates the right(left)-circularly polarized mode.
+The Stokes operators can then be defined in both linear ($ H $ and $ V $) and circular ($ L $ and $ R $) polarization bases by
+\begin{subequations}
+\begin{align}
+\hat{S}_0 &= \frac{1}{2} \left[\hat{a}_H^\dagger\hat{a}_H+\hat{a}_V^\dagger\hat{a}_V \right] = \frac{1}{2} \left[\hat{a}_R^\dagger\hat{a}_R+\hat{a}_L^\dagger\hat{a}_L \right]\\
+\hat{S}_1 &= \frac{1}{2} \left[\hat{a}_H^\dagger\hat{a}_H-\hat{a}_V^\dagger\hat{a}_V \right] = \frac{1}{2} \left[\hat{a}_R^\dagger\hat{a}_L+\hat{a}_L^\dagger\hat{a}_R \right]\\
+\hat{S}_2 &= \frac{1}{2} \left[\hat{a}_H^\dagger\hat{a}_V+\hat{a}_V^\dagger\hat{a}_H \right] = \frac{i}{2} \left[\hat{a}_L^\dagger\hat{a}_R-\hat{a}_R^\dagger\hat{a}_L \right]\\
+\hat{S}_3 &= \frac{1}{2i} \left[\hat{a}_H^\dagger\hat{a}_V-\hat{a}_V^\dagger\hat{a}_H \right] = \frac{1}{2} \left[\hat{a}_R^\dagger\hat{a}_R-\hat{a}_L^\dagger\hat{a}_L \right].
+\end{align}
+\end{subequations}
+Therefore, the effective atom-light interaction Hamiltonian can be given in those bases by 
+\begin{align}
+\hat{h}_\eff &= -\hat{\mathbf{E}}^{(-)}(\br')\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot\hat{\mathbf{E}}^{(+)}(\br')\nn\\
+&= \hbar\left[(\hat{\chi}_{HH}+\hat{\chi}_{VV})\hat{S}_0 + (\hat{\chi}_{HH}-\hat{\chi}_{VV})\hat{S}_1 + (\hat{\chi}_{HV}+\hat{\chi}_{VH})\hat{S}_2 + i(\hat{\chi}_{HV}-\hat{\chi}_{VH})\hat{S}_3 \right]\\
+&= \hbar\left[(\hat{\chi}_{RR}+\hat{\chi}_{LL})\hat{S}_0 + i(\hat{\chi}_{LR}-\hat{\chi}_{RL})\hat{S}_1 + (\hat{\chi}_{RL}+\hat{\chi}_{LR})\hat{S}_2 + (\hat{\chi}_{RR}-\hat{\chi}_{LL})\hat{S}_3 \right]\\
+&=\hbar\sum_{i=0}^3 \hat{\chi}_{i}\hat{S}_i\\
+&=\hbar\sum_{i,j=0} \chi_{ij}\hat{f}_i\hat{S}_j,
+\end{align}
+with $\hat{\chi}_{pp'} $ defined in Eq.\eqref{eq:chippp}.
 
 %===================APPENDIX: Equations of motion =====================%
 \section{Generalized master equation for spin squeezing dynamics with arbitrary spin number $f$} \label{Appendix::OpticalPumpingForGeneralF}
