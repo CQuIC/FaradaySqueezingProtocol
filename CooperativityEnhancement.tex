@@ -335,7 +335,15 @@ In our case, we assume the state of the ensemble can be well captured in the sym
 %========================== Theory ===================================%
 \section{Spin squeezing protocols based on birefringence and Faraday interactions} \label{Sec::comparison}
 \subsection{Atom-light interaction Hamiltonian}
-Following the process demonstrated in our previous work~\cite{Qi2016}, the light-atom interaction Hamiltonian with one atom can be written as
+In this paper, we consider a $ D $-mode probe by propagating a linearly polarized light into an optical nanofiber or other waveguides, in general. 
+The electric field of the $ D $-mode in the waveguide region can be decomposed into mutually orthogonal guided $ H $- and $ V $-modes formed by two linearly polarized incident laser beams with orthogonal polarization directions. 
+The local electric field at $ \br=(r\!_\perp,\phi,z) $ with a diagonally polarized incident mode can be given by
+\begin{align}\label{eq:Ebp}
+\hat{\mathbf{E}}^{(+)}(r\!_\perp,\phi,z;t) &= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[\mathbf{u}_H(r\!_\perp,\phi) \hat{a}_H(z,t) + \mathbf{u}_V(r\!_\perp,\phi) \hat{a}_V(z,t)\right]  e^{i \beta_0 z},
+\end{align}
+where $ \mathbf{u}_{H/V} $ are the degenerate $ H $- and $ V $-mode profile functions in the transverse plane of the waveguide while the field is propagating along the $ z $-direction, $ \omega_0 $ is the probe's angular frequency, $ v_g $ is the group velocity of the modes, and $ \beta_0 $ is the propagation constant in the $ z $-direction. 
+
+Following the process demonstrated in our previous work~\cite{Qi2016} which has been briefly summarized in appendix~\ref{Appendix:LRbases}, the light-atom interaction Hamiltonian with one atom placed at position $ \br'=(r'\!_\perp,\phi',z') $ can be written as
 \begin{align}
 \hat{h}_\eff &= -\hat{\mathbf{E}}^{(-)}(\br')\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot\hat{\mathbf{E}}^{(+)}(\br')\nn\\
 &= -\frac{2\pi\hbar\omega}{v_g}\left[\mathbf{u}_H^*\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot \mathbf{u}_H\hat{a}_H^\dagger\hat{a}_H\right.
@@ -354,17 +362,17 @@ Following the process demonstrated in our previous work~\cite{Qi2016}, the light
 &=\hbar\sum_{i=0}^3 \hat{\chi}_{i}\hat{S}_i\\
 &=\hbar\sum_{i,j=0} \chi_{ij}\hat{f}_i\hat{S}_j,
 \end{align}
-where $ \hat{S}_i $ are the Stokes vector operators of the light indicating its polarization, and the mode-atom coupling operator
+where $ \hat{S}_i $ are the Stokes vector operators of the light indicating its polarization, $ \hat{\tensor{\mathbf{\alpha}}} $ is the atomic polarizability operator, and the mode-atom coupling operator
 \begin{align}
 \hat{\chi}_{pp'} 
-&=-\frac{2\pi \omega}{v_g}\mathbf{u}_{p}^*(r'\!_perp,\phi')\cdot \hat{\tensor{\alpha}}\cdot \mathbf{u}_{p'}(r'\!_perp,\phi')\\
+&=-\frac{2\pi \omega}{v_g}\mathbf{u}_{p}^*(r'\!_\perp,\phi')\cdot \hat{\tensor{\alpha}}\cdot \mathbf{u}_{p'}(r'\!_\perp,\phi')\\
 &= \sum_{f'} \frac{n_g\sigma_0}{4}\frac{\Gamma_{f'}}{\Delta_{ff'}+i\Gamma_{f'}/2}\cdot \left\{ C_{j'ff'}^{(0)}\mathbf{u}_p^*(r'\!_\perp)\cdot \mathbf{u}_{p'}(r'\!_\perp)\hat{\mathbbm{1}}\right.\nn\\
 &\quad\quad +iC_{j'ff'}^{(1)}\left(\mathbf{u}_p^*(r'\!_\perp)\times\mathbf{u}_{p'}(r'\!_\perp) \right)\cdot \hat{\mathbf{f}} \nonumber\\
-&\quad\quad\left. + C_{j'ff'}^{(2)}\sum_{i,j}\left[u^*_{p,i}u_{p',j}(\frac{\hat{f}_i\hat{f}_j+\hat{f}_j\hat{f}_i}{2}-\frac{\delta_{ij}}{3}\hat{\mathbf{f}}\cdot\hat{\mathbf{f}}) \right]\right\}
+&\quad\quad\left. + C_{j'ff'}^{(2)}\sum_{i,j}\left[u^*_{p,i}u_{p',j}(\frac{\hat{f}_i\hat{f}_j+\hat{f}_j\hat{f}_i}{2}-\frac{\delta_{ij}}{3}\hat{\mathbf{f}}\cdot\hat{\mathbf{f}}) \right]\right\}.
 %&\left.+C_{jj'ff'}^{(2)}\left[\mathbf{u}_p^*(r'\!_\perp)\cdot \mathbf{u}_{p'}(r'\!_\perp)\left(\frac{f(f+1)}{6}-\frac{m^2}{2} \right)+\mathbf{u}_p^*(r'\!_\perp)\cdot (\hat{e}^*_{\tilde{z}}\hat{e}_{\tilde{z}})\cdot \mathbf{u}_{p'}(r'\!_\perp)\left(\frac{3m^2}{2}-\frac{f(f+1)}{2} \right) \right] \right\}
 \label{eq:chippp}
 \end{align}
-with the horizontally(H)- and vertically(V)-linearly polarized guided modes, $ \mathbf{u}_p(r'\!_\perp) $, at the atom position $ \br'=(r'\!_\perp,\phi',z') $. 
+with the horizontally(H)- and vertically(V)-linearly polarized guided modes, $ \mathbf{u}_p(r'\!_\perp) $. 
 $ \chi_{ij}=\tr[\hat{f}_i\hat{\chi}_j]/(2f+1) $ is the coupling strength between spin operator $ \hat{f}_i $ and Stokes operator $ \hat{S}_j $. 
 For example, $ \chi_{33} $ is the coupling strength between $ \hat{f}_z $ and $ \hat{S}_3 $.
 The fundamental guided modes of an optical nanofiber has been defined in the appendix of our previous paper~\cite{Qi2016}. 
@@ -509,6 +517,15 @@ The Stokes operators can then be defined in both linear ($ H $ and $ V $) and ci
 \hat{S}_3 &= \frac{1}{2i} \left[\hat{a}_H^\dagger\hat{a}_V-\hat{a}_V^\dagger\hat{a}_H \right] = \frac{1}{2} \left[\hat{a}_R^\dagger\hat{a}_R-\hat{a}_L^\dagger\hat{a}_L \right].
 \end{align}
 \end{subequations}
+The inversed transformations can be easily derived by inverting the transformation coefficient matrices. 
+
+Based on Eq.\eqref{eq:Ebp}, the E-field operator when the input probe is linearly polarized along the diagonal ($ D $) direction can be written in the linear and circular polarization bases by 
+\begin{align}
+\hat{\mathbf{E}}^{(+)}(r\!_\perp,\phi,z;t) &= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[\mathbf{u}_H(r\!_\perp,\phi) \hat{a}_H(z,t) + \mathbf{u}_V(r\!_\perp,\phi) \hat{a}_V(z,t)\right]  e^{i \beta_0 z}\\
+&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \frac{1}{\sqrt{2}}\left[\mathbf{u}_R(r\!_\perp,\phi) \hat{a}_R(z,t) + \mathbf{u}_L(r\!_\perp,\phi) \hat{a}_L(z,t) \right.\nn\\
+&\quad\quad\quad\quad\quad\quad\left. + i\mathbf{u}_R(r\!_\perp,\phi) \hat{a}_R(z,t) - i\mathbf{u}_L(r\!_\perp,\phi) \hat{a}_L(z,t)\right]  e^{i \beta_0 z}\\
+&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[e^{i\frac{\pi}{4}}\mathbf{u}_R(r\!_\perp,\phi) \hat{a}_R(z,t) + e^{-i\frac{\pi}{4}}\mathbf{u}_L(r\!_\perp,\phi) \hat{a}_L(z,t)\right]  e^{i \beta_0 z}.
+\end{align}
 Therefore, the effective atom-light interaction Hamiltonian can be given in those bases by 
 \begin{align}
 \hat{h}_\eff &= -\hat{\mathbf{E}}^{(-)}(\br')\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot\hat{\mathbf{E}}^{(+)}(\br')\nn\\

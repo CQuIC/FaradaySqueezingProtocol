@@ -364,7 +364,7 @@ Following the process demonstrated in our previous work~\cite{Qi2016}, the light
 where $ \hat{S}_i $ are the Stokes vector operators of the light indicating its polarization, and the mode-atom coupling operator
 \begin{align}
 \hat{\chi}_{pp'} 
-&=-\frac{2\pi \omega}{v_g}\mathbf{u}_{p}^*(r'\!_perp,\phi')\cdot \hat{\tensor{\alpha}}\cdot \mathbf{u}_{p'}(r'\!_perp,\phi')\\
+&=-\frac{2\pi \omega}{v_g}\mathbf{u}_{p}^*(r'\!_\perp,\phi')\cdot \hat{\tensor{\alpha}}\cdot \mathbf{u}_{p'}(r'\!_\perp,\phi')\\
 &= \sum_{f'} \frac{n_g\sigma_0}{4}\frac{\Gamma_{f'}}{\Delta_{ff'}+i\Gamma_{f'}/2}\cdot \left\{ C_{j'ff'}^{(0)}\mathbf{u}_p^*(r'\!_\perp)\cdot \mathbf{u}_{p'}(r'\!_\perp)\hat{\mathbbm{1}}\right.\nn\\
 &\quad\quad +iC_{j'ff'}^{(1)}\left(\mathbf{u}_p^*(r'\!_\perp)\times\mathbf{u}_{p'}(r'\!_\perp) \right)\cdot \hat{\mathbf{f}} \nonumber\\
 &\quad\quad\left. + C_{j'ff'}^{(2)}\sum_{i,j}\left[u^*_{p,i}u_{p',j}(\frac{\hat{f}_i\hat{f}_j+\hat{f}_j\hat{f}_i}{2}-\frac{\delta_{ij}}{3}\hat{\mathbf{f}}\cdot\hat{\mathbf{f}}) \right]\right\}
@@ -520,11 +520,123 @@ We also define a set of Stokes operators as below,
 \end{align}
 where the photon annihilation operators of the horizontally and vertically polarized modes denoted with subscription $ H $ and $ V $ respectively are related to the left- and right-circularly polarized modes denoted with subscription $ L $ and $ R $ by $ \hat{a}_{H}=(\hat{a}_L+\hat{a}_R) /\sqrt{2}$ and $ \hat{a}_{V}=i(\hat{a}_R-\hat{a}_L)/\sqrt{2} $.
 The local electric field at $ (r\!_\perp,\phi,z) $ with a diagonally polarized incident mode can be given by
-\begin{align}
+\begin{align}\label{eq:Ebp}
 \hat{\mathbf{E}}^{(+)}(r\!_\perp,\phi,z;t) &= \sum_{b,p} \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \mathbf{u}_{b,p}(r\!_\perp,\phi) \hat{a}_{b,p}(z,t)  e^{i b \beta_0 z}.
 \end{align}
 
 \comment{Todo: Rewrite the effective Hamiltonian using the collective operators defined above.}
+
+%===================APPENDIX: Circular VS linear polarization mode bases =====================%
+\section{Circular V.S. linear polarization bases}\label{Appendix:LRbases}
+\comment{This content is mainly typed from my notes on Faraday Interaction in The Nanofiber Geometry. More can be done here.}
+
+We define a set of polarization vector transformation relationships by 
+\begin{subequations}
+\begin{align}
+\hat{a}_H &= \frac{1}{\sqrt{2}}(\hat{a}_R+\hat{a}_L )\\
+\hat{a}_V &= \frac{i}{\sqrt{2}}(\hat{a}_R-\hat{a}_L ),
+\end{align}
+\end{subequations}
+or the inverse
+\begin{subequations}
+\begin{align}
+\hat{a}_R &= \frac{1}{\sqrt{2}}(\hat{a}_H-i\hat{a}_V )\\
+\hat{a}_L &= \frac{1}{\sqrt{2}}(\hat{a}_H+i\hat{a}_V ),
+\end{align}
+\end{subequations}
+where $ R $($ L $) indicates the right(left)-circularly polarized mode.
+The Stokes operators can then be defined in both linear ($ H $ and $ V $) and circular ($ L $ and $ R $) polarization bases by
+\begin{subequations}
+\begin{align}
+\hat{S}_0 &= \frac{1}{2} \left[\hat{a}_H^\dagger\hat{a}_H+\hat{a}_V^\dagger\hat{a}_V \right] = \frac{1}{2} \left[\hat{a}_R^\dagger\hat{a}_R+\hat{a}_L^\dagger\hat{a}_L \right]\\
+\hat{S}_1 &= \frac{1}{2} \left[\hat{a}_H^\dagger\hat{a}_H-\hat{a}_V^\dagger\hat{a}_V \right] = \frac{1}{2} \left[\hat{a}_R^\dagger\hat{a}_L+\hat{a}_L^\dagger\hat{a}_R \right]\\
+\hat{S}_2 &= \frac{1}{2} \left[\hat{a}_H^\dagger\hat{a}_V+\hat{a}_V^\dagger\hat{a}_H \right] = \frac{i}{2} \left[\hat{a}_L^\dagger\hat{a}_R-\hat{a}_R^\dagger\hat{a}_L \right]\\
+\hat{S}_3 &= \frac{1}{2i} \left[\hat{a}_H^\dagger\hat{a}_V-\hat{a}_V^\dagger\hat{a}_H \right] = \frac{1}{2} \left[\hat{a}_R^\dagger\hat{a}_R-\hat{a}_L^\dagger\hat{a}_L \right].
+\end{align}
+\end{subequations}
+The inversed transformations can be easily derived by inverting the transformation coefficient matrices. 
+
+Based on Eq.\eqref{eq:Ebp}, the E-field operator when the input probe is linearly polarized along the diagonal ($ D $) direction can be written in the linear and circular polarization bases by 
+\begin{align}
+\hat{\mathbf{E}}^{(+)}(r\!_\perp,\phi,z;t) &= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[\mathbf{u}_H(r\!_\perp,\phi) \hat{a}_H(z,t) + \mathbf{u}_V(r\!_\perp,\phi) \hat{a}_V(z,t)\right]  e^{i \beta_0 z}\\
+&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \frac{1}{\sqrt{2}}\left[\mathbf{u}_R(r\!_\perp,\phi) \hat{a}_R(z,t) + \mathbf{u}_L(r\!_\perp,\phi) \hat{a}_L(z,t) \right.\nn\\
+&\quad\quad\quad\quad\quad\quad\left. + i\mathbf{u}_R(r\!_\perp,\phi) \hat{a}_R(z,t) - i\mathbf{u}_L(r\!_\perp,\phi) \hat{a}_L(z,t)\right]  e^{i \beta_0 z}\\
+&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[e^{i\frac{\pi}{4}}\mathbf{u}_R(r\!_\perp,\phi) \hat{a}_R(z,t) + e^{-i\frac{\pi}{4}}\mathbf{u}_L(r\!_\perp,\phi) \hat{a}_L(z,t)\right]  e^{i \beta_0 z}.
+\end{align}
+Therefore, the effective atom-light interaction Hamiltonian can be given in those bases by 
+\begin{align}
+\hat{h}_\eff &= -\hat{\mathbf{E}}^{(-)}(\br')\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot\hat{\mathbf{E}}^{(+)}(\br')\nn\\
+&= \hbar\left[(\hat{\chi}_{HH}+\hat{\chi}_{VV})\hat{S}_0 + (\hat{\chi}_{HH}-\hat{\chi}_{VV})\hat{S}_1 + (\hat{\chi}_{HV}+\hat{\chi}_{VH})\hat{S}_2 + i(\hat{\chi}_{HV}-\hat{\chi}_{VH})\hat{S}_3 \right]\\
+&= \hbar\left[(\hat{\chi}_{RR}+\hat{\chi}_{LL})\hat{S}_0 + i(\hat{\chi}_{LR}-\hat{\chi}_{RL})\hat{S}_1 + (\hat{\chi}_{RL}+\hat{\chi}_{LR})\hat{S}_2 + (\hat{\chi}_{RR}-\hat{\chi}_{LL})\hat{S}_3 \right]\\
+&=\hbar\sum_{i=0}^3 \hat{\chi}_{i}\hat{S}_i\\
+&=\hbar\sum_{i,j=0} \chi_{ij}\hat{f}_i\hat{S}_j,
+\end{align}
+with $\hat{\chi}_{pp'} $ defined in Eq.\eqref{eq:chippp}.
+
+More generally, if we define an arbitrary linear polarization basis by
+\begin{subequations}
+\begin{align}
+\hat{a}_n &= \cos\theta\hat{a}_H + \sin\theta \hat{a}_V\\
+\hat{a}_{\bar{n}} &= \cos\theta\hat{a}_V - \sin\theta \hat{a}_H,
+\end{align}
+\end{subequations}
+or the inversed relationships
+\begin{subequations}
+\begin{align}
+\hat{a}_H &= \cos\theta\hat{a}_n - \sin\theta \hat{a}_{\bar{n}}\\
+\hat{a}_V &= \sin\theta\hat{a}_n + \cos\theta \hat{a}_{\bar{n}},
+\end{align}
+\end{subequations}
+where $ \theta $ is the angle of the $ \mathbf{e}_n $ basis rotated from the $ H $-direction, and $ \mathbf{e}_{\bar{n}} $ is the basis vector $ 90^\circ $ from the $ \mathbf{e}_n $ direction. 
+One can rewrite the Stokes operators in the $ \{\mathbf{e}_n, \mathbf{e}_{\bar{n}}\} $ basis by
+\begin{subequations}\label{eq:Snnbar}
+\begin{align}
+\hat{S}_0 &= \frac{1}{2} \left[\hat{a}_n^\dagger\hat{a}_n+\hat{a}_{\bar{n}}^\dagger\hat{a}_{\bar{n}} \right]\\
+\hat{S}_1 &= \frac{1}{2} \left[\cos 2\theta \hat{a}_n^\dagger\hat{a}_n - \sin 2\theta \hat{a}_n^\dagger\hat{a}_{\bar{n}} - \sin 2\theta \hat{a}_{\bar{n}}^\dagger\hat{a}_n -\cos 2\theta \hat{a}_{\bar{n}}^\dagger\hat{a}_{\bar{n}} \right]\\
+\hat{S}_2 &= \frac{1}{2} \left[\sin 2\theta \hat{a}_n^\dagger\hat{a}_n + \cos 2\theta \hat{a}_n^\dagger\hat{a}_{\bar{n}} + \cos 2\theta \hat{a}_{\bar{n}}^\dagger\hat{a}_n -\sin 2\theta \hat{a}_{\bar{n}}^\dagger\hat{a}_{\bar{n}} \right]\\
+\hat{S}_3 &= \frac{1}{2i} \left[\hat{a}_n^\dagger\hat{a}_{\bar{n}} - \hat{a}_{\bar{n}}^\dagger\hat{a}_n  \right].
+\end{align}
+\end{subequations}
+As a shorthand, this can be expressed as an operator transformation, $ \hat{\mathbf{S}}=\mathbf{M}\hat{\mathbf{A}}_{n,\bar{n}} $, where $ \hat{\mathbf{S}}=[\hat{S}_0,\hat{S}_1,\hat{S}_2,\hat{S}_3] $ and $ \hat{\mathbf{A}}_{n,\bar{n}}=[\hat{a}_n^\dagger\hat{a}_n,\hat{a}_n^\dagger\hat{a}_{\bar{n}},\hat{a}_{\bar{n}}^\dagger\hat{a}_n,\hat{a}_{\bar{n}}^\dagger\hat{a}_{\bar{n}}] $ are the operator vectors and $ \mathbf{M} $ is the transformation matrix defined by the transformation coefficients in Eqs.\eqref{eq:Snnbar}.
+One can prove that the inversed transformation matrix $ \mathbf{M}^{-1}=2\mathbf{M}^\dagger $.
+
+With a probe input light polarized along the $ D $-direction, the E-field operator can be written in the linear and circular polarization bases by 
+\begin{align}
+\hat{\mathbf{E}}^{(+)}(\br;t) &= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[\mathbf{u}_H(r\!_\perp,\phi) \hat{a}_H(z,t) + \mathbf{u}_V(r\!_\perp,\phi) \hat{a}_V(z,t)\right]  e^{i \beta_0 z}\\
+&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[\cos\theta\mathbf{u}_n(r\!_\perp,\phi) \hat{a}_n(z,t) - \sin\theta\mathbf{u}_{\bar{n}}(r\!_\perp,\phi) \hat{a}_{\bar{n}}(z,t) \right.\nn\\
+&\quad\quad\quad\quad\quad\left. + \sin\theta\mathbf{u}_n(r\!_\perp,\phi) \hat{a}_n(z,t) + \cos\theta\mathbf{u}_{\bar{n}}(r\!_\perp,\phi) \hat{a}_{\bar{n}}(z,t)\right]  e^{i \beta_0 z}\\
+&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \sqrt{2}\left[\cos(\theta\!-\!\frac{\pi}{4})\mathbf{u}_n(r\!_\perp,\phi) \hat{a}_n(z,t) + \cos(\theta\!+\!\frac{\pi}{4})\mathbf{u}_{\bar{n}}(r\!_\perp,\phi) \hat{a}_{\bar{n}}(z,t)\right]  e^{i \beta_0 z}.
+\end{align}
+Therefore, the effective atom-light interaction Hamiltonian can be written as
+\begin{align}
+\hat{h}_\eff &= -\hat{\mathbf{E}}^{(-)}(\br')\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot\hat{\mathbf{E}}^{(+)}(\br')\nn\\
+&= \hbar\left[(\hat{\chi}_{HH}+\hat{\chi}_{VV})\hat{S}_0 + (\hat{\chi}_{HH}-\hat{\chi}_{VV})\hat{S}_1 + (\hat{\chi}_{HV}+\hat{\chi}_{VH})\hat{S}_2 + i(\hat{\chi}_{HV}-\hat{\chi}_{VH})\hat{S}_3 \right]
+\end{align}
+
+
+If we set $ \theta=\pi/4 $, we will be in the $ \{\mathbf{e}_D,\mathbf{e}_{\bar{D}} \} $ basis.
+\begin{subequations}
+\begin{align}
+\hat{a}_D &= \frac{1}{\sqrt{2}}(\hat{a}_H+\hat{a}_V)\\
+\hat{a}_{\bar{D}} &= \frac{1}{\sqrt{2}}(\hat{a}_V-\hat{a}_H),
+\end{align}
+\end{subequations}
+or,
+\begin{subequations}
+\begin{align}
+\hat{a}_H &= \frac{1}{\sqrt{2}}(\hat{a}_D-\hat{a}_{\bar{D}})\\
+\hat{a}_V &= \frac{1}{\sqrt{2}}(\hat{a}_D+\hat{a}_{\bar{D}}).
+\end{align}
+\end{subequations}
+The Stokes operators becomes
+\begin{subequations}
+\begin{align}
+\hat{S}_0 &= \frac{1}{2} \left[\hat{a}_D^\dagger\hat{a}_D+\hat{a}_{\bar{D}}^\dagger\hat{a}_{\bar{D}} \right]\\
+\hat{S}_1 &= -\frac{1}{2} \left[ \hat{a}_D^\dagger\hat{a}_{\bar{D}} +  \hat{a}_{\bar{D}}^\dagger\hat{a}_D \right]\\
+\hat{S}_2 &= \frac{1}{2} \left[\hat{a}_D^\dagger\hat{a}_D - \hat{a}_{\bar{D}}^\dagger\hat{a}_{\bar{D}} \right]\\
+\hat{S}_3 &= \frac{1}{2i} \left[\hat{a}_D^\dagger\hat{a}_{\bar{D}}-\hat{a}_{\bar{D}}^\dagger\hat{a}_D \right].
+\end{align}
+\end{subequations}
 
 %===================APPENDIX: Photon scattering and optical pumping rates =====================%
 \section{Photon scattering and optical pumping rates} \label{Appendix::Rates}
@@ -760,43 +872,6 @@ In the far-detuning regime, the detuning on hyperfine sublevels will be degenera
 \left.\dt{\rhoo}\right|_{\rm op} = \gamma'_s \sum_{f'} \left[C_{j'ff'}^{(0)}(C_{j'ff'}^{(0)}-1)\rhoo+\frac{1}{2}(C_{j'ff'}^{(1)})^2(\fx\rhoo\fx+\fy\rhoo\fy+2\fz\rhoo\fz ) \right].
 \end{align}
 
-%===================APPENDIX: Circular VS linear polarization mode bases =====================%
-\section{Circular V.S. linear polarization bases}\label{Appendix:LRbases}
-\comment{This content is mainly typed from my notes on Faraday Interaction in The Nanofiber Geometry. More can be done here.}
-
-We define a set of polarization vector transformation relationships by 
-\begin{subequations}
-\begin{align}
-\hat{a}_H &= \frac{1}{\sqrt{2}}(\hat{a}_R+\hat{a}_L )\\
-\hat{a}_V &= \frac{i}{\sqrt{2}}(\hat{a}_R-\hat{a}_L ),
-\end{align}
-\end{subequations}
-or the inverse
-\begin{subequations}
-\begin{align}
-\hat{a}_R &= \frac{1}{\sqrt{2}}(\hat{a}_H-i\hat{a}_V )\\
-\hat{a}_L &= \frac{1}{\sqrt{2}}(\hat{a}_H+i\hat{a}_V ),
-\end{align}
-\end{subequations}
-where $ R $($ L $) indicates the right(left)-circularly polarized mode.
-The Stokes operators can then be defined in both linear ($ H $ and $ V $) and circular ($ L $ and $ R $) polarization bases by
-\begin{subequations}
-\begin{align}
-\hat{S}_0 &= \frac{1}{2} \left[\hat{a}_H^\dagger\hat{a}_H+\hat{a}_V^\dagger\hat{a}_V \right] = \frac{1}{2} \left[\hat{a}_R^\dagger\hat{a}_R+\hat{a}_L^\dagger\hat{a}_L \right]\\
-\hat{S}_1 &= \frac{1}{2} \left[\hat{a}_H^\dagger\hat{a}_H-\hat{a}_V^\dagger\hat{a}_V \right] = \frac{1}{2} \left[\hat{a}_R^\dagger\hat{a}_L+\hat{a}_L^\dagger\hat{a}_R \right]\\
-\hat{S}_2 &= \frac{1}{2} \left[\hat{a}_H^\dagger\hat{a}_V+\hat{a}_V^\dagger\hat{a}_H \right] = \frac{i}{2} \left[\hat{a}_L^\dagger\hat{a}_R-\hat{a}_R^\dagger\hat{a}_L \right]\\
-\hat{S}_3 &= \frac{1}{2i} \left[\hat{a}_H^\dagger\hat{a}_V-\hat{a}_V^\dagger\hat{a}_H \right] = \frac{1}{2} \left[\hat{a}_R^\dagger\hat{a}_R-\hat{a}_L^\dagger\hat{a}_L \right].
-\end{align}
-\end{subequations}
-Therefore, the effective atom-light interaction Hamiltonian can be given in those bases by 
-\begin{align}
-\hat{h}_\eff &= -\hat{\mathbf{E}}^{(-)}(\br')\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot\hat{\mathbf{E}}^{(+)}(\br')\nn\\
-&= \hbar\left[(\hat{\chi}_{HH}+\hat{\chi}_{VV})\hat{S}_0 + (\hat{\chi}_{HH}-\hat{\chi}_{VV})\hat{S}_1 + (\hat{\chi}_{HV}+\hat{\chi}_{VH})\hat{S}_2 + i(\hat{\chi}_{HV}-\hat{\chi}_{VH})\hat{S}_3 \right]\\
-&= \hbar\left[(\hat{\chi}_{RR}+\hat{\chi}_{LL})\hat{S}_0 + i(\hat{\chi}_{LR}-\hat{\chi}_{RL})\hat{S}_1 + (\hat{\chi}_{RL}+\hat{\chi}_{LR})\hat{S}_2 + (\hat{\chi}_{RR}-\hat{\chi}_{LL})\hat{S}_3 \right]\\
-&=\hbar\sum_{i=0}^3 \hat{\chi}_{i}\hat{S}_i\\
-&=\hbar\sum_{i,j=0} \chi_{ij}\hat{f}_i\hat{S}_j,
-\end{align}
-with $\hat{\chi}_{pp'} $ defined in Eq.\eqref{eq:chippp}.
 
 %===================APPENDIX: Equations of motion =====================%
 \section{Generalized master equation for spin squeezing dynamics with arbitrary spin number $f$} \label{Appendix::OpticalPumpingForGeneralF}
