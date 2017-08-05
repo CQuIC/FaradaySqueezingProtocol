@@ -224,9 +224,9 @@ Cooperativity also characterizes the atom-light interface in the absence of a ca
 
 In recent years, nanophotonic waveguides have emerged as new geometry that complements cavity QED, and can lead to strong cooperativity~\cite{?}.  Notably, the effective area of a tightly guided mode can be much smaller than free space and propagate for long distances without diffraction.  As such,  $\sigma_0/A$ can be orders of magnitude larger than in free space, e.g., $\sigma_0/A \sim 0.1$, and contribute collectively for a modest ensemble of a few thousand atoms trapped near the surface of the waveguide.  Moreover, in some cases the Purcell effect can further enhance forward scattering into the guided mode when compared with scattering into free space.  Taken together, these features make  nanophotonic waveguides a promising platform for a quantum atom-light interface~\cite{?}.
  
-In this paper we show that one can achieve an additional enhancement to the cooperativity in a nanophotonic geometry that is not possible in free space. In particular, we consider QND measurement of the atomic spin via polarization spectroscopy.  Counterintuitively, we will see that the strongest cooperativity arises when the atom is placed at the position of {\em minimum} intensity of the azimuthally anisotropic probe mode.  This arises because decoherence due to photon scattering into unguided $4 \pi$ steradians occurs at a rate $\gamma_s$ dominated by the probe {\em intensity}.  In contrast, the measurement strength in polarization polarization spectroscopy arises from a homodyne measurement, where the probe is ``local oscillator" and the signal is the light scattered into the orthogonally polarized guided mode.  The the measurement strength depends only on the {\em amplitude} of the probe. Nonetheless, the spatial overlap of these probe and signal modes can be large, even when the local oscillator small.  The net result can be substantial enhancement of  $C_1 = \kappa/\gamma_s$, especially for highly anisotropic guided modes.  
+In this paper we show that one can achieve an additional enhancement to the cooperativity in a nanophotonic geometry that is not possible in free space. In particular, we consider QND measurement of the atomic spin via polarization spectroscopy.  Counterintuitively, we will see that the strongest cooperativity arises when the atom is placed at the position of {\em minimum} intensity of the azimuthally anisotropic probe mode.  This arises because decoherence due to photon scattering into unguided $4 \pi$ steradians occurs at a rate $\gamma_s$ dominated by the probe {\em intensity}.  In contrast, the measurement strength in  polarization spectroscopy arises from a homodyne measurement, where the probe is the ``local oscillator" and the signal is the light scattered into the orthogonally polarized guided mode.  The measurement strength depends only on the {\em amplitude} of the probe. Nevertheless, the spatial overlap of the probe and signal modes can be large, even when the probe (local oscillator) amplitude small at the position of the atom.  The net result can be substantial enhancement of  $C_1 = \kappa/\gamma_s$, especially for highly anisotropic guided modes.  
 
-We study this effect for two nanophotonic geometries: a cylindrical nanofiber formed by tapering a standard optical fiber, as currently employed in a variety of experimental studies~\cite{?}, and a square waveguide, currently nanofabricated at Sandia National Laboratories.  For each geometry we study QND measurement-induced squeezing of collective spins of cesium atoms in two protocols: squeezing the pseudo-spin clock transition by measuring the induced birefringence~\cite{Qi2016}, and squeezing the physical spin in the stretched state by measuring the induced Faraday rotation~\cite{?}.  Through the enhanced cooperativity, QND measurement can lead to substantial squeezing, greater than 10 dB in some geometries, for 2500 atoms.
+We study this effect for two nanophotonic geometries: a cylindrical nanofiber formed by tapering a standard optical fiber, as currently employed in a variety of experimental studies~\cite{?}, and a square waveguide, currently nanofabricated at Sandia National Laboratories~\cite{?|}.  For each geometry we study QND measurement-induced squeezing of collective spins of cesium atoms in two protocols: squeezing the pseudo-spin clock transition by measuring the induced birefringence~\cite{Qi2016}, and squeezing the physical spin in the stretched state by measuring the induced Faraday rotation~\cite{?}.  Through the enhanced cooperativity, QND measurement can lead to substantial squeezing, greater than 10 dB in some geometries, for 2500 atoms.
 
 The remainder of the paper is organized as follows.  In Sec. II we lay out the theoretical description of the QND measurement and the relevant measurement strength.  In addition we describe how decoherence is included in the model through a first-principles stochastic master equation description.  From this we will see the cooperativity emerge as the key parameter that characterizes the squeezing.  We calculate in Sec. III the squeezing dynamics for the different nanophotonic waveguides, atomic preparations, and measurement protocols.  We conclude with a summary and outlook for future work.
 
@@ -236,11 +236,8 @@ The remainder of the paper is organized as follows.  In Sec. II we lay out the t
 
 %========================== Theory ===================================%
 \section{Theory} \label{Sec::Theory}
-To study the spin dynamics of the QND measurement process, it is usually valid to calculate the density if the dimension is small. 
-For a large ensemble of atoms, however, it requires a big dimension to store the density matrix and it becomes extremely difficult to calculate the evolution of the density operator.
-Below, we outline our general method to study the spin dynamics and the spin squeezing evolution without calculating the density operator.
 
-A \textit{squeezed coherent spin state}\index{squeezed spin state!squeezed coherent spin state} is a spin state that the uncertainty principle of two quadratures of collective spin operators saturates and one quadrature is smaller than the other. 
+A  spin squeezed coherent state \index{squeezed spin state!squeezed coherent spin state} is a spin state that the uncertainty principle of two quadratures of collective spin operators saturates and one quadrature is smaller than the other. 
 For example, a squeezed coherent spin state may satisfy $ \Delta F_1\Delta F_2=\frac{1}{2} $ (we set $ \hbar=1 $) and $ \Delta F_1<\Delta F_2 $, where $ \hat{F}_1 $ and $ \hat{F}_2 $ are two collective spin operators. 
 In general, a \textit{squeezed spin state}\index{squeezed spin state} always satisfies the uncertainty principle relationship $ \Delta F_1\Delta F_2\ge\frac{1}{2} $.
 We call the operator that yields the smaller quadrature as the atomic angular momentum operator $ \hat{F}_\perp $ and 
@@ -334,7 +331,15 @@ In our case, we assume the state of the ensemble can be well captured in the sym
 %========================== Theory ===================================%
 \section{Spin squeezing protocols based on birefringence and Faraday interactions} \label{Sec::comparison}
 \subsection{Atom-light interaction Hamiltonian}
-Following the process demonstrated in our previous work~\cite{Qi2016}, the light-atom interaction Hamiltonian with one atom can be written as
+In this paper, we consider a $ D $-mode probe by propagating a linearly polarized light into an optical nanofiber or other waveguides, in general. 
+The electric field of the $ D $-mode in the waveguide region can be decomposed into mutually orthogonal guided $ H $- and $ V $-modes formed by two linearly polarized incident laser beams with orthogonal polarization directions. 
+The local electric field at $ \br=(r\!_\perp,\phi,z) $ with a diagonally polarized incident mode can be given by
+\begin{align}\label{eq:Ebp}
+\hat{\mathbf{E}}^{(+)}(r\!_\perp,\phi,z;t) &= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[\mathbf{u}_H(r\!_\perp,\phi) \hat{a}_H(z,t) + \mathbf{u}_V(r\!_\perp,\phi) \hat{a}_V(z,t)\right]  e^{i \beta_0 z},
+\end{align}
+where $ \mathbf{u}_{H/V} $ are the degenerate $ H $- and $ V $-mode profile functions in the transverse plane of the waveguide while the field is propagating along the $ z $-direction, $ \omega_0 $ is the probe's angular frequency, $ v_g $ is the group velocity of the modes, and $ \beta_0 $ is the propagation constant in the $ z $-direction. 
+
+Following the process demonstrated in our previous work~\cite{Qi2016} which has been briefly summarized in appendix~\ref{Appendix:LRbases}, the light-atom interaction Hamiltonian with one atom placed at position $ \br'=(r'\!_\perp,\phi',z') $ can be written as
 \begin{align}
 \hat{h}_\eff &= -\hat{\mathbf{E}}^{(-)}(\br')\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot\hat{\mathbf{E}}^{(+)}(\br')\nn\\
 &= -\frac{2\pi\hbar\omega}{v_g}\left[\mathbf{u}_H^*\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot \mathbf{u}_H\hat{a}_H^\dagger\hat{a}_H\right.
@@ -353,17 +358,17 @@ Following the process demonstrated in our previous work~\cite{Qi2016}, the light
 &=\hbar\sum_{i=0}^3 \hat{\chi}_{i}\hat{S}_i\\
 &=\hbar\sum_{i,j=0} \chi_{ij}\hat{f}_i\hat{S}_j,
 \end{align}
-where $ \hat{S}_i $ are the Stokes vector operators of the light indicating its polarization, and the mode-atom coupling operator
+where $ \hat{S}_i $ are the Stokes vector operators of the light indicating its polarization, $ \hat{\tensor{\mathbf{\alpha}}} $ is the atomic polarizability operator, and the mode-atom coupling operator
 \begin{align}
 \hat{\chi}_{pp'} 
-&=-\frac{2\pi \omega}{v_g}\mathbf{u}_{p}^*(r'\!_perp,\phi')\cdot \hat{\tensor{\alpha}}\cdot \mathbf{u}_{p'}(r'\!_perp,\phi')\\
+&=-\frac{2\pi \omega}{v_g}\mathbf{u}_{p}^*(r'\!_\perp,\phi')\cdot \hat{\tensor{\alpha}}\cdot \mathbf{u}_{p'}(r'\!_\perp,\phi')\\
 &= \sum_{f'} \frac{n_g\sigma_0}{4}\frac{\Gamma_{f'}}{\Delta_{ff'}+i\Gamma_{f'}/2}\cdot \left\{ C_{j'ff'}^{(0)}\mathbf{u}_p^*(r'\!_\perp)\cdot \mathbf{u}_{p'}(r'\!_\perp)\hat{\mathbbm{1}}\right.\nn\\
 &\quad\quad +iC_{j'ff'}^{(1)}\left(\mathbf{u}_p^*(r'\!_\perp)\times\mathbf{u}_{p'}(r'\!_\perp) \right)\cdot \hat{\mathbf{f}} \nonumber\\
-&\quad\quad\left. + C_{j'ff'}^{(2)}\sum_{i,j}\left[u^*_{p,i}u_{p',j}(\frac{\hat{f}_i\hat{f}_j+\hat{f}_j\hat{f}_i}{2}-\frac{\delta_{ij}}{3}\hat{\mathbf{f}}\cdot\hat{\mathbf{f}}) \right]\right\}
+&\quad\quad\left. + C_{j'ff'}^{(2)}\sum_{i,j}\left[u^*_{p,i}u_{p',j}(\frac{\hat{f}_i\hat{f}_j+\hat{f}_j\hat{f}_i}{2}-\frac{\delta_{ij}}{3}\hat{\mathbf{f}}\cdot\hat{\mathbf{f}}) \right]\right\}.
 %&\left.+C_{jj'ff'}^{(2)}\left[\mathbf{u}_p^*(r'\!_\perp)\cdot \mathbf{u}_{p'}(r'\!_\perp)\left(\frac{f(f+1)}{6}-\frac{m^2}{2} \right)+\mathbf{u}_p^*(r'\!_\perp)\cdot (\hat{e}^*_{\tilde{z}}\hat{e}_{\tilde{z}})\cdot \mathbf{u}_{p'}(r'\!_\perp)\left(\frac{3m^2}{2}-\frac{f(f+1)}{2} \right) \right] \right\}
 \label{eq:chippp}
 \end{align}
-with the horizontally(H)- and vertically(V)-linearly polarized guided modes, $ \mathbf{u}_p(r'\!_\perp) $, at the atom position $ \br'=(r'\!_\perp,\phi',z') $. 
+with the horizontally(H)- and vertically(V)-linearly polarized guided modes, $ \mathbf{u}_p(r'\!_\perp) $. 
 $ \chi_{ij}=\tr[\hat{f}_i\hat{\chi}_j]/(2f+1) $ is the coupling strength between spin operator $ \hat{f}_i $ and Stokes operator $ \hat{S}_j $. 
 For example, $ \chi_{33} $ is the coupling strength between $ \hat{f}_z $ and $ \hat{S}_3 $.
 The fundamental guided modes of an optical nanofiber has been defined in the appendix of our previous paper~\cite{Qi2016}. 
@@ -508,6 +513,15 @@ The Stokes operators can then be defined in both linear ($ H $ and $ V $) and ci
 \hat{S}_3 &= \frac{1}{2i} \left[\hat{a}_H^\dagger\hat{a}_V-\hat{a}_V^\dagger\hat{a}_H \right] = \frac{1}{2} \left[\hat{a}_R^\dagger\hat{a}_R-\hat{a}_L^\dagger\hat{a}_L \right].
 \end{align}
 \end{subequations}
+The inversed transformations can be easily derived by inverting the transformation coefficient matrices. 
+
+Based on Eq.\eqref{eq:Ebp}, the E-field operator when the input probe is linearly polarized along the diagonal ($ D $) direction can be written in the linear and circular polarization bases by 
+\begin{align}
+\hat{\mathbf{E}}^{(+)}(r\!_\perp,\phi,z;t) &= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[\mathbf{u}_H(r\!_\perp,\phi) \hat{a}_H(z,t) + \mathbf{u}_V(r\!_\perp,\phi) \hat{a}_V(z,t)\right]  e^{i \beta_0 z}\\
+&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \frac{1}{\sqrt{2}}\left[\mathbf{u}_R(r\!_\perp,\phi) \hat{a}_R(z,t) + \mathbf{u}_L(r\!_\perp,\phi) \hat{a}_L(z,t) \right.\nn\\
+&\quad\quad\quad\quad\quad\quad\left. + i\mathbf{u}_R(r\!_\perp,\phi) \hat{a}_R(z,t) - i\mathbf{u}_L(r\!_\perp,\phi) \hat{a}_L(z,t)\right]  e^{i \beta_0 z}\\
+&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[e^{i\frac{\pi}{4}}\mathbf{u}_R(r\!_\perp,\phi) \hat{a}_R(z,t) + e^{-i\frac{\pi}{4}}\mathbf{u}_L(r\!_\perp,\phi) \hat{a}_L(z,t)\right]  e^{i \beta_0 z}.
+\end{align}
 Therefore, the effective atom-light interaction Hamiltonian can be given in those bases by 
 \begin{align}
 \hat{h}_\eff &= -\hat{\mathbf{E}}^{(-)}(\br')\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot\hat{\mathbf{E}}^{(+)}(\br')\nn\\
