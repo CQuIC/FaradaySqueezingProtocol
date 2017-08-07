@@ -519,10 +519,11 @@ We also define a set of Stokes operators as below,
 \hat{S}_3 &= \smallfrac{1}{2i}\big[ \hat{a}^\dag_H(t) \hat{a}_V(t) -\hat{a}^\dag_V(t) \hat{a}_H(t) \big],
 \end{align}
 where the photon annihilation operators of the horizontally and vertically polarized modes denoted with subscription $ H $ and $ V $ respectively are related to the left- and right-circularly polarized modes denoted with subscription $ L $ and $ R $ by $ \hat{a}_{H}=(\hat{a}_L+\hat{a}_R) /\sqrt{2}$ and $ \hat{a}_{V}=i(\hat{a}_R-\hat{a}_L)/\sqrt{2} $.
-The local electric field at $ (r\!_\perp,\phi,z) $ with a diagonally polarized incident mode can be given by
+The local quasimonochromatic electric field operator at $\br= (r\!_\perp,\phi,z) $ with a set of degenerate guided modes at frequency $ \omega_0 $ and propagating in the group velocity of $ v_g $ can be given by
 \begin{align}\label{eq:Ebp}
-\hat{\mathbf{E}}^{(+)}(r\!_\perp,\phi,z;t) &= \sum_{b,p} \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \mathbf{u}_{b,p}(r\!_\perp,\phi) \hat{a}_{b,p}(z,t)  e^{i b \beta_0 z}.
+\hat{\mathbf{E}}^{(+)}(r\!_\perp,\phi,z;t) &= \sum_{b,p} \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \mathbf{u}_{b,p}(r\!_\perp,\phi) \hat{a}_{b,p}(z,t)  e^{i (b\beta_0 z- \omega_0 t)},
 \end{align}
+where $ b $ is the propagation direction and $ p $ is the polarization label of the orthonormal modes.
 
 \comment{Todo: Rewrite the effective Hamiltonian using the collective operators defined above.}
 
