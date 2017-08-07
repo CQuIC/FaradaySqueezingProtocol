@@ -587,8 +587,16 @@ or the inversed relationships
 \hat{a}_V &= \sin\theta\hat{a}_n + \cos\theta \hat{a}_{\bar{n}},
 \end{align}
 \end{subequations}
-where $ \theta $ is the angle of the $ \mathbf{e}_n $ basis rotated from the $ H $-direction, and $ \mathbf{e}_{\bar{n}} $ is the basis vector $ 90^\circ $ from the $ \mathbf{e}_n $ direction. 
-One can rewrite the Stokes operators in the $ \{\mathbf{e}_n, \mathbf{e}_{\bar{n}}\} $ basis by
+where $ \theta $ is the angle of the $ \mathbf{e}_n $ basis rotated from the $ H $-direction around $ z $-axis, and $ \mathbf{e}_{\bar{n}} $ is the basis vector $ 90^\circ $ from the $ \mathbf{e}_n $ direction. 
+Written in a matrix form, 
+\begin{align}
+\hat{\mathbf{a}}_{n,\bar{n}}=\mathbf{R}\cdot \hat{\mathbf{a}}_{H,V},
+\end{align}
+where $ \hat{\mathbf{a}}_{n,\bar{n}}=[\hat{a}_n;\hat{a}_{\bar{n}}] $ and $ \hat{\mathbf{a}}_{H,V}=[\hat{a}_H;\hat{a}_V] $ are the annihilation operator vectors for the $ \{n,\bar{n} \} $ and $ \{H,V \} $ bases, respectively;
+$ \mathbf{R}=\mathbf{R}_z(\theta) $ is the Euler rotation matrix about the $ z $-axis by $ \theta $ in the real-number $ \mathbf{SO}(3) $ rotation group, which has the property that $ \mathbf{R}^{-1}=\mathbf{R}^T $. 
+In our notation, we use $ [\cdot ;\cdots] $ notation to indicate $ 1\times n $ vectors as matrices, and treat dot ($ \cdot $) products as the matrix products and will denote complex conjugates explicitly.
+
+Using the definition in the $ \{ H,V\} $-basis and the annihilation operator basis transformation relationships above, one can rewrite the Stokes operators in the $ \{\mathbf{e}_n, \mathbf{e}_{\bar{n}}\} $ basis by
 \begin{subequations}\label{eq:Snnbar}
 \begin{align}
 \hat{S}_0 &= \frac{1}{2} \left[\hat{a}_n^\dagger\hat{a}_n+\hat{a}_{\bar{n}}^\dagger\hat{a}_{\bar{n}} \right]\\
@@ -597,21 +605,39 @@ One can rewrite the Stokes operators in the $ \{\mathbf{e}_n, \mathbf{e}_{\bar{n
 \hat{S}_3 &= \frac{1}{2i} \left[\hat{a}_n^\dagger\hat{a}_{\bar{n}} - \hat{a}_{\bar{n}}^\dagger\hat{a}_n  \right].
 \end{align}
 \end{subequations}
-As a shorthand, this can be expressed as an operator transformation, $ \hat{\mathbf{S}}=\mathbf{M}\hat{\mathbf{A}}_{n,\bar{n}} $, where $ \hat{\mathbf{S}}=[\hat{S}_0,\hat{S}_1,\hat{S}_2,\hat{S}_3] $ and $ \hat{\mathbf{A}}_{n,\bar{n}}=[\hat{a}_n^\dagger\hat{a}_n,\hat{a}_n^\dagger\hat{a}_{\bar{n}},\hat{a}_{\bar{n}}^\dagger\hat{a}_n,\hat{a}_{\bar{n}}^\dagger\hat{a}_{\bar{n}}] $ are the operator vectors and $ \mathbf{M} $ is the transformation matrix defined by the transformation coefficients in Eqs.\eqref{eq:Snnbar}.
+As a shorthand, this can be expressed as an operator transformation, $ \hat{\mathbf{S}}=\mathbf{M}\hat{\mathbf{A}}_{n,\bar{n}} $, where $ \hat{\mathbf{S}}=[\hat{S}_0;\hat{S}_1;\hat{S}_2;\hat{S}_3] $ and $ \hat{\mathbf{A}}_{n,\bar{n}}=[\hat{a}_n^\dagger\hat{a}_n;\hat{a}_n^\dagger\hat{a}_{\bar{n}};\hat{a}_{\bar{n}}^\dagger\hat{a}_n;\hat{a}_{\bar{n}}^\dagger\hat{a}_{\bar{n}}] $ are the operator vectors and $ \mathbf{M} $ is the transformation matrix defined by the transformation coefficients in Eqs.\eqref{eq:Snnbar}.
 One can prove that the inversed transformation matrix $ \mathbf{M}^{-1}=2\mathbf{M}^\dagger $.
+
 
 With a probe input light polarized along the $ D $-direction, the E-field operator can be written in the linear and circular polarization bases by 
 \begin{align}
 \hat{\mathbf{E}}^{(+)}(\br;t) &= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[\mathbf{u}_H(r\!_\perp,\phi) \hat{a}_H(z,t) + \mathbf{u}_V(r\!_\perp,\phi) \hat{a}_V(z,t)\right]  e^{i \beta_0 z}\\
 &= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[\cos\theta\mathbf{u}_n(r\!_\perp,\phi) \hat{a}_n(z,t) - \sin\theta\mathbf{u}_{\bar{n}}(r\!_\perp,\phi) \hat{a}_{\bar{n}}(z,t) \right.\nn\\
 &\quad\quad\quad\quad\quad\left. + \sin\theta\mathbf{u}_n(r\!_\perp,\phi) \hat{a}_n(z,t) + \cos\theta\mathbf{u}_{\bar{n}}(r\!_\perp,\phi) \hat{a}_{\bar{n}}(z,t)\right]  e^{i \beta_0 z}\\
-&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \sqrt{2}\left[\cos(\theta\!-\!\frac{\pi}{4})\mathbf{u}_n(r\!_\perp,\phi) \hat{a}_n(z,t) + \cos(\theta\!+\!\frac{\pi}{4})\mathbf{u}_{\bar{n}}(r\!_\perp,\phi) \hat{a}_{\bar{n}}(z,t)\right]  e^{i \beta_0 z}.
+&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \sqrt{2}\left[\cos(\theta\!-\!\frac{\pi}{4})\mathbf{u}_n(r\!_\perp,\phi) \hat{a}_n(z,t) + \cos(\theta\!+\!\frac{\pi}{4})\mathbf{u}_{\bar{n}}(r\!_\perp,\phi) \hat{a}_{\bar{n}}(z,t)\right]  e^{i \beta_0 z}.\label{eq:Efieldop_nnbar}
 \end{align}
+If we rewrite the field operator in a matrix form, we can have
+\begin{align}
+\hat{\mathbf{E}}^{(+)}(\br;t) &= \mathbf{g}_{H,V}^T\cdot\mathbf{R}^{-1}\cdot[\hat{\mathbf{E}}^{(+)}_{n,\bar{n}}(\br;t)],
+\end{align}
+where $ \mathbf{g}_{H,V}=[1;1] $ is the weighting coefficient of $ H $- and $ V $-modes in the field components, $ [\hat{\mathbf{E}}^{(+)}_{n,\bar{n}}(\br;t)]=\sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} }[\mathbf{u}_n(r\!_\perp,\phi) \hat{a}_n(z,t); \mathbf{u}_{\bar{n}}(r\!_\perp,\phi) \hat{a}_{\bar{n}}(z,t)]e^{i \beta_0 z} $ is the field operator vector in the $ \{n,\bar{n} \} $ basis, and hence the $ 2\times 1 $ vector of $ \mathbf{g}_{H,V}^T\cdot\mathbf{R}^{-1} $ indicates the coefficients of the two field components in the new basis calculated in Eq.\eqref{eq:Efieldop_nnbar}.
+
 Therefore, the effective atom-light interaction Hamiltonian can be written as
 \begin{align}
 \hat{h}_\eff &= -\hat{\mathbf{E}}^{(-)}(\br')\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot\hat{\mathbf{E}}^{(+)}(\br')\nn\\
-&= \hbar\left[(\hat{\chi}_{HH}+\hat{\chi}_{VV})\hat{S}_0 + (\hat{\chi}_{HH}-\hat{\chi}_{VV})\hat{S}_1 + (\hat{\chi}_{HV}+\hat{\chi}_{VH})\hat{S}_2 + i(\hat{\chi}_{HV}-\hat{\chi}_{VH})\hat{S}_3 \right]
+&= \hbar\left\{[(1+\sin 2\theta)\hat{\chi}_{nn}+ (1-\sin 2\theta)\hat{\chi}_{\bar{n}\bar{n}}]\hat{S}_0 \right.\nn\\
+&\quad+ [(\frac{\sin 4\theta}{2}+\cos 2\theta) \hat{\chi}_{nn}- \frac{\sin 4\theta}{2}(\hat{\chi}_{n\bar{n}}+\hat{\chi}_{\bar{n}n}) + (\frac{\sin 4\theta}{2}-\cos 2\theta)\hat{\chi}_{\bar{n}\bar{n}}]\hat{S}_1 \nn\\
+&\quad+ [(\frac{1-\cos 4\theta}{2}+\sin 2\theta) \hat{\chi}_{nn}+ \frac{\cos 4\theta + 1}{2}(\hat{\chi}_{n\bar{n}}+\hat{\chi}_{\bar{n}n}) + (\frac{1-\cos 4\theta}{2}-\sin 2\theta)\hat{\chi}_{\bar{n}\bar{n}}]\hat{S}_2 \nn\\
+&\quad+\left. i\cos (2\theta) \left[(\hat{\chi}_{n\bar{n}}-\hat{\chi}_{\bar{n}n})\hat{S}_3 \right]\right\}.\label{eq:heff_nnbarChiS}
 \end{align}
+In the matrix form, we have
+\begin{align}
+\hat{h}_\eff &= \hbar\hat{\boldsymbol{\chi}}_{n,\bar{n}}^T\cdot \mathbf{K}\cdot \hat{\mathbf{S}},
+\end{align}
+where $\hat{\boldsymbol{\chi}}_{n,\bar{n}}=[\hat{\chi}_{nn};\hat{\chi}_{n\bar{n}};\hat{\chi}_{\bar{n}n};\hat{\chi}_{\bar{n}\bar{n}}]$ is the coupling operator vector, and the spin-polarization coupling coefficient matrix $ \mathbf{K}= \mathrm{vec}[\mathbf{R}^{-1}\cdot(\mathbf{g}_{H,V}^\dagger\cdot\mathbf{g}_{H,V})\cdot \mathbf{R} ]\cdot \mathbf{M}^{-1}= (\mathbf{R}^T\otimes \mathbf{R}^T)\cdot\mathrm{vec}[\mathbf{g}_{H,V}^\dagger\cdot\mathbf{g}_{H,V}]\cdot\mathbf{M}^{-1}$, where $ \otimes $ is the sign of Kronecker product between matrices.
+The notation $ \mathrm{vec}[\cdot] $ means the vecterization of a matrix by stacking its columns. 
+For our case, $ \mathrm{vec}[\mathbf{g}_{H,V}^\dagger\cdot\mathbf{g}_{H,V}]=[1;1;1;1] $.
+The coupling coefficient elements, $ K_{ij} $, correspond to the coupling coefficients in Eq.\eqref{eq:heff_nnbarChiS} between the spin operators in $ \hat{\boldsymbol{\chi}}_{n,\bar{n}} $ and the polarization operators in $ \hat{\mathbf{S}} $.
 
 
 If we set $ \theta=\pi/4 $, we will be in the $ \{\mathbf{e}_D,\mathbf{e}_{\bar{D}} \} $ basis.
@@ -637,6 +663,14 @@ The Stokes operators becomes
 \hat{S}_3 &= \frac{1}{2i} \left[\hat{a}_D^\dagger\hat{a}_{\bar{D}}-\hat{a}_{\bar{D}}^\dagger\hat{a}_D \right].
 \end{align}
 \end{subequations}
+The effective Hamiltonian can be simplified from Eq.\eqref{eq:heff_nnbarChiS} to 
+\begin{align}
+\hat{h}_\eff &= 2\hbar[\hat{\chi}_{DD}\hat{S}_0 + \hat{\chi}_{DD}\hat{S}_2].
+\end{align}
+This may not be correct, since there is no $ \bar{D} $-mode contributions. 
+The Hamiltonian expression above reflects the fact that if we regard the Hamiltonian being determined by the polarization state of the input light, then a $ D $-mode input case won't have the $ \bar{D} $-mode contribution. 
+This indirectly implies that the light-atom interaction Hamiltonian may be written as a decomposition of orthonormal modes given it should include all spontaneous decay components rather than to be limited to the components defined by the input light. 
+This needs to be fixed later.
 
 %===================APPENDIX: Photon scattering and optical pumping rates =====================%
 \section{Photon scattering and optical pumping rates} \label{Appendix::Rates}
