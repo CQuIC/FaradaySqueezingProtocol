@@ -576,27 +576,34 @@ Therefore, the effective atom-light interaction Hamiltonian can be given in thos
 with $\hat{\chi}_{pp'} $ defined in Eq.\eqref{eq:chippp}.
 
 More generally, if we define an arbitrary linear polarization basis by
-\begin{subequations}
 \begin{align}
-\hat{a}_n &= \cos\theta\hat{a}_H + \sin\theta \hat{a}_V\\
-\hat{a}_{\bar{n}} &= \cos\theta\hat{a}_V - \sin\theta \hat{a}_H,
+\left(\!\begin{array}{c}
+\mathbf{e}_n \\ \mathbf{e}_{\bar{n}}
+\end{array}\!\right) &= 
+\left(\!\!\begin{array}{cc}
+\cos\theta & \sin\theta \\
+- \sin\theta & \cos\theta
+\end{array}\!\!\right)
+\left(\!\begin{array}{c}
+\mathbf{e}_H \\ \mathbf{e}_V
+\end{array}\!\right)
+=\mathbf{R}(\theta)\left(\!\begin{array}{c}
+\mathbf{e}_H \\ \mathbf{e}_V
+\end{array}\!\right),
 \end{align}
-\end{subequations}
 or the inversed relationships
-\begin{subequations}
 \begin{align}
-\hat{a}_H &= \cos\theta\hat{a}_n - \sin\theta \hat{a}_{\bar{n}}\\
-\hat{a}_V &= \sin\theta\hat{a}_n + \cos\theta \hat{a}_{\bar{n}},
+\left(\!\begin{array}{c}\hat{e}_H \\ \hat{e}_V\end{array}\!\right)&= \mathbf{R}^{-1}(\theta)\left(\!\begin{array}{c}\mathbf{e}_n \\ \mathbf{e}_{\bar{n}}\end{array}\!\right),
 \end{align}
-\end{subequations}
-where $ \theta $ is the angle of the $ \mathbf{e}_n $ basis rotated from the $ H $-direction around $ z $-axis, and $ \mathbf{e}_{\bar{n}} $ is the basis vector $ 90^\circ $ from the $ \mathbf{e}_n $ direction. 
-Written in a matrix form, 
+where $ \theta $ is the angle of the $ \mathbf{e}_n $ basis rotated from the $ H $-direction around $ z $-axis, and $ \mathbf{e}_{\bar{n}} $ is the basis vector $ 90^\circ $ from the $ \mathbf{e}_n $ direction; $ \mathbf{R}(\theta)=\mathbf{R}_z(\theta) $ is the Euler rotation matrix about the $ z $-axis by $ \theta $ in the real-number $ \mathbf{SO}(3) $ rotation group, which has the property that $ \mathbf{R}^{-1}(\theta)=\mathbf{R}^T(\theta)=\mathbf{R}(-\theta) $.  
+With the coordinate basis rotated passively, both the mode components and the field annihilation operators should be rotated actively by $ -\theta $.
+Written in matrix form, 
 \begin{align}
-\hat{\mathbf{a}}_{n,\bar{n}}=\mathbf{R}\cdot \hat{\mathbf{a}}_{H,V},
+\left(\!\begin{array}{c}\mathbf{u}_n \\ \mathbf{u}_{\bar{n}}\end{array}\!\right) &= \mathbf{R}^{-1}(\theta)\left(\!\begin{array}{c}\mathbf{u}_H \\ \mathbf{u}_V\end{array}\!\right)\\
+\hat{\mathbf{a}}_{n,\bar{n}} &=\mathbf{R}^{-1}(\theta)\cdot \hat{\mathbf{a}}_{H,V},
 \end{align}
-where $ \hat{\mathbf{a}}_{n,\bar{n}}=[\hat{a}_n;\hat{a}_{\bar{n}}] $ and $ \hat{\mathbf{a}}_{H,V}=[\hat{a}_H;\hat{a}_V] $ are the annihilation operator vectors for the $ \{n,\bar{n} \} $ and $ \{H,V \} $ bases, respectively;
-$ \mathbf{R}=\mathbf{R}_z(\theta) $ is the Euler rotation matrix about the $ z $-axis by $ \theta $ in the real-number $ \mathbf{SO}(3) $ rotation group, which has the property that $ \mathbf{R}^{-1}=\mathbf{R}^T $. 
-In our notation, we use $ [\cdot ;\cdots] $ notation to indicate $ 1\times n $ vectors as matrices, and treat dot ($ \cdot $) products as the matrix products and will denote complex conjugates explicitly.
+where $ \hat{\mathbf{a}}_{n,\bar{n}}=[\hat{a}_n;\hat{a}_{\bar{n}}] $ and $ \hat{\mathbf{a}}_{H,V}=[\hat{a}_H;\hat{a}_V] $ are the annihilation operator vectors for the $ \{n,\bar{n} \} $ and $ \{H,V \} $ bases, respectively.
+In our notation, we use $ [\cdot ;\cdots] $ notation to indicate $ 1\times n $ vectors as general matrices, and treat dot ($ \cdot $) products as the matrix products where the sign of $ \cdot $ can be ignored, and we will denote complex conjugates explicitly.
 
 Using the definition in the $ \{ H,V\} $-basis and the annihilation operator basis transformation relationships above, one can rewrite the Stokes operators in the $ \{\mathbf{e}_n, \mathbf{e}_{\bar{n}}\} $ basis by
 \begin{subequations}\label{eq:Snnbar}
@@ -614,9 +621,13 @@ One can prove that the inversed transformation matrix $ \mathbf{M}^{-1}=2\mathbf
 With a probe input light polarized along the $ D $-direction, the E-field operator can be written in the linear and circular polarization bases by 
 \begin{align}
 \hat{\mathbf{E}}^{(+)}(\br;t) &= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[\mathbf{u}_H(r\!_\perp,\phi) \hat{a}_H(z,t) + \mathbf{u}_V(r\!_\perp,\phi) \hat{a}_V(z,t)\right]  e^{i (\beta_0 z- \omega_0 t)}\\
-&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[\cos\theta\mathbf{u}_n(r\!_\perp,\phi) \hat{a}_n(z,t) - \sin\theta\mathbf{u}_{\bar{n}}(r\!_\perp,\phi) \hat{a}_{\bar{n}}(z,t) \right.\nn\\
-&\quad\quad\quad\quad\quad\left. + \sin\theta\mathbf{u}_n(r\!_\perp,\phi) \hat{a}_n(z,t) + \cos\theta\mathbf{u}_{\bar{n}}(r\!_\perp,\phi) \hat{a}_{\bar{n}}(z,t)\right]  e^{i (\beta_0 z- \omega_0 t)}\\
-&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \sqrt{2}\left[\cos(\theta\!-\!\frac{\pi}{4})\mathbf{u}_n(r\!_\perp,\phi) \hat{a}_n(z,t) + \cos(\theta\!+\!\frac{\pi}{4})\mathbf{u}_{\bar{n}}(r\!_\perp,\phi) \hat{a}_{\bar{n}}(z,t)\right]  e^{i (\beta_0 z- \omega_0 t)}.\label{eq:Efieldop_nnbar}
+&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left(\!\begin{array}{cc}\mathbf{u}_H, & \mathbf{u}_V\end{array}\!\right)
+\cdot \left(\!\begin{array}{c}\hat{a}_H\\ \hat{a}_V\end{array} \!\right)  e^{i (\beta_0 z- \omega_0 t)}\\
+&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left(\!\begin{array}{cc}\mathbf{u}_H, & \mathbf{u}_V\end{array}\!\right)\mathbf{R}(\theta)
+\cdot \mathbf{R}^{-1}(\theta)\left(\!\begin{array}{c}\hat{a}_H\\ \hat{a}_V\end{array} \!\right)  e^{i (\beta_0 z- \omega_0 t)}\\
+&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left(\!\begin{array}{cc}\mathbf{u}_n, & \mathbf{u}_{\bar{n}}\end{array}\!\right)
+\cdot \left(\!\begin{array}{c}\hat{a}_n\\ \hat{a}_{\bar{n}}\end{array} \!\right)  e^{i (\beta_0 z- \omega_0 t)}\\
+&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[\mathbf{u}_n(r\!_\perp,\phi) \hat{a}_n(z,t) + \mathbf{u}_{\bar{n}}(r\!_\perp,\phi) \hat{a}_{\bar{n}}(z,t)\right]  e^{i (\beta_0 z- \omega_0 t)}.\label{eq:Efieldop_nnbar}
 \end{align}
 If we rewrite the field operator in a matrix form, we can have
 \begin{align}
@@ -677,6 +688,16 @@ This may not be correct, since there is no $ \bar{D} $-mode contributions.
 The Hamiltonian expression above reflects the fact that if we regard the Hamiltonian being determined by the polarization state of the input light, then a $ D $-mode input case won't have the $ \bar{D} $-mode contribution. 
 This indirectly implies that the light-atom interaction Hamiltonian may be written as a decomposition of orthonormal modes given it should include all spontaneous decay components rather than to be limited to the components defined by the input light. 
 This needs to be fixed later.
+
+%===================APPENDIX: Rectangular waveguides and mode walkoff ==================== %
+\section{Rectangular waveguides and mode walkoff}
+Based on Eq.\eqref{eq:Ebp}, if there are two non-degenerate guided modes used for the QND measurement, we will have
+\begin{align}\label{eq:EdifferentHV}
+\hat{\mathbf{E}}^{(+)}(r\!_\perp,\phi,z;t) &= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g^H} } \mathbf{u}_H(r\!_\perp,\phi) \hat{a}_H(z,t)  e^{i (\beta_0^H z- \omega_0 t)}\nn\\
+&\quad +\sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g^V} } \mathbf{u}_V(r\!_\perp,\phi) \hat{a}_V(z,t)  e^{i (\beta_0^V z- \omega_0 t)},
+\end{align}
+where $ v_g^{H/V} $ and $ \beta_0^{H/V} $ are the group velocities and propagation constants of the $ H $- and $ V $-modes, respectively. 
+The offset of $ v_g^{H/V} $ and $ \beta_0^{H/V} $ for the two guided modes could lead to a walkoff effect of the modes and cause an intrinsic phase shift.
 
 %===================APPENDIX: Photon scattering and optical pumping rates =====================%
 \section{Photon scattering and optical pumping rates} \label{Appendix::Rates}
