@@ -233,7 +233,7 @@ The remainder of the paper is organized as follows.  In Sec. II we lay out the t
 
 
 %========================== Theory ===================================%
-\section{Theory} \label{Sec::Theory}
+\section{QND measurement and cooperativity} \label{Sec::Theory}
 Theoretical framework describing the propagation of light guided in a nanofiber and interacting with trapped atoms in the dispersive regime is detailed in our previous work~\cite{Qi2016}.  We review the salient features here and include the generalization to a square waveguide.
 
 For waveguides that are symmetric under a $\pi/2$ rotation around the $z$ (propagation) axis, there are two degenerate polarizations for each guided mode and for each propagation direction.  Assuming a nanophotonic waveguide that supports only the lowest order guided mode, and restricting our attention to modes propagating in the positive $z$-direction, we denote $\mbf{u}_H(\mbf{r}_\perp)$ and  $\mbf{u}_V(\mbf{r}_\perp)$ as the horizontally and vertically polarized modes that adiabatically connect to $x$ and $y$ linearly polarized modes as the cross section of the waveguide become large compared to optical wavelength.  Note, in typical nanophotonic geometries, these guided modes also have a nonnegligible $z$ component.  For a cylindrically symmetric nanofiber, these are the well-studied HE$_{11}$ modes; for a square waveguide, these are the TE$_{01}$ and TM$_{01}$ modes, both shown in Fig. 1 and and described in Appendix A.
@@ -261,7 +261,7 @@ where
 \end{equation}
 is the phase operator associated with scattering polarization $p \rightarrow p'$ by a collective atomic operator.  When $p=p'$ is this a phase shift; for $p \neq p'$ this leads to a transformation of the polarization of the guided mode.
 
-The Faraday effect arises from the irreducible rank-1 (vector) component of the polarizability tensor.  Given an atom with hyperfine spin $f$, this contribution $\hat{\alpha}^{vec}_{ij} = i \alpha_1 \epsilon_{ijk} \hat{f}_k$, where $\alpha_1 = -\frac{\sigma_0}{4\pi k_0 }\frac{\Gamma_A}{\Delta_{eff}} $ is the characteristic polarizability, expressed here in terms of an effective on the detuning and resonant scattering cross section~\footnote{The exact expression is a sum of excited-state hyperfine levels $f'$, each weighted by the appropriate oscillator strengths of the transition.  We have defined $1/\Delta_{eff} = \sum_{f'} C^{(1)}_{ff'}/\Delta_{ff'}$. For details see~\cite{?}}.   The polarization transformation associated with scattering from $H$ to $V$ mode is set by the phase operator
+The Faraday effect arises from the irreducible rank-1 (vector) component of the polarizability tensor.  Given an atom with hyperfine spin $f$, this contribution $\hat{\alpha}^{vec}_{ij} = i \alpha_1 \epsilon_{ijk} \hat{f}_k$, where $\alpha_1 = -\frac{\sigma_0}{4\pi k_0 }\frac{\Gamma_A}{\Delta_{\eff}} $ is the characteristic polarizability, expressed here in terms of an effective on the detuning and resonant scattering cross section~\footnote{The exact expression is a sum of excited-state hyperfine levels $f'$, each weighted by the appropriate oscillator strengths of the transition.  We have defined $1/\Delta_{\eff} = \sum_{f'} C^{(1)}_{ff'}/\Delta_{ff'}$. For details see~\cite{?}}.   The polarization transformation associated with scattering from $H$ to $V$ mode is set by the phase operator
 \begin{equation}
 \hat{\phi}_{VH} = i 2\pi \frac{\omega_0}{v_g}\alpha_1 \left[ \mbf{u}^*_V (\mbf{r}'_\perp) \times  \mbf{u}_{H} (\mbf{r}'_\perp) \right] \cdot \hat{\mbf{F}},
 \end{equation}
@@ -285,7 +285,7 @@ By measuring the output Stokes vector in a polarimeter, we preform a QND measure
 \end{equation}
 The first term $\hat{S}^{in}_2$ represents the shot-noise that fundamentally limits the resolution of spin squeezing that can be obtained in a given time interval.  The second term is the homodyne signal, where we have expressed the rotation angle around the 3-axis as
 \begin{equation}
-\chi_3(\mbf{r}'_\perp) = -\frac{4 \pi \omega_0}{v_g} \alpha_1 \left\vert \text{Re} \left[ \mbf{u}^*_V (\mbf{r}'_\perp) \times \mbf{u}_H (\mbf{r}'_\perp) \right] \right\vert = \frac{\sigma_0}{A_{Far}(\mbf{r}'_\perp)} \frac{\Gamma_A}{2 \Delta_{eff}}
+\chi_3(\mbf{r}'_\perp) = -\frac{4 \pi \omega_0}{v_g} \alpha_1 \left\vert \text{Re} \left[ \mbf{u}^*_V (\mbf{r}'_\perp) \times \mbf{u}_H (\mbf{r}'_\perp) \right] \right\vert = \frac{\sigma_0}{A_{Far}(\mbf{r}'_\perp)} \frac{\Gamma_A}{2 \Delta_{\eff}}
 \end{equation}
 We emphasize here the dependence of the rotation angle on the position of the atom in the transverse plane, $\mbf{r}'_\perp$, assumed equal for all atoms in the chain.  In particular $\chi_3(\mbf{r}'_\perp)$ depends on the {\em overlap} of the $\mbf{u}_H (\mbf{r}'_\perp)$ and $\mbf{u}_V (\mbf{r}'_\perp)$ , indicative of atomic scattering of photons from the $H$ to $V$ modes associated with the Faraday interaction.  We have characterize this overlap by an effective area the defines the Faraday interaction at the position of the atom,
 \begin{equation}
@@ -296,65 +296,101 @@ where $n_g = v_g/c$ is the group index.  A more tightly confined (smaller) area 
 By monitoring the Faraday rotation, we can perform a continuous measurement on the collective spin projection $\hat{F}_z$.  The ``measurement strength'' which characterizes the rate at which we gain information and thereby squeeze the spin is given by
 \begin{equation}
 \kappa = \left\vert \chi_3(\mbf{r}'_\perp) \right\vert^2 \frac{P_{in}}{\hbar \omega_0},
-%=\frac{\sigma_0^2}{A^2_{Far}(\mbf{r}'_\perp)} \frac{P_{in}}{\hbar \omega_0}
 \end{equation}
 where $P_in$ is the input power transported into the guided mode.  The measurement strength is the rate at which photons are scattered from the guided $H$ to $V$ mode.  Decoherence arises due to diffuse scattering into unguided modes and the accompanied optical pumping of the spin.  In principle the diffuse photon scattering rate is modified over free space due to the Purcell effect, but we neglect this correction here.  In the case of the nanofiber, this is a small effect at typical distances at which the atom is trapped~\cite{?}.  For the square waveguide, this may be nonnegligible; we will return to correction in future work.  The diffuse photon scattering rate is then
 \begin{equation}
-\gamma_s = \sigma(\Delta_{eff}) \frac{I_{in}(\mbf{r}'_\perp)}{\hbar \omega_0}
+\gamma_s = \sigma(\Delta_{\eff}) \frac{I_{in}(\mbf{r}'_\perp)}{\hbar \omega_0}
 \end{equation}
-where $\sigma(\Delta_{eff}) = \sigma_0 \frac{\Gamma_A^2}{4 \Delta^2_{eff}}$ is the photon scattering cross-section the detuning and  $I_{in}(\mbf{r}'_\perp) = n_g P_{in}\vert \mbf{u}_H (\mbf{r}'_\perp)  \vert^2 \equiv P_{in}/A_{in}(\mbf{r}'_\perp) $ is the input intensity into the guided $H$-mode at the position of the atom, where we have define
+where $\sigma(\Delta_{\eff}) = \sigma_0 \frac{\Gamma_A^2}{4 \Delta^2_{\eff}}$ is the photon scattering cross-section at this detuning and  $I_{in}(\mbf{r}'_\perp) = n_g P_{in}\vert \mbf{u}_H (\mbf{r}'_\perp)  \vert^2 \equiv P_{in}/A_{in}(\mbf{r}'_\perp) $ is the input intensity into the guided $H$-mode at the position of the atom, where we have defined
 \begin{equation}
-A_{in}(\mbf{r}'_\perp) =  \frac{1}{n_g \vert \mbf{u}_H (\mbf{r}'_\perp) \vert ^2}
+A_{in}(\mbf{r}'_\perp) =  \frac{1}{n_g \vert \mbf{u}_H (\mbf{r}'_\perp) \vert ^2},
 \end{equation}
-is the effective area associated with the input mode.  We thus define the cooperative per atom
+the effective area associated with the input mode.  We thus define the cooperativity/atom
 \begin{equation}
-C_1 = \frac{\kappa}{\gamma_s} = \frac{\sigma_0 A_{in} (\mbf{r}'_\perp) }{[A_{Far}(\mbf{r}'_\perp)]^2}.
+C_1 (\mbf{r}'_\perp)  = \frac{\kappa}{\gamma_s} = \sigma_0 \frac{  A_{in}(\mbf{r}'_\perp) }{[A_{Far}(\mbf{r}'_\perp)]^2}.
 \end{equation}
-This is the central result.  $A_{Far}(\mbf{r}'_\perp)$  come in as the square because the relation of the measurement strength to the homodyne measurement.  Roughly $A_{Far}(\mbf{r}'_\perp)]^2 \sim \vert \mbf{u}_V (\mbf{r}'_\perp) \vert ^2 \vert \mbf{u}_H (\mbf{r}'_\perp) \vert ^2$  Thus $ C_1 \sim \sigma_0 \vert \mbf{u}_V (\mbf{r}'_\perp) \vert ^2$.  The cooperativity can be enhanced by choosing the position of the atom so that the {\em orthogonal} unoccupied mode is large, while the intensity that causes decoherence is small.
+This is the central result.  $A_{Far}(\mbf{r}'_\perp)$  appears the square because the relation of the measurement strength to the homodyne measurement.  Roughly $1/[A_{Far}(\mbf{r}'_\perp)]^2 \sim \vert \mbf{u}_V (\mbf{r}'_\perp) \vert ^2 \vert \mbf{u}_H (\mbf{r}'_\perp) \vert ^2$  Thus $ C_1(\mbf{r}'_\perp) \sim \sigma_0 \vert \mbf{u}_V (\mbf{r}'_\perp) \vert ^2$.  The cooperativity can be enhanced by choosing the position of the atom so that the {\em orthogonal}, unoccupied mode is large, while the intensity that causes decoherence is small.
 
-Figure
+Figure ? shows a plot of $A_{Far}$, $A_{in}$, and $C_1$ as a function of  $\mbf{r}'_\perp$ for the two nanophotonic geometries.  In the case of the  nanofiber, $A_{Far}$ is cylindrically symmetric, and thus the measurement strength is independent of the azimuthal position, depending only on $\vert \mbf{r}'_\perp\vert$.  In contrast $A_{in}$ is azimuthally anisotropic, largest along the $V$-axis  for a given radial distance, corresponds to smallest intensity of the $H$-mode, and thus smallest scattering rate $\gamma_s$.  This corresponds to the position at which $\vert \mbf{u}_V (\mbf{r}'_\perp) \vert$ is largest and thus the biggest enhancement of $C_1$.  For the case of the square waveguide, the modes are even more anisotropic for similar width of the guide compared to the wavelength.  Again, we greatly enhance the cooperativity by placing the atom at a position where  $\vert \mbf{u}_V (\mbf{r}'_\perp) \vert$ is largest, which corresponds to the position where the input mode has the smallest intensity.  Thus, counterintuitively, we enhance the cooperativity by placing the atom at the angle of minimum intensity.
 
-\section{Results}
+\section{Spin squeezing dynamics}
 
-\bibliography{refs/Archive}
+Given an ensemble of $N_A$ atoms initially prepared in a spin coherent state for hyperfine spin $f$, polarized in the transverse plane, e.g. along the $x$-axis, a QND measurement of the collective spin component $F_z$ will squeeze that component of the projection noise.  The metrologically relevant squeezing parameter defined by Wineland {\emph{et al.}}~\cite{Wineland1992} is,
+\begin{align}
+\xi^2 &\equiv  \frac{2 f N_A\expect{\Delta F_z ^2}}{\expect{\hat{F}_x}^2}.
+\end{align}
+Under the assumption that the state is symmetric with respect to exchange of any two atoms, the collective expectation value can be decomposed into \begin{align}
+\expect{\Delta F_\perp^2} &= N_A \expect{\Delta f_z^2}+\frac{N_A(N_A-1)}{2}\left. \expect{\Delta f_z^{(i)}\Delta f_z^{(j)}}_s\right|_{i\neq j}\label{eq:DeltaFz2}\\
+\expect{\hat{F}_x } & =N_A \expect{\hat{f}_x},\label{eq:expectFx}
+\end{align}
+where the first term of Eq.~\eqref{eq:DeltaFz2} and Eq.~\eqref{eq:expectFx} is solely determined by a symmetric sum over $N_A$ identical spin-$f$ single-body operators, and  the second term of Eq.~\eqref{eq:DeltaFz2} is determined by symmetric two-body covariance terms, $ \left.\expect{\Delta f_\perp^{(i)}\Delta f_\perp^{(j)}}_s\right|_{i\neq j}=\expect{\Delta f_\perp^{(1)}\Delta f_\perp^{(2)}}_s\equiv \expect{\hat{f}_\perp^{(1)}\hat{f}_\perp^{(2)}}_s-\left( \expect{\hat{f}_\perp^{(1)}} \expect{\hat{f}_\perp^{(1)}}\right)_s $.  Negative values in these two-body correlations correspond to the pairwise entanglement among atoms that yields spin squeezing~\cite{Wang2003Spin}.
+Note that the collective state of atoms can be treated as pairwise-symmetric if the detuning is far-off resonance so that all collective sub- and super-radiant modes~\cite{Asenjo-Garcia2017Atom,Asenjo-Garcia2017Exponential} are equally excited.  In this paper, we will work in the dispersive regime with a few thousands of atoms and can safely ignore the atom-atom interaction caused by multiple scattering, and hence the collective atomic system satisfy the exchange symmetry. 
 
-%======== Appendices =========
-\begin{appendix}
-\section{Circular V.S. linear polarization mode bases}\label{Appendix:LRbases}
-We define a set of polarization vector transformation relationships by 
+To study the spin squeezing dynamics, we make the Gaussian approximation, so that the state is completely defined by the one and two-body correlations.  We obtain these correlations from first principles based on a stochastic master equation,
+\begin{align}\label{eq:totaldrhodt}
+\mathrm{d}\hat{\rho}=\left.\mathrm{d}\hat{\rho}\right|_{op} + \left.\mathrm{d}\hat{\rho}\right|_{QND}.
+\end{align}
+It includes two collective spin dynamic processes. 
+The first process is the optical pumping dynamics on each individual atom $i$ positioned at $\br'$ which yields the $\mathrm{d}\hat{\rho}|_{op}=\sum_i^{N_A} \left.\mathrm{d}\hat{\rho}^{(i)}\right|_{op} $ term given by
+\begin{align}
+&\quad\left.\mathrm{d}\hat{\rho}^{(i)}\right|_{op} =\gamma_s\mathcal{D}^{(i)}\mathrm{d}t\\
+&= -\frac{i\gamma_s}{\hbar} \left\{\hat{h}_{\rm loss},\hat{\rho}^{i} \right\}\mathrm{d}t + \gamma_s\sum_q \hat{W}_q(\br')\hat{\rho}^{i}\hat{W}_q(\br')\mathrm{d}t,
+\end{align}
+where the characteristic photon scattering rate $ \gamma_s\equiv \frac{\Gamma_0\Omega^2}{4\Delta_F}=\frac{\sigma_0}{A_{in}}\frac{\Gamma_0^2}{4\Delta_F^2}\dot{N}_L $ with the effective input mode area $ A_{in}=1/n_g|u_{\mathrm{in}}(\br'\!_\perp)|^2 $ and the effective detuning $ \Delta_F $ defined by $ \frac{1}{\Delta_F}=\sum_{f'}\frac{C_{f'ff'}^{(1)}}{\Delta_{ff'}} $ and $ \Delta_{ff'}=\omega-\omega_{ff'} $, where $ \omega_{ff'} $ is the resonance angular frequency between the ground hyperfine structure level $ f $ and the excited hyperfine structure level $ f' $, and $ C_{j'ff'}^{(K)} $ are the coefficients for irreducible rank-$K$ components defined in \cite{Deutsch2010a}.
+$\gamma_s$ characterizes the rate of decoherence dynamics and is proportional to the local photon flux of the probe light, $ \dot{N}_L $.
+
+The second term on the right-hand side of Eq.\eqref{eq:totaldrhodt} gives rise to the collective spin dynamics due to QND measurement,
+\begin{align}
+\left.\mathrm{d}\hat{\rho}\right|_{QND} &= \sqrt{\frac{\kappa}{4}}\mathcal{H}\left[\hat{\rho} \right]\mathrm{d}W + \frac{\kappa}{4}\mathcal{L}\left[ \hat{\rho}\right]\mathrm{d}t.
+\end{align}
+Above, we have defined the measurement strength $\kappa \equiv |\chi|^2\dot{N}_L\equiv \frac{\sigma_0A_{in}}{A_{int}^2}\gamma_s $ determining the rate of the spin squeezing in absence of decoherent processes, where $\dot{N}_L$ is the photon number flux, $\chi$ is the light-atom coupling strength and $A_{int}$ is the effective interaction mode area which can be specified for a particular QND measurement protocol. We have also assumed the measurement backation is a stochastic Weiner process where $\mathrm{d}W$ is the increment satisfying $\mathrm{d}W^2 = \mathrm{d}t$. The conditional dynamics responding to the measurement evolve under the superoperator
+\begin{align}
+\mathcal{H}\left[ \hat{\rho}\right] &= \hat{F}_\perp\hat{\rho} + \hat{\rho}\hat{F}_\perp -2\expect{\hat{F}_\perp}\hat{\rho}
+\end{align}
+and the collective Lindblad map due to the direct photon scattering of the guided modes from the atoms
+\begin{align}
+\mathcal{L}\left[ \hat{\rho} \right] &= \hat{F}_\perp\hat{\rho}\hat{F}_\perp-\frac{1}{2}\left(\hat{\rho}\hat{F}_\perp^2+\hat{F}_\perp^2\hat{\rho} \right)=\frac{1}{2}\left[\hat{F}_\perp,\left[\hat{\rho},\hat{F}_\perp \right] \right].
+\end{align}
+
+As shown in the equations above, the spin squeezing dynamics is a competition between the coherent squeezing process and all decoherent processes which are characterized by $\kappa$ and $\gamma_s$, respectively. 
+If we define an effective cooperativity or optical depth (OD) per atom quantity for the spin squeezing dynamics by
+\begin{align}
+\frac{\mathrm{OD}_{\rm eff}}{N_A} \equiv \frac{\kappa}{\gamma_s}=\frac{\sigma_0A_{in}}{A_F^2},
+\end{align}
+the peaking spin squeezing dynamics can then be characterized by $\frac{\mathrm{OD}_{\rm eff}}{N_A}$, and the geometry of the spin squeezing protocol can then be roughly designed with the goal to maximize $\frac{\mathrm{OD}_{\rm eff}}{N_A}$ by minimizing $A_{in}$ and maximizing $A_{int}$.  
+
+We can bring in the spin coherence operator $\hat{\sigma}_{ba}=\ket{b}\bra{a}$ to represent the matrix element of any atomic angular momentum operator $ \hat{f}_m $ ($ m=x,y,z $) of a single atom, and hence the spin squeezing dynamics can be characterized by the expectation value of single-body spin coherence operators $\expect{\hat{\sigma}_{ba}}$ and the symmetric two-body covariances $\expect{\Delta \sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)} }_s$. 
+%the symmetric three-body correlations $\expect{\Delta \sigma^{(1)}_{b_1a_1}\Delta \sigma^{(2)}_{b_2a_2}\Delta \sigma^{(3)}_{b_3a_3} }_s$ and so on. 
+%As higher-order correlations becomes negligible, one can cut off the correlation terms at a certain order.
+If one can truncate the spin dynamics up to the two-body correlations, we only need the following two sets of stochastic differential equations:
 \begin{subequations}
 \begin{align}
-\hat{a}_H &= \frac{1}{\sqrt{2}}(\hat{a}_R+\hat{a}_L )\\
-\hat{a}_V &= \frac{i}{\sqrt{2}}(\hat{a}_R-\hat{a}_L ),
+d\expect{\hat{\sigma}_{ba}} &=\left. d{\expect{\hat{\sigma}_{ba}}}\right|_{op} + \left. d{\expect{\hat{\sigma}_{ba}}}\right|_{\mathcal{H}}+\left. d{\expect{\hat{\sigma}_{ba}}}\right|_{\mathcal{L}} \\
+d\expect{\Delta \sigma_{ba}^{(1)}\Delta \sigma_{dc}^{(2)}}_s &= \left. d{\expect{\Delta \sigma_{ba}^{(1)}\Delta \sigma_{dc}^{(2)}}_s}\right|_{op} + \left. d{\expect{\Delta \sigma_{ba}^{(1)}\Delta \sigma_{dc}^{(2)}}_s}\right|_{\mathcal{H}} + \left. d{\expect{\Delta \sigma_{ba}^{(1)}\Delta \sigma_{dc}^{(2)}}_s}\right|_{\mathcal{L}}.
 \end{align}
 \end{subequations}
-or the inverse
-\begin{subequations}
-\begin{align}
-\hat{a}_R &= \frac{1}{\sqrt{2}}(\hat{a}_H-i\hat{a}_V )\\
-\hat{a}_L &= \frac{1}{\sqrt{2}}(\hat{a}_H+i\hat{a}_V ),
-\end{align}
-\end{subequations}
-where $ R $($ L $) indicates the right(left)-circularly polarized mode.
-The Stokes operators can then be defined in both linear ($ H $ and $ V $) and circular ($ L $ and $ R $) polarization bases by
-\begin{subequations}
-\begin{align}
-\hat{S}_0 &= \frac{1}{2} \left[\hat{a}_H^\dagger\hat{a}_H+\hat{a}_V^\dagger\hat{a}_V \right] = \frac{1}{2} \left[\hat{a}_R^\dagger\hat{a}_R+\hat{a}_L^\dagger\hat{a}_L \right]\\
-\hat{S}_1 &= \frac{1}{2} \left[\hat{a}_H^\dagger\hat{a}_H-\hat{a}_V^\dagger\hat{a}_V \right] = \frac{1}{2} \left[\hat{a}_R^\dagger\hat{a}_L+\hat{a}_L^\dagger\hat{a}_R \right]\\
-\hat{S}_2 &= \frac{1}{2} \left[\hat{a}_H^\dagger\hat{a}_V+\hat{a}_V^\dagger\hat{a}_H \right] = \frac{i}{2} \left[\hat{a}_L^\dagger\hat{a}_R-\hat{a}_R^\dagger\hat{a}_L \right]\\
-\hat{S}_3 &= \frac{1}{2i} \left[\hat{a}_H^\dagger\hat{a}_V-\hat{a}_V^\dagger\hat{a}_H \right] = \frac{1}{2} \left[\hat{a}_R^\dagger\hat{a}_R-\hat{a}_L^\dagger\hat{a}_L \right].
-\end{align}
-\end{subequations}
-Therefore, the effective atom-light interaction Hamiltonian can be given in those bases by 
-\begin{align}
-\hat{h}_\eff &= -\hat{\mathbf{E}}^{(-)}(\br')\cdot\hat{\tensor{\mathbf{\alpha}}}\cdot\hat{\mathbf{E}}^{(+)}(\br')\nn\\
-&= \hbar\left[(\hat{\chi}_{HH}+\hat{\chi}_{VV})\hat{S}_0 + (\hat{\chi}_{HH}-\hat{\chi}_{VV})\hat{S}_1 + (\hat{\chi}_{HV}+\hat{\chi}_{VH})\hat{S}_2 + i(\hat{\chi}_{HV}-\hat{\chi}_{VH})\hat{S}_3 \right]\\
-&= \hbar\left[(\hat{\chi}_{RR}+\hat{\chi}_{LL})\hat{S}_0 + i(\hat{\chi}_{LR}-\hat{\chi}_{RL})\hat{S}_1 + (\hat{\chi}_{RL}+\hat{\chi}_{LR})\hat{S}_2 + (\hat{\chi}_{RR}-\hat{\chi}_{LL})\hat{S}_3 \right]\\
-&=\hbar\sum_{i=0}^3 \hat{\chi}_{i}\hat{S}_i\\
-&=\hbar\sum_{i,j=0} \chi_{ij}\hat{f}_i\hat{S}_j,
-\end{align}
-with $\hat{\chi}_{pp'} $ defined in Eq.\eqref{eq:chippp}.
 
-\end{appendix}
+In details, the optical dynamics part can be given by
+\begin{align}
+\left. \dt{\expect{\hat{\sigma}_{ba}}}\right|_{op} &= \gamma_s\expect{\mathcal{D}^\dagger \left[ \hat{\sigma}_{ba}\right]}\\
+&= \gamma_s\sum_{d,c}\tr\left(\mathcal{D}^\dagger \left[ \hat{\sigma}_{ba}\right]\hat{\sigma}_{dc} \right)\expect{\hat{\sigma}_{dc} }\\
+\left. \dt{\expect{\Delta \sigma_{ba}^{(1)}\Delta \sigma_{dc}^{(2)}}_s}\right|_{op} &=\gamma_s\expect{\Delta\mathcal{D}^\dagger[\hat{\sigma}_{ba}^{(1)}]\Delta\sigma_{dc}^{(2)} }_s + \gamma_s\expect{\Delta\sigma_{ba}^{(1)}\Delta\mathcal{D}^\dagger[\hat{\sigma}_{dc}^{(2)}] }_s\\
+&= \gamma_s\sum_{m,n}\tr\left(\mathcal{D}^\dagger[\hat{\sigma}_{ba}]\hat{\sigma}_{mn} \right)\expect{\Delta \sigma_{mn}^{(1)}\Delta \sigma_{dc}^{(2)} }_s + \gamma_s\sum_{m,n}\tr\left(\mathcal{D}^\dagger[\hat{\sigma}_{dc}]\hat{\sigma}_{mn} \right) \expect{\Delta \sigma_{ba}^{(1)}\Delta \sigma_{mn}^{(2)} }_s.
+\end{align} 
+Similarly, we will need the one- and two-body correlations due to the $ \mathcal{H} $ and $ \mathcal{L} $ superoperators given by the following.
+\begin{subequations}
+\begin{align}
+\left.d\expect{\hat{\sigma}_{ba}}\right|_\mathcal{H} &=\sqrt{\frac{\kappa}{4}}\expect{\mathcal{H}^\dagger\left[\hat{\sigma}_{ba} \right]}dW \\
+\left.d\expect{\hat{\sigma}_{ba}}\right|_\mathcal{L} &= \frac{\kappa}{4}\expect{\mathcal{L}^\dagger\left[\hat{\sigma}_{ba} \right]}dt
+\end{align}
+\end{subequations}
+In principle, the two-body covariance terms can be coupled to high-order many-body terms. 
+In our case, we assume the state of the ensemble can be well captured in the symmetric Gaussian state limit, and hence the two-body covariance equations due to the collective measurement can be given by
+\begin{subequations}
+\begin{align}
+\left.d\expect{\Delta \sigma_{ba}^{(1)} \Delta \sigma_{dc}^{(2)}} \right|_\mathcal{H} &= -\kappa\expect{\Delta\sigma_{ba}^{(1)}\Delta F_\perp }_s \expect{\Delta F_\perp \Delta \sigma_{dc}^{(2)} }dt \\
+\left.d\expect{\Delta \sigma_{ba}^{(1)} \Delta \sigma_{dc}^{(2)}}\right|_\mathcal{L} &= 0.
+\end{align}
+\end{subequations}
 
 \end{document}
