@@ -311,7 +311,7 @@ C_1 (\mbf{r}'_\perp)  = \frac{\kappa}{\gamma_s} = \sigma_0 \frac{  A_{in}(\mbf{r
 \end{equation}
 This is the central result.  $A_{Far}(\mbf{r}'_\perp)$  appears the square because the relation of the measurement strength to the homodyne measurement.  Roughly $1/[A_{Far}(\mbf{r}'_\perp)]^2 \sim \vert \mbf{u}_V (\mbf{r}'_\perp) \vert ^2 \vert \mbf{u}_H (\mbf{r}'_\perp) \vert ^2$  Thus $ C_1(\mbf{r}'_\perp) \sim \sigma_0 \vert \mbf{u}_V (\mbf{r}'_\perp) \vert ^2$.  The cooperativity can be enhanced by choosing the position of the atom so that the {\em orthogonal}, unoccupied mode is large, while the intensity that causes decoherence is small.
 
-Figure ? shows a plot of $A_{Far}$, $A_{in}$, and $C_1$ as a function of  $\mbf{r}'_\perp$ for the two nanophotonic geometries.  In the case of the  nanofiber, $A_{Far}$ is cylindrically symmetric, and thus the measurement strength is independent of the azimuthal position, depending only on $\vert \mbf{r}'_\perp\vert$.  In contrast $A_{in}$ is azimuthally anisotropic, largest along the $V$-axis  for a given radial distance, corresponds to smallest intensity of the $H$-mode, and thus smallest scattering rate $\gamma_s$.  This corresponds to the position at which $\vert \mbf{u}_V (\mbf{r}'_\perp) \vert$ is largest and thus the biggest enhancement of $C_1$.  For the case of the square waveguide, the modes are even more anisotropic for similar width of the guide compared to the wavelength.  Again, we greatly enhance the cooperativity by placing the atom at a position where  $\vert \mbf{u}_V (\mbf{r}'_\perp) \vert$ is largest, which corresponds to the position where the input mode has the smallest intensity.  Thus, counterintuitively, we enhance the cooperativity by placing the atom at the angle of minimum intensity.
+Figure ? shows a plot of $A_{Far}$, $A_{in}$, and $C_1$ as a function of  $\mbf{r}'_\perp$ for the two nanophotonic geometries.  We see that $A_{Far}$ is cylindrically symmetric, and thus the measurement strength is independent of the azimuthal position, depending only on $\vert \mbf{r}'_\perp\vert$.  In contrast $A_{in}$ is azimuthally anisotropic, largest along the $V$-axis  for a given radial distance, corresponds to smallest intensity of the $H$-mode, and thus smallest scattering rate $\gamma_s$.  This corresponds to the position at which $\vert \mbf{u}_V (\mbf{r}'_\perp) \vert$ is largest and position leads to the biggest enhancement of $C_1$.   Note, the position where  $\vert \mbf{u}_V (\mbf{r}'_\perp) \vert$ is largest corresponds to the position where the input mode is smallest.  Thus, counterintuitively, we enhance the cooperativity by placing the atom at the angle of minimum input intensity.  This enhancement is even greater for the square waveguide compare to the cylindrical nanofiber, as modes are even more anisotropic for the square geometry.  For typical geometries we find for nanofiber with radius $a = 250$nm and atoms trapped and a radial distance $?$ from the surface, the single atom cooperativity is $C_1 =?$ at the optimal trapping angle; for the square waveguide of with $w =?$nm and atoms trapped $?$nm from the surface, $C_1 =?$ at optimum.  Thus with order 1000 trapped atoms the $N_A$-atom cooperativity is of order ?, sufficient to generate substantial spin squeezing.
 
 \section{Spin squeezing dynamics}
 
@@ -320,17 +320,29 @@ Given an ensemble of $N_A$ atoms initially prepared in a spin coherent state for
 \xi^2 &\equiv  \frac{2 f N_A\expect{\Delta F_z ^2}}{\expect{\hat{F}_x}^2}.
 \end{align}
 Under the assumption that the state is symmetric with respect to exchange of any two atoms, the collective expectation value can be decomposed into \begin{align}
-\expect{\Delta F_\perp^2} &= N_A \expect{\Delta f_z^2}+\frac{N_A(N_A-1)}{2}\left. \expect{\Delta f_z^{(i)}\Delta f_z^{(j)}}_s\right|_{i\neq j}\label{eq:DeltaFz2}\\
+\expect{\Delta F_\perp^2} &= N_A \expect{\Delta f_z^2}+N_A(N_A-1)\left. \expect{\Delta f_z^{(i)}\Delta f_z^{(j)}}\right|_{i\neq j}\label{eq:DeltaFz2}\\
 \expect{\hat{F}_x } & =N_A \expect{\hat{f}_x},\label{eq:expectFx}
 \end{align}
-where the first term of Eq.~\eqref{eq:DeltaFz2} and Eq.~\eqref{eq:expectFx} is solely determined by a symmetric sum over $N_A$ identical spin-$f$ single-body operators, and  the second term of Eq.~\eqref{eq:DeltaFz2} is determined by symmetric two-body covariance terms, $ \left.\expect{\Delta f_\perp^{(i)}\Delta f_\perp^{(j)}}_s\right|_{i\neq j}=\expect{\Delta f_\perp^{(1)}\Delta f_\perp^{(2)}}_s\equiv \expect{\hat{f}_\perp^{(1)}\hat{f}_\perp^{(2)}}_s-\left( \expect{\hat{f}_\perp^{(1)}} \expect{\hat{f}_\perp^{(1)}}\right)_s $.  Negative values in these two-body correlations correspond to the pairwise entanglement among atoms that yields spin squeezing~\cite{Wang2003Spin}.
-Note that the collective state of atoms can be treated as pairwise-symmetric if the detuning is far-off resonance so that all collective sub- and super-radiant modes~\cite{Asenjo-Garcia2017Atom,Asenjo-Garcia2017Exponential} are equally excited.  In this paper, we will work in the dispersive regime with a few thousands of atoms and can safely ignore the atom-atom interaction caused by multiple scattering, and hence the collective atomic system satisfy the exchange symmetry. 
+where the first term of Eq.~\eqref{eq:DeltaFz2} and Eq.~\eqref{eq:expectFx} is solely determined by a symmetric sum over $N_A$ identical spin-$f$ single-body operators, and  the second term of Eq.~\eqref{eq:DeltaFz2} is determined by two-body covariances, $ \left.\expect{\Delta f_\perp^{(i)}\Delta f_\perp^{(j)}}\right|_{i\neq j}=\expect{\Delta f_\perp^{(1)}\Delta f_\perp^{(2)}} \equiv \expect{\hat{f}_\perp^{(1)}\hat{f}_\perp^{(2)}}-\expect{\hat{f}_\perp^{(1)}} \expect{\hat{f}_\perp^{(1)}} $.  Negative values in these two-body correlations correspond to the pairwise entanglement among atoms that yields spin squeezing~\cite{Wang2003Spin}.
+Note that the collective state of atoms can be treated as pairwise-symmetric if the detuning is far-off resonance so that all collective sub- and super-radiant modes~\cite{Asenjo-Garcia2017Atom,Asenjo-Garcia2017Exponential} are equally (and thus symmetrically) excited.  In this paper, we work in the dispersive regime with a few thousands of atoms and can safely ignore the atom-atom interaction caused by multiple scattering, and hence the collective atomic system satisfy the exchange symmetry. 
 
-To study the spin squeezing dynamics, we make the Gaussian approximation, so that the state is completely defined by the one and two-body correlations.  We obtain these correlations from first principles based on a stochastic master equation,
+To study the spin squeezing dynamics, we employ a first principles based on a stochastic master equation for the collective state of $N_A$ atoms,
 \begin{align}\label{eq:totaldrhodt}
-\mathrm{d}\hat{\rho}=\left.\mathrm{d}\hat{\rho}\right|_{op} + \left.\mathrm{d}\hat{\rho}\right|_{QND}.
+\mathrm{d}\hat{\rho}= \left.\mathrm{d}\hat{\rho}\right|_{QND}+\left.\mathrm{d}\hat{\rho}\right|_{op}.
 \end{align}
-It includes two collective spin dynamic processes. 
+The first term on the right-hand side of Eq.\eqref{eq:totaldrhodt} gives rise to the collective spin dynamics due to QND measurement,
+\begin{align}
+\left.\mathrm{d}\hat{\rho}\right|_{QND} &= \sqrt{\frac{\kappa}{4}}\mathcal{H}\left[\hat{\rho} \right]\mathrm{d}W + \frac{\kappa}{4}\mathcal{L}\left[ \hat{\rho}\right]\mathrm{d}t, 
+\end{align}
+where  $\kappa$ is the measurement strength defined in Eq. (?), and $\mathrm{d}W$ is a stochastic Weiner interval satisfying $\mathrm{d}W^2 = \mathrm{d}t$. The conditional dynamics induced by the QND measurement and generated by the superoperators that depend on the collective spin
+\begin{subequations}
+\begin{align}
+\mathcal{H}\left[ \hat{\rho}\right] &= \hat{F}_z \hat{\rho} + \hat{\rho}\hat{F}_z -2\expect{\hat{F}_z}\hat{\rho} \\
+\mathcal{L}\left[ \hat{\rho} \right] &= \hat{F}_z \hat{\rho}\hat{F}_z -\frac{1}{2}\left(\hat{\rho}\hat{F}_z^2+\hat{F}_z^2\hat{\rho} \right)=\frac{1}{2}\left[\hat{F}_z,\left[\hat{\rho},\hat{F}_z \right] \right].
+\end{align}
+\end{subequations}
+
+
 The first process is the optical pumping dynamics on each individual atom $i$ positioned at $\br'$ which yields the $\mathrm{d}\hat{\rho}|_{op}=\sum_i^{N_A} \left.\mathrm{d}\hat{\rho}^{(i)}\right|_{op} $ term given by
 \begin{align}
 &\quad\left.\mathrm{d}\hat{\rho}^{(i)}\right|_{op} =\gamma_s\mathcal{D}^{(i)}\mathrm{d}t\\
@@ -338,19 +350,6 @@ The first process is the optical pumping dynamics on each individual atom $i$ po
 \end{align}
 where the characteristic photon scattering rate $ \gamma_s\equiv \frac{\Gamma_0\Omega^2}{4\Delta_F}=\frac{\sigma_0}{A_{in}}\frac{\Gamma_0^2}{4\Delta_F^2}\dot{N}_L $ with the effective input mode area $ A_{in}=1/n_g|u_{\mathrm{in}}(\br'\!_\perp)|^2 $ and the effective detuning $ \Delta_F $ defined by $ \frac{1}{\Delta_F}=\sum_{f'}\frac{C_{f'ff'}^{(1)}}{\Delta_{ff'}} $ and $ \Delta_{ff'}=\omega-\omega_{ff'} $, where $ \omega_{ff'} $ is the resonance angular frequency between the ground hyperfine structure level $ f $ and the excited hyperfine structure level $ f' $, and $ C_{j'ff'}^{(K)} $ are the coefficients for irreducible rank-$K$ components defined in \cite{Deutsch2010a}.
 $\gamma_s$ characterizes the rate of decoherence dynamics and is proportional to the local photon flux of the probe light, $ \dot{N}_L $.
-
-The second term on the right-hand side of Eq.\eqref{eq:totaldrhodt} gives rise to the collective spin dynamics due to QND measurement,
-\begin{align}
-\left.\mathrm{d}\hat{\rho}\right|_{QND} &= \sqrt{\frac{\kappa}{4}}\mathcal{H}\left[\hat{\rho} \right]\mathrm{d}W + \frac{\kappa}{4}\mathcal{L}\left[ \hat{\rho}\right]\mathrm{d}t.
-\end{align}
-Above, we have defined the measurement strength $\kappa \equiv |\chi|^2\dot{N}_L\equiv \frac{\sigma_0A_{in}}{A_{int}^2}\gamma_s $ determining the rate of the spin squeezing in absence of decoherent processes, where $\dot{N}_L$ is the photon number flux, $\chi$ is the light-atom coupling strength and $A_{int}$ is the effective interaction mode area which can be specified for a particular QND measurement protocol. We have also assumed the measurement backation is a stochastic Weiner process where $\mathrm{d}W$ is the increment satisfying $\mathrm{d}W^2 = \mathrm{d}t$. The conditional dynamics responding to the measurement evolve under the superoperator
-\begin{align}
-\mathcal{H}\left[ \hat{\rho}\right] &= \hat{F}_\perp\hat{\rho} + \hat{\rho}\hat{F}_\perp -2\expect{\hat{F}_\perp}\hat{\rho}
-\end{align}
-and the collective Lindblad map due to the direct photon scattering of the guided modes from the atoms
-\begin{align}
-\mathcal{L}\left[ \hat{\rho} \right] &= \hat{F}_\perp\hat{\rho}\hat{F}_\perp-\frac{1}{2}\left(\hat{\rho}\hat{F}_\perp^2+\hat{F}_\perp^2\hat{\rho} \right)=\frac{1}{2}\left[\hat{F}_\perp,\left[\hat{\rho},\hat{F}_\perp \right] \right].
-\end{align}
 
 As shown in the equations above, the spin squeezing dynamics is a competition between the coherent squeezing process and all decoherent processes which are characterized by $\kappa$ and $\gamma_s$, respectively. 
 If we define an effective cooperativity or optical depth (OD) per atom quantity for the spin squeezing dynamics by
