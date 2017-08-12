@@ -558,12 +558,10 @@ The Stokes operators can then be defined in both linear ($ H $ and $ V $) and ci
 \end{subequations}
 The inversed transformations can be easily derived by inverting the transformation coefficient matrices. 
 
-Based on Eq.\eqref{eq:Ebp}, the E-field operator when the input probe is linearly polarized along the diagonal ($ D $) direction can be written in the linear and circular polarization bases by 
+Based on Eq.\eqref{eq:Ebp}, when the input probe can be decomposed into degenerate orthonormal guided modes in the $H/V $ or $ R/L $ bases, the E-field operator can be written in the quasilinear and quasicircular mode bases by 
 \begin{align}
 \hat{\mathbf{E}}^{(+)}(r\!_\perp,\phi,z;t) &= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[\mathbf{u}_H(r\!_\perp,\phi) \hat{a}_H(z,t) + \mathbf{u}_V(r\!_\perp,\phi) \hat{a}_V(z,t)\right]  e^{i (\beta_0 z- \omega_0 t)}\\
-&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \frac{1}{\sqrt{2}}\left[\mathbf{u}_R(r\!_\perp,\phi) \hat{a}_R(z,t) + \mathbf{u}_L(r\!_\perp,\phi) \hat{a}_L(z,t) \right.\nn\\
-&\quad\quad\quad\quad\quad\quad\left. + i\mathbf{u}_R(r\!_\perp,\phi) \hat{a}_R(z,t) - i\mathbf{u}_L(r\!_\perp,\phi) \hat{a}_L(z,t)\right]  e^{i (\beta_0 z- \omega_0 t)}\\
-&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[e^{i\frac{\pi}{4}}\mathbf{u}_R(r\!_\perp,\phi) \hat{a}_R(z,t) + e^{-i\frac{\pi}{4}}\mathbf{u}_L(r\!_\perp,\phi) \hat{a}_L(z,t)\right]  e^{i (\beta_0 z- \omega_0 t)}.
+&= \sqrt{ \frac{2 \pi \hbar \omega_0}{ v_g} } \left[\mathbf{u}_R(r\!_\perp,\phi) \hat{a}_R(z,t) + \mathbf{u}_L(r\!_\perp,\phi) \hat{a}_L(z,t)\right]  e^{i (\beta_0 z- \omega_0 t)}.
 \end{align}
 Therefore, the effective atom-light interaction Hamiltonian can be given in those bases by 
 \begin{align}
@@ -622,18 +620,18 @@ Using the definition in the $ \{ H,V\} $-basis of the Stokes operators (Eq.\eqre
 + \left(\!\begin{array}{cc}\hat{a}_n^\dagger,& \hat{a}_{\bar{n}}^\dagger\end{array} \!\right)\bullet\mathbf{R}^\dagger_{[2,:]}(\theta)\bullet\mathbf{R}_{[2,:]}(\theta)\bullet
 \left(\!\begin{array}{c}\hat{a}_n\\ \hat{a}_{\bar{n}}\end{array} \!\right) \right]\nn\\
 &= \frac{1}{2}\left\{\left(\!\begin{array}{cc}\hat{a}_n^\dagger,& \hat{a}_{\bar{n}}^\dagger\end{array} \!\right)\bullet
-\left[\left(\!\begin{array}{cc}\cos^2\theta,& -\frac{1}{2}\sin 2\theta \\ -\frac{1}{2}\sin 2\theta, & \sin^2\theta\end{array} \!\right)
-+ \left(\!\begin{array}{cc}\sin^2\theta,& \frac{1}{2}\sin 2\theta \\ \frac{1}{2}\sin 2\theta, & \cos^2\theta\end{array} \!\right)\right]\bullet
+\left[\left(\!\begin{array}{cc}\cos^2\theta,& \frac{1}{2}\sin 2\theta \\ \frac{1}{2}\sin 2\theta, & \sin^2\theta\end{array} \!\right)
++ \left(\!\begin{array}{cc}\sin^2\theta,& -\frac{1}{2}\sin 2\theta \\ -\frac{1}{2}\sin 2\theta, & \cos^2\theta\end{array} \!\right)\right]\bullet
 \left(\!\begin{array}{c}\hat{a}_n\\ \hat{a}_{\bar{n}}\end{array} \!\right)\right\}\nn\\
 &=\frac{1}{2} \left[\hat{a}_n^\dagger\hat{a}_n+\hat{a}_{\bar{n}}^\dagger\hat{a}_{\bar{n}} \right]\\
 \hat{S}_1 &= \frac{1}{2}\left\{\left(\!\begin{array}{cc}\hat{a}_n^\dagger,& \hat{a}_{\bar{n}}^\dagger\end{array} \!\right)
 \bullet\left[\mathbf{R}_{[1,:]}^\dagger(\theta)\bullet\mathbf{R}_{[1,:]}(\theta) - \mathbf{R}_{[2,:]}^\dagger(\theta)\bullet\mathbf{R}_{[2,:]}(\theta) \right]
 \bullet\left(\!\begin{array}{c}\hat{a}_n\\ \hat{a}_{\bar{n}}\end{array} \!\right) \right\}\nn\\
-&= \frac{1}{2} \left[\cos 2\theta \hat{a}_n^\dagger\hat{a}_n - \sin 2\theta \hat{a}_n^\dagger\hat{a}_{\bar{n}} - \sin 2\theta \hat{a}_{\bar{n}}^\dagger\hat{a}_n -\cos 2\theta \hat{a}_{\bar{n}}^\dagger\hat{a}_{\bar{n}} \right]\\
+&= \frac{1}{2} \left[\cos 2\theta \hat{a}_n^\dagger\hat{a}_n + \sin 2\theta \hat{a}_n^\dagger\hat{a}_{\bar{n}} + \sin 2\theta \hat{a}_{\bar{n}}^\dagger\hat{a}_n -\cos 2\theta \hat{a}_{\bar{n}}^\dagger\hat{a}_{\bar{n}} \right]\\
 \hat{S}_2 &= \frac{1}{2}\left\{\left(\!\begin{array}{cc}\hat{a}_n^\dagger,& \hat{a}_{\bar{n}}^\dagger\end{array} \!\right)
 \bullet\left[\mathbf{R}_{[1,:]}^\dagger(\theta)\bullet\mathbf{R}_{[2,:]}(\theta) + \mathbf{R}_{[2,:]}^\dagger(\theta)\bullet\mathbf{R}_{[1,:]}(\theta) \right]
 \bullet\left(\!\begin{array}{c}\hat{a}_n\\ \hat{a}_{\bar{n}}\end{array} \!\right) \right\}\nn\\
-&= \frac{1}{2} \left[\sin 2\theta \hat{a}_n^\dagger\hat{a}_n + \cos 2\theta \hat{a}_n^\dagger\hat{a}_{\bar{n}} + \cos 2\theta \hat{a}_{\bar{n}}^\dagger\hat{a}_n -\sin 2\theta \hat{a}_{\bar{n}}^\dagger\hat{a}_{\bar{n}} \right]\\
+&= \frac{1}{2} \left[-\sin 2\theta \hat{a}_n^\dagger\hat{a}_n + \cos 2\theta \hat{a}_n^\dagger\hat{a}_{\bar{n}} + \cos 2\theta \hat{a}_{\bar{n}}^\dagger\hat{a}_n +\sin 2\theta \hat{a}_{\bar{n}}^\dagger\hat{a}_{\bar{n}} \right]\\
 \hat{S}_3 &= \frac{1}{2i}\left\{\left(\!\begin{array}{cc}\hat{a}_n^\dagger,& \hat{a}_{\bar{n}}^\dagger\end{array} \!\right)
 \bullet\left[\mathbf{R}_{[1,:]}^\dagger(\theta)\bullet\mathbf{R}_{[2,:]}(\theta) - \mathbf{R}_{[2,:]}^\dagger(\theta)\bullet\mathbf{R}_{[1,:]}(\theta) \right]
 \bullet\left(\!\begin{array}{c}\hat{a}_n\\ \hat{a}_{\bar{n}}\end{array} \!\right) \right\}\nn\\
@@ -651,8 +649,8 @@ One can prove that the inversed transformation matrix $ \mathbf{M}^{-1}=2\mathbf
 -i\mathrm{vec}_r\left[\mathbf{R}_{[1,:]}^\dagger(\theta)\mathbf{R}_{[2,:]}(\theta) - \mathbf{R}_{[2,:]}^\dagger(\theta)\mathbf{R}_{[1,:]}(\theta) \right]
  \end{array} \!\right)\\
 &= \frac{1}{2}\left(\!\begin{array}{cccc} 1,&0,&0,& 1\\
-\cos 2\theta,&-\sin 2\theta, & -\sin 2\theta, & -\cos 2\theta\\
-\sin 2\theta, & \cos 2\theta, & \cos 2\theta, & -\sin 2\theta\\
+\cos 2\theta,&\sin 2\theta, & \sin 2\theta, & -\cos 2\theta\\
+-\sin 2\theta, & \cos 2\theta, & \cos 2\theta, & \sin 2\theta\\
 0,&-i,& i,& 0\end{array}\!\right),
 \end{align}
 where $ \mathrm{vec}_r[\cdot] $ means the vectorization of a matrix by concatenating its rows. 
@@ -685,8 +683,8 @@ Therefore, the effective atom-light interaction Hamiltonian can be written as
 \bullet\left(\!\begin{array}{c}\hat{a}_n\\ \hat{a}_{\bar{n}}\end{array} \!\right) \nn\\
 &= \hbar \hat{\boldsymbol{\chi}}_{n,\bar{n}}^\dagger\bullet \hat{\mathbf{A}}_{n,\bar{n}}= \hbar \hat{\boldsymbol{\chi}}_{n,\bar{n}}^\dagger\bullet 2\mathbf{M}^\dagger\bullet \hat{\mathbf{S}}\\
 &= \hbar\left\{(\hat{\chi}_{nn}+ \hat{\chi}_{\bar{n}\bar{n}})\hat{S}_0 \right.\nn\\
-&\quad+ [\cos 2\theta \hat{\chi}_{nn}- \sin 2\theta(\hat{\chi}_{n\bar{n}}+\hat{\chi}_{\bar{n}n}) - \cos 2\theta\hat{\chi}_{\bar{n}\bar{n}}]\hat{S}_1 \nn\\
-&\quad+ [\sin 2\theta \hat{\chi}_{nn}+ \cos 2\theta(\hat{\chi}_{n\bar{n}}+\hat{\chi}_{\bar{n}n}) - \sin 2\theta \hat{\chi}_{\bar{n}\bar{n}}]\hat{S}_2 \nn\\
+&\quad+ [\cos 2\theta \hat{\chi}_{nn}+ \sin 2\theta(\hat{\chi}_{n\bar{n}}+\hat{\chi}_{\bar{n}n}) - \cos 2\theta\hat{\chi}_{\bar{n}\bar{n}}]\hat{S}_1 \nn\\
+&\quad+ [-\sin 2\theta \hat{\chi}_{nn}+ \cos 2\theta(\hat{\chi}_{n\bar{n}}+\hat{\chi}_{\bar{n}n}) + \sin 2\theta \hat{\chi}_{\bar{n}\bar{n}}]\hat{S}_2 \nn\\
 &\quad+\left. i \left(\hat{\chi}_{n\bar{n}}-\hat{\chi}_{\bar{n}n}\right)\hat{S}_3 \right\}.\label{eq:heff_nnbarChiS}
 \end{align}
 In deriving the expression above, we have defined $\hat{\boldsymbol{\chi}}_{n,\bar{n}}=[\hat{\chi}_{nn};\hat{\chi}_{n\bar{n}};\hat{\chi}_{\bar{n}n};\hat{\chi}_{\bar{n}\bar{n}}]$ as the coupling operator vector.
@@ -711,8 +709,8 @@ The Stokes operators becomes
 \begin{subequations}
 \begin{align}
 \hat{S}_0 &= \frac{1}{2} \left[\hat{a}_D^\dagger\hat{a}_D+\hat{a}_{\bar{D}}^\dagger\hat{a}_{\bar{D}} \right]\\
-\hat{S}_1 &= -\frac{1}{2} \left[ \hat{a}_D^\dagger\hat{a}_{\bar{D}} +  \hat{a}_{\bar{D}}^\dagger\hat{a}_D \right]\\
-\hat{S}_2 &= \frac{1}{2} \left[\hat{a}_D^\dagger\hat{a}_D - \hat{a}_{\bar{D}}^\dagger\hat{a}_{\bar{D}} \right]\\
+\hat{S}_1 &= \frac{1}{2} \left[ \hat{a}_D^\dagger\hat{a}_{\bar{D}} +  \hat{a}_{\bar{D}}^\dagger\hat{a}_D \right]\\
+\hat{S}_2 &= \frac{1}{2} \left[ \hat{a}_{\bar{D}}^\dagger\hat{a}_{\bar{D}}-\hat{a}_D^\dagger\hat{a}_D \right]\\
 \hat{S}_3 &= \frac{1}{2i} \left[\hat{a}_D^\dagger\hat{a}_{\bar{D}}-\hat{a}_{\bar{D}}^\dagger\hat{a}_D \right].
 \end{align}
 \end{subequations}
@@ -722,8 +720,8 @@ The field operator becomes
 \end{align}
 The effective Hamiltonian can be simplified from Eq.\eqref{eq:heff_nnbarChiS} to 
 \begin{align}
-\hat{h}_\eff &= \hbar[(\hat{\chi}_{DD}+\hat{\chi}_{\bar{D}\bar{D}})\hat{S}_0 -(\hat{\chi}_{D\bar{D}}+\hat{\chi}_{\bar{D}D} )\hat{S}_1\nn\\
-&\quad + (\hat{\chi}_{DD}-\hat{\chi}_{\bar{D}\bar{D}})\hat{S}_2+i(\hat{\chi}_{D\bar{D}}-\hat{\chi}_{\bar{D}D} )\hat{S}_3].
+\hat{h}_\eff &= \hbar[(\hat{\chi}_{DD}+\hat{\chi}_{\bar{D}\bar{D}})\hat{S}_0 +(\hat{\chi}_{D\bar{D}}+\hat{\chi}_{\bar{D}D} )\hat{S}_1\nn\\
+&\quad + (\hat{\chi}_{\bar{D}\bar{D}}-\hat{\chi}_{DD})\hat{S}_2 +i(\hat{\chi}_{D\bar{D}}-\hat{\chi}_{\bar{D}D} )\hat{S}_3].
 \end{align}
 The Hamiltonian expression above should satisfy the cyclical transformation from the $ H $- and $ V $-basis expression.
 
