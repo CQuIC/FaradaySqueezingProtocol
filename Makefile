@@ -4,8 +4,8 @@
 #  PATH=$PATH:/MINGW/msys/1.0/bin
 # where /MINGW is where MinGW is installed. The line ending should be LF.
 PROJECT=FaradayProtocol CooperativityEnhancement
-LATEXFLAGS?=-interaction=nonstopmode -file-line-error
-TEMPSUFFS=ps log aux out dvi bbl blg
+LATEXFLAGS?=-interaction=nonstopmode -file-line-error -shell-escape
+TEMPSUFFS=ps log aux out dvi bbl blg auxlock
 
 #pdf: ps
 #	$(foreach proj,$(PROJECT),ps2pdf ${proj}.ps;)

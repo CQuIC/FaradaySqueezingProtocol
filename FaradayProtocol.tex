@@ -61,7 +61,11 @@
   {font=\small\sffamily},
   label style = {font=\small\sffamily}
   }
-\usepackage[abs]{overpic}
+%\usepackage[abs]{overpic}
+% Precompile PDF figures from Tikz. Code is adapted from http://neishabouri.net/tips/2014/01/27/tips-and-tricks-for-creating-figures-in-tikz.html and the tex file has to be compiled with pdflatex -shell-escape file.tex format.
+\usetikzlibrary{external} \tikzset{external/system call={lualatex
+    \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
+\tikzexternalize[prefix=fig/autofig/]
 
 
 % self-defined short-cuts and commands

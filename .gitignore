@@ -16,6 +16,7 @@ twocolumn
 *.bak
 *~
 *.asv
+*.auxlock
 
 SyncToMaster.sh
 SyncFromMaster.sh
