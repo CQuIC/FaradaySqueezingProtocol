@@ -15,6 +15,7 @@ twocolumn
 *.dvi
 *.bak
 *~
+*.asv
 
 SyncToMaster.sh
 SyncFromMaster.sh

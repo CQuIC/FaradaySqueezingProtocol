@@ -45,12 +45,23 @@
 %   \usepackage{graphicx}
 %\fi
 % subfig
-%\usepackage{mwe}
-%\usepackage{subfig}
+\usepackage{mwe}
+\usepackage[caption=false]{subfig}
 % to fix a figure's position using [H] option of thec figure.
-%\usepackage{float}
+\usepackage{float}
 % to use \lesssim and other math symbols
-%\usepackage{amssymb}
+\usepackage{amssymb}
+% To include tikz plots.
+\usepackage{tikz,pgfplots}
+% recommended as of Pgfplots 1.3:
+%\pgfplotsset{compat=newest}
+\pgfplotsset{ % Here we specify options for all figures in the document
+  compat=1.8, % Which version of pgfplots do we want to use?
+  legend style =
+  {font=\small\sffamily},
+  label style = {font=\small\sffamily}
+  }
+\usepackage[abs]{overpic}
 
 
 % self-defined short-cuts and commands
@@ -454,6 +465,75 @@ The number of equations needed to include different subspace...
 \section{Discussions} \label{Sec::Discussions}
 \comment{Leave discussions on how does the internal structure of atoms and the total atomic quantum number affect the spin squeezing parameter for future works.}
 
+% set package options
+\captionsetup[subfloat]{position=top,singlelinecheck=off,labelfont={normalsize,sf}, %justification=raggedright,
+  labelformat=simple,listofformat=subparens,aboveskip=0pt,parskip=0pt,farskip=5pt,
+  captionskip=0pt}
+
+% customize subfigure label to capitals
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+
+%\newlength\figureheight
+%\newlength\figurewidth
+\begin{figure}[htb]
+\centering
+%\pgfplotsset{yticklabel style={text width=3em,align=right}}
+ \begin{minipage}[h]{0.2\linewidth}
+ %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
+  \subfloat[h][$1/\Aint$]{
+    %\setlength\figureheight{0.3\textwidth}
+    %\setlength\figurewidth{0.3\textwidth}
+    \input{fig/nanofiber_invA_Far_xy.tex}\label{fig:nanofiber_invAFarxy}
+    }
+    \hfill
+  \subfloat[h][$ 1/\Ain $]{
+      %\setlength\figureheight{0.3\textwidth}
+      %\setlength\figurewidth{0.3\textwidth}
+      \label{fig:nanofiber_invAin_xy}
+      \input{fig/nanofiber_invA_in_xy.tex}
+      }
+   \end{minipage}\hfill
+   \begin{minipage}[h]{0.75\linewidth}
+   \subfloat[h][$ C_1 $]{
+      %\setlength\figureheight{0.6\textwidth}
+      %\setlength\figurewidth{0.6\textwidth}
+      \label{fig:nanofiber_C1_xy}
+      \input{fig/nanofiber_C1_xy.tex}
+      }
+   \end{minipage}
+   %\end{tabular}
+\caption{Distributions of effective mode areas and cooperativity per atom near an optical nanofiber.}\label{fig:nanofiber_Aeffgeometry}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+%\pgfplotsset{yticklabel style={text width=3em,align=right}}
+ \begin{minipage}[h]{0.2\linewidth}
+ %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
+  \subfloat[h][$1/\Aint$]{
+    %\setlength\figureheight{0.3\textwidth}
+    %\setlength\figurewidth{0.3\textwidth}
+    \input{fig/swg_invA_Far_xy.tex}\label{fig:swg_invAFarxy}
+    }
+    \hfill
+  \subfloat[h][$ 1/\Ain $]{
+      %\setlength\figureheight{0.3\textwidth}
+      %\setlength\figurewidth{0.3\textwidth}
+      \label{fig:swg_invAin_xy}
+      \input{fig/swg_invA_in_xy.tex}
+      }
+   \end{minipage}\hfill
+   \begin{minipage}[h]{0.75\linewidth}
+   \subfloat[h][$ C_1 $]{
+      %\setlength\figureheight{0.6\textwidth}
+      %\setlength\figurewidth{0.6\textwidth}
+      \label{fig:swg_C1_xy}
+      \input{fig/swg_C1_xy.tex}
+      }
+   \end{minipage}
+   %\end{tabular}
+\caption{Distributions of effective mode areas and cooperativity per atom near a SWG.}\label{fig:swg_Aeffgeometry}
+\end{figure}
 
 %=================== A toy model with a spin-1/2 system =====================%
 \subsection{Spin squeezing with a spin-$1/2$ system} \label{Sec::squeezingwithspinhalfsystems}
