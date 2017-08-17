@@ -45,11 +45,13 @@ line(x_border/d,y_border/d,'Color','k');
 axis equal
 % xlim([min(xc_full),max(xc_full)]/d);
 % ylim([min(yc),max(yc)]/d);
-xlim([-1.5,1.5]);
-ylim([-1.5,1.5]);
+xlim([-1.2,1.2]);
+ylim([-1.2,1.2]);
 % colorbar('WestOutside')
 cleanfigure;
-matlab2tikz('filename','../fig/swg_invA_Far_xy.tex','floatFormat','%.4f');
+matlab2tikz('filename','../fig/swg_invA_Far_xy.tex','floatFormat','%.4f','showInfo', false, ...
+        'parseStrings',false,'standalone', false, ...
+        'height', '1.4in', 'width','1.4in');
 hold off
 
 figure(52);
@@ -61,11 +63,13 @@ contour(xxc./d,yyc./d,invA_in/max(invA_in(:)),Nline);
 hold on
 line(x_border/d,y_border/d,'Color','k');
 axis equal
-xlim([-1.5,1.5]);
-ylim([-1.5,1.5]);
+xlim([-1.2,1.2]);
+ylim([-1.2,1.2]);
 % colorbar('WestOutside')
 cleanfigure;
-matlab2tikz('filename','../fig/swg_invA_in_xy.tex','floatFormat','%.4f');
+matlab2tikz('filename','../fig/swg_invA_in_xy.tex','floatFormat','%.4f','showInfo', false, ...
+        'parseStrings',false,'standalone', false, ...
+        'height', '1.4in', 'width','1.4in');
 hold off
 
 figure(53);
@@ -90,7 +94,9 @@ line([-1.2,0],[-0.9,-0.9],'linestyle','--','color',[0.2,0.2,0.2],'linewidth',0.5
 line([-1.2,0],[-0.8,-0.8],'linestyle','--','color',[0.3,0.3,0.3],'linewidth',0.5);
 line([-1.2,0],[-0.7,-0.7],'linestyle','--','color',[0.4,0.4,0.4],'linewidth',0.5);
 cleanfigure;
-matlab2tikz('filename','../fig/swg_C1_xy.tex','floatFormat','%.4f');
+matlab2tikz('filename','../fig/swg_C1_xy.tex','floatFormat','%.4f','showInfo', false, ...
+        'parseStrings',false,'standalone', false, ...
+        'height', '3.0in');
 hold off
 
 figure(54);
@@ -100,15 +106,17 @@ hold on
 xlabel('r_\perp/d')
 ylabel('C_1')
 xlim([0.59,1.5])
+grid on
 cleanfigure;
-matlab2tikz('filename','../fig/swg_C1_y.tex','floatFormat','%.4f');
+matlab2tikz('filename','../fig/swg_C1_y.tex','floatFormat','%.4f','showInfo', false, ...
+        'parseStrings',false,'standalone', false, ...
+        'height', '5cm', 'width','6cm');
 hold off
 
 %% Plot effective mode areas and cooperativity parameters for the nanofiber case.
-clear all
 load('../data/nanofiber_modes_a225_lambda895_Aeff.mat')
 
-cgstep=2; % Step length for the Coarse-grain of the data in plots.
+cgstep=1; % Step length for the Coarse-grain of the data in plots.
 
 figure(401);
 % colormap(hot)
@@ -123,7 +131,9 @@ xlim([-2.2,2.2]);
 ylim([-2.2,2.2]);
 % colorbar('WestOutside')
 cleanfigure;
-matlab2tikz('filename','../fig/nanofiber_invA_Far_xy.tex','floatFormat','%.4f');
+matlab2tikz('filename','../fig/nanofiber_invA_Far_xy.tex','floatFormat','%.4f','showInfo', false, ...
+        'parseStrings',false,'standalone', false, ...
+        'height', '1.4in', 'width','1.4in');
 hold off
 
 figure(402);
@@ -139,7 +149,9 @@ xlim([-2.2,2.2]);
 ylim([-2.2,2.2]);
 % colorbar('WestOutside')
 cleanfigure;
-matlab2tikz('filename','../fig/nanofiber_invA_in_xy.tex','floatFormat','%.4f');
+matlab2tikz('filename','../fig/nanofiber_invA_in_xy.tex','floatFormat','%.4f','showInfo', false, ...
+        'parseStrings',false,'standalone', false, ...
+        'height', '1.4in', 'width','1.4in');
 hold off
 
 figure(403);
@@ -165,7 +177,9 @@ line([-2.2,0],[-2.0,-2.0],'linestyle','--','Color',[0.1,0.1,0.1],'linewidth',0.5
 line([-2.2,0],[-1.8,-1.8],'linestyle','--','color',[0.3,0.3,0.3],'linewidth',0.5);
 line([-2.2,0],[-1.5,-1.5],'linestyle','--','color',[0.4,0.4,0.4],'linewidth',0.5);
 cleanfigure;
-matlab2tikz('filename','../fig/nanofiber_C1_xy.tex','floatFormat','%.4f');
+matlab2tikz('filename','../fig/nanofiber_C1_xy.tex','floatFormat','%.4f','showInfo', false, ...
+        'parseStrings',false,'standalone', false, ...
+        'height', '3.0in');
 hold off
 
 figure(404);
@@ -175,6 +189,9 @@ hold on
 xlabel('r_\perp/a')
 ylabel('C_1')
 xlim([1.1,2.2])
+grid on
 cleanfigure;
-matlab2tikz('filename','../fig/nanofiber_C1_y.tex','floatFormat','%.4f');
+matlab2tikz('filename','../fig/nanofiber_C1_y.tex','floatFormat','%.4f','showInfo', false, ...
+        'parseStrings',false,'standalone', false, ...
+        'height', '5cm', 'width','6cm');
 hold off
