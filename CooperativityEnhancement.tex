@@ -324,7 +324,7 @@ Figure ? shows a plot of $1/A_{Far}$, $1/A_{in}$, and $C_1$ as a function of  $\
 \section{Spin squeezing dynamics}
 
 Given an ensemble of $N_A$ atoms initially prepared in a spin coherent state for the hyperfine spin $f$, polarized in the transverse plane, e.g., along the $x$-axis, a QND measurement of the collective spin  $F_z$ will squeeze the uncertainty of that component.  The metrologically relevant squeezing parameter defined by Wineland {\emph{et al.}}~\cite{Wineland1992} is,
-\begin{align}
+\begin{align}\label{eq:xi2Faraday}
 \xi^2 &\equiv  \frac{2 f N_A\expect{\Delta F_z ^2}}{\expect{\hat{F}_x}^2}.
 \end{align}
 Under the assumption that the state is symmetric with respect to exchange of any two atoms, the collective expectation value can be decomposed into \begin{align}
@@ -355,7 +355,7 @@ The second term governs decoherence arising from optical pumping, which acts {\e
 Here $\hat{H}^{(i)}_{\rm eff}$ is the effective nonHermitian Hamiltonian describing the local light shift and absorption by the $i^{th}$ atom and $\hat{W}^{(i)}_q$ is the jump operator corresponding to optical pumping through spontaneous emission of a photon of polarization $q$~\cite{Deutsch2010a} (see Appendix ?).   
 The rate of decoherence is characterized by the free space scattering rate, Eq. (?).  Note, optical pumping superoperator, Eq. (?),  is not trace preserving when restricted to a given hyperfine manifold $f$.  In this case, optical pumping of atoms to the other hyperfine manifold in the ground-electronic state is treated as loss.  If the atoms are placed at the optimal angle, the local field is linearly polarized.  In that case the vector light shift vanishes, and for detunings large compared to the excited-state hyperfine splitting, the rank-2 tensor light shift is negligible.  In that case the light shift is dominated by the scalar component, which has no effect on the spin dynamics.  In that case $\hat{H}_{\rm eff} \propto -i\hbar \gamma_s 1$.
 
-The solution to the master equation is made possible by two approximations. Firstly, we restrict the subspace of internal magnetic sublevels that participate in the dynamics.  The system is initialized in a spin coherent state, with all atoms spin-polarized along the $x$-axis.  We denote this as the ``fiducial state" $\ket{\uparrow} = \ket{f, m_x =f}$.   Through QND measurement, spin squeezing is induced by entanglement with the  ``coupled state"  $\ket{\downarrow} = \ket{f, m_x=f-1}$.  Optical pumping is dominated by ``spin flips" $\ket{\uparrow}\rightarrow \ket{\downarrow}$ and ``loss" due to pumping to the other hyperfine level.  We finally include a third internal magnetic sublevel $\ket{T} = \ket{f, m_x=f-2}$ to account for  ``transfer of coherences" that can occur in spontaneous emission~\cite{?}.  Restricted to this qutrit basis, the internal hyperfine spin operators are
+The solution to the master equation is made possible by three approximations. Firstly, we restrict the subspace of internal magnetic sublevels that participate in the dynamics.  The system is initialized in a spin coherent state, with all atoms spin-polarized along the $x$-axis.  We denote this as the ``fiducial state" $\ket{\uparrow} = \ket{f, m_x =f}$.   Through QND measurement, spin squeezing is induced by entanglement with the  ``coupled state"  $\ket{\downarrow} = \ket{f, m_x=f-1}$.  Optical pumping is dominated by ``spin flips" $\ket{\uparrow}\rightarrow \ket{\downarrow}$ and ``loss" due to pumping to the other hyperfine level.  We finally include a third internal magnetic sublevel $\ket{T} = \ket{f, m_x=f-2}$ to account for  ``transfer of coherences" that can occur in spontaneous emission~\cite{Norris2014}.  Restricted to this qutrit basis with dimension $ d=3 $, the internal hyperfine spin operators are
 \begin{subequations}
 \begin{align}
 \hat{f}_x &= -\left[f \hat{\sigma}_{\uparrow \uparrow} +(f-1) \hat{\sigma}_{\downarrow \downarrow} + (f-2)  \hat{\sigma}_{T T}\right], \\
@@ -364,9 +364,15 @@ The solution to the master equation is made possible by two approximations. Firs
 \end{subequations}
 where we have defined the atomic population and coherence operators $\hat{\sigma}_{ba}=\ket{b}\bra{a}$.
 
-Secondly, we make the Gaussian approximation, valid for large atomic ensembles, so that the many-body state is fully characterized by one and two-body correlation. Equivalently, the state is defined by the one and two-body density operators, with matrix elements $\rho^{(1)}_{a, b} =\expect{\hat{\sigma}_{ba}}$, $\rho^{(1,2)}_{ac,bd}=\expect{\Delta \sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)} }$.   Optical pumping, acting locally, couple only $n$-body correlations to themselves, e.g.,
+Secondly, we assume the collective spin state conserves its form under exchange symmetry. This approximation is valid in the far-detuning regime where the atom-atom interactions ($ \sim 1/\Delta^2 $) are negligible~\cite{Asenjo-Garcia2017Atom,Asenjo-Garcia2017Exponential}. With this, we can limit our attention to the symmetric subspace and define, for example, the symmetric two-body covariances by
+\begin{align}
+\expect{\Delta\sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)}}_s \equiv \frac{1}{2}\left[\expect{\Delta\sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)}}+\expect{\Delta\sigma_{ba}^{(2)}\Delta\sigma_{dc}^{(1)}} \right] ,
+\end{align}
+where the superscripts, $ ^{(1)} $ and $ ^{(2)} $, label arbitrary two atoms in the ensemble. Due to the exchange symmetry, $ \expect{\Delta\sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)}}_s=\expect{\Delta\sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)}}=\expect{\Delta\sigma_{ba}^{(2)}\Delta\sigma_{dc}^{(1)}} $ and reduces the number of $ n $-body moments required to compute the spin dynamics of the ensemble.
+
+Thirdly, we make the Gaussian approximation, valid for large atomic ensembles, so that the many-body state is fully characterized by one- and two-body correlations. Equivalently, the state is defined by the one and two-body density operators, with matrix elements $\rho^{(1)}_{a, b} =\expect{\hat{\sigma}_{ba}}$, $\rho^{(1,2)}_{ac,bd}=\expect{\Delta \sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)} }_s$ in the symmetric subspace.   Optical pumping, acting locally, couple only $n$-body correlations to themselves, e.g.,
 \begin{equation}
-\expect{\Delta \sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)} }_{op} = \expect{\mathcal{D}[\Delta \sigma_{ba}^{(1)}]\Delta\sigma_{dc}^{(2)} }_{op}dt + \expect{\Delta \sigma_{ba}^{(1)} \mathcal{D}[\Delta\sigma_{dc}^{(2)}] }_{op}dt .
+\left.d\expect{\Delta \sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)} }_s\right|_{op} = \expect{\mathcal{D}[\Delta \sigma_{ba}^{(1)}]\Delta\sigma_{dc}^{(2)} }_sdt + \expect{\Delta \sigma_{ba}^{(1)} \mathcal{D}[\Delta\sigma_{dc}^{(2)}] }_sdt .
 \end{equation}
 QND measurement generates higher order correlations according to
 \begin{equation}
@@ -374,12 +380,14 @@ QND measurement generates higher order correlations according to
 \end{equation}
 We can truncate this hierarchy in the Gaussian approximation, setting third order cumulants to zero.  Thus, for example,
 \begin{align}
-\left.d\expect{\Delta f_z^{(i)} \Delta f_z^{(j)}} \right|_{QND} &= \left.d\expect{\hat{f}_z^{(i)} \hat{f}_z^{(j)}} \right|_{QND} -2 \left. \expect{\hat{f}_z} \right|_{QND} \left( \left.d\expect{\hat{f}_z} \right|_{QND}\right) - \left( \left.d\expect{f_z} \right|_{QND}\right)^2 \nonumber \\
-&= -\kappa\expect{\Delta f^{(i)}_z  \Delta F_z } \expect{\Delta F_z \Delta f_z^{(j)} }dt,
+\left.d\expect{\Delta \sigma_{ba}^{(1)} \Delta \sigma_{dc}^{(2)}}_s \right|_{QND} &= \left.d\expect{\hat{\sigma}_{ba}^{(1)} \hat{\sigma}_{dc}^{(2)}}_s \right|_{QND} - \left. \expect{\hat{\sigma}_{ba}} \right|_{QND} \left( \left.d\expect{\hat{\sigma}_{dc}} \right|_{QND}\right) \nonumber\\
+&\quad - \left. \expect{\hat{\sigma}_{dc}} \right|_{QND} \left( \left.d\expect{\hat{\sigma}_{ba}} \right|_{QND}\right)
+- \left.d\expect{\sigma_{ba}} \right|_{QND}\left.d\expect{\sigma_{dc}} \right|_{QND} \nonumber \\
+&= -\kappa\expect{\Delta \sigma^{(1)}_{ba}  \Delta F_z }_s \expect{\Delta F_z \Delta \sigma_{dc}^{(2)} }_sdt,
 \end{align}
-where we have employed the Ito calculus $dW^2 = dt$.
+where we have employed the Ito calculus $dW^2 = dt$. Using the approximations above, the collective spin dynamics can be efficiently calculated with $ d^2=9 $ equations for the one-body quantity, $ \expect{\hat{\sigma}_{ba}} $, and $ \frac{d^2(d^2+1)}{2}=45 $ equations for the two-body covariances, $ \expect{\Delta \sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)} }_s $, in the symmetric subspace independent of the number of atoms.
 
-With this formalism in hand, we can calculate the squeezing parameter, Eq. (?), as a function of time by finding equations of motion for the one-body averages $\expect{\hat{f}_x}$ and  $\expect{\Delta f_z^2}$, and the two-body correlations $\expect{\Delta f_z^{(1)} \Delta f_z^{(1)}}$.  This is done in the qutrit basis according to Eq. (?).
+With this formalism in hand, we can calculate the squeezing parameter, Eq.\eqref{eq:xi2Faraday}, as a function of time by finding time-dependent solutions for the one-body averages $\expect{\hat{f}_x}$ and  $\expect{\Delta f_z^2}$, and the two-body correlations $\expect{\Delta f_z^{(1)} \Delta f_z^{(1)}}$ and hence the collective quantities.  This is done in the qutrit basis according to Eq. (?) and presented in Appendix (?).
 
 Apparently, the cooperativity is increasing on the order of $ 1/r\!_\perp^2 $ if the atoms are placed closer to the waveguide surface. Fig (?) shows the inversed peak squeezing parameter as a function of $ r\!_\perp $ for both nanofiber and SWG geometries. We cut off the calculation at $ ~20 $dB when the spin squeezed state is about to become a non-Gaussian state with $2500$ atoms.
 
