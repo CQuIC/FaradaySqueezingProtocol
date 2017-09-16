@@ -260,7 +260,7 @@ hold off
 load('../data/swg_peakxi_d300_lambda895.mat')
 
 figure(503); % For the peak spin squeezing parameter using the full dynamics as a function of $r_\perp$.
-deltaa=3; % Step to select $r_\perp$ for a smooth curve.
+deltaa=2; % Step to select $r_\perp$ for a smooth curve.
 plot(rp0_test(1:deltaa:end)/d_wg,xi_peak(5,1:deltaa:end),'r-','linewidth',lw);
 xlabel('$r_\perp/d$');
 ylabel('$\xi^{-2}_{peak}$ (dB)');
