@@ -51,7 +51,25 @@
 %\usepackage{float}
 % to use \lesssim and other math symbols
 %\usepackage{amssymb}
-
+\usepackage{mwe}
+\usepackage[caption=false]{subfig}
+% to fix a figure's position using [H] option of thec figure.
+\usepackage{float}
+\usepackage{tikz,pgfplots}
+% recommended as of Pgfplots 1.3:
+%\pgfplotsset{compat=newest}
+\pgfplotsset{ % Here we specify options for all figures in the document
+  compat=1.8, % Which version of pgfplots do we want to use?
+  legend style =
+  {font=\small\sffamily},
+  label style = {font=\small\sffamily},
+  xticklabel style={/pgf/number format/.cd, 1000 sep={}}
+  }
+%\usepackage[abs]{overpic}
+% Precompile PDF figures from Tikz. Code is adapted from http://neishabouri.net/tips/2014/01/27/tips-and-tricks-for-creating-figures-in-tikz.html and the tex file has to be compiled with pdflatex -shell-escape file.tex format.
+\usetikzlibrary{external} \tikzset{external/system call={lualatex
+    \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
+\tikzexternalize[prefix=fig/autofig/]
 
 % self-defined short-cuts and commands
 %\input{Mydef.tex}
@@ -216,6 +234,14 @@ We study the enhancement of cooperativity in the atom-light interface near a nan
 
 \maketitle
 
+% set package options
+\captionsetup[subfloat]{position=top,singlelinecheck=off,labelfont={normalsize,sf}, %justification=raggedright,
+  labelformat=simple,listofformat=subparens,aboveskip=0pt,parskip=0pt,farskip=5pt,
+  captionskip=0pt}
+
+% customize subfigure label to capitals
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+
 %===================INTRODUCTION=====================%
 \section{Introduction}
 
@@ -319,7 +345,62 @@ C_1\le \sigma_0\frac{n_g \vert \mbf{u}_V (\mbf{r}'_\perp) \vert ^2 \vert \mbf{u}
 \end{align}
 where the equal sign is hardly reachable for a dielectric waveguide which usually has an out-of-phase $ z $-component in either or both of the orthogonal base modes at arbitrary positions, while the upper bound naturally occurs in free-space modes basis and $ C_1=\frac{\sigma_0}{A_{in}}=\frac{\sigma_0}{\vert \mbf{u}_H (\mbf{r}'_\perp) \vert ^2} $ well-known for a Gaussian or plane wave input modes in free-space when $ \vert \mbf{u}_H (\mbf{r}'_\perp) \vert ^2=\vert \mbf{u}_V (\mbf{r}'_\perp) \vert ^2 $ independent of azimuthal position and $ n_g=1 $. However, as we will show next that due to the tight and anisotropic confinement of the modes in a nanophotonic structure, the cooperativity can be enhanced by choosing the position of the atom so that the {\em orthogonal}, unoccupied mode is large, while the intensity that causes decoherence is small.
 
-Figure ? shows a plot of $1/A_{Far}$, $1/A_{in}$, and $C_1$ as a function of  $\mbf{r}'_\perp$ for the two nanophotonic geometries.  We see that $A_{Far}$ is cylindrically symmetric for both nanofiber and SWG geometries which have a $ C_4 $ rotation symmetry, and thus the measurement strength is independent of the azimuthal position, depending only on $\vert \mbf{r}'_\perp\vert$.  In contrast $A_{in}$ is azimuthally anisotropic.  $1/A_{in}$ is smallest along the $y$-axis at a given radial distance, which corresponds to smallest intensity of the $H$-mode, and thus smallest scattering rate $\gamma_s$.  This angle corresponds to the position at which $\vert \mbf{u}_V (\mbf{r}'_\perp) \vert$ is largest and thus yields the largest enhancement of $C_1$.  Thus, counterintuitively, we enhance the cooperativity by placing the atom at the angle of minimum input intensity.   This enhancement is even greater for the square waveguide, as the modes are even more anisotropic in this case.  For typical geometries, given a nanofiber with radius $a = 250$nm and atoms trapped and a radial distance $?$ from the surface, the single atom cooperativity is $C_1 =?$ at the optimal trapping angle; for the square waveguide of width $w =?$nm, and atoms trapped $?$nm from the surface, $C_1 =?$ at optimum.  Thus with order 1000 trapped atoms the $N_A$-atom cooperativity is of order ?, sufficient to generate substantial spin squeezing.
+
+\begin{figure}[htb]
+\centering
+ \begin{minipage}[h]{0.2\linewidth}
+ %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
+  \subfloat[h][$1/\AF$]{
+    %\input{fig/nanofiber_invA_Far_xy.tex}
+    \includegraphics{fig/autofig/FaradayProtocol-figure0}
+    \label{fig:nanofiber_invAFarxy}
+    }
+    \hfill
+  \subfloat[h][$ 1/\Ain $]{
+      \label{fig:nanofiber_invAin_xy}
+      \includegraphics{fig/autofig/FaradayProtocol-figure1}
+      %\input{fig/nanofiber_invA_in_xy.tex}
+      }
+   \end{minipage}\hfill
+   \begin{minipage}[h]{0.75\linewidth}
+   \subfloat[h][$ C_1 $]{
+      \label{fig:nanofiber_C1_xy}
+      \includegraphics{fig/autofig/FaradayProtocol-figure2}
+      %\input{fig/nanofiber_C1_xy.tex}
+      }
+   \end{minipage}
+   %\end{tabular}
+\caption{Distributions of effective mode areas and cooperativity per atom near an optical nanofiber.}\label{fig:nanofiber_Aeffgeometry}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+ \begin{minipage}[h]{0.2\linewidth}
+ %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
+  \subfloat[h][$1/\AF$]{
+    %\input{fig/swg_invA_Far_xy.tex}
+    \includegraphics{fig/autofig/FaradayProtocol-figure3}
+    \label{fig:swg_invAFarxy}
+    }
+    \hfill
+  \subfloat[h][$ 1/\Ain $]{
+      \label{fig:swg_invAin_xy}
+      \includegraphics{fig/autofig/FaradayProtocol-figure4}
+      %\input{fig/swg_invA_in_xy.tex}
+      }
+   \end{minipage}\hfill
+   \begin{minipage}[h]{0.75\linewidth}
+   \subfloat[h][$ C_1 $]{
+      \label{fig:swg_C1_xy}
+      \includegraphics{fig/autofig/FaradayProtocol-figure5}
+      %\input{fig/swg_C1_xy.tex}
+      }
+   \end{minipage}
+   %\end{tabular}
+\caption{Distributions of effective mode areas and cooperativity per atom near a SWG.}\label{fig:swg_Aeffgeometry}
+\end{figure}
+
+Figs.~\ref{fig:nanofiber_Aeffgeometr} and~\ref{fig:swg_Aeffgeometry} show plots of $1/A_{Far}$, $1/A_{in}$, and $C_1$ as a function of  $\mbf{r}'_\perp$ for the two nanophotonic geometries.  We see that $A_{Far}$ is cylindrically symmetric for both nanofiber and SWG geometries which have a $ C_4 $ rotation symmetry, and thus the measurement strength is independent of the azimuthal position, depending only on $\vert \mbf{r}'_\perp\vert$.  In contrast $A_{in}$ is azimuthally anisotropic.  $1/A_{in}$ is smallest along the $y$-axis at a given radial distance, which corresponds to smallest intensity of the $H$-mode, and thus smallest scattering rate $\gamma_s$.  This angle corresponds to the position at which $\vert \mbf{u}_V (\mbf{r}'_\perp) \vert$ is largest and thus yields the largest enhancement of $C_1$.  Thus, counterintuitively, we enhance the cooperativity by placing the atom at the angle of minimum input intensity.   This enhancement is even greater for the square waveguide, as the modes are even more anisotropic in this case.  For typical geometries, given a nanofiber with radius $a = 250$nm and atoms trapped and a radial distance $?$ from the surface, the single atom cooperativity is $C_1 =?$ at the optimal trapping angle; for the square waveguide of width $w =?$nm, and atoms trapped $?$nm from the surface, $C_1 =?$ at optimum.  Thus with order 1000 trapped atoms the $N_A$-atom cooperativity is of order ?, sufficient to generate substantial spin squeezing.
 
 \section{Spin squeezing dynamics}
 
@@ -356,7 +437,7 @@ Here $\hat{H}^{(i)}_{\rm eff}$ is the effective nonHermitian Hamiltonian describ
 The rate of decoherence is characterized by the free space scattering rate, Eq. (?).  Note, optical pumping superoperator, Eq. (?),  is not trace preserving when restricted to a given hyperfine manifold $f$.  In this case, optical pumping of atoms to the other hyperfine manifold in the ground-electronic state is treated as loss.  If the atoms are placed at the optimal angle, the local field is linearly polarized.  In that case the vector light shift vanishes, and for detunings large compared to the excited-state hyperfine splitting, the rank-2 tensor light shift is negligible.  In that case the light shift is dominated by the scalar component, which has no effect on the spin dynamics.  In that case $\hat{H}_{\rm eff} \propto -i\hbar \gamma_s 1$.
 
 The solution to the master equation is made possible by three approximations. Firstly, we restrict the subspace of internal magnetic sublevels that participate in the dynamics.  The system is initialized in a spin coherent state, with all atoms spin-polarized along the $x$-axis.  We denote this as the ``fiducial state" $\ket{\uparrow} = \ket{f, m_x =f}$.   Through QND measurement, spin squeezing is induced by entanglement with the  ``coupled state"  $\ket{\downarrow} = \ket{f, m_x=f-1}$.  Optical pumping is dominated by ``spin flips" $\ket{\uparrow}\rightarrow \ket{\downarrow}$ and ``loss" due to pumping to the other hyperfine level.  We finally include a third internal magnetic sublevel $\ket{T} = \ket{f, m_x=f-2}$ to account for  ``transfer of coherences" that can occur in spontaneous emission~\cite{Norris2014}.  Restricted to this qutrit basis with dimension $ d=3 $, the internal hyperfine spin operators are
-\begin{subequations}
+\begin{subequations}\label{eq:fxfz_xbasis}
 \begin{align}
 \hat{f}_x &= -\left[f \hat{\sigma}_{\uparrow \uparrow} +(f-1) \hat{\sigma}_{\downarrow \downarrow} + (f-2)  \hat{\sigma}_{T T}\right], \\
 \hat{f}_z &= \sqrt{\frac{f}{2}} \left(\hat{\sigma}_{\uparrow \downarrow} + \hat{\sigma}_{\downarrow \uparrow}\right) + \sqrt{\frac{2f-1}{2}}  \left(\hat{\sigma}_{\downarrow T} + \hat{\sigma}_{T \downarrow }\right),
@@ -389,14 +470,107 @@ where we have employed the Ito calculus $dW^2 = dt$.
 By setting the third-order cumulants to zero, the Lindblad dynamics of the two-body covariances stay constant, $ \left.d\expect{\Delta \sigma_{ba}^{(1)} \Delta \sigma_{dc}^{(2)}}_s\right|_\mathcal{L} =\frac{\kappa}{4}\expect{\mathcal{L}^\dagger\left[\Delta\sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)} \right]}_sdt=0 $, which indicates the events of no-photon detection under the Gaussian state approximation do not generate atom-atom correlations and the spin squeezing phenomenon while the measurement backaction when the photons from the guided modes are detected does. Using all the approximations above, the collective spin dynamics can be efficiently calculated with $ d^2=9 $ equations for the one-body quantity, $ \expect{\hat{\sigma}_{ba}} $, and $ \frac{d^2(d^2+1)}{2}=45 $ equations for the two-body covariances, $ \expect{\Delta \sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)} }_s $, in the symmetric subspace independent of the number of atoms.
 In general, to include the $ n $-body correlations, $ \sum_i^n\left(\!\begin{array}{c}i\\d^2\end{array} \! \right) $ equations are required and the formalism above can be extended to cut off the covariances at the $ (n+1)^{\text{th}} $ order. For our problem, counting up to the two-body correlations is enough in the Gaussian state limit as we will show later.
 
-With this formalism in hand, we can calculate the squeezing parameter, Eq.\eqref{eq:xi2Faraday}, as a function of time by finding time-dependent solutions for the one-body averages $\expect{\hat{f}_x}$ and  $\expect{\Delta f_z^2}$, and the two-body correlations $\expect{\Delta f_z^{(1)} \Delta f_z^{(1)}}$ and hence the collective quantities.  This is done in the qutrit basis according to Eq. (?) and presented in Appendix (?).
+With this formalism in hand, we can calculate the squeezing parameter, Eq.\eqref{eq:xi2Faraday}, as a function of time by finding time-dependent solutions for the one-body averages $\expect{\hat{f}_x}$ and  $\expect{\Delta f_z^2}$, and the two-body correlations $\expect{\Delta f_z^{(1)} \Delta f_z^{(1)}}$ and hence the collective quantities.  This is done in the qutrit basis according to Eq.~\eqref{eq:fxfz_xbasis} and presented in Appendix~\ref{Appendix::collectivespinoperators}. 
 
-Apparently, the cooperativity is increasing on the order of $ 1/r\!_\perp^2 $ if the atoms are placed closer to the waveguide surface. Fig (?) shows the inversed peak squeezing parameter as a function of $ r\!_\perp $ for both nanofiber and SWG geometries. We cut off the calculation at $ ~20 $dB when the spin squeezed state is about to become a non-Gaussian state with $2500$ atoms.
+In Fig.~\ref{fig:xi_rpfix_NA_t}, we plot the inversed spin squeezing parameter as a function of time and the peak inversed squeezing parameter as a function of atom number, $ N_A $, for both optical nanofiber and the SWG cases. By placing atoms $ 200 $nm away from the nanofiber surface ($ r'\!_\perp=1.8a $), $ \sim 7 $dB of squeezing may be achievable for $ 2500 $ atoms. Using the SWG platform, on the other hand, with the same number of atoms placed $150 $nm away from the surface of the square waveguide, $ \sim 13.5 $dB of squeezing may be reachable. With more atoms, the peak inversed squeezing parameter can be improved, of course.
 
-To illustrate how the anisotropy of the orthogonal linear modes of the waveguides affect the spin squeezing effect, we plot the ratio of local $ V $- verse $ H $-mode intensity as a function of bulk index of refraction when the atoms are placed $ ~150 $nm away from the surface of a SWG with a side of $ 300 $nm, and compare it with the inversed peak squeezing parameter in Fig (?). 
+\begin{figure}[htb]
+\centering
+ \begin{minipage}[h]{0.95\linewidth}
+ %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
+  \subfloat[h][$\xi^{-2}_{nanofiber}(t)$]{
+    %\input{fig/nanofiber_xi_t_rp1d8a_NA2500.tex}
+    \includegraphics{fig/autofig/FaradayProtocol-figure6}
+    \label{fig:nanofiber_xi_t_rp1d8a_NA2500}
+    }
+    \hfill
+  \subfloat[h][$ \xi^{-2}_{peak,nanofiber}(N_A) $]{
+      \label{fig:nanofiber_peakxi_NA_rp1d8a}
+      \includegraphics{fig/autofig/FaradayProtocol-figure7}
+      %\input{fig/nanofiber_peakxi_NA_rp1d8a.tex}
+      }
+   \end{minipage}\vfill
+   \begin{minipage}[h]{0.95\linewidth}
+    %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
+     \subfloat[h][$\xi^{-2}_{swg}(t)$]{
+       %\input{fig/swg_xi_t_rp1d_NA2500.tex}
+       \includegraphics{fig/autofig/FaradayProtocol-figure8}
+       \label{fig:swg_xi_t_rp1d_NA2500}
+       }
+       \hfill
+     \subfloat[h][$ \xi^{-2}_{peak,swg}(N_A) $]{
+         \label{fig:swg_peakxi_NA_rp1d}
+         \includegraphics{fig/autofig/FaradayProtocol-figure9}
+         %\input{fig/swg_peakxi_NA_rp1d.tex}
+         }
+   \end{minipage}
+   %\end{tabular}
+\caption{Spin squeezing parameter as a function of time and atom number.}\label{fig:xi_rpfix_NA_t}
+\end{figure}
+
+Apparently, the cooperativity of atom-light coupling increases as the atoms are placed closer to the waveguide surface. Figs.\ref{fig:nanofiber_peakxi_rp_NA2500} and~\ref{fig:swg_peakxi_rp_NA2500} show the inversed peak squeezing parameter as a function of $ r\!_\perp $ for both nanofiber and SWG geometries with $2500$ atoms. We find that the inversed peak squeezing parameter linearly decrease in the unit of $ dB $ or in the $ 10\log_{10} $ scale as the atoms move away from the waveguides. To explain this result, we also plot out the cooperativity, $ C_1 $, in the logarithm scale in Figs.\ref{fig:nanofiber_C1_y} and~\ref{fig:swg_C1_y} as a function of atom radial position for both waveguides. As you can see, $ \log_{10}(C_1) $ is also linearly decreasing as $ r\!_\perp $ increases. Cooperativity is indeed the key parameter to predict the peak inversed spin squeezing parameter. 
+
+
+\begin{figure}[htb]
+\centering
+ \begin{minipage}[h]{0.95\linewidth}
+ %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
+  \subfloat[h][$\xi^{-2}_{peak,nanofiber}(r\!_\perp)$]{
+    %\input{fig/nanofiber_peakxi_rp_NA2500.tex}
+    \includegraphics{fig/autofig/FaradayProtocol-figure10}
+    \label{fig:nanofiber_peakxi_rp_NA2500}
+    }
+    \hfill
+  \subfloat[h][$ C_1(r\!_\perp) $ of a nanofiber]{
+      \label{fig:nanofiber_C1_y}
+      \includegraphics{fig/autofig/FaradayProtocol-figure11}
+      %\input{fig/nanofiber_C1_y.tex}
+      }
+   \end{minipage}\vfill
+   \begin{minipage}[h]{0.95\linewidth}
+    %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
+     \subfloat[h][$\xi^{-2}_{peak,swg}(r\!_\perp)$]{
+       %\input{fig/swg_peakxi_rp_NA2500.tex}
+       \includegraphics{fig/autofig/FaradayProtocol-figure12}
+       \label{fig:swg_peakxi_rp_NA2500}
+       }
+       \hfill
+     \subfloat[h][$ C_1(r\!_\perp) $ of a SWG]{
+         \label{fig:swg_C1_y}
+         \includegraphics{fig/autofig/FaradayProtocol-figure13}
+         %\input{fig/swg_C1_y.tex}
+         }
+   \end{minipage}
+   %\end{tabular}
+\caption{Peak squeezing parameter and cooperativity as a function of atom position.}\label{fig:peakxi_rp_NA}
+\end{figure}
+
 
 \section{Conclusion and outlook}
 
 
 \bibliography{refs/Archive}
+
+%===============Appendix================= %
+\begin{appendix}
+\section{Relationships between some collective operators and the first- and second-moments in the symmetric subspace} \label{Appendix::collectivespinoperators}
+
+Using the definitions of the atomic angular momentum operators in the $ x $-basis and the collective atomic operators, one can derive the relations between collective angular momentum operators and microscopic $\sigma_{ba}$ operators in the qutrit symmetric subspace. Below, we only present the formulas of $ \expect{\hat{F}_x} $ and $ \Delta F^2_z $ which are required to calculate the spin squeezing parameter.
+\begin{subequations}
+	\begin{align}
+	\expect{\hat{F}_x} &= \sum_i^{N_A}\expect{\hat{f}_x}\nonumber\\
+	&= -N_A \left[f\expect{\sigmauu}+(f-1)\expect{\sigmadd}+(f-2)\expect{\sigmatt } \right]\\
+	\Delta F_z^2 &= N_A\expect{\Delta f_z^2} + N_A(N_A-1)\expect{\Delta f_z^{(1)}\Delta f_z^{(2)} }_s\nn\\
+	&=N_A\left\{ \frac{f}{2}\left(\expect{\sigmauu}+\expect{\sigmadd}-2\expect{\sigmaud}\expect{\sigmadu}-\expect{\sigmaud}^2-\expect{\sigmadu}^2 \right)\right. \nn\\
+	&\quad\quad+ \frac{2f-1}{2}\left(\expect{\sigmadd}+\expect{\sigmatt}-2\expect{\sigmadt}\expect{\sigmatd}-\expect{\sigmadt}^2-\expect{\sigmatd}^2 \right)\nn\\
+	&\quad\quad +\left. \frac{\sqrt{f(2f-1)}}{2}\left[\expect{\sigmaut }+\expect{\sigmatu} -2\expect{\sigmaud}(\expect{\sigmadt}+\expect{\sigmatd}) -2\expect{\sigmadu}(\expect{\sigmadt}+\expect{\sigmatd} ) \right] \right\}\nn\\
+	&\quad +N_A(N_A-1)\left[\frac{f}{2}(\expect{\Dsigmaud^{(1)}\Dsigmaud^{(2)} }_s +2\expect{\Dsigmaud^{(1)}\Dsigmadu^{(2)} }_s+\expect{\Dsigmadu^{(1)}\Dsigmadu^{(2)} }_s )\right.\\
+	&\quad\quad + \frac{2f-1}{2}(\expect{\Dsigmadt^{(1)}\Dsigmadt^{(2)} }_s +2\expect{\Dsigmadt^{(1)}\Dsigmatd^{(2)} }_s +\expect{\Dsigmatd^{(1)}\Dsigmatd^{(2)} }_s) \nn\\
+	&\quad\quad + \left. \sqrt{f(2f-1)}(\expect{\Dsigmaud^{(1)}\Dsigmadt^{(2)} }_s +\expect{\Dsigmaud^{(1)}\Dsigmatd^{(2)} }_s +\expect{\Dsigmadu^{(1)}\Dsigmadt^{(2)} }_s+\expect{\Dsigmadu^{(1)}\Dsigmatd^{(2)} }_s )\right]\nn
+	\end{align}
+\end{subequations}
+
+
+
+\end{appendix}
 \end{document}
