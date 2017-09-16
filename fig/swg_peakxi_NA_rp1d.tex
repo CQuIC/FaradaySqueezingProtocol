@@ -1,0 +1,38 @@
+% This file was created by matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=5.447cm,
+height=5cm,
+at={(0cm,0cm)},
+scale only axis,
+xmin=500.0000,
+xmax=5000.0000,
+xtick={500.0000,1500.0000,2500.0000,3500.0000,4500.0000},
+xlabel style={font=\color{white!15!black}},
+xlabel={$N_A$},
+ymin=9.0000,
+ymax=16.0000,
+ytick={10.0000,12.0000,13.0000,14.0000,16.0000},
+ylabel style={font=\color{white!15!black}},
+ylabel={$\xi^{-2}_{peak}$ (dB)},
+axis background/.style={fill=white},
+xmajorgrids,
+ymajorgrids
+]
+\addplot [color=red, line width=2.0pt, forget plot]
+  table[row sep=crcr]{%
+500.0000	9.5762\\
+1000.0000	11.2790\\
+1500.0000	12.2558\\
+2000.0000	12.9417\\
+2500.0000	13.4712\\
+3000.0000	13.9039\\
+3500.0000	14.2808\\
+4000.0000	14.6007\\
+4500.0000	14.8784\\
+5000.0000	15.1244\\
+};
+\end{axis}
+\end{tikzpicture}%

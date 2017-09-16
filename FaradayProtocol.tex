@@ -59,7 +59,8 @@
   compat=1.8, % Which version of pgfplots do we want to use?
   legend style =
   {font=\small\sffamily},
-  label style = {font=\small\sffamily}
+  label style = {font=\small\sffamily},
+  xticklabel style={/pgf/number format/.cd, 1000 sep={}}
   }
 %\usepackage[abs]{overpic}
 % Precompile PDF figures from Tikz. Code is adapted from http://neishabouri.net/tips/2014/01/27/tips-and-tricks-for-creating-figures-in-tikz.html and the tex file has to be compiled with pdflatex -shell-escape file.tex format.
@@ -570,6 +571,91 @@ As one example of near-linearly polarized modes, we can consider using a dielect
 Coupling strength, decoherence, and spin squeezing analysis based on the modes of the squared waveguides to show improvement compared with the nanofiber geometry...
 
 Relation of OD$ /N_A $ to cooling efficiency and fictitious magnetic field applications.
+
+\begin{figure}[htb]
+\centering
+\pgfplotsset{xticklabel style={
+        /pgf/number format/fixed,
+        /pgf/number format/precision=2
+},
+scaled x ticks=false}
+%\pgfplotsset{yticklabel style={text width=3em,align=right}}
+ \begin{minipage}[h]{0.95\linewidth}
+ %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
+  \subfloat[h][$\xi^{-2}_{nanofiber}(t)$]{
+    %\setlength\figureheight{0.3\textwidth}
+    %\setlength\figurewidth{0.3\textwidth}
+    \input{fig/nanofiber_xi_t_rp1d8a_NA2500.tex}
+    \label{fig:nanofiber_xi_t_rp1d8a_NA2500}
+    }
+    \hfill
+  \subfloat[h][$ \xi^{-2}_{peak,nanofiber}(N_A) $]{
+      %\setlength\figureheight{0.3\textwidth}
+      %\setlength\figurewidth{0.3\textwidth}
+      \label{fig:nanofiber_peakxi_NA_rp1d8a}
+      \input{fig/nanofiber_peakxi_NA_rp1d8a.tex}
+      }
+   \end{minipage}\vfill
+   \begin{minipage}[h]{0.95\linewidth}
+    %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
+     \subfloat[h][$\xi^{-2}_{swg}(t)$]{
+       %\setlength\figureheight{0.3\textwidth}
+       %\setlength\figurewidth{0.3\textwidth}
+       \input{fig/swg_xi_t_rp1d_NA2500.tex}
+       \label{fig:swg_xi_t_rp1d_NA2500}
+       }
+       \hfill
+     \subfloat[h][$ \xi^{-2}_{peak,swg}(N_A) $]{
+         %\setlength\figureheight{0.3\textwidth}
+         %\setlength\figurewidth{0.3\textwidth}
+         \label{fig:swg_peakxi_NA_rp1d}
+         \input{fig/swg_peakxi_NA_rp1d.tex}
+         }
+   \end{minipage}
+   %\end{tabular}
+\caption{Spin squeezing parameter as a function of time and atom number.}\label{fig:xi_rpfix_NA_t}
+\end{figure}
+
+\newpage
+\begin{figure}[htb]
+\centering
+%\pgfplotsset{yticklabel style={text width=3em,align=right}}
+ \begin{minipage}[h]{0.95\linewidth}
+ %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
+  \subfloat[h][$\xi^{-2}_{peak,nanofiber}(r\!_\perp)$]{
+    %\setlength\figureheight{0.3\textwidth}
+    %\setlength\figurewidth{0.3\textwidth}
+    \input{fig/nanofiber_peakxi_rp_NA2500.tex}
+    \label{fig:nanofiber_peakxi_rp_NA2500}
+    }
+    \hfill
+  \subfloat[h][$ C_1(r\!_\perp) $ of a nanofiber]{
+      %\setlength\figureheight{0.3\textwidth}
+      %\setlength\figurewidth{0.3\textwidth}
+      \label{fig:nanofiber_C1_y}
+      \input{fig/nanofiber_C1_y.tex}
+      }
+   \end{minipage}\vfill
+   \begin{minipage}[h]{0.95\linewidth}
+    %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
+     \subfloat[h][$\xi^{-2}_{peak,swg}(r\!_\perp)$]{
+       %\setlength\figureheight{0.3\textwidth}
+       %\setlength\figurewidth{0.3\textwidth}
+       \input{fig/swg_peakxi_rp_NA2500.tex}
+       \label{fig:swg_peakxi_rp_NA2500}
+       }
+       \hfill
+     \subfloat[h][$ C_1(r\!_\perp) $ of a SWG]{
+         %\setlength\figureheight{0.3\textwidth}
+         %\setlength\figurewidth{0.3\textwidth}
+         \label{fig:swg_C1_y}
+         \input{fig/swg_C1_y.tex}
+         }
+   \end{minipage}
+   %\end{tabular}
+\caption{Peak squeezing parameter and cooperativity as a function of atom position.}\label{fig:peakxi_rp_NA}
+\end{figure}
+
 
 %====== SECTION: Summary and outlook ======%
 \section{Summary and Outlook} \label{Sec::Conclusion}
