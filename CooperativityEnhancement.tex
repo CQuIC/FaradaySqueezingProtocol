@@ -550,7 +550,7 @@ In this Appendix, we will generalize the stochastic equations and optical pumpin
 
 The collective spin dynamics in the QND measurement and spin squeezing process is described by the stochastic master equation defined in Eq.~\eqref{eq:totaldrhodt}. The optical pumping dynamics of the $ j $-th atom are governed by 
 \begin{align}
-\left.\dt{\hat{\rho}^{(j)}}\right|_{op} &= \gamma_s\mathcal{D}[\hat{\rho}^{(j)}]=-\frac{i\gamma_s}{\hbar}\left\{\hat{H}_{\rm eff}^{(j)},\hat{\rho}^{(j)} \right\}_+ + \gamma_s\sum_{q}\hat{W}_q(\br'_j)\hat{\rho}^{(j)}\hat{W}_q(\br'_j) %\\
+\left.\dt{\hat{\rho}^{(j)}}\right|_{op} &= \gamma_s\mathcal{D}[\hat{\rho}^{(j)}]=-\frac{i\gamma_s}{\hbar}\left\{\hat{H}_{\rm eff}^{(j)},\hat{\rho}^{(j)} \right\}_+ + \gamma_s\sum_{q}\hat{W}_q(\br'_j)\hat{\rho}^{(j)}\hat{W}_q^\dagger(\br'_j) %\\
 %&=-\gamma_s\frac{1}{2}\sum_{a,b}\gamma_{ba}\ket{b}\bra{a}+
 %\!\!\!\!\!\!\sum_{q,q',q'',a,b,c,d,f',f'',m',m''}\!\!\!\!\!\! \gamma_sw_{dcq}^{f''m''q''}\left(w_{abq}^{f'm'q'}\right)^*\ket{d}\bra{c}\hat{\rho}^{(i)}\ket{b}\bra{a}.
 \end{align} 
@@ -578,7 +578,7 @@ By denoting the local field's polarization direction as the $ x'$-direction and 
 \gamma_s\hat{h}_{\rm eff} &= -\frac{i\hbar}{2}\sum_{f'} \gamma'_s \left[C_{ff'}^{(0)}\hat{\mathbbm{1}}+C_{ff'}^{(2)}(\hat{f}_{x'}^2-\frac{\hat{\mathbf{f}}^2}{3} ) \right],
 \end{align}
 where the intrinsic photon scattering rate $ \gamma'_s\equiv \frac{\Gamma_{f'}\Omega^2}{4(\Delta_{ff'}^2+\Gamma_{f'}^2/4 )}$ and in the far-detuning regime, $\gamma'_s \approx \frac{\Gamma_{f'}\Omega^2}{4\Delta_{\rm eff}}=\frac{\sigma_0}{\Ain}\left(\frac{\Gamma_{f'}}{2\Delta_{\rm eff}} \right)^2\dot{N}_L $. Note here the vector interaction term vanishes given a linearly polarized light.
-In our simulations of spin squeezing in this paper, we have used the averaged decay rate $ \Gamma_{f'} $ to replace the hyperfine structure dependent decay rate $ \Gamma_{f'\!\! ,\,q} $ for all manifold sublevels of the $ f' $ hyperfine excited states and all photon emission transitions labeled by $ q $; the effective detuning is also an averaged detuning from the fine structure excited level $ j' $ to the ground fine structure manifold $ j $ with resonant frequency $ \omega_D $ of $ D_1 $ line transitions--that is $ \Delta_{\rm eff}=\omega -\omega_D $ with probe frequency at $ \omega $ in vacuum given a far-detuned $ 1 $nm of detuning from the $ D_1 $ line transition of $ ^{133}Cs $ atom. 
+In our simulations of spin squeezing in this paper, we have used the averaged decay rate $ \Gamma_{f'} $ to replace the hyperfine structure dependent decay rate $ \Gamma_{f'\!\! ,\,q} $ for all manifold sublevels of the $ f' $ hyperfine excited states and all photon emission transitions labeled by $ q $; the effective detuning is also an averaged detuning from the fine structure excited level $ j' $ to the ground fine structure manifold $ j $ with resonant frequency $ \omega_D $ of $ D_1 $ line transitions--that is $ \Delta_{\rm eff}=\omega -\omega_D $ with probe frequency at $ \omega $ in vacuum given a far-detuned $ 1 $nm of detuning from the $ D_1 $ line transition of $ ^{133}Cs $ atoms. 
 Compared to the normal characteristic photon scattering rate $ \gamma_s $, we can see they are defined in different scales.
 In general, they are related given a transition between ground hyperfine structure level $ f $ and excited hyperfine structure level $ f' $ by 
 \begin{align}
@@ -618,7 +618,7 @@ The atomic decay rate of the excited level $ e $ will be modified due to the pre
 \Gamma_e &= \sum_g \bra{e}\hat{\mathbf{d}}\ket{g} \cdot \mathrm{Im}\left[\tensor{\mathbf{G}}(\br',\br';\omega_{eg}) \right]\cdot \bra{g}\hat{\mathbf{d}}\ket{e}
 \end{align}
 with the total Green's function tensor as a combination of the contributions from the guided modes and radiative modes, $ \tensor{\mathbf{G}}(\br',\br';\omega_{eg})=\tensor{\mathbf{G}}_{gyd}(\br',\br';\omega_{eg})+\tensor{\mathbf{G}}_{rad}(\br',\br';\omega_{eg}) $.
-We calculate the guided mode Green's function tensor using the local guided modes following the proceed discussed in Ref.~\cite{Qi2016}. The radiative Green's function tensor is calculated by simulating the local unguided modes emitted by a $i$-th orientated electric dipole as the ideal atom placed at the atom position near the waveguides using a house-made program based on the \textit{boundary element method} (BEM)~\cite{Abajo2002,GarciadeAbajo1998Relativistic} in the frequency domain.
+We calculate the guided mode Green's function tensor using the local guided modes following the proceed discussed in Ref.~\cite{Qi2016}. The radiative Green's function tensor is calculated by simulating the local unguided modes emitted by an $i$-direction ($ i=x,y,z $) orientated electric dipole as the ideal atom placed at the atom position near the waveguides using a house-made program based on the \textit{boundary element method} (BEM)~\cite{Abajo2002,GarciadeAbajo1998Relativistic} in the frequency domain. We set $ \Gamma_{f'}= (\Gamma_{f'\!\!,\,x}+\Gamma_{f'\!\!,\,y}+\Gamma_{f'\!\!,\,z})/3$ as the averaged value of decay rates of the unpolarized light emission case for this work.
 
     
 Now, we consider a static magnetic field is applied to the atoms to fix the quantization axis to the $ \mathbf{e}_{z} $ direction pointing along the waveguide axis.
@@ -646,7 +646,7 @@ We can see that, in the rotating frame, the transverse components of the atomic 
 Using the transformation relationships defined in Eqs.\eqref{eq:rotationtransf}, the loss Hamiltonian in the rotating frame becomes
 \begin{subequations}\label{eq:rotationtransf_hloss}
 \begin{align}
-\hat{h}_{\rm loss} =-\frac{i\hbar}{2} \sum_{f'}\gamma'_s \left[C_{ff'}^{(0)}\hat{\mathbbm{1}} + \frac{C_{ff'}^{(2)}}{6}(\hat{\mathbf{f}}^2-3\hat{f}_z^2 ) \right],
+\gamma_s\hat{h}_{\rm loss} =-\frac{i\hbar}{2} \sum_{f'}\gamma'_s \left[C_{ff'}^{(0)}\hat{\mathbbm{1}} + \frac{C_{ff'}^{(2)}}{6}(\hat{\mathbf{f}}^2-3\hat{f}_z^2 ) \right],
 \end{align}
 \end{subequations}
 where $ z $-direction is the waveguide axis direction, and $ \hat{\mathbf{f}}^2=\hat{\mathbf{f}}\cdot\hat{\mathbf{f}} $.
@@ -672,7 +672,7 @@ By using the fact that
 in the rotating frame, both $ \hat{h}_{\rm loss} $ and $ \hat{W}_{q} $ become diagonal, and Eqs.\eqref{eq:rotationtransf_hloss} and~\eqref{eq:rotationtransf_Wxyz} can be simplified as
 \begin{subequations}
 \begin{align}
-\hat{h}_{\rm loss} &= -\frac{i\hbar}{2} \sum_{f'} \gamma'_s(f') \sum_{m=-f}^f\left[C_{ff'}^{(0)} + \frac{C_{ff'}^{(2) }}{6}(f(f+1)-3m^2) \right]\hat{\sigma}_{mm}\\
+\gamma_s\hat{h}_{\rm loss} &= -\frac{i\hbar}{2} \sum_{f'} \gamma'_s(f') \sum_{m=-f}^f\left[C_{ff'}^{(0)} + \frac{C_{ff'}^{(2) }}{6}(f(f+1)-3m^2) \right]\hat{\sigma}_{mm}\\
 \hat{W}_{x'} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'} }\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2 } \sum_{m=-f}^f\left[C_{ff'}^{(0)} + \frac{C_{ff'}^{(2) }}{6}(f(f+1)-3m^2) \right]\hat{\sigma}_{mm}\\
 \hat{W}_{y'} &= -\frac{i}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'} }\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2 } \sum_{m=-f}^f C_{f'ff'}^{(1)}m\hat{\sigma}_{mm}\\
 \hat{W}_z &=0.
