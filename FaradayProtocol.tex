@@ -205,6 +205,7 @@
 %==== Famous names =====
 \usepackage{xspace}
 \newcommand{\Poincare}{Poincar\'e\xspace}
+\newcommand{\sch}{Schr\"odinger\xspace}
 
 %==== colors for editing ======
 \newcommand{\change}[1]{{\color{RoyalBlue} #1}}
@@ -1070,17 +1071,23 @@ In theory, this leads us to transfer the master equations of the collective spin
 \end{align}
 where $ \Omega_B $ is the Larmor processing frequency of the external magnetic field.
 In the rotating frame, a quantum operator $ \hat{A} $ is transfered into $ \hat{A}' $ through $ \hat{A}\rightarrow \hat{A}'=\expect{\hat{U}_B^\dagger\hat{A}\hat{U}_B }_T $, where the notation $ \expect{\cdot}_T=\frac{1}{T}\int\cdot dt $ is the time average of observables in a period $ T $.
-Similarly, the density operator is transfered to the rotating frame through $ \hat{\rho}\rightarrow \hat{\rho}'= \expect{\hat{U}_B^\dagger\hat{\rho}\hat{U}_B }_T $.
+The density operator preserves its form in the rotating frame.
 We can solve the transformed master equations by employing the Baker-Campbell-Hausdorff formula that $ e^{\lambda\hat{A}}\hat{B}e^{-\lambda\hat{A}}=\sum_{n=0}^\infty\frac{\lambda^n}{n!}\hat{C}_n $, where $ \hat{C}_0=\hat{B} $ and $ \hat{C}_n=\left[\hat{A},\hat{C}_{n-1} \right] $ for $ n>1 $, and the commutators of atomic angular momentum operators, $ \left[\hat{f}_m, \hat{f}_n\right]=i\sum_p\epsilon_{mnp}\hat{f}_p $.
 The following static-rotating frame transformation relationships can be proved easily:
 \begin{subequations}\label{eq:rotationtransf}
+	\begin{align}
+	\hat{U}_B^\dagger\hat{f}_{x}\hat{U}_B&=\cos(\Omega_Bt)\hat{f}_x-\sin(\Omega_Bt)\hat{f}_y,\\
+	\hat{U}_B^\dagger\hat{f}_{y}\hat{U}_B &= \sin(\Omega_Bt)\hat{f}_x+ \cos(\Omega_Bt)\hat{f}_y, \\ \hat{U}_B^\dagger\hat{f}_{z}\hat{U}_B &=\hat{f}_z,\quad \hat{U}_B^\dagger\hat{\mathbbm{1}}\hat{U}_B =\hat{\mathbbm{1}}.
+	\end{align}
+\end{subequations}
+In the rotating frame, operators with a transverse atomic angular momentum will be averaged to vanish. For example,
+\begin{subequations}\label{eq:rotationtransf_f}
 	\begin{align}
 	\hat{f}_{x}&=\hat{f}_{y} \rightarrow 0, \quad \hat{f}_{z}\rightarrow\hat{f}_z, \quad \hat{f}_{z}^ 2\rightarrow\hat{f}_z^2,\\
 	\hat{f}^2_{x} &= \hat{f}^ 2_{y} \rightarrow \frac{1}{2}(\hat{\mathbf{f}}^2-\hat{f}_z^2),\\
 	\hat{f}_{x}\hat{f}_{y} &\rightarrow\frac{1}{2}\hat{f}_z,\quad \hat{f}_{y}\hat{f}_{x}\rightarrow -\frac{1}{2}\hat{f}_z,\quad \hat{f}_{i=x,y}\hat{f}_{z}\rightarrow 0.
 	\end{align}
 \end{subequations}
-We can see that, in the rotating frame, the transverse components of the atomic angular momentum operators got averaged out due to symmetry.
 
 
 
@@ -1119,10 +1126,9 @@ in the rotating frame, both $ \hat{h}_{\rm eff} $ and $ \hat{W}_{q} $ become dia
 \hat{W}_z &=0.
 \end{align}
 \end{subequations}
-By further replacing $ \hat{\rho}\rightarrow \expect{\hat{U}_B^\dagger \hat{\rho}\hat{U}_B }_T$ and $ \left. \dt{\hat{\rho}}\right|_{\rm op}\rightarrow \expect{\left.\dt{\hat{U}_B^\dagger}\right|_{\rm op}\hat{\rho}\hat{U}_B}_T + \expect{\hat{U}_B^\dagger\hat{\rho}\left. \dt{\hat{U}_B}\right|_{\rm op}}_T +\expect{\hat{U}_B^\dagger\left.\dt{\hat{\rho}}\right|_{\rm op}\hat{U}_B}_T= \expect{\hat{U}_B^\dagger\left.\dt{\hat{\rho}}\right|_{\rm op}\hat{U}_B}_T$, one can obtain the optical pumping master equation in the rotating frame as
+After some algebra, one can obtain the optical pumping master equation in the rotating frame as
 \begin{align}
-\left. \dt{\hat{\rho}}\right|_{\rm op} &= \expect{\hat{U}_B^\dagger\left.\dt{\hat{\rho}}\right|_{\rm op}\hat{U}_B}_T\nn\\
-&= \expect{\hat{U}_B^\dagger\gamma_s\mathcal{D}\left[\hat{\rho} \right]\hat{U}_B}_T\nn\\
+\left. \dt{\hat{\rho}}\right|_{\rm op} 
 &= - \sum_{f'} \gamma'_s(f') \left[\left(C_{ff'}^{(0)}+\frac{f(f+1)}{12}C_{ff'}^{(2)} \right)\hat{\rho}-\frac{C_{ff'}^{(2)}}{4}(\hat{f}_z^2\hat{\rho}+\hat{\rho}\hat{f}_z^2) \right]\nn\\
 &\quad+\sum_{f',f''} \frac{\sqrt{\Gamma_{f'}\Gamma_{f''} }\Omega^2/4 }{\Delta_{ff'}\Delta_{ff''}+\Gamma_{f'}\Gamma_{f''}/4+i(\Delta_{ff''}\Gamma_{f'}-\Delta_{ff'}\Gamma_{f''} ) }\nn\\
 &\quad\cdot\left\{C_{ff'}^{(0)}C_{ff''}^{(0)}\hat{\rho}+ C_{ff'}^{(0)}C_{ff''}^{(2)}\frac{\hat{\rho}}{6}(\fo^2-3\hat{f}_z^2) + C_{ff''}^{(0)}C_{ff'}^{(2)}(\fo^2-3\hat{f}_z^2)\frac{\hat{\rho}}{6} \right.\nn\\
