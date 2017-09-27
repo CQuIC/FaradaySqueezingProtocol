@@ -1,3 +1,5 @@
 *.png
 *.pdf
 *.eps
+!nanofiberswg_Hmode_E_xy.eps
+!nanofiberswg_Hmode_Ints_xy.eps
