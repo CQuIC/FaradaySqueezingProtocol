@@ -190,10 +190,11 @@ figure(11);
 % colormap(cool(17))
 sub114=subplot('Position',[hp111(1),hp111(2)-hp111(4)-subfigdistance,hp111(3),hp111(4)]); %2,3,4)
 % Create mode component image.
-imagescmode(xH,yH,realEx);
+colormap(sub114,cool(17));
+pcolormode(xH,yH,realEx);
+shading interp
 caxis([min(minE),max(maxE)]);
 hold on
-colormap(sub114,cool(12));
 % draw a waveguide outline segment
 line(x_border, y_border,'color','white','linewidth',lw-1);
 
@@ -211,7 +212,9 @@ hp114=get(sub114,'Position');
 
 sub115=subplot('Position',[hp114(1)+hp114(3)+subfigdistance,hp114(2),hp114(3),hp114(4)]);
 % Create mode component image.
-imagescmode(xH,yH,realEy);
+colormap(sub115,cool(17))
+pcolormode(xH,yH,realEy);
+shading interp
 caxis([min(minE),max(maxE)]);
 hold on
 % draw a waveguide outline segment
@@ -227,7 +230,9 @@ hp115=get(sub115,'Position');
 
 sub116=subplot('Position',[hp115(1)+hp115(3)+subfigdistance,hp115(2),hp115(3),hp115(4)]);
 % Create mode component image.
-imagescmode(xH,yH,imagEz);
+colormap(sub116,cool(17));
+pcolormode(xH,yH,imagEz);
+shading interp
 caxis([min(minE),max(maxE)]);
 hold on
 % draw a waveguide outline segment
@@ -248,8 +253,11 @@ caxis([min(minE),max(maxE)]);
 % matlab2tikz('filename','../fig/nanofiber_Hmode_E_xy.tex','floatFormat','%.4f','showInfo', false, ...
 %         'parseStrings',false,'standalone', false, ...
 %         'height', '1.4in', 'width','2.24in');
-% print('../fig/nanofiber_Hmode_E_xy','-depsc','-opengl')
-export_fig('../fig/nanofiberswg_Hmode_E_xy.eps','-eps','-opengl','-m3','-q101','-transparent','-nocrop');
+ppm = get(gcf,'PaperPosition');
+set(gcf,'PaperPosition',[0 0 ppm(3:4)]);
+set(gcf,'PaperSize',ppm(3:4));
+% print('../fig/nanofiberswg_Hmode_E_xy','-depsc','-opengl')
+export_fig('../fig/nanofiberswg_Hmode_E_xy','-eps','-pdf','-opengl','-m3','-q101','-transparent','-nocrop');
 epsclean('../fig/nanofiberswg_Hmode_E_xy.eps','../fig/nanofiberswg_Hmode_Ints_xy.eps','groupSoft',true); % the third parameter is for Z-order problems
 
 
@@ -290,8 +298,8 @@ colorbar('Position', [hp122(1)+hp122(3)+0.02  hp122(2)+0.02  0.02  hp122(4)*0.95
 % print('../fig/nanofiber_Hmode_Ints_xy','-opengl','-depsc')
 % set(gcf,'renderer','opengl')
 % saveas(fig12,'../fig/nanofiber_Hmode_Ints_xy.eps','epsc')
-export_fig('../fig/nanofiberswg_Hmode_Ints_xy.eps','-eps','-pdf','-opengl','-m3','-q101','-transparent','-nocrop');
-% epsclean('../fig/nanofiber_Hmode_Ints_xy.eps','groupSoft',true); % the third parameter is for Z-order problems
+export_fig('../fig/nanofiberswg_Hmode_Ints_xy','-eps','-pdf','-opengl','-m3','-q101','-transparent','-nocrop');
+% epsclean('../fig/nanofiberswg_Hmode_Ints_xy.eps','groupSoft',true); % the third parameter is for Z-order problems
 
 %% Plots for effective mode areas and cooperativity in the xy-plane for the square waveguide case.
 load('../data/swg_modes_d300_lambda895_Aeff.mat');
