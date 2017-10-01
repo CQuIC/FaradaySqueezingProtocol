@@ -590,7 +590,7 @@ As this work focuses on illustrating the significance of cooperativity in terms 
 
 By the nature of the QND measurement protocols, the probe light is preferably working in the far-off-resonance regime where the photon scattering among atoms is weak and can be negligible. Sandia National Labs also plan to fabricate more sophisticated nanophotonic waveguides than the two simple geometries discussed in this paper. For the completion of the theory of atom-light interactions on nanophotonic interfaces, it is necessary to include the collective effects due to photon scattering processes on general nanophotonic platforms, which will lead to the break of the symmetric state assumption which we have been using in our work~\cite{Qi2016} and will also inspire applications including quantum memories~\cite{Asenjo-Garcia2017Exponential,Asenjo-Garcia2017Atom} and matrix product state and cluster state generations~\cite{Economou2010,Lodahl2017Chiral,Schwartz2016Deterministic,Pichler2016Photonic,Pichler2017Photonic} based on the long-range interaction generated superradiance~\cite{Solano2017Super}, photonic delay lines and spin waves. The theoretical difficulty of studying these many-body effects lays down to the exponentially expanded Hilbert quantum space which cannot be stored efficiently on a classical computer. We hope the computational framework based on the $ n $-body moments will cast a light on understanding the generation of quantum correlations and state storages with an acceptable computational load. 
 
-\section{Acknowledgements}
+\section{Acknowledgments}
 We thank the UNM Center for Advanced Research Computing for computational resources used in this work.
 This work was supported by the NSF, under grants PHY-1212445, xxxxx.
 
@@ -673,6 +673,28 @@ The atomic decay rate of the excited level $ e $ will be modified due to the pre
 \end{align}
 with the total Green's function tensor as a combination of the contributions from the guided modes and radiative modes, $ \tensor{\mathbf{G}}(\br',\br';\omega_{eg})=\tensor{\mathbf{G}}_{gyd}(\br',\br';\omega_{eg})+\tensor{\mathbf{G}}_{rad}(\br',\br';\omega_{eg}) $.
 We calculate the guided mode Green's function tensor using the local guided modes following the eigenmode decomposition formula discussed in Ref.~\cite{Qi2016}. Using a house-made program based on the \textit{boundary element method} (BEM) in the frequency domain~\cite{Abajo2002,GarciadeAbajo1998Relativistic}, the radiative Green's function tensor is calculated by simulating the local unguided modes emitted by an $i$-directed ($ i=x,y,z $) optical dipole as the ideal atom placed near the waveguides. We set $ \Gamma_{f'}= (\Gamma_{f'\!\!,\,x}+\Gamma_{f'\!\!,\,y}+\Gamma_{f'\!\!,\,z})/3$ as the averaged value of decay rates for this study.
+
+\begin{figure}[htb]
+\centering
+ \begin{minipage}[h]{0.4\linewidth}
+ %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
+  \subfloat[h][$ \Gamma_{\rm nanofiber}/\Gamma_0 $]{
+    %\input{fig/nanofiber_decayrates.tex}
+    \includegraphics{fig/autofig/FaradayProtocol-Figure14}
+    \label{fig:nanofiber_decayrates}
+    }
+   \end{minipage}\vfill
+   \begin{minipage}[h]{0.4\linewidth}
+    %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
+     \subfloat[h][$\Gamma_{\rm SWG}/\Gamma_0$]{
+       %\input{fig/swg_decayrates.tex}
+       \includegraphics{fig/autofig/FaradayProtocol-Figure15}
+       \label{fig:swg_decayrates}
+       }
+   \end{minipage}
+   %\end{tabular}
+\caption{Polarization-dependent decay rates for the nanofiber \protect\subref*{fig:nanofiber_decayrates} and SWG \protect\subref*{fig:swg_decayrates} as functions of the radial distance to the waveguides' symmetric centers. Line types differ the contributions from the guided and radiative modes and the combined total value; colors distinguish the polarizations of $ \sigma_\pm $, $ \pi $ and the averaged case. }\label{fig:decayrates}
+\end{figure}
 
     
 Now, we consider a static magnetic field is applied to the atoms to fix the quantization axis to the $ \mathbf{e}_{z} $ direction pointing along the waveguide axis.

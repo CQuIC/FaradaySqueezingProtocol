@@ -17,8 +17,10 @@
 % 8. IntegratedWaveguideTrappedCsAtoms/Squarewg/
 % SpinSqueezing_Faraday_SCS_CsD1_qutrit_squarewg.m --> spin squeezing
 % dynamics with the SWG.
+% 9. NanofiberTrappedCsAtoms/Example_waveguide_GFT_decayrates.m -->
+% polarization-dependent decay rates for both nanofiber and SWG.
 %
-% Used external packages:
+% Used external packages for making these plots:
 %  1. epsclean: https://github.com/Conclusio/matlab-epsclean
 %  2. export_fig: https://github.com/altmany/export_fig
 %  3. matlab2tikz: https://github.com/matlab2tikz/matlab2tikz
@@ -597,4 +599,145 @@ cleanfigure;
 matlab2tikz('filename','../fig/swg_xi_t_rp1d_NA2500.tex','floatFormat','%.4f','showInfo', false, ...
         'parseStrings',false,'standalone', false, ...
         'height', '5cm', 'width','6cm');
+hold off
+
+%% Plot out the polarization-dependent decay rates.
+% Decay rates for the nanofiber case.
+load('../data/nanofiber_decayrates.mat');
+
+figure(701);
+set(gcf,'Units','inches',...
+ 'Position',[2 2 3.5 3])
+plot(rp_vec/a,gamma_total_average,'k-','linewidth',2);
+hold on
+plot(rp_vec/a,gamma_total_sigmap,'m-','linewidth',1)
+plot(rp_vec/a,gamma_total_sigmam,'r-','linewidth',1)
+plot(rp_vec/a,gamma_total_pi,'b-','linewidth',1.5)
+
+plot(rp_vec/a,gamma_guide_average,'k--','linewidth',2);
+plot(rp_vec/a,gamma_guide_sigmap,'m--','linewidth',1);
+plot(rp_vec/a,gamma_guide_sigmam,'r--','linewidth',1);
+plot(rp_vec/a,gamma_guide_pi,'b--','linewidth',1.5);
+
+plot(rp_vec/a,gamma_rad_average,'k-.','linewidth',2);
+plot(rp_vec/a,gamma_rad_sigmap,'m-.','linewidth',1);
+plot(rp_vec/a,gamma_rad_sigmam,'r-.','linewidth',1);
+plot(rp_vec/a,gamma_rad_pi,'b-.','linewidth',1.5)
+xlim([1,2.5])
+xlabel('$r\!_\perp/a$');
+ylabel('$\Gamma_{nanofiber}^i/\Gamma_0$')
+set(gca,'fontsize',fs)
+
+% Set up legend.
+% legend('average','\sigma_+','\sigma_-','\pi');
+linwid=0.2;
+xdistance=0.05;
+ydistance=0.095;
+x1=1.7; y1=0.65;
+x2=x1+linwid+xdistance;
+x3=x2+linwid+xdistance;
+y2=y1-ydistance;
+y3=y2-ydistance;
+outx1=x1-0.355;
+outx2=x3+linwid+0.05;
+outy1=y1+0.2;
+outy2=y3-0.05;
+
+line([x1,x1+linwid],[y1,y1],'Color','black','LineStyle','-','LineWidth',2);
+line([x2,x2+linwid],[y1,y1],'Color','red','LineStyle','-','LineWidth',1);
+line([x3,x3+linwid],[y1,y1],'Color','blue','LineStyle','-','LineWidth',1.5);
+
+line([x1,x1+linwid],[y2,y2],'Color','black','LineStyle','-.','LineWidth',2);
+line([x2,x2+linwid],[y2,y2],'Color','red','LineStyle','-.','LineWidth',1);
+line([x3,x3+linwid],[y2,y2],'Color','blue','LineStyle','-.','LineWidth',1.5);
+
+line([x1,x1+linwid],[y3,y3],'Color','black','LineStyle','--','LineWidth',2);
+line([x2,x2+linwid],[y3,y3],'Color','red','LineStyle','--','LineWidth',1);
+line([x3,x3+linwid],[y3,y3],'Color','blue','LineStyle','--','LineWidth',1.5);
+text(x1-0.26,y1,'total','fontsize',fs-2);
+text(x1-0.375,y2,'radiative','fontsize',fs-2);
+text(x1-0.30,y3,'guided','fontsize',fs-2);
+text(x1-linwid/4,y1+0.1,'average','fontsize',fs-2);
+text(x2+linwid/4,y1+0.1,'$\sigma_\pm$');
+text(x3+linwid/3,y1+0.1,'$\pi$');
+line([outx1,outx1,outx2,outx2,outx1],[outy1,outy2,outy2,outy1,outy1],'Color','black','LineStyle','-','LineWidth',1);
+
+% title('Modified decay rates in presence of a nanofiber','fontsize',10)
+cleanfigure;
+matlab2tikz('filename','../fig/nanofiber_decayrates.tex','floatFormat','%.4f','showInfo', false, ...
+        'parseStrings',false,'standalone', false, ...
+        'height', '2.5in');
+hold off
+
+load('../data/swg_decayrates.mat');
+
+% Same plot for SWG.
+figure(702);
+set(gcf,'Units','inches',...
+ 'Position',[2 2 3.5 3])
+% Only for legend.
+h = zeros(3, 1);
+h(1) = plot(0,0,'k-', 'visible', 'off');
+h(2) = plot(0,0,'r-', 'visible', 'off');
+h(3) = plot(0,0,'b-', 'visible', 'off');
+% Decay rates of SWG.
+plot(rp_vec/d_wg,gamma_total_average,'k-','linewidth',2);
+hold on
+plot(rp_vec/d_wg,real(gamma_total_sigmap),'m-','linewidth',1)
+plot(rp_vec/d_wg,real(gamma_total_sigmam),'r-','linewidth',1)
+plot(rp_vec/d_wg,gamma_total_pi,'b-','linewidth',1.5)
+
+plot(rp_vec/d_wg,gamma_guide_average,'k--','linewidth',2);
+plot(rp_vec/d_wg,real(gamma_guide_sigmap),'m--','linewidth',1);
+plot(rp_vec/d_wg,real(gamma_guide_sigmam),'r--','linewidth',1);
+plot(rp_vec/d_wg,gamma_guide_pi,'b--','linewidth',1.5);
+
+plot(rp_vec/d_wg,gamma_rad_average,'k-.','linewidth',2);
+plot(rp_vec/d_wg,gamma_rad_sigmap,'m-.','linewidth',1);
+plot(rp_vec/d_wg,gamma_rad_sigmam,'r-.','linewidth',1);
+plot(rp_vec/d_wg,gamma_rad_pi,'b-.','linewidth',1.5)
+xlim([0.5,1.9])
+xlabel('$r\!_\perp/d$');
+ylabel('$\Gamma_{swg}^i/\Gamma_0$')
+set(gca,'fontsize',fs)
+
+% Set up legend.
+% legend('average','\sigma_+','\sigma_-','\pi');
+linwid=0.2;
+xdistance=0.05;
+ydistance=0.14;
+x1=1.1; y1=2.2;
+x2=x1+linwid+xdistance;
+x3=x2+linwid+xdistance;
+y2=y1-ydistance;
+y3=y2-ydistance;
+outx1=x1-0.325;
+outx2=x3+linwid+0.05;
+outy1=y1+0.2;
+outy2=y3-0.1;
+
+line([x1,x1+linwid],[y1,y1],'Color','black','LineStyle','-','LineWidth',2);
+line([x2,x2+linwid],[y1,y1],'Color','red','LineStyle','-','LineWidth',1);
+line([x3,x3+linwid],[y1,y1],'Color','blue','LineStyle','-','LineWidth',1.5);
+
+line([x1,x1+linwid],[y2,y2],'Color','black','LineStyle','-.','LineWidth',2);
+line([x2,x2+linwid],[y2,y2],'Color','red','LineStyle','-.','LineWidth',1);
+line([x3,x3+linwid],[y2,y2],'Color','blue','LineStyle','-.','LineWidth',1.5);
+
+line([x1,x1+linwid],[y3,y3],'Color','black','LineStyle','--','LineWidth',2);
+line([x2,x2+linwid],[y3,y3],'Color','red','LineStyle','--','LineWidth',1);
+line([x3,x3+linwid],[y3,y3],'Color','blue','LineStyle','--','LineWidth',1.5);
+text(x1-0.25,y1,'total','fontsize',fs-2);
+text(x1-0.34,y2,'radiative','fontsize',fs-2);
+text(x1-0.28,y3,'guided','fontsize',fs-2);
+text(x1-linwid/4,y1+0.1,'average','fontsize',fs-2);
+text(x2+linwid/4,y1+0.1,'$\sigma_\pm$');
+text(x3+linwid/3,y1+0.1,'$\pi$');
+line([outx1,outx1,outx2,outx2,outx1],[outy1,outy2,outy2,outy1,outy1],'Color','black','LineStyle','-','LineWidth',1);
+
+% title('Modified decay rates in presence of a square waveguide','fontsize',10)
+cleanfigure;
+matlab2tikz('filename','../fig/swg_decayrates.tex','floatFormat','%.4f','showInfo', false, ...
+        'parseStrings',false,'standalone', false, ...
+        'height', '2.5in');
 hold off
