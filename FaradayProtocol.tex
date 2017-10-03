@@ -1068,9 +1068,9 @@ The effective nonHermitian light-shift Hamiltonian for one atom (labeled with su
 \begin{align}
 \hat{H}_{\rm eff}^{(i)} \equiv \hat{h}_{\rm eff}&= - \hat{\mathbf{E}}^{(-)}_{\rm in}(\mathbf{r}' ; t ) \cdot \poltens \cdot \hat{\mathbf{E}}^{(+)}_{\rm in}(\mathbf{r}' ;t ),
 \end{align}
-where the polarizability operator $  \poltens=\sum_{f',q}\hat{\tensor{\mathbf{A}}}(f,f')$ with elements of $ \hat{\tensor{\mathbf{A}}} $ given by
+where the polarizability operator $  \poltens=\sum_{f',q}\hat{\tensor{\mathbf{A}}}(f,f',q)$ with elements of $ \hat{\tensor{\mathbf{A}}} $ given by
 \begin{align} \label{Eq::PolarizabilityIrrep}
-		\hat{A}_{ij}(f,f')&\equiv -\frac{\sigma_0}{8\pi k_0\gamma_s}\frac{\Gamma_{f'\!\!,\, i}^q}{\Delta_{ff'}^q+i\Gamma_{f'\!\!,\, i}^q/2}\hat{e}_i^*\cdot\hat{\mathbf{D}}_{ff'}\hat{\mathbf{D}}_{f'f}^\dagger \cdot \hat{e}_j \\
+		\hat{A}_{ij}(f,f',q)&\equiv -\frac{\sigma_0}{8\pi k_0\gamma_s}\frac{\Gamma_{f'\!\!,\, i}^q}{\Delta_{ff'}^q+i\Gamma_{f'\!\!,\, i}^q/2}\hat{e}_i^*\cdot\hat{\mathbf{D}}_{ff'}\hat{\mathbf{D}}_{f'f}^\dagger \cdot \hat{e}_j \\
 		&=  -\frac{\sigma_0}{8\pi k_0\gamma_s}\frac{\Gamma_{f'\!\!,\, i}^q}{\Delta_{ff'}^q\!+\! i\Gamma_{f'\!\!,\, i}^q/2}\left\{ C_{ff'}^{(0)} \delta_{i,j}\hat{\mathbbm{1}}\!+\! iC_{ff'}^{(1)}\epsilon_{ijk}\hat{f}_k \!+\! C_{ff'}^{(2)} \Big[ \smallfrac{1}{2} ( \hat{f}_i\hat{f}_j \!+\!\hat{f}_j\hat{f}_i )\!-\!\smallfrac{1}{3} \hat{\mathbf{f}}\!\cdot\!\hat{\mathbf{f}} \delta_{i,j} \Big]\right\}, 
 \end{align}
 where $\hat{\mathbf{f}}$ is the atomic spin operator in hyperfine multiplet $f$, and $ \epsilon_{ijk} $ is the Levi-Civita symbol. 
@@ -1081,19 +1081,19 @@ By denoting the local field's polarization direction as the $ x$-direction and t
 \begin{align}
 \hat{h}_{\rm eff} &= -\frac{i\hbar}{2}\sum_{f'} \gamma'_s \left[C_{ff'}^{(0)}\hat{\mathbbm{1}}+C_{ff'}^{(2)}(\hat{f}_{x}^2-\frac{\hat{\mathbf{f}}^2}{3} ) \right],
 \end{align}
-where the intrinsic photon scattering rate $ \gamma'_s\equiv \frac{\Gamma_{f'\!\!,\, x}\Omega^2}{4(\Delta_{ff'}^2+\Gamma_{f'\!\!,\, x}^2/4 )}$ and in the far-detuning regime, $\gamma'_s \approx \frac{\Gamma_{f'\!\!,\, x}\Omega^2}{4\Delta_{\rm eff}^2}=\frac{\sigma_0}{\Ain}\left(\frac{\Gamma_{f'\!\!,\, x}}{2\Delta_{\rm eff}} \right)^2\dot{N}_L $. Note here the vector interaction term vanishes given a linearly polarized light; we have ignored the energy shift, which is valid when the detuning is much larger than the hyperfine level splitting.
+where the intrinsic photon scattering rate $ \gamma'_s\equiv \frac{\Gamma_{f'}^x\Omega^2}{4(\Delta_{ff'}^2+\left(\Gamma_{f'}^x\right)^2/4 )}$ and in the far-detuning regime, $\gamma'_s \approx \frac{\Gamma_{f'}^x\Omega^2}{4\Delta_{\rm eff}^2}=\frac{\sigma_0}{\Ain}\left(\frac{\Gamma_{f'}^x}{2\Delta_{\rm eff}} \right)^2\dot{N}_L $. Note here the vector interaction term vanishes given a linearly polarized light; we have ignored the energy shift, which is valid when the detuning is much larger than the hyperfine level splitting.
 In our simulations of spin squeezing in this paper, we have used the decay rate $ \Gamma_{f',q} $ to indicate the decay rates from the hyperfine $ f' $ manifold sublevels of excited states with a photon emission polarized along the $ \mathbf{e}_q $ direction; the effective detuning is also an averaged detuning from the fine structure excited level $ j' $ to the ground fine structure manifold $ j $ with resonant frequency $ \omega_D $ of $ D_1 $ line transitions--that is $ \Delta_{\rm eff}=\omega -\omega_D $ with probe frequency at $ \omega $ in vacuum given a far-detuned $ \sim 1 $nm of detuning from the $ D_1 $ line transition of $ ^{133}Cs $ atoms. 
 Compared to the normal characteristic photon scattering rate $ \gamma_s $, we can see they are defined in different scales.
 In general, they are related given a transition between ground hyperfine structure level $ f $ and excited hyperfine structure level $ f' $ by 
 \begin{align}
 \gamma'_s(f')=\gamma_s \frac{\Delta_F^2}{\Delta_{ff'}},
 \end{align}
-and hence $ \frac{\sqrt{\Gamma_{f'\!\!,\,x}}\Omega/2}{\Delta_{ff'}\pm i\Gamma_{f'\!\!,\,x}/2}\approx \frac{\sqrt{\Gamma_{f'\!\!,\,x}}\Omega/2}{\Delta_{ff'}}=\sqrt{\gamma_s}\frac{\Delta_F}{\Delta_{ff'}} $ in the far-detuning regime.
+and hence $ \frac{\sqrt{\Gamma_{f'}^x}\Omega/2}{\Delta_{ff'}\pm i\Gamma_{f'}^x/2}\approx \frac{\sqrt{\Gamma_{f'}^x}\Omega/2}{\Delta_{ff'}}=\sqrt{\gamma_s}\frac{\Delta_F}{\Delta_{ff'}} $ in the far-detuning regime.
 
 We define the Lindblad jump operators of optical pumping among ground states by~\cite{Deutsch2010a}
 	\begin{align}\label{Eq::Wq_Faraday}
-		\hat{W}_q &= \frac{1}{\sqrt{\gamma_s}}\sum_{f'}\frac{\sqrt{\Gamma_{f'\!\!,\,q}}\Omega/2}{\Delta_{f'f}^q+i\Gamma_{f'\!\!,\,q}^q/2}\mathbf{e}_q^*\cdot(\hat{\mathbf{D}}_{ff'}  \hat{\mathbf{D}}^\dagger_{f'f} )\cdot\mathbf{e}_{\rm in} \\
-		&= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'k}\! \frac{\sqrt{\Gamma_{f'\!\!,\,q}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'\!\!,\,q}/2} \left[\delta_{qx}C_{ff'}^{(0)}\hat{\mathbbm{1}} \!+\! iC_{ff'}^{(1)}\epsilon_{qxk}\hat{f}_k \!+\! C_{ff'}^{(2)}\left(\frac{\hat{f}_q\!\hat{f}_{x}\!+\!\hat{f}_{x}\!\hat{f}_q }{2} \!-\! \frac{\delta_{qx}}{3}\hat{\mathbf{f}}^2 \right) \right].
+		\hat{W}_q &= \frac{1}{\sqrt{\gamma_s}}\sum_{f'}\frac{\sqrt{\Gamma_{f'}^q}\Omega/2}{\Delta_{f'f}^q+i\Gamma_{f'}^q/2}\mathbf{e}_q^*\cdot(\hat{\mathbf{D}}_{ff'}  \hat{\mathbf{D}}^\dagger_{f'f} )\cdot\mathbf{e}_{\rm in} \\
+		&= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'k}\! \frac{\sqrt{\Gamma_{f'}^q}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}^q/2} \left[\delta_{qx}C_{ff'}^{(0)}\hat{\mathbbm{1}} \!+\! iC_{ff'}^{(1)}\epsilon_{qxk}\hat{f}_k \!+\! C_{ff'}^{(2)}\left(\frac{\hat{f}_q\!\hat{f}_{x}\!+\!\hat{f}_{x}\!\hat{f}_q }{2} \!-\! \frac{\delta_{qx}}{3}\hat{\mathbf{f}}^2 \right) \right].
 %		&=\sum_{f',m',q',a,b} w_{baq }^{f'm'q'}\ket{b}\bra{a}.
 	\end{align}
 Each jump operator $\hat{W}_q$ is associated with absorption of the probe photon polarized along $ \mathbf{e}_{\rm in} $ followed by spontaneous emission of a photon with polarization $ \mathbf{e}_q $, where $q= \{0,\pm 1\}$ labels spherical basis elements for $\pi$ and $ \sigma_\pm$ transitions. 
@@ -1112,9 +1112,9 @@ Each jump operator $\hat{W}_q$ is associated with absorption of the probe photon
 
 Therefore, in the static $ \left\{x,y,z \right\} $ basis, we have
 \begin{align}
-\hat{W}_{x} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'\!\!,\,x}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'\!\!,\,x}/2} \left[C_{ff'}^{(0)}\hat{\mathbbm{1}} + C_{ff'}^{(2)}\left(\hat{f}_{x}^2-\frac{1}{3}\hat{\mathbf{f}}^2 \right) \right]\\
-\hat{W}_{y} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'\!\!,\,y}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'\!\!,\,y}/2} \left(-iC_{ff'}^{(1)}\hat{f}_z + C_{ff'}^{(2)}\frac{\hat{f}_{x}\hat{f}_{y}+\hat{f}_{y}\hat{f}_{x}}{2} \right)\\
-\hat{W}_{z} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'\!\!,\,z}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'\!\!,\,z}/2} \left(iC_{ff'}^{(1)}\hat{f}_{y} + C_{ff'}^{(2)}\frac{\hat{f}_z\hat{f}_{x}+\hat{f}_{x}\hat{f}_z}{2}  \right).
+\hat{W}_{x} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'}^x}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}^x/2} \left[C_{ff'}^{(0)}\hat{\mathbbm{1}} + C_{ff'}^{(2)}\left(\hat{f}_{x}^2-\frac{1}{3}\hat{\mathbf{f}}^2 \right) \right]\\
+\hat{W}_{y} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'}^y}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}^y/2} \left(-iC_{ff'}^{(1)}\hat{f}_z + C_{ff'}^{(2)}\frac{\hat{f}_{x}\hat{f}_{y}+\hat{f}_{y}\hat{f}_{x}}{2} \right)\\
+\hat{W}_{z} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'}^z}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}^z/2} \left(iC_{ff'}^{(1)}\hat{f}_{y} + C_{ff'}^{(2)}\frac{\hat{f}_z\hat{f}_{x}+\hat{f}_{x}\hat{f}_z}{2}  \right).
 \end{align}
 
 
@@ -1179,8 +1179,8 @@ where $ z $-direction is the waveguide axis direction, and $ \hat{\mathbf{f}}^2=
 By using the transformation relationships of Eqs.\eqref{eq:rotationtransf}, the jump operators become 
 \begin{subequations}\label{eq:rotationtransf_Wxyz}
 \begin{align}
-\hat{W}_{x} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'\!\!,\,x}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2} \left[C_{ff'}^{(0)}\hat{\mathbbm{1}} + \frac{C_{ff'}^{(2)}}{6}\left(\hat{\mathbf{f}}^2-3\hat{f}_{z}^2 \right) \right]\\
-\hat{W}_{y} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} -\frac{i\sqrt{\Gamma_{f'\!\!,\,y}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'\!\!,\,y}/2} C_{ff'}^{(1)}\hat{f}_z  \\
+\hat{W}_{x} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'}^x}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2} \left[C_{ff'}^{(0)}\hat{\mathbbm{1}} + \frac{C_{ff'}^{(2)}}{6}\left(\hat{\mathbf{f}}^2-3\hat{f}_{z}^2 \right) \right]\\
+\hat{W}_{y} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} -\frac{i\sqrt{\Gamma_{f'}^y}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}^y/2} C_{ff'}^{(1)}\hat{f}_z  \\
 \hat{W}_{z} &= 0.
 \end{align}
 \end{subequations}
@@ -1197,8 +1197,8 @@ in the rotating frame, both $ \hat{h}_{\rm eff} $ and $ \hat{W}_{q} $ become dia
 \begin{subequations}
 \begin{align}
 \hat{h}_{\rm eff} &= -\frac{i\hbar}{2} \sum_{f'} \gamma'_s(f') \sum_{m=-f}^f\left[C_{ff'}^{(0)} + \frac{C_{ff'}^{(2) }}{6}(f(f+1)-3m^2) \right]\hat{\sigma}_{mm}\\
-\hat{W}_{x} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'\!\!,\,x} }\Omega/2}{\Delta_{ff'}+i\Gamma_{f'\!\!,\,x}/2 } \sum_{m=-f}^f\left[C_{ff'}^{(0)} + \frac{C_{ff'}^{(2) }}{6}(f(f+1)-3m^2) \right]\hat{\sigma}_{mm}\\
-\hat{W}_{y} &= -\frac{i}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'\!\!,\,y} }\Omega/2}{\Delta_{ff'}+i\Gamma_{f'\!\!,\,y}/2 } \sum_{m=-f}^f C_{f'ff'}^{(1)}m\hat{\sigma}_{mm}\\
+\hat{W}_{x} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'}^x }\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}^x/2 } \sum_{m=-f}^f\left[C_{ff'}^{(0)} + \frac{C_{ff'}^{(2) }}{6}(f(f+1)-3m^2) \right]\hat{\sigma}_{mm}\\
+\hat{W}_{y} &= -\frac{i}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'}^y }\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}^y/2 } \sum_{m=-f}^f C_{f'ff'}^{(1)}m\hat{\sigma}_{mm}\\
 \hat{W}_z &=0.
 \end{align}
 \end{subequations}
