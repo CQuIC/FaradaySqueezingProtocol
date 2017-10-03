@@ -599,8 +599,8 @@ This work was supported by the NSF, under grants PHY-1212445, xxxxx.
 
 %===============Appendix================= %
 \begin{appendix}
-\section{Photon scattering and optical pumping rates}\label{Sec::opticalpumpinginrotatingframe}
-In this appendix, we will derive the stochastic equations from the static frame to the rotating frame and provide details on how we solve the spin dynamics using the Faraday protocol with waveguides discussed in the main text. 
+\section{The computation of collective spin dynamics in details}\label{Sec::opticalpumpinginrotatingframe}
+In this appendix, we will derive the stochastic equations from the static frame to the rotating frame and provide details on how we solve the spin dynamics based on the Faraday protocol with the waveguides discussed in the main text. 
 
 The collective spin dynamics in the QND measurement and spin squeezing process is described by the stochastic master equation defined in Eq.~\eqref{eq:totaldrhodt}. The optical pumping dynamics of the $ j $-th atom are governed by 
 \begin{align}\label{eq:op_master}
@@ -608,31 +608,32 @@ The collective spin dynamics in the QND measurement and spin squeezing process i
 %&=-\frac{1}{2}\sum_{a,b}\gamma_{ba}\ket{b}\bra{a}+
 %\!\!\!\!\!\!\sum_{q,q',q'',a,b,c,d,f',f'',m',m''}\!\!\!\!\!\! \gamma_sw_{dcq}^{f''m''q''}\left(w_{abq}^{f'm'q'}\right)^*\ket{d}\bra{c}\hat{\rho}^{(i)}\ket{b}\bra{a}.
 \end{align} 
-We have defined a characteristic photon scattering rate, $\gamma_s \equiv \frac{\Gamma_A\Omega^2}{4\Delta_{F}^2}= \frac{\sigma_0}{A_{\rm in}}\frac{\Gamma_A^2}{4 \Delta_{F}^2} \dot{N}_L $ with an effective detuning $ \Delta_F $ defined by $ \frac{1}{\Delta_F}=\sum_{f'}\frac{C_{f'ff'}^{(1)}}{\Delta_{ff'}} $ and $ \Delta_{ff'}=\omega-\omega_{ff'} $.
+We have defined a characteristic photon scattering rate, $\gamma_s \equiv \frac{\Gamma_A\Omega^2}{4\Delta_{F}^2}= \frac{\sigma_0}{A_{\rm in}}\frac{\Gamma_A^2}{4 \Delta_{F}^2} \dot{N}_L $ with an effective detuning $ \Delta_F $ defined by $ \frac{1}{\Delta_F}=\sum_{f'}\frac{C_{ff'}^{(1)}}{\Delta_{ff'}} $ and $ \Delta_{ff'}=\omega-\omega_{ff'} $, where $ \omega_{ff'} $ is the resonance frequency between $ \ket{j,f} $ and $ \ket{j',f'} $ levels.
 We have also defined Rabi frequency $ \Omega=2\bra{j}|d|\ket{j'}\mathcal{E}^{(+)}_{\rm in}/\hbar $ with reduced optical dipole matrix element $\bra{j}|d|\ket{j'}$ and field amplitude $ \mathcal{E}^{(+)}_{\rm in}=|\mathbf{E}_{\rm in}^{(+)}(\br')| $.
 %The total rate of photon scattering by an atom from the $\ket{a}\equiv \ket{f,f_x=a}$ to $ \ket{b}\equiv\ket{f,f_x=b} $ hyperfine ground state in the $x$-basis is
 %	\begin{equation}\label{Eq::gammaf}
 %		\gamma_{ba}=- \frac{2}{\hbar} {\rm Im} \big[ \bra{f,b} \hat{h}_{\rm eff}\ket{f,a} \big] ,
 %	\end{equation}
-The effective nonHermitian light-shift Hamiltonian for one atom (labeled with superscript $ (i) $) is given by
+In generating the plots for this paper, we have used a detuning of $1$nm from the $ \ket{j=1/2,f=4} $ to the $ \ket{j'=1/2,f'=3} $ transition on the lower energy side, which is much larger than the ac-Stark shifts, fine and hyperfine splittings of the excited state levels of the $ D_1 $-line transitions of $ ^133 $Cs atoms. Therefore, the energy shifts between the hyperfine sublevels of the excited states become irrelevant for our calculation. 
+We also use the averaged decay rate $ \Gamma_{f'} $ and ignore the hyperfine structure dependent spontaneous decay rates for all manifold sublevels of the $ f' $ excited states (see details later). 
+The effective nonHermitian light-atom interaction Hamiltonian for one atom (labeled with superscript $ (i) $) is given by
 \begin{align}
-\hat{H}_{\rm eff}^{(i)} \equiv \hat{h}_{\rm eff}&= - \hat{\mathbf{E}}^{(-)}_{\rm in}(\mathbf{r}' ; t ) \cdot \poltens \cdot \hat{\mathbf{E}}^{(+)}_{\rm in}(\mathbf{r}' ;t ),
+\hat{h}_{\rm eff}\equiv \hat{H}_{\rm eff}^{(i)} &= - \hat{\mathbf{E}}^{(-)}_{\rm in}(\mathbf{r}' ; t ) \cdot \poltens \cdot \hat{\mathbf{E}}^{(+)}_{\rm in}(\mathbf{r}' ;t ),
 \end{align}
-where $\charpolq = -\frac{\sigma_0}{8\pi k_0\gamma_s}\frac{\Gamma_{f'}^q}{\Delta_{ff'}^q+i\Gamma_{f'}^q/2}$ is the complex polarizability and the polarizability operator $  \poltens=\sum_{f',q}\charpolq\hat{\tensor{\mathbf{A}}}(f,f')$ with elements of $ \hat{\tensor{\mathbf{A}}} $ given by
+where $\charpol = -\frac{\sigma_0}{8\pi k_0\gamma_s}\frac{\Gamma_{f'}}{\Delta_{ff'}+i\Gamma_{f'}/2}$ is the complex polarizability and the polarizability operator $  \poltens=\sum_{f'}\charpol\hat{\tensor{\mathbf{A}}}(f,f')$ with elements of $ \hat{\tensor{\mathbf{A}}} $ given by
 \begin{align} \label{Eq::PolarizabilityIrrep}
 		\hat{A}_{ij}(f,f')&\equiv \hat{e}_i^*\cdot\hat{\mathbf{D}}_{ff'}\hat{\mathbf{D}}_{f'f}^\dagger \cdot \hat{e}_j \\
 		&=  C_{ff'}^{(0)} \delta_{i,j}\hat{\mathbbm{1}}+ iC_{ff'}^{(1)}\epsilon_{ijk}\hat{f}_k+ C_{ff'}^{(2)} \Big[ \smallfrac{1}{2} ( \hat{f}_i\hat{f}_j +\hat{f}_j\hat{f}_i )-\smallfrac{1}{3} \hat{\mathbf{f}}\!\cdot\!\hat{\mathbf{f}} \delta_{i,j} \Big], 
 \end{align}
 where $\hat{\mathbf{f}}$ is the atomic spin operator in hyperfine multiplet $f$, and $ \epsilon_{ijk} $ is the Levi-Civita symbol. 
-Definitions of the interaction coefficients $ C_{ff'}^{(n)} $ can be found in Ref.~\cite{Qi2016}, which correspond to scalar, vector and tensor atom-light interactions for $ n=0,1,2 $, respectively.
+Definitions of the irreducible rank-$ K $ interaction coefficients $ C_{ff'}^{(K)} $ can be found in Refs.~\cite{Qi2016,Deutsch2010a}, which correspond to scalar, vector and tensor atom-light interactions for $ K=0,1,2 $, respectively.
 
 Given the geometry of the Faraday spin squeezing protocol for optical nanofiber and square waveguides discussed in this paper, the local electric field at the atom positions is linearly polarized. 
 By denoting the local field's polarization direction as the $ x$-direction and the propagation direction of the guided light as the $ z $-direction, the effective atom-light interaction Hamiltonian in a static reference frame can be written as 
 \begin{align}
 \hat{h}_{\rm eff} &= -\frac{i\hbar}{2}\sum_{f'} \gamma'_s \left[C_{ff'}^{(0)}\hat{\mathbbm{1}}+C_{ff'}^{(2)}(\hat{f}_{x}^2-\frac{\hat{\mathbf{f}}^2}{3} ) \right],
 \end{align}
-where the intrinsic photon scattering rate $ \gamma'_s\equiv \frac{\Gamma_{f'}\Omega^2}{4(\Delta_{ff'}^2+\Gamma_{f'}^2/4 )}$ and in the far-detuning regime, $\gamma'_s \approx \frac{\Gamma_{f'}\Omega^2}{4\Delta_{\rm eff}^2}=\frac{\sigma_0}{\Ain}\left(\frac{\Gamma_{f'}}{2\Delta_{\rm eff}} \right)^2\dot{N}_L $~\cite{Deutsch2010a}. Note here the vector interaction term vanishes given a linearly polarized light; we have ignored the energy shift, which is valid when the detuning is much larger than the hyperfine level splitting.
-In our simulations of spin squeezing in this paper, we have used the averaged decay rate $ \Gamma_{f'} $ to replace the hyperfine structure dependent decay rate $ \Gamma_{f'\!\! ,\,q} $ for all manifold sublevels of the $ f' $ hyperfine excited states and don't distinguish photon emission rates labeled by $ q $; the effective detuning is also an averaged detuning from the fine structure excited level $ j' $ to the ground fine structure manifold $ j $ with resonant frequency $ \omega_D $ red-detuned from the $ D_1 $ line of $ ^{133}Cs $ atoms with a detuning $ \Delta_{\rm eff}=\omega -\omega_D $ about $ 1 $nm for numerical simulations. 
+where the intrinsic photon scattering rate $ \gamma'_s\equiv \frac{\Gamma_{f'}\Omega^2}{4(\Delta_{ff'}^2+\Gamma_{f'}^2/4 )}$ and in the far-detuning regime, $\gamma'_s \approx \frac{\Gamma_{f'}\Omega^2}{4\Delta_{\rm eff}^2}=\frac{\sigma_0}{\Ain}\left(\frac{\Gamma_{f'}}{2\Delta_{\rm eff}} \right)^2\dot{N}_L $~\cite{Deutsch2010a}. Note here the vector interaction term vanishes given a linearly polarized light.
 Compared to the normal characteristic photon scattering rate $ \gamma_s $, we can see they are defined in different scales.
 In general, they are related given a transition between ground hyperfine structure level $ f $ and excited hyperfine structure level $ f' $ by 
 \begin{align}
@@ -672,7 +673,7 @@ The atomic decay rate of the excited level $ e $ will be modified due to the pre
 \Gamma_e &= \sum_g \bra{e}\hat{\mathbf{d}}\ket{g} \cdot \mathrm{Im}\left[\tensor{\mathbf{G}}(\br',\br';\omega_{eg}) \right]\cdot \bra{g}\hat{\mathbf{d}}\ket{e}
 \end{align}
 with the total Green's function tensor as a combination of the contributions from the guided modes and radiative modes, $ \tensor{\mathbf{G}}(\br',\br';\omega_{eg})=\tensor{\mathbf{G}}_{gyd}(\br',\br';\omega_{eg})+\tensor{\mathbf{G}}_{rad}(\br',\br';\omega_{eg}) $.
-We calculate the guided mode Green's function tensor using the local guided modes following the eigenmode decomposition formula discussed in Ref.~\cite{Qi2016}. Using a house-made program based on the \textit{boundary element method} (BEM) in the frequency domain~\cite{Abajo2002,GarciadeAbajo1998Relativistic}, the radiative Green's function tensor is calculated by simulating the local unguided modes emitted by an $i$-directed ($ i=x,y,z $) optical dipole as the ideal atom placed near the waveguides. We set $ \Gamma_{f'}= (\Gamma_{f'\!\!,\,x}+\Gamma_{f'\!\!,\,y}+\Gamma_{f'\!\!,\,z})/3$ as the averaged value of decay rates for this study.
+We calculate the guided mode Green's function tensor using the local guided modes following the eigenmode decomposition formula discussed in Ref.~\cite{Qi2016}. Using a house-made program based on the \textit{boundary element method} (BEM) in the frequency domain~\cite{Abajo2002,GarciadeAbajo1998Relativistic}, the radiative Green's function tensor is calculated by simulating the local unguided modes emitted by an $i$-directed ($ i=x,y,z $) optical dipole as the ideal atom placed near the waveguides. We set $ \Gamma_{f'}= (\Gamma_{f'}^x+\Gamma_{f'}^y+\Gamma_{f'}^z)/3$ as the averaged value of decay rates for this study.
 
 \begin{figure}[htb]
 \centering
