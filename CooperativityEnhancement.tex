@@ -266,9 +266,10 @@ The quasimonochromatic positive frequency component of the quantized field assoc
 &\quad\quad\quad\quad\quad\cdot  e^{i (\beta_0 z- \omega_0 t)},
 \end{align}
 where $v_g$ is the group velocity.  In the first Born approximation the dispersive interaction of the guided field with $N_A$ atoms trapped near the surface of the waveguide at positions $\{\mbf{r}'_\perp, z_n\}$, detuned far from resonance,  is defined by the scattering equation,
-\begin{equation}
-\hat{\mathbf{E}}^{(+)}_{g,out}(\mbf{r}, t)=\hat{\mathbf{E}}^{(+)}_{g,in}(\mbf{r}, t)+\sum_{n=1}^{N_A} \tensor{\mbf{G}}_{g} (\mbf{r}, \mbf{r}'_n;\omega_0) \cdot \hat{\tensor{\alpha}}_n \cdot \hat{\mathbf{E}}^{(+)}_{g,in}(\mbf{r}'_n, t),
-\end{equation}
+\begin{align}
+\hat{\mathbf{E}}^{(+)}_{g,out}(\mbf{r}, t)&=\hat{\mathbf{E}}^{(+)}_{g,in}(\mbf{r}, t)\nn\\
+&\quad+\sum_{n=1}^{N_A} \tensor{\mbf{G}}_{g} (\mbf{r}, \mbf{r}'_n;\omega_0) \cdot \hat{\tensor{\alpha}}_n \cdot \hat{\mathbf{E}}^{(+)}_{g,in}(\mbf{r}'_n, t),
+\end{align}
 where $\hat{\tensor{\alpha}}_n$ is the atomic polarizability operator of the $n^{th}$ atom, and
 \begin{equation}
 		\tensor{\mathbf{G}}^{(+)}_g(\br,\br'_n; \omega_0) =  2\pi i \frac{\omega_0}{v_g } \sum_{p}\!\! \mathbf{u}_{p} (\br_\perp)\mathbf{u}^*_{p}
@@ -295,7 +296,8 @@ where $\hat{\mbf{F}}=\sum_n \hat{\mbf{f}}^{(n)}$ is the collective spin of the a
 \end{align}
  and similarly for scattering from $V$ to $H$.
 
-\begin{figure}[htb]
+\onecolumngrid
+\begin{figure*}[t]
 \centering
   \subfloat[b][]{
   \begin{minipage}[bt]{.88\textwidth}
@@ -307,31 +309,32 @@ where $\hat{\mbf{F}}=\sum_n \hat{\mbf{f}}^{(n)}$ is the collective spin of the a
   \subfloat[b][]{
   \begin{minipage}[bt]{.5\textwidth}
       \centering
-      \includegraphics[width=.45\textwidth]{fig/poincaresphere_initialS1_crystal}
+      \includegraphics[width=.44\textwidth]{fig/poincaresphere_initialS1_crystal}
       \label{fig:poincaresphere_initialS1_crystal}
    \hfill
         \centering
-        \includegraphics[width=.45\textwidth]{fig/poincaresphere_initialS1_Faradayrot_crystal}
+        \includegraphics[width=.44\textwidth]{fig/poincaresphere_initialS1_Faradayrot_crystal}
         \label{fig:poincaresphere_initialS1_Faradayrot_crystal}
    \vfill
     \centering
-    \includegraphics[width=.45\textwidth]{fig/blochsphere_initialxFxyz_crystal_orange}
+    \includegraphics[width=.44\textwidth]{fig/blochsphere_initialxFxyz_crystal_orange}
     \label{fig:blochsphere_initialxFxyz_crystal_orange}
    \hfill
       \centering
-      \includegraphics[width=.45\textwidth]{fig/blochsphere_initialxFxyz_squeezed_crystal_orange}
+      \includegraphics[width=.44\textwidth]{fig/blochsphere_initialxFxyz_squeezed_crystal_orange}
       \label{fig:blochsphere_initialxFxyz_squeezed_crystal_orange}
   \end{minipage}}\hfill
   %\end{subfloat}%
   \subfloat[b][]{
-  \begin{minipage}[bt]{.45\textwidth}
+  \begin{minipage}[bt]{.44\textwidth}
         \centering
         \includegraphics[width=.98\textwidth]{fig/stretchedstatestransitions_dashline}
         \label{fig:stretchedstatestransitions}
     \end{minipage}}
     %\end{subfloat}
   \caption{Illustrated are the schematic polarization spectroscopy setup for the QND measurement and spin squeezing generation based on the Faraday effect (a), evolution of the light (top row of (b)) and collective spin states (bottom row of (b)) before and after the measurement, and the internal atomic state transitions in the optical pumping process (c). Diagram (a) is adapted from Ref.~\cite{Qi2016}.}\label{fig:spinsqueezingschematic}
-\end{figure}
+\end{figure*}
+\twocolumngrid
 
 The polarization transformation can be expressed as a rotation of the Stokes vector of the light on the \Poincare sphere with operator components
 \begin{subequations}\label{Eq::StokesComponents}
@@ -384,24 +387,24 @@ The equal sign is typically not achieved for a nanophotonic waveguide due to the
 
 \begin{figure}[htb]
 \centering
- \begin{minipage}[h]{0.2\linewidth}
+ \begin{minipage}[h]{0.27\linewidth}
  %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
   \subfloat[h][$1/\AF$]{
     %\input{fig/nanofiber_invA_Far_xy.tex}
-    \includegraphics{fig/autofig/FaradayProtocol-figure0}
+    \includegraphics[width=\linewidth]{fig/autofig/FaradayProtocol-figure0}
     \label{fig:nanofiber_invAFarxy}
     }
     \hfill
   \subfloat[h][$ 1/\Ain $]{
       \label{fig:nanofiber_invAin_xy}
-      \includegraphics{fig/autofig/FaradayProtocol-figure1}
+      \includegraphics[width=\linewidth]{fig/autofig/FaradayProtocol-figure1}
       %\input{fig/nanofiber_invA_in_xy.tex}
       }
    \end{minipage}\hfill
-   \begin{minipage}[h]{0.75\linewidth}
+   \begin{minipage}[h]{0.73\linewidth}
    \subfloat[h][$ C_1 $]{
       \label{fig:nanofiber_C1_xy}
-      \includegraphics{fig/autofig/FaradayProtocol-figure2}
+      \includegraphics[width=\linewidth]{fig/autofig/FaradayProtocol-figure2}
       %\input{fig/nanofiber_C1_xy.tex}
       }
    \end{minipage}
@@ -411,24 +414,25 @@ The equal sign is typically not achieved for a nanophotonic waveguide due to the
 
 \begin{figure}[htb]
 \centering
- \begin{minipage}[h]{0.2\linewidth}
+ \begin{minipage}[h]{0.27\linewidth}
  %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
   \subfloat[h][$1/\AF$]{
     %\input{fig/swg_invA_Far_xy.tex}
-    \includegraphics{fig/autofig/FaradayProtocol-figure3}
+    \includegraphics[width=\linewidth]{fig/autofig/FaradayProtocol-figure3}
     \label{fig:swg_invAFarxy}
     }
     \hfill
   \subfloat[h][$ 1/\Ain $]{
       \label{fig:swg_invAin_xy}
-      \includegraphics{fig/autofig/FaradayProtocol-figure4}
+      \includegraphics[width=\linewidth]{fig/autofig/FaradayProtocol-figure4}
       %\input{fig/swg_invA_in_xy.tex}
       }
    \end{minipage}\hfill
-   \begin{minipage}[h]{0.75\linewidth}
+   \begin{minipage}[h]{0.73\linewidth}
+   \vspace{-3pt}
    \subfloat[h][$ C_1 $]{
       \label{fig:swg_C1_xy}
-      \includegraphics{fig/autofig/FaradayProtocol-figure5}
+      \includegraphics[width=\linewidth]{fig/autofig/FaradayProtocol-figure5}
       %\input{fig/swg_C1_xy.tex}
       }
    \end{minipage}
@@ -520,31 +524,31 @@ In Fig.~\ref{fig:xi_rpfix_NA_t}, we plot the reciprocal of the spin squeezing pa
 
 \begin{figure}[htb]
 \centering
- \begin{minipage}[h]{0.95\linewidth}
+ \begin{minipage}[h]{0.99\linewidth}
  %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
   \subfloat[h][$\xi^{-2}_{nanofiber}(t)$]{
     %\input{fig/nanofiber_xi_t_rp1d8a_NA2500.tex}
-    \includegraphics{fig/autofig/FaradayProtocol-figure6}
+    \includegraphics[width=0.49\linewidth]{fig/autofig/FaradayProtocol-figure6}
     \label{fig:nanofiber_xi_t_rp1d8a_NA2500}
     }
     \hfill
   \subfloat[h][$ \xi^{-2}_{peak,nanofiber}(N_A) $]{
       \label{fig:nanofiber_peakxi_NA_rp1d8a}
-      \includegraphics{fig/autofig/FaradayProtocol-figure7}
+      \includegraphics[width=0.45\linewidth]{fig/autofig/FaradayProtocol-figure7}
       %\input{fig/nanofiber_peakxi_NA_rp1d8a.tex}
       }
    \end{minipage}\vfill
-   \begin{minipage}[h]{0.95\linewidth}
+   \begin{minipage}[h]{0.99\linewidth}
     %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
      \subfloat[h][$\xi^{-2}_{swg}(t)$]{
        %\input{fig/swg_xi_t_rp1d_NA2500.tex}
-       \includegraphics{fig/autofig/FaradayProtocol-figure8}
+       \includegraphics[width=0.49\linewidth]{fig/autofig/FaradayProtocol-figure8}
        \label{fig:swg_xi_t_rp1d_NA2500}
        }
        \hfill
      \subfloat[h][$ \xi^{-2}_{peak,swg}(N_A) $]{
          \label{fig:swg_peakxi_NA_rp1d}
-         \includegraphics{fig/autofig/FaradayProtocol-figure9}
+         \includegraphics[width=0.45\linewidth]{fig/autofig/FaradayProtocol-figure9}
          %\input{fig/swg_peakxi_NA_rp1d.tex}
          }
    \end{minipage}
@@ -557,31 +561,31 @@ In Fig.~\ref{fig:xi_rpfix_NA_t}, we plot the reciprocal of the spin squeezing pa
 
 \begin{figure}[htb]
 \centering
- \begin{minipage}[h]{0.95\linewidth}
+ \begin{minipage}[h]{\linewidth}
  %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
   \subfloat[h][$\xi^{-2}_{peak,nanofiber}(r\!_\perp)$]{
     %\input{fig/nanofiber_peakxi_rp_NA2500.tex}
-    \includegraphics{fig/autofig/FaradayProtocol-figure10}
+    \includegraphics[width=0.45\linewidth]{fig/autofig/FaradayProtocol-figure10}
     \label{fig:nanofiber_peakxi_rp_NA2500}
     }
     \hfill
   \subfloat[h][$ C_1(r\!_\perp) $ of a nanofiber]{
       \label{fig:nanofiber_C1_y}
-      \includegraphics{fig/autofig/FaradayProtocol-figure11}
+      \includegraphics[width=0.49\linewidth]{fig/autofig/FaradayProtocol-figure11}
       %\input{fig/nanofiber_C1_y.tex}
       }
    \end{minipage}\vfill
-   \begin{minipage}[h]{0.95\linewidth}
+   \begin{minipage}[h]{\linewidth}
     %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
      \subfloat[h][$\xi^{-2}_{peak,swg}(r\!_\perp)$]{
        %\input{fig/swg_peakxi_rp_NA2500.tex}
-       \includegraphics{fig/autofig/FaradayProtocol-figure12}
+       \includegraphics[width=0.45\linewidth]{fig/autofig/FaradayProtocol-figure12}
        \label{fig:swg_peakxi_rp_NA2500}
        }
        \hfill
      \subfloat[h][$ C_1(r\!_\perp) $ of a SWG]{
          \label{fig:swg_C1_y}
-         \includegraphics{fig/autofig/FaradayProtocol-figure13}
+         \includegraphics[width=0.49\linewidth]{fig/autofig/FaradayProtocol-figure13}
          %\input{fig/swg_C1_y.tex}
          }
    \end{minipage}
@@ -654,7 +658,8 @@ and $ \frac{\sqrt{\Gamma\!_{f'}}\Omega/2}{\Delta_{f\!f'}\pm i\Gamma\!_{f'}/2}\ap
 We define the Lindblad jump operators of optical pumping among ground states by~\cite{Deutsch2010a}
 	\begin{align}\label{Eq::Wq_Faraday}
 		\hat{W}_q &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'}\!\frac{\sqrt{\Gamma\!_{f'}}\Omega/2}{\Delta_{f\!f'} \!+\! i\Gamma\!_{f'}/2}\mathbf{e}_q^*\cdot(\hat{\mathbf{D}}_{f\!f'}  \hat{\mathbf{D}}^\dagger_{f'\!f} )\cdot\mathbf{e}_{\rm in} \\
-		&= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'\!\!,\,k}\! \frac{\sqrt{\Gamma\!_{f'}}\Omega/2}{\Delta_{f\!f'}\!+\!i\Gamma\!_{f'}/2} \left[\!\delta_{qx}C_{f\!f'}^{(0)}\hat{\mathbbm{1}} \!+\! iC_{f\!f'}^{(1)}\epsilon_{qxk}\hat{f}_k \!+\! C_{f\!f'}^{(2)}\left(\frac{\hat{f}_q\!\hat{f}_{x}\!+\!\hat{f}_{x}\!\hat{f}_q }{2} \!-\! \frac{\delta_{qx}}{3}\hat{\mathbf{f}}^2 \right)\! \right].
+		&= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'\!\!,\,k}\! \frac{\sqrt{\Gamma\!_{f'}}\Omega/2}{\Delta_{f\!f'}\!+\!i\Gamma\!_{f'}/2} \left[\!\delta_{qx}C_{f\!f'}^{(0)}\hat{\mathbbm{1}} \!+\! iC_{f\!f'}^{(1)}\epsilon_{qxk}\hat{f}_k \phantom{\frac{1}{1}}\right.\nn\\
+		&\quad\quad\quad\quad\quad\quad\quad\left.+ C_{f\!f'}^{(2)}\!\!\left(\!\frac{\hat{f}_q\!\hat{f}_{x}\!+\!\hat{f}_{x}\!\hat{f}_q }{2} \!-\! \frac{\delta_{qx}}{3}\hat{\mathbf{f}}^2\! \right)\! \right].
 %		&=\sum_{f',m',q',a,b} w_{baq }^{f'm'q'}\ket{b}\bra{a}.
 	\end{align}
 Each jump operator $\hat{W}_q$ is associated with absorption of the probe photon polarized along $ \mathbf{e}_{\rm in}=\mathbf{e}_x $ followed by spontaneous emission of a photon with polarization $ \mathbf{e}_q $, where $q= \{x,y,z\}$ labels the corresponding transitions in the Cartesian basis.
@@ -688,19 +693,19 @@ We calculate the guided mode Green's function tensor using the local guided mode
 
 \begin{figure}[htb]
 \centering
- \begin{minipage}[h]{0.4\linewidth}
+ \begin{minipage}[h]{0.9\linewidth}
  %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
   \subfloat[h][$ \Gamma_{\rm nanofiber}/\Gamma_0 $]{
     %\input{fig/nanofiber_decayrates.tex}
-    \includegraphics{fig/autofig/FaradayProtocol-Figure14}
+    \includegraphics[width=0.85\linewidth]{fig/autofig/FaradayProtocol-Figure14}
     \label{fig:nanofiber_decayrates}
     }
    \end{minipage}\vfill
-   \begin{minipage}[h]{0.4\linewidth}
+   \begin{minipage}[h]{0.9\linewidth}
     %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
      \subfloat[h][$\Gamma_{\rm SWG}/\Gamma_0$]{
        %\input{fig/swg_decayrates.tex}
-       \includegraphics{fig/autofig/FaradayProtocol-Figure15}
+       \includegraphics[width=0.85\linewidth]{fig/autofig/FaradayProtocol-Figure15}
        \label{fig:swg_decayrates}
        }
    \end{minipage}
@@ -732,8 +737,8 @@ Operators with an odd order of transverse atomic angular momentum operator will 
 By using the transformation relationships of Eqs.\eqref{eq:rotationtransf} as well as relationships $ \hat{\mathbf{f}}^2=\hat{\mathbf{f}}\cdot\hat{\mathbf{f}}=f(f+1)\hat{\mathbbm{1}} $, $ \hat{f}_z =\sum_{m=1}^{2f+1}(f-m+1)\hat{\sigma}_{mm} $ and $ \hat{f}_z^2 = \sum_{m=1}^{2f+1}(f-m+1)^2\hat{\sigma}_{mm} $, the effective Hamiltonian and jump operators can be given in the rotating frame by
 \begin{subequations}
 \begin{align}
-\hat{h}_{\rm eff} &= -\frac{i\hbar}{2} \!\sum_{f'}\! \gamma'_s \!\sum_{m=-f}^f\!\left[C_{f\!f'}^{(0)} \!+\! \frac{C_{f\!f'}^{(2) }}{6}(f(f\!+\!1)\!-\!3m^2) \right]\hat{\sigma}_{mm}\\
-\hat{W}_{x} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'}\! \frac{\sqrt{\Gamma\!_{f'} }\Omega/2}{\Delta_{f\!f'}\!+\!i\Gamma\!_{f'}/2 } \!\sum_{m=-f}^f\!\left[C_{f\!f'}^{(0)} \!+\! \frac{C_{f\!f'}^{(2) }}{6}(f(f\!+\!1)\!-\!3m^2) \right]\hat{\sigma}_{mm}\\
+\hat{h}_{\rm eff} &\!=\!\! -\frac{i\hbar}{2} \!\!\sum_{f'}\! \gamma'_s \!\!\!\!\!\sum_{m=-f}^f\!\!\left[\!C_{f\!f'}^{(\!0\!)} \!\!+\!\! \frac{C_{f\!f'}^{(\!2\!) }}{6}(\!f^2\!\!+\!\!f\!\!-\!3m^2)\! \right]\!\!\hat{\sigma}\!_{mm}\\
+\hat{W}_{x} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'}\! \frac{\sqrt{\Gamma\!_{f'} }\Omega/2}{\Delta_{f\!f'}\!+\!i\Gamma\!_{f'}/2 }\nn\\ &\quad\quad\sum_{m=-f}^f\!\!\left[\!C_{f\!f'}^{(0)} \!+\! \frac{C_{f\!f'}^{(2) }}{6}(f(f\!+\!1)\!-\!3m^2)\! \right]\!\hat{\sigma}_{mm}\\
 \hat{W}_{y} &= -\frac{i}{\sqrt{\gamma_s}}\!\sum_{f'}\! \frac{\sqrt{\Gamma\!_{f'} }\Omega/2}{\Delta_{f\!f'}\!+\!i\Gamma\!_{f'}/2 } \!\sum_{m=-f}^f\! C_{f\!f'}^{(1)}m\hat{\sigma}_{mm}\\
 \hat{W}_z &=0.
 \end{align}
