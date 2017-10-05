@@ -266,7 +266,7 @@ The quasimonochromatic positive frequency component of the quantized field assoc
 \end{align}
 where $v_g$ is the group velocity.  In the first Born approximation the dispersive interaction of the guided field with $N_A$ atoms trapped near the surface of the waveguide at positions $\{\mbf{r}'_\perp, z_n\}$, detuned far from resonance,  is defined by the scattering equation,
 \begin{equation}
-\hat{\mathbf{E}}^{(+)}_{g,out}(\mbf{r}, t)=\hat{\mathbf{E}}^{(+)}_{g,in}(\mbf{r}, t)+\sum_{n=1}^{N_A} \tensor{\mbf{G}}_{g} (\mbf{r}, \mbf{r}'_n,\omega_0) \cdot \hat{\tensor{\alpha}}_n \cdot \hat{\mathbf{E}}^{(+)}_{g,in}(\mbf{r}'_n, t),
+\hat{\mathbf{E}}^{(+)}_{g,out}(\mbf{r}, t)=\hat{\mathbf{E}}^{(+)}_{g,in}(\mbf{r}, t)+\sum_{n=1}^{N_A} \tensor{\mbf{G}}_{g} (\mbf{r}, \mbf{r}'_n;\omega_0) \cdot \hat{\tensor{\alpha}}_n \cdot \hat{\mathbf{E}}^{(+)}_{g,in}(\mbf{r}'_n, t),
 \end{equation}
 where $\hat{\tensor{\alpha}}_n$ is the atomic polarizability operator of the $n^{th}$ atom, and 
 \begin{equation}
@@ -283,7 +283,7 @@ where
 \end{equation}
 is the phase operator associated with scattering polarization $p \rightarrow p'$ by a collective atomic operator.  When $p=p'$, this is a phase shift; for $p \neq p'$, this leads to a transformation of the polarization of the guided mode.
 
-The Faraday effect arises from the irreducible rank-1 (vector) component of the polarizability tensor.  Given an atom with hyperfine spin $f$, this contribution is $\hat{\alpha}^{vec}_{ij} = i \alpha_1 \epsilon_{ijk} \hat{f}_k$, where $\alpha_1 = -\frac{\sigma_0}{4\pi k_0 }\frac{\Gamma_A}{\Delta_{\eff}} $ is the characteristic polarizability, expressed here in terms of an effective on the detuning and resonant scattering cross section~\footnote{The exact expression is a sum of excited-state hyperfine levels $f'$, each weighted by the appropriate oscillator strengths of the transition.  We have defined $1/\Delta_{\eff} = \sum_{f'} C^{(1)}_{ff'}/\Delta_{ff'}$. For details see~\cite{Qi2016}}.   The polarization transformation associated with scattering from $H$ to $V$ mode is set by the phase operator
+The Faraday effect arises from the irreducible rank-1 (vector) component of the polarizability tensor.  Given an atom with hyperfine spin $f$, this contribution is $\hat{\alpha}^{vec}_{ij} = i \alpha_1 \epsilon_{ijk} \hat{f}_k$, where $\alpha_1 = -\frac{\sigma_0}{4\pi k_0 }\frac{\Gamma_A}{\Delta_{\eff}} $ is the characteristic polarizability \comment{(need to unify the notation of $ \Gamma_A $'s)}, expressed here in terms of an effective on the detuning and resonant scattering cross section~\footnote{The exact expression is a sum of excited-state hyperfine levels $f'$, each weighted by the appropriate oscillator strengths of the transition.  We have defined $1/\Delta_{\eff} = \sum_{f'} C^{(1)}_{ff'}/\Delta_{ff'}$. For details see~\cite{Qi2016}}.   The polarization transformation associated with scattering from $H$ to $V$ mode is set by the phase operator
 \begin{equation}
 \hat{\phi}_{VH} = i 2\pi \frac{\omega_0}{v_g}\alpha_1 \left[ \mbf{u}^*_V (\mbf{r}'_\perp) \times  \mbf{u}_{H} (\mbf{r}'_\perp) \right] \cdot \hat{\mbf{F}},
 \end{equation}
@@ -646,8 +646,8 @@ and $ \frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}\pm i\Gamma_{f'}/2}\approx \
 
 We define the Lindblad jump operators of optical pumping among ground states by~\cite{Deutsch2010a}
 	\begin{align}\label{Eq::Wq_Faraday}
-		\hat{W}_q &= \frac{1}{\sqrt{\gamma_s}}\sum_{f'}\frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{f'f}+i\Gamma_{f'}/2}\mathbf{e}_q^*\cdot(\hat{\mathbf{D}}_{ff'}  \hat{\mathbf{D}}^\dagger_{f'f} )\cdot\mathbf{e}_{\rm in} \\
-		&= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'\!\!,\,k}\! \frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2} \left[\delta_{qx}C_{ff'}^{(0)}\hat{\mathbbm{1}} \!+\! iC_{ff'}^{(1)}\epsilon_{qxk}\hat{f}_k \!+\! C_{ff'}^{(2)}\left(\frac{\hat{f}_q\!\hat{f}_{x}\!+\!\hat{f}_{x}\!\hat{f}_q }{2} \!-\! \frac{\delta_{qx}}{3}\hat{\mathbf{f}}^2 \right) \right].
+		\hat{W}_q &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'}\!\frac{\sqrt{\Gamma\!_{f'}}\Omega/2}{\Delta_{f\!f'} \!+\! i\Gamma\!_{f'}/2}\mathbf{e}_q^*\cdot(\hat{\mathbf{D}}_{f\!f'}  \hat{\mathbf{D}}^\dagger_{f'\!f} )\cdot\mathbf{e}_{\rm in} \\
+		&= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'\!\!,\,k}\! \frac{\sqrt{\Gamma\!_{f'}}\Omega/2}{\Delta_{f\!f'}\!+\!i\Gamma\!_{f'}/2} \left[\!\delta_{qx}C_{f\!f'}^{(0)}\hat{\mathbbm{1}} \!+\! iC_{f\!f'}^{(1)}\epsilon_{qxk}\hat{f}_k \!+\! C_{f\!f'}^{(2)}\left(\frac{\hat{f}_q\!\hat{f}_{x}\!+\!\hat{f}_{x}\!\hat{f}_q }{2} \!-\! \frac{\delta_{qx}}{3}\hat{\mathbf{f}}^2 \right)\! \right].
 %		&=\sum_{f',m',q',a,b} w_{baq }^{f'm'q'}\ket{b}\bra{a}.
 	\end{align}
 Each jump operator $\hat{W}_q$ is associated with absorption of the probe photon polarized along $ \mathbf{e}_{\rm in}=\mathbf{e}_x $ followed by spontaneous emission of a photon with polarization $ \mathbf{e}_q $, where $q= \{x,y,z\}$ labels the corresponding transitions in the Cartesian basis. 
@@ -724,9 +724,9 @@ Operators with an odd order of transverse atomic angular momentum operator will 
 By using the transformation relationships of Eqs.\eqref{eq:rotationtransf} as well as relationships $ \hat{\mathbf{f}}^2=\hat{\mathbf{f}}\cdot\hat{\mathbf{f}}=f(f+1)\hat{\mathbbm{1}} $, $ \hat{f}_z =\sum_{m=1}^{2f+1}(f-m+1)\hat{\sigma}_{mm} $ and $ \hat{f}_z^2 = \sum_{m=1}^{2f+1}(f-m+1)^2\hat{\sigma}_{mm} $, the effective Hamiltonian and jump operators can be given in the rotating frame by 
 \begin{subequations}
 \begin{align}
-\hat{h}_{\rm eff} &= -\frac{i\hbar}{2} \sum_{f'} \gamma'_s(f') \sum_{m=-f}^f\left[C_{ff'}^{(0)} + \frac{C_{ff'}^{(2) }}{6}(f(f+1)-3m^2) \right]\hat{\sigma}_{mm}\\
-\hat{W}_{x} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'} }\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2 } \sum_{m=-f}^f\left[C_{ff'}^{(0)} + \frac{C_{ff'}^{(2) }}{6}(f(f+1)-3m^2) \right]\hat{\sigma}_{mm}\\
-\hat{W}_{y} &= -\frac{i}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'} }\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2 } \sum_{m=-f}^f C_{f'ff'}^{(1)}m\hat{\sigma}_{mm}\\
+\hat{h}_{\rm eff} &= -\frac{i\hbar}{2} \!\sum_{f'}\! \gamma'_s \!\sum_{m=-f}^f\!\left[C_{f\!f'}^{(0)} \!+\! \frac{C_{f\!f'}^{(2) }}{6}(f(f\!+\!1)\!-\!3m^2) \right]\hat{\sigma}_{mm}\\
+\hat{W}_{x} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'}\! \frac{\sqrt{\Gamma\!_{f'} }\Omega/2}{\Delta_{f\!f'}\!+\!i\Gamma\!_{f'}/2 } \!\sum_{m=-f}^f\!\left[C_{f\!f'}^{(0)} \!+\! \frac{C_{f\!f'}^{(2) }}{6}(f(f\!+\!1)\!-\!3m^2) \right]\hat{\sigma}_{mm}\\
+\hat{W}_{y} &= -\frac{i}{\sqrt{\gamma_s}}\!\sum_{f'}\! \frac{\sqrt{\Gamma\!_{f'} }\Omega/2}{\Delta_{f\!f'}\!+\!i\Gamma\!_{f'}/2 } \!\sum_{m=-f}^f\! C_{f\!f'}^{(1)}m\hat{\sigma}_{mm}\\
 \hat{W}_z &=0.
 \end{align}
 \end{subequations}
