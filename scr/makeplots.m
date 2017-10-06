@@ -696,7 +696,7 @@ plot(rp_vec/d_wg,gamma_rad_average,'k-.','linewidth',2);
 plot(rp_vec/d_wg,gamma_rad_sigmap,'m-.','linewidth',1);
 plot(rp_vec/d_wg,gamma_rad_sigmam,'r-.','linewidth',1);
 plot(rp_vec/d_wg,gamma_rad_pi,'b-.','linewidth',1.5)
-xlim([0.5,1.9])
+xlim([0.5,2.0])
 xlabel('$r\!_\perp/d$');
 ylabel('$\Gamma_{swg}^i/\Gamma_0$')
 set(gca,'fontsize',fs)
@@ -705,16 +705,16 @@ set(gca,'fontsize',fs)
 % legend('average','\sigma_+','\sigma_-','\pi');
 linwid=0.2;
 xdistance=0.05;
-ydistance=0.14;
-x1=1.1; y1=2.2;
+ydistance=0.148;
+x1=1.2; y1=2.2;
 x2=x1+linwid+xdistance;
 x3=x2+linwid+xdistance;
 y2=y1-ydistance;
 y3=y2-ydistance;
-outx1=x1-0.325;
+outx1=x1-0.335;
 outx2=x3+linwid+0.05;
 outy1=y1+0.2;
-outy2=y3-0.1;
+outy2=y3-0.125;
 
 line([x1,x1+linwid],[y1,y1],'Color','black','LineStyle','-','LineWidth',2);
 line([x2,x2+linwid],[y1,y1],'Color','red','LineStyle','-','LineWidth',1);
@@ -727,9 +727,9 @@ line([x3,x3+linwid],[y2,y2],'Color','blue','LineStyle','-.','LineWidth',1.5);
 line([x1,x1+linwid],[y3,y3],'Color','black','LineStyle','--','LineWidth',2);
 line([x2,x2+linwid],[y3,y3],'Color','red','LineStyle','--','LineWidth',1);
 line([x3,x3+linwid],[y3,y3],'Color','blue','LineStyle','--','LineWidth',1.5);
-text(x1-0.25,y1,'total','fontsize',fs-2);
-text(x1-0.34,y2,'radiative','fontsize',fs-2);
-text(x1-0.28,y3,'guided','fontsize',fs-2);
+text(x1-0.26,y1,'total','fontsize',fs-2);
+text(x1-0.365,y2,'radiative','fontsize',fs-2);
+text(x1-0.29,y3,'guided','fontsize',fs-2);
 text(x1-linwid/4,y1+0.1,'average','fontsize',fs-2);
 text(x2+linwid/4,y1+0.1,'$\sigma_\pm$');
 text(x3+linwid/3,y1+0.1,'$\pi$');
