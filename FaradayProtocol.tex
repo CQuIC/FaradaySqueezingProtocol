@@ -1234,17 +1234,29 @@ which is a well-known result in previous studies~\cite{Deutsch2010a,Baragiola201
 \begin{subequations}
 	\begin{align}
 	\expect{\hat{F}_x} &= \sum_i^{N_A}\expect{\hat{f}_x}\nonumber\\
-	&= -N_A \left[f\expect{\sigmauu}+(f-1)\expect{\sigmadd}+(f-2)\expect{\sigmatt } \right]\\
+	&= -N_A \left[f\expect{\sigmauu}+(f-1)\expect{\sigmadd}+(f-2)\expect{\sigmatt } \right]\label{eq:Fx_qutrit}\\
 	\Delta F_z^2 &= N_A\expect{\Delta f_z^2} + N_A(N_A-1)\expect{\Delta f_z^{(1)}\Delta f_z^{(2)} }_s\nn\\
 	&=N_A\left\{ \frac{f}{2}\left(\expect{\sigmauu}+\expect{\sigmadd}-2\expect{\sigmaud}\expect{\sigmadu}-\expect{\sigmaud}^2-\expect{\sigmadu}^2 \right)\right. \nn\\
 	&\quad\quad+ \frac{2f-1}{2}\left(\expect{\sigmadd}+\expect{\sigmatt}-2\expect{\sigmadt}\expect{\sigmatd}-\expect{\sigmadt}^2-\expect{\sigmatd}^2 \right)\nn\\
 	&\quad\quad +\left. \frac{\sqrt{f(2f-1)}}{2}\left[\expect{\sigmaut }+\expect{\sigmatu} -2\expect{\sigmaud}(\expect{\sigmadt}+\expect{\sigmatd}) -2\expect{\sigmadu}(\expect{\sigmadt}+\expect{\sigmatd} ) \right] \right\}\nn\\
-	&\quad +N_A(N_A-1)\left[\frac{f}{2}(\expect{\Dsigmaud^{(1)}\Dsigmaud^{(2)} }_s +2\expect{\Dsigmaud^{(1)}\Dsigmadu^{(2)} }_s+\expect{\Dsigmadu^{(1)}\Dsigmadu^{(2)} }_s )\right.\\
+	&\quad +N_A(N_A-1)\left[\frac{f}{2}(\expect{\Dsigmaud^{(1)}\Dsigmaud^{(2)} }_s +2\expect{\Dsigmaud^{(1)}\Dsigmadu^{(2)} }_s+\expect{\Dsigmadu^{(1)}\Dsigmadu^{(2)} }_s )\right.\label{eq:DeltaFz2_qutrit}\\
 	&\quad\quad + \frac{2f-1}{2}(\expect{\Dsigmadt^{(1)}\Dsigmadt^{(2)} }_s +2\expect{\Dsigmadt^{(1)}\Dsigmatd^{(2)} }_s +\expect{\Dsigmatd^{(1)}\Dsigmatd^{(2)} }_s) \nn\\
 	&\quad\quad + \left. \sqrt{f(2f-1)}(\expect{\Dsigmaud^{(1)}\Dsigmadt^{(2)} }_s +\expect{\Dsigmaud^{(1)}\Dsigmatd^{(2)} }_s +\expect{\Dsigmadu^{(1)}\Dsigmadt^{(2)} }_s+\expect{\Dsigmadu^{(1)}\Dsigmatd^{(2)} }_s )\right]\nn
 	\end{align}
 \end{subequations}
 
+Certainly, the collective spin dynamics can also be calculated in the $ \left\{\left.\expect{\hat{f}_i},\expect{\Delta f_i^{(1)}\Delta f_j^{(2)} }_s\right|i,j=0,x,y,z \right\} $ basis with $ \hat{f}_0=\hat{\mathbbm{1}} $. For example, one can prove that, by ignoring couplings between $ \ket{\uparrow} $ and $ \ket{T} $, Eqs.~\ref{eq:Fx_qutrit} and~\ref{eq:DeltaFz2_qutrit} lead to 
+\begin{subequations}
+\begin{align}
+\expect{\hat{F}_x} &= -f \expect{\hat{N}_\uparrow}-(f-1)\expect{\hat{N}_\downarrow}-(f-2)\expect{\hat{N}_T}\\
+\Delta F_z^2 &\approx \expect{\hat{N}_f}\expect{\Delta f_z^2}+\expect{\hat{N}_f}(\expect{\hat{N}_f}-1)\expect{\Delta f_z^{(1)}\Delta f_z^{(2)} }\!_s,
+\end{align}
+\end{subequations}
+where $ \hat{N}_i=\sum_n^{N_A}\hat{\sigma}_{ii}^{(n)} $ (for $ i=\uparrow,\downarrow,T $) and $ \hat{N}_f=\hat{N}_\uparrow+\hat{N}_\downarrow+\hat{N}_T $ are the population operators. Then the problem is to establish and solve the stochastic equations for the expectation values and covariances of the population and angular momentum operators. For example, QND measurement process which generates the spin squeezing dynamics is governed by
+\begin{align}
+d\expect{\Delta f_z^2}|_{QN\!D} = -\kappa \left[\expect{\Delta f_z^2}+(N_A-1)\expect{\Delta f_z^{(1)}\Delta f_z^{(2)} }_s \right]^2dt=d\expect{\Delta f_z^{(1)}\Delta f_z^{(2)} }_s|_{QN\!D}.
+\end{align} 
+It seems the spin squeezing dynamics is purely determined by the $ \expect{\Delta f_z^2} $ and $ \expect{\Delta f_z^{(1)}\Delta f_z^{(2)} }$, but in deriving the equations for the full set of operator basis considering both the optical pumping and QND measurement contributions, all operators become coupled to each other.
 
 
 \end{appendix}
