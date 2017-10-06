@@ -1235,8 +1235,8 @@ which is a well-known result in previous studies~\cite{Deutsch2010a,Baragiola201
 	\begin{align}
 	\expect{\hat{F}_x} &= \sum_i^{N_A}\expect{\hat{f}_x}\nonumber\\
 	&= -N_A \left[f\expect{\sigmauu}+(f-1)\expect{\sigmadd}+(f-2)\expect{\sigmatt } \right]\label{eq:Fx_qutrit}\\
-	\Delta F_z^2 &= N_A\expect{\Delta f_z^2} + N_A(N_A-1)\expect{\Delta f_z^{(1)}\Delta f_z^{(2)} }_s\nn\\
-	&=N_A\left\{ \frac{f}{2}\left(\expect{\sigmauu}+\expect{\sigmadd}-2\expect{\sigmaud}\expect{\sigmadu}-\expect{\sigmaud}^2-\expect{\sigmadu}^2 \right)\right. \nn\\
+	\expect{\Delta F_z^2} &= N_A\expect{\Delta f_z^2} + N_A(N_A-1)\expect{\Delta f_z^{(1)}\Delta f_z^{(2)} }_s\nn\\
+	&=N_A\left\{ \frac{f}{2}\left(\expect{\sigmauu}+\expect{\sigmadd}-2\expect{\sigmaud}\expect{\sigmadu}-\expect{\sigmaud}^2-\expect{\sigmadu}^2 \right)\right. \label{eq:DeltaFz2_fz}\\
 	&\quad\quad+ \frac{2f-1}{2}\left(\expect{\sigmadd}+\expect{\sigmatt}-2\expect{\sigmadt}\expect{\sigmatd}-\expect{\sigmadt}^2-\expect{\sigmatd}^2 \right)\nn\\
 	&\quad\quad +\left. \frac{\sqrt{f(2f-1)}}{2}\left[\expect{\sigmaut }+\expect{\sigmatu} -2\expect{\sigmaud}(\expect{\sigmadt}+\expect{\sigmatd}) -2\expect{\sigmadu}(\expect{\sigmadt}+\expect{\sigmatd} ) \right] \right\}\nn\\
 	&\quad +N_A(N_A-1)\left[\frac{f}{2}(\expect{\Dsigmaud^{(1)}\Dsigmaud^{(2)} }_s +2\expect{\Dsigmaud^{(1)}\Dsigmadu^{(2)} }_s+\expect{\Dsigmadu^{(1)}\Dsigmadu^{(2)} }_s )\right.\label{eq:DeltaFz2_qutrit}\\
@@ -1249,7 +1249,7 @@ Certainly, the collective spin dynamics can also be calculated in the $ \left\{\
 \begin{subequations}
 \begin{align}
 \expect{\hat{F}_x} &= -f \expect{\hat{N}_\uparrow}-(f-1)\expect{\hat{N}_\downarrow}-(f-2)\expect{\hat{N}_T}\\
-\Delta F_z^2 &\approx \expect{\hat{N}_f}\expect{\Delta f_z^2}+\expect{\hat{N}_f}(\expect{\hat{N}_f}-1)\expect{\Delta f_z^{(1)}\Delta f_z^{(2)} }\!_s,
+\expect{\Delta F_z^2} &\approx \expect{\hat{N}_f}\expect{\Delta f_z^2}+\expect{\hat{N}_f}(\expect{\hat{N}_f}-1)\expect{\Delta f_z^{(1)}\Delta f_z^{(2)} }\!_s,
 \end{align}
 \end{subequations}
 where $ \hat{N}_i=\sum_n^{N_A}\hat{\sigma}_{ii}^{(n)} $ (for $ i=\uparrow,\downarrow,T $) and $ \hat{N}_f=\hat{N}_\uparrow+\hat{N}_\downarrow+\hat{N}_T $ are the population operators. Then the problem is to establish and solve the stochastic equations for the expectation values and covariances of the population and angular momentum operators. For example, QND measurement process which generates the spin squeezing dynamics is governed by
