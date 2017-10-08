@@ -76,8 +76,9 @@ imagEx=imag(Ex_H(:,:))./auE;
 imagEy=imag(Ey_H(:,:))./auE;
 imagEz=imag(Ez_H(:,:))./auE;
 % Define default colormap and value range.
-colormap(cool(17))
-% caxis([min(minE),max(maxE)]);
+colormap(redbluecmap(11))
+% colormap(cool(17))
+colorrange=[-max(maxE),max(maxE)];
 
 % Starting components plots.
 sub111=subplot(2,3,1);
@@ -85,7 +86,7 @@ sub111=subplot(2,3,1);
 surf(xx/a,yy/a,realEx);
 view(2)
 shading interp
-caxis([min(minE),max(maxE)]);
+caxis(colorrange);
 % imagesc(x/a,y/a,flipdim(squeeze(real(DiagV(1,lam0,:,:,1))/au).',1));%,'Parent',axes1
 % imagesc(Y/a,X/a,(squeeze(real(Ex_H(:,:))/max(real(Ex_H(:))))));%,'Parent',axes1
 % contour(xx/a,yy/a,(squeeze(real(Ex_H(:,:))/max(real(Ex_H(:))))),350);
@@ -93,7 +94,7 @@ caxis([min(minE),max(maxE)]);
 % set(gca,'ydir','normal');
 hold on
 % draw a circle arc segment
-plot3(pline_x, pline_y,1.1*ones(size(pline_x)),'w-','linewidth',lw-1);
+plot3(pline_x, pline_y,1.1*ones(size(pline_x)),'k-','linewidth',lw-1);
 
 % xlabel('X/a','fontsize',fs,'VerticalAlignment','cap','HorizontalAlignment','center');
 % ylabel('Y/a','fontsize',fs,'VerticalAlignment','bottom','Rotation',90,...
@@ -103,7 +104,8 @@ xlim([-max(rp/a),max(rp/a)]);
 ylim([-max(rp/a),max(rp/a)]);
 axis equal;
 axis off
-colormap(sub111,cool(10));
+colormap(sub111,redbluecmap(10));
+% colormap(sub111,cool(10));
 hold off
 
 hp111=get(sub111,'Position');
@@ -112,12 +114,13 @@ sub112=subplot('Position',[hp111(1)+hp111(3)+subfigdistance,hp111(2),hp111(3),hp
 surf(xx/a,yy/a,realEy);
 view(2)
 shading interp
-caxis([min(minE),max(maxE)]);
-colormap(sub112,cool(20));
+caxis(colorrange);
+% colormap(sub112,redbluecmap(20));
+% colormap(sub112,cool(20));
 hold on
 % draw a circle arc segment
 % plot(pline_x, pline_y, 'w-','linewidth',lw-1);
-plot3(pline_x, pline_y,ones(size(pline_x)),'w-','linewidth',lw-1);
+plot3(pline_x, pline_y,ones(size(pline_x)),'k-','linewidth',lw-1);
 
 xlim([-max(rp/a),max(rp/a)]);
 ylim([-max(rp/a),max(rp/a)]);
@@ -131,10 +134,10 @@ sub113=subplot('Position',[hp112(1)+hp112(3)+subfigdistance,hp112(2),hp112(3),hp
 surf(xx/a,yy/a,imagEz);
 view(2)
 shading interp
-caxis([min(minE),max(maxE)]);
+caxis(colorrange);
 hold on
 % draw a circle arc segment
-plot3(pline_x, pline_y, 10*ones(size(pline_x)),'w-','linewidth',lw-1);
+plot3(pline_x, pline_y, 10*ones(size(pline_x)),'k-','linewidth',lw-1);
 
 xlim([-max(rp/a),max(rp/a)]);
 ylim([-max(rp/a),max(rp/a)]);
@@ -145,7 +148,7 @@ hold off
 % Plot a colorbar.
 hp113 = get(sub113,'Position');
 colorbar('Position', [hp113(1)+hp113(3)+0.02  hp113(2)+0.01  0.02  hp113(4)*0.95])
-caxis([min(minE),max(maxE)]);
+caxis(colorrange);
 
 
 % Plot the intensity of the H mode and local field vectors along the
@@ -159,17 +162,19 @@ sub121=subplot(1,2,1);
 % normE_field=sqrt(real(Ex_H(ind_Vline)).^2+real(Ey_H(ind_Vline)).^2+imag(Ez_H(ind_Vline)).^2);
 % normE=max(normE_field(:));
 % scaleE=0.5;
-colormap(cool(20))
+colormap(hot(20))
+% colormap(cool(20))
 surf(xx./a,yy./a,Ints_H./max(Ints_H(:)));
 view(2)
 shading interp
 hold on
 plot3(pline_x, pline_y,ones(size(pline_x)),'w-','linewidth',lw-1);
+plot3([0,0],[-1.8,1.8],[1,1],'wd','linewidth',lw-0.5,'MarkerSize',4,'MarkerFaceColor','w');
 lenxxV=length(xx_V);
 lenyyV=length(yy_V);
 lenindV=length(ind_Vline);
 quiver3(xx_V(1:stepV:lenxxV)/a,yy_V(1:stepV:lenyyV)/a,ones(size(xx_V(1:stepV:lenxxV))), ...
-    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.');
+    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','white');
 xlim([-max(rp/a),max(rp/a)]);
 ylim([-max(rp/a),max(rp/a)]);
 axis equal
@@ -189,16 +194,18 @@ imagEy=imag(Ey_H(:,:))./auE;
 imagEz=imag(Ez_H(:,:))./auE;
 % Mode components.
 figure(11);
-% colormap(cool(17))
+colorrange=[-max(maxE),max(maxE)];
+colormap(redbluecmap(11))
 sub114=subplot('Position',[hp111(1),hp111(2)-hp111(4)-subfigdistance,hp111(3),hp111(4)]); %2,3,4)
 % Create mode component image.
-colormap(sub114,cool(17));
+% colormap(sub114,redbluecmap(17));
+% colormap(sub114,cool(17));
 pcolormode(xH,yH,realEx);
 shading interp
-caxis([min(minE),max(maxE)]);
+caxis(colorrange);
 hold on
 % draw a waveguide outline segment
-line(x_border, y_border,'color','white','linewidth',lw-1);
+line(x_border, y_border,'color','k','linewidth',lw-1);
 
 % xlabel('X/a','fontsize',fs,'VerticalAlignment','cap','HorizontalAlignment','center');
 % ylabel('Y/a','fontsize',fs,'VerticalAlignment','bottom','Rotation',90,...
@@ -214,13 +221,14 @@ hp114=get(sub114,'Position');
 
 sub115=subplot('Position',[hp114(1)+hp114(3)+subfigdistance,hp114(2),hp114(3),hp114(4)]);
 % Create mode component image.
-colormap(sub115,cool(17))
+% colormap(sub115,redbluecmap(17))
+% colormap(sub115,cool(17))
 pcolormode(xH,yH,realEy);
 shading interp
-caxis([min(minE),max(maxE)]);
+caxis(colorrange);
 hold on
 % draw a waveguide outline segment
-line(x_border, y_border,'color','white','linewidth',lw-1);
+line(x_border, y_border,'color','k','linewidth',lw-1);
 
 xlim([-plotwidth/2,plotwidth/2]);
 ylim([-plotheight/2,plotheight/2]);
@@ -232,13 +240,14 @@ hp115=get(sub115,'Position');
 
 sub116=subplot('Position',[hp115(1)+hp115(3)+subfigdistance,hp115(2),hp115(3),hp115(4)]);
 % Create mode component image.
-colormap(sub116,cool(17));
+% colormap(sub116,redbluecmap(17));
+% colormap(sub116,cool(17));
 pcolormode(xH,yH,imagEz);
 shading interp
-caxis([min(minE),max(maxE)]);
+caxis(colorrange);
 hold on
 % draw a waveguide outline segment
-line(x_border, y_border,'color','white','linewidth',lw-1);
+line(x_border, y_border,'color','k','linewidth',lw-1);
 
 xlim([-plotwidth/2,plotwidth/2]);
 ylim([-plotheight/2,plotheight/2]);
@@ -249,7 +258,7 @@ hold off
 % Plot a colorbar.
 hp116 = get(sub116,'Position');
 colorbar('Position', [hp116(1)+hp116(3)+0.02  hp116(2)+0.01  0.02  hp116(4)*0.95])
-caxis([min(minE),max(maxE)]);
+caxis(colorrange);
 
 % cleanfigure;
 % matlab2tikz('filename','../fig/nanofiber_Hmode_E_xy.tex','floatFormat','%.4f','showInfo', false, ...
@@ -271,18 +280,20 @@ sub122=subplot('position',[hp121(1)+hp121(3)+0.02,hp121(2)+0.15,hp121(3),hp121(4
 % normE_field=sqrt(real(Ex_H(ind_Vline)).^2+real(Ey_H(ind_Vline)).^2+imag(Ez_H(ind_Vline)).^2);
 % normE=max(normE_field(:));
 scaleE=0.3;
-colormap(cool(20))
+colormap(hot(20))
+% colormap(cool(20))
 surf(xx,yy,Ints_H./max(Ints_H(:)));
 view(2)
 shading interp
 hold on
 
 plot3(x_border, y_border,ones(size(x_border)),'w-','linewidth',lw-1);
+plot3([0,0],[-300,300],[1,1],'wd','linewidth',lw-0.5,'MarkerSize',4,'MarkerFaceColor','w');
 lenxxV=length(xx_V);
 lenyyV=length(yy_V);
 lenindV=length(ind_Vline);
 quiver3(xx_V(1:stepV:lenxxV),yy_V(1:stepV:lenyyV),ones(size(xx_V(1:stepV:lenxxV))), ...
-    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.');
+    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','white');
 xlim([-plotwidth/2,plotwidth/2]);
 ylim([-plotheight/2,plotheight/2]);
 % axis equal
@@ -306,7 +317,7 @@ export_fig('../fig/nanofiberswg_Hmode_Ints_xy','-eps','-pdf','-opengl','-m3','-q
 %% Plots for effective mode areas and cooperativity in the xy-plane for the square waveguide case.
 load('../data/swg_modes_d300_lambda895_Aeff.mat');
 figure(51);
-colormap(cool)
+colormap(hot)
 % subplot(234)
 % imagemode(xc_full/d,yc/d,A_Far/max(A_Far(:)));% Intensity of H mode.
 contour(xxc./d,yyc./d,invA_Far/max(invA_Far(:)),Nline);
@@ -326,7 +337,7 @@ matlab2tikz('filename','../fig/swg_invA_Far_xy.tex','floatFormat','%.4f','showIn
 hold off
 
 figure(52);
-colormap(cool)
+colormap(hot)
 % subplot(234)
 % imagemode(xc_full/d,yc/d,A_in/max(A_in(:)));% Intensity of H mode.
 contour(xxc./d,yyc./d,invA_in/max(invA_in(:)),Nline);
@@ -344,7 +355,7 @@ matlab2tikz('filename','../fig/swg_invA_in_xy.tex','floatFormat','%.4f','showInf
 hold off
 
 figure(53);
-colormap(cool)
+colormap(hot)
 % subplot(234)
 % imagemode(xc_full/d,yc/d,A_Far/max(A_Far(:)));% Intensity of H mode.
 [Cm,hdl] = contour(xxc./d,yyc./d,C1,Nline);%./max(C1(:))
@@ -391,7 +402,7 @@ load('../data/nanofiber_modes_a225_lambda895_Aeff.mat')
 cgstep=1; % Step length for the Coarse-grain of the data in plots.
 
 figure(401);
-colormap(cool)
+colormap(hot)
 % subplot(234)
 % imagemode(x/a,y/a,A_Far/max(A_Far(:)));% Intensity of H mode.
 contour(xx(1:cgstep:end,1:cgstep:end)./a,yy(1:cgstep:end,1:cgstep:end)./a,invA_Far(1:cgstep:end,1:cgstep:end)/max(invA_Far(:)),Nline);
@@ -409,7 +420,7 @@ matlab2tikz('filename','../fig/nanofiber_invA_Far_xy.tex','floatFormat','%.4f','
 hold off
 
 figure(402);
-colormap(cool)
+colormap(hot)
 % subplot(234)
 % imagemode(x/a,y/a,A_in/max(A_in(:)));% Intensity of H mode.
 contour(xx(1:cgstep:end,1:cgstep:end)./a,yy(1:cgstep:end,1:cgstep:end)./a,invA_in(1:cgstep:end,1:cgstep:end)/max(invA_in(:)),Nline);
@@ -427,7 +438,7 @@ matlab2tikz('filename','../fig/nanofiber_invA_in_xy.tex','floatFormat','%.4f','s
 hold off
 
 figure(403);
-colormap(cool)
+colormap(hot)
 % subplot(234)
 % imagemode(x/a,y/a,A_Far/max(A_Far(:)));% Intensity of H mode.
 [Cm,hdl] = contour(xx(1:cgstep:end,1:cgstep:end)./a,yy(1:cgstep:end,1:cgstep:end)./a,C1(1:cgstep:end,1:cgstep:end),Nline);%./max(C1(:))
