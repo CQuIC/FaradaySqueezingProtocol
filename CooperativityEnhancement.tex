@@ -261,7 +261,7 @@ For waveguides that are symmetric under a $\pi/2$ rotation around the $z$ (propa
     \label{fig:nanofiberSWG_Hmode_Ints_xy}}
   \end{subfloat}%  
   \vspace{-25pt}
-  \caption{$H$-mode components (a) and intensity distribution (b) in the $ xy $-plane for the optical nanofiber and square waveguide. In \protect\subref*{fig:nanofiberSWG_Hmode_E_xy}, shown on the first row from left to right are $ \mathrm{Re}[u_x(\br\!_\perp)] $, $ \mathrm{Re}[u_y(\br\!_\perp)] $ and $ \mathrm{Im}[u_z(\br\!_\perp)] $ of the nanofiber's $ H $-mode. Black lines outline the waveguide boundary. The scale is normalized to the maximum value of all field components. Plots on the second row are the same components as the first row but for the square waveguide with the quasi-TE$_{01}$ as the $ H $-mode. All the other parts of the mode components not shown for both waveguide geometries vanish everywhere. In \protect\subref*{fig:nanofiberSWG_Hmode_Ints_xy}, we plot the normalized intensity distribution on the transverse plane for both geometries. The arrows indicate the local field's direction and amplitude (relative length) at positions along the vertical waveguide axis, which only have an $ x $-component of the mode. The diamonds indicate typical positions of trapped atoms ($r\!_\perp'/a=1.8  $ for nanofiber and $ r\!_\perp'/d=1.5 $ for the SWG). The $ V $-mode is the $ H $-mode rotated by $ 90^\circ $ around the waveguide axis. }\label{fig:nanofiberSWG_E_ints}
+  \caption{$H$-mode components (a) and intensity distribution (b) in the $ xy $-plane for the optical nanofiber and square waveguide. In \protect\subref*{fig:nanofiberSWG_Hmode_E_xy}, shown on the first row from left to right are $ \mathrm{Re}[u_x(\br\!_\perp)] $, $ \mathrm{Re}[u_y(\br\!_\perp)] $ and $ \mathrm{Im}[u_z(\br\!_\perp)] $ of the nanofiber's $ H $-mode. White lines outline the waveguide boundary. The scale is normalized to the maximum value of all field components. Plots on the second row are the same components as the first row but for the square waveguide with the quasi-TE$_{01}$ as the $ H $-mode. All the other parts of the mode components not shown for both waveguide geometries vanish everywhere. In \protect\subref*{fig:nanofiberSWG_Hmode_Ints_xy}, we plot the normalized intensity distribution on the transverse plane for both geometries. The arrows indicate the local field's direction and amplitude (relative length) at positions along the vertical waveguide axis, which only have an $ x $-component of the mode. The $ V $-mode is the $ H $-mode rotated by $ 90^\circ $ around the waveguide axis. }\label{fig:nanofiberSWG_E_ints}
 \end{figure}
 
 The quasimonochromatic positive frequency component of the quantized field associated with these guided modes $(g)$ at frequency $\omega_0$ takes the form
@@ -270,9 +270,9 @@ The quasimonochromatic positive frequency component of the quantized field assoc
 \end{align}
 where $v_g$ is the group velocity.  In the first Born approximation the dispersive interaction of the guided field with $N_A$ atoms trapped near the surface of the waveguide at positions $\{\mbf{r}'_\perp, z_n\}$, detuned far from resonance,  is defined by the scattering equation,
 \begin{equation}
-\hat{\mathbf{E}}^{(+)}_{g,out}(\mbf{r}, t)=\hat{\mathbf{E}}^{(+)}_{g,in}(\mbf{r}, t)+\sum_{n=1}^{N_A} \tensor{\mbf{G}}_{g} (\mbf{r}, \mbf{r}'_n;\omega_0) \cdot \hat{\tensor{\alpha}}_n \cdot \hat{\mathbf{E}}^{(+)}_{g,in}(\mbf{r}'_n, t),
+\hat{\mathbf{E}}^{(+)}_{g,out}(\mbf{r}, t)=\hat{\mathbf{E}}^{(+)}_{g,in}(\mbf{r}, t)+\sum_{n=1}^{N_A} \tensor{\mbf{G}}_{g} (\mbf{r}, \mbf{r}'^{(n)}n;\omega_0) \cdot \hat{\tensor{\alpha}}_n \cdot \hat{\mathbf{E}}^{(+)}_{g,in}(\mbf{r}'_n, t),
 \end{equation}
-where $\hat{\tensor{\alpha}}_n$ is the atomic polarizability operator of the $n^{th}$ atom, and 
+where $\hat{\tensor{\alpha}}^{(n)}$ is the atomic polarizability operator of the $n^{th}$ atom, and 
 \begin{equation}
 		\tensor{\mathbf{G}}^{(+)}_g(\br,\br'_n; \omega_0) =  2\pi i \frac{\omega_0}{v_g } \sum_{p} \mathbf{u}_{p} (\br_\perp)\mathbf{u}^*_{p} 
 (\br_{\perp}^\prime) e^{i \beta_0(z-z'_n)}  \label{Eq::GreensGuided}
@@ -452,7 +452,7 @@ Under the assumption that the state is symmetric with respect to exchange of any
 \begin{subequations}\label{eq:Ftof_squeezing}
 \begin{align}
 \expect{\Delta F_z^2} &= N_A \expect{\Delta f_z^2}+N_A(N_A-1)\left. \expect{\Delta f_z^{(i)}\Delta f_z^{(j)}}\right|_{i\neq j}\label{eq:DeltaFz2}\\
-\expect{\hat{F}_x } & =N_A \expect{\hat{f}_x},\label{eq:expectFx}.
+\expect{\hat{F}_x } & =N_A \expect{\hat{f}_x} \label{eq:expectFx}.
 \end{align}
 \end{subequations}
  The first term of Eq.~\eqref{eq:DeltaFz2} and Eq.~\eqref{eq:expectFx} is the projection noise associated with the  $N_A$ identical spin-$f$  atoms, and  the second term of Eq.~\eqref{eq:DeltaFz2} is determined by two-body covariances, $ \left.\expect{\Delta f_z^{(i)}\Delta f_z^{(j)}}\right|_{i\neq j}=\expect{\Delta f_z^{(1)}\Delta f_z^{(2)}} = \expect{\hat{f}_z^{(1)}\hat{f}_z^{(2)}}-\expect{\hat{f}_z^{(1)}} \expect{\hat{f}_z^{(1)}} $.  Negative values in these two-body correlations correspond to the pairwise entanglement among atoms that yields spin squeezing~\cite{Wang2003Spin}.  Note, when detuning is sufficiently far-off resonance so that all collective sub- and super-radiant modes~\cite{Asenjo-Garcia2017Atom,Asenjo-Garcia2017Exponential} are equally (and thus symmetrically) excited.  In this paper, we work in the dispersive regime with a few thousands of atoms and can safely ignore the atom-atom interaction caused by multiple scattering, and hence the collective atomic system satisfy the exchange symmetry. 
@@ -472,18 +472,19 @@ where  $\kappa$ is the measurement strength defined in Eq. (?), and $\mathrm{d}W
 \mathcal{L}\left[ \hat{\rho} \right] &= \hat{F}_z \hat{\rho}\hat{F}_z -\frac{1}{2}\left(\hat{\rho}\hat{F}_z^2+\hat{F}_z^2\hat{\rho} \right)=\frac{1}{2}\left[\hat{F}_z,\left[\hat{\rho},\hat{F}_z \right] \right].
 \end{align}
 \end{subequations}
-The second term governs decoherence arising from optical pumping, which acts {\em locally} on each atom$,\mathrm{d}\hat{\rho}|_{op}=\sum_i^{N_A} \mathcal{D}^{(i)}\left[ \hat{\rho}\right] \mathrm{d}t$, where 
+The second term governs decoherence arising from optical pumping, which acts {\em locally} on each atom$,\mathrm{d}\hat{\rho}|_{op}=\sum_n^{N_A} \mathcal{D}^{(n)}\left[ \hat{\rho}\right] \mathrm{d}t$, where 
 \begin{equation}
-\mathcal{D}^{(i)}\left[ \hat{\rho}\right] = -\frac{i}{\hbar}\left(\hat{H}^{(i)}_{\rm eff}\hat{\rho} - \hat{\rho} \hat{H}^{(i)\dag}_{\rm eff}\right) + \gamma_s\sum_q \hat{W}^{(i)}_q \hat{\rho}\hat{W}^{(i)\dag}_q.
+\mathcal{D}^{(n)}\left[ \hat{\rho}\right] = -\frac{i}{\hbar}\left(\hat{H}^{(n)}_{\rm eff}\hat{\rho} - \hat{\rho} \hat{H}^{(n)\dag}_{\rm eff}\right) + \gamma_s\sum_q \hat{W}^{(n)}_q \hat{\rho}\hat{W}^{(n)\dag}_q.
 \label{op_superator}
 \end{equation}
-Here $\hat{H}^{(i)}_{\rm eff}$ is the effective nonHermitian Hamiltonian describing the local light shift and absorption by the $i^{th}$ atom and $\hat{W}^{(i)}_q$ is the jump operator corresponding to optical pumping through spontaneous emission of a photon of polarization $q$~\cite{Deutsch2010a} (see Appendix~\ref{Sec::opticalpumpinginrotatingframe}).   
+Here $\hat{H}^{(n)}_{\rm eff}$ is the effective nonHermitian Hamiltonian describing the local light shift and absorption by the $i^{th}$ atom and $\hat{W}^{(n)}_q$ is the jump operator corresponding to optical pumping through spontaneous emission of a photon of polarization $q$~\cite{Deutsch2010a} (see Appendix~\ref{Sec::opticalpumpinginrotatingframe}).   
 The rate of decoherence is characterized by the free space scattering rate, $\gamma_s$.  Note, the optical pumping superoperator, Eq.\eqref{op_superator},  is not trace preserving when restricted to a given ground-state hyperfine manifold $f$.  In this case, optical pumping of atoms to the other hyperfine manifold in the ground-electronic state is treated as loss.  If the atoms are placed at the optimal position, the local field is linearly polarized.  In that case the vector light shift vanishes, and for detunings large compared to the excited-state hyperfine splitting, the rank-2 tensor light shift is negligible over the time scales of interest.  In that case the light shift is dominated by the scalar component, which has no effect on the spin dynamics.  In that case $\hat{H}_{\rm eff} \propto -i\hbar \gamma_s 1$.
 
 The solution to the master equation is made possible by three approximations. Firstly, we restrict the subspace of internal magnetic sublevels that participate in the dynamics.  The system is initialized in a spin coherent state, with all atoms spin-polarized along the $x$-axis.  We denote this as the ``fiducial state" $\ket{\uparrow} = \ket{f, m_x =f}$.   Through QND measurement, spin squeezing is induced by entanglement with the  ``coupled state"  $\ket{\downarrow} = \ket{f, m_x=f-1}$.  Optical pumping is dominated by ``spin flips" $\ket{\uparrow}\rightarrow \ket{\downarrow}$ and ``loss" due to pumping to the other hyperfine level.  We finally include a third internal magnetic sublevel $\ket{T} = \ket{f, m_x=f-2}$ to account for  ``transfer of coherences" that can occur in spontaneous emission~\cite{Norris2012Enhanced,Norris2014} (see Fig. ?).  Restricted to this qutrit basis, the internal hyperfine spin operators are
-\begin{subequations}\label{eq:fxfz_xbasis}
+\begin{subequations}\label{eq:f_in_xbasis}
 \begin{align}
-\hat{f}_x &= -\left[f \hat{\sigma}_{\uparrow \uparrow} +(f-1) \hat{\sigma}_{\downarrow \downarrow} + (f-2)  \hat{\sigma}_{T T}\right], \\
+\hat{f}_x &= f \hat{\sigma}_{\uparrow \uparrow} +(f-1) \hat{\sigma}_{\downarrow \downarrow} + (f-2)  \hat{\sigma}_{T T}, \\
+\hat{f}_y &=-i \sqrt{\frac{f}{2}} \left(\hat{\sigma}_{\uparrow \downarrow} - \hat{\sigma}_{\downarrow \uparrow}\right) -i \sqrt{\frac{2f-1}{2}}  \left(\hat{\sigma}_{\downarrow T} - \hat{\sigma}_{T \downarrow }\right) \\
 \hat{f}_z &= \sqrt{\frac{f}{2}} \left(\hat{\sigma}_{\uparrow \downarrow} + \hat{\sigma}_{\downarrow \uparrow}\right) + \sqrt{\frac{2f-1}{2}}  \left(\hat{\sigma}_{\downarrow T} + \hat{\sigma}_{T \downarrow }\right),
 \end{align}
 \end{subequations}
@@ -590,13 +591,23 @@ In Fig.~\ref{fig:xi_rpfix_NA_t}, we plot the reciprocal of the spin squeezing pa
 
 
 \section{Conclusion and outlook}
-In this paper, we have studied the atom-light coupling based on Faraday interaction in the dispersive regime with application to QND measurement and spin squeezing with an ensemble of atoms. A set of stochastic master equations are derived by assuming the collective spins are symmetric Gaussian states while the simulations are performed in the qutrit internal subspace on a cylindrical nanofiber and a square waveguide platform, respectively. We proposed a protocol based on Faraday effect for precise QND measurement and strong spin squeezing by optimizing the cooperativity, which is defined as the measurement strength over the decoherence. Counterintuitively, the optimal geometry of measurement and trapping is such that atoms should be trapped at the minimal intensity spots of the probe in the transverse plane. With realistic parameters chosen, our simulation shows that larger than $ 7 $dB for the nanofiber or $ 10 $dB for the square waveguide of spin squeezing may be achievable with $ 2500 $ atoms. This proposed spin squeezing protocol based on Faraday effect has shown larger attainable squeezing effect over the birefringence-based spin squeezing protocol proposed in our earlier work~\ref{Qi2016}; meanwhile, compared to two-color spin squeezing protocol demonstrated in a recent experiment of QND measurement with a nanofiber~\cite{Beguin2017Observation}, this proposal simplifies the setup by fully utilizes the anisotropic property of the dielectric waveguide modes, and may also be able to reduce the mechanical oscillation of atoms due to the presence of the probe light by placing atoms at the weakest mode strength spots. 
+In this paper, we have studied the cooperativity in the atom-light coupling in two nanophotonic geometries, a cylindrical and square waveguide, based on Faraday interaction in the dispersive regime, with application to QND measurement and spin squeezing of an ensemble of atoms. Due to the anisotropic nature of the guided modes in the waveguides, one can strongly enhance the cooperativity of the atom-light interface, defined by the ration of the measurement strength to the rate of decoherence.   Counterintuitively, the optimal geometry is such that atoms should be trapped at the minimal intensity spots of the probe in the transverse plane. With realistic parameters chosen, our simulation shows that larger than $ 7 $dB for a cylindrical nanofiber or $ 10 $dB for the square waveguide of spin squeezing may be achievable with $ 2500 $ atoms. The amount of spin squeezing we predict based on Faraday is substantially larger than the birefringence-based spin squeezing protocol proposed in our earlier work~\ref{Qi2016}.  In addition, because the atoms are trapped at the position of minimal  intensity, we expect this configuration will reduce the mechanical oscillation of atoms induced by the light shift of the probe, which have been shown to corrupt QND measurements~\cite{?}. 
+%; meanwhile, compared to two-color spin squeezing protocol demonstrated in a recent experiment of QND measurement with a nanofiber~\cite{Beguin2017Observation}, this proposal simplifies the setup by fully utilizes the anisotropic property of the dielectric waveguide modes.
+
+A set of stochastic master equations are derived by assuming the collective spins are symmetric Gaussian states while the simulations are performed in the qutrit internal subspace.
 
 Although we have only considered a cylindrical nanofiber and a square waveguide geometries, it is immediate applicable to use the idea of optimizing cooperativity with other nanophotonic waveguide geometries for a preciser QND measurement and stronger spin squeezing which are the key for atomic state readout and non-classical collective spin state preparation towards quantum information processing on a nanophotonic quantum interface~\cite{Qi2016}. 
 
 As this work focuses on illustrating the significance of cooperativity in helping optimize waveguide-based QND measurement and spin squeezing protocols, we did not fully present the impact of Purcell effect and the modification of decay rates in our simulations which will further complicate this problem. We have neither considered the motion of atoms in the optical lattice for the same reason. In practice, however, these effects are important as having been observed in the nanofiber experiments~\cite{Solano2017Dynamics,Solano2017Alignment,Beguin2017Observation,Solano2017Optical}. We will include these effects in our future studies towards strategies of atom cooling and state initialization on these nanophotonic platforms. All data sets that have been used to generate the figures in this paper and the theory fully considering the polarization-dependent decay rates in the optical pumping process can be found in Ref.~\footnote{The URL and DOI will be provided before journal publication.} 
 
-By the nature of the dispersive QND measurement and spin squeezing protocols, the probe light works preferably in the far-off-resonance regime where the photon scattering among atoms is negligible. For the completion of the theory of atom-light interactions on nanophotonic interfaces, it is necessary to include the collective effects due to photon scattering processes on general nanophotonic platforms, which will lead to the break of the symmetric state assumption which we have been used in our work~\cite{Qi2016} and will also inspire applications including quantum memories~\cite{Asenjo-Garcia2017Exponential,Asenjo-Garcia2017Atom} and the generation of matrix product states and cluster states~\cite{Economou2010,Lodahl2017Chiral,Schwartz2016Deterministic,Pichler2016Photonic,Pichler2017Photonic} based on the long-range interaction generated superradiance~\cite{Solano2017Super}, photonic delay lines and spin waves. The theoretical difficulty of studying these many-body effects lays down to the exponentially expanded Hilbert quantum space which cannot be stored efficiently on a classical computer. We hope the computational framework based on the $ n $-body moments will shadow a light on understanding the nature of quantum correlations and many-body interactions with an acceptable computational load. 
+By the nature of the dispersive QND measurement and spin squeezing protocols, the probe light works preferably in the far-off-resonance regime where the photon scattering among atoms is negligible. For the completion of the theory of atom-light interactions on nanophotonic interfaces, it is necessary to include the collective effects due to photon scattering processes on general nanophotonic platforms, which will lead to the break of the symmetric state assumption which we have been used in our work~\cite{Qi2016} and will also inspire applications including quantum memories~\cite{Asenjo-Garcia2017Exponential,Asenjo-Garcia2017Atom} and the generation of matrix product states and cluster states~\cite{Economou2010,Lodahl2017Chiral,Schwartz2016Deterministic,Pichler2016Photonic,Pichler2017Photonic} based on the long-range interaction generated superradiance~\cite{Solano2017Super}, photonic delay lines and spin waves. The theoretical difficulty of studying these many-body effects lays down to the exponentially expanded Hilbert quantum space which cannot be stored efficiently on a classical computer. 
+
+In general, to include the $ n $-body correlations, $ \sum_i^n\left(\!\begin{array}{c}i\\d^2\end{array} \! \right) $ equations are required and the formalism above can be extended to cut off the covariances at the $ (n+1)^{\text{th}} $ order. Despite the considerable number of equations required, the collective spin dynamics problem can still be efficiently solved because the coefficient matrices of the set of equations are almost diagonal and very sparse due to the $ \delta $-function-like selectivity of products of $ \hat{\sigma}_{ba} $ operators for arbitrary subscripts in the process of evolving the spin dynamics. Even better, for our problem, counting up to the two-body correlations (Gaussian state) is sufficient since we haven't reached the non-Gaussian state limit.
+
+
+Also note that $ n $-body moment equations of motion can be derived in a similar manner using this approach to include quantum correlations beyond Gaussian state approximation, and can be solved efficiently due to the sparse nature of the coupled equations.
+
+We hope the computational framework based on the $ n $-body moments will shadow a light on understanding the nature of quantum correlations and many-body interactions with an acceptable computational load. 
 
 \section{Acknowledgments}
 We thank the UNM Center for Advanced Research Computing for computational resources used in this work.
@@ -608,165 +619,32 @@ This work was supported by the NSF, under grants PHY-1212445, xxxxx.
 %===============Appendix================= %
 \begin{appendix}
 \section{The computation of collective spin dynamics in details}\label{Sec::opticalpumpinginrotatingframe}
-In this appendix we derive of the equations of motion for spin squeezing as a function of time based on the Faraday protocol for atoms trapped near the surface of nanophotonic waveguides, as discussed in the main text.  For concreteness, we consider here cesium atoms, with atoms initially prepared in a spin coherent state, with all atom in the stretched state, polarized along the $x$-axis $\ket{\uparrow} = \ket{6S_{1/2}, f=4, m_x=4}$.  The atoms are trapped on the $y$-axis, and are probed with guided light in the $H$-mode, which has linear polarization in the $x$-direction at the position of the atom, off-resonance for an excited state.   We take the detuning sufficiently small compared to the ground state hyperfine splitting (9.2 GHz), but large compared to the excited state hyperfine splitting, e.g. 4 GHz red detuned from the D1 line,  $\ket{6S_{1/2}, f=4}\rightarrow \ \ket{6P_{1/2},f'=3}$.   Atoms can be optically pumped to the other ground hyperfine state $\ket{6S_{1/2}, f=3, m_x=3}$; we treat this as a loss channel under the approximation that over the time interval of interest there is a small probability for these atoms to repump to $f=4$.  We also include a bias static magnetic field along the $z$-axis.  This does not affect the squeezed quadrature $\Delta F_z$, but ultimately, we must  calculate all dynamics in the rotating frame.
+In this Appendix we give further details of the equations of motion for spin squeezing as a function of time, as discussed in the main text.  In the symmetric subspace, and in the Gaussian approximation, we track a set of one and two-body correlation functions that determine the metrologically relevant squeezing parameter, Eqs. (\ref{eq:xi2Faraday},\ref{eq:Ftof_squeezing}).   The evolution is determined by the dynamics induced by the QND measurement and decoherence due to optical pumping, Eqs. (\ref{eq:totaldrhodt}-\ref{op_superator}).   For concreteness, we consider here cesium atoms,  initially prepared in a spin coherent state, with all atoms in the stretched state polarized along the $x$-axis, $\ket{\uparrow} = \ket{6S_{1/2}, f=4, m_x=4}$.  The atoms are trapped on the $y$-axis a distance $r'_\perp$ from the surface of the waveguide and are probed with guided light in the $H$-mode, which has linear polarization in the $x$-direction at the position of the atom.   We take the detuning large compared to the excited state hyperfine splitting, e.g. 4 GHz red detuned from the D2 line,  $\ket{6S_{1/2}, f=4}\rightarrow \ \ket{6P_{1/2},f'=3}$.   Spontaneous emission from the probe may result in optically pumping of atoms to the other  hyperfine manifold, $f=3$; we treat this as a loss channel under the approximation that over the time interval of interest, there is a negligible probability for these atoms to repump to $f=4$.  We also include a bias static magnetic field along the $z$-axis.  This does not affect the QND measurement of $F_z$, but ultimately, we must  calculate all dynamics in the rotating frame.
 
-The QND measurement and resulting spin squeezing of the collective spin is described by the stochastic master equation defined in Eq.~\eqref{eq:totaldrhodt}. Decoherence arises due to optical pumping, which acts locally.  The optical pumping dynamics of the $ j $-th atom are governed by
+Spontaneous emission, optical pumping, and the resulting decoherence acts locally on each atomic spin, governed by the master equation, Eq. (\ref{op_superator}).  For light linearly polarized in the $x$-direction, and for detunings large compared the the excited state hyperfine splitting, this takes the simplified form~\cite{Deutsch2010a}
 \begin{align}\label{eq:op_master}
-\left.\dt{\hat{\rho}^{(j)}}\right|_{op} &= \mathcal{D}[\hat{\rho}^{(j)}]=-\frac{i}{\hbar}\left(\hat{H}_{\rm eff}^{(j)}\hat{\rho}^{(j)} -\hat{\rho}^{(j)}\hat{H}_{\rm eff}^{(j)\dagger} \right) + \gamma_s\sum_{q}\hat{W}_q(\br'_j)\hat{\rho}^{(j)}\hat{W}_q^\dagger(\br'_j), %\\
-%&=-\frac{1}{2}\sum_{a,b}\gamma_{ba}\ket{b}\bra{a}+
-%\!\!\!\!\!\!\sum_{q,q',q'',a,b,c,d,f',f'',m',m''}\!\!\!\!\!\! \gamma_sw_{dcq}^{f''m''q''}\left(w_{abq}^{f'm'q'}\right)^*\ket{d}\bra{c}\hat{\rho}^{(i)}\ket{b}\bra{a}.
-\end{align} 
-have factored out a characteristic photon scattering rate defined below.
-We have also defined Rabi frequency $ \Omega=2\bra{j}|d|\ket{j'}\mathcal{E}^{(+)}_{\rm in}/\hbar $ with reduced optical dipole matrix element $\bra{j}|d|\ket{j'}$ and field amplitude $ \mathcal{E}^{(+)}_{\rm in}=|\mathbf{E}_{\rm in}^{(+)}(\br')| $.
-%The total rate of photon scattering by an atom from the $\ket{a}\equiv \ket{f,f_x=a}$ to $ \ket{b}\equiv\ket{f,f_x=b} $ hyperfine ground state in the $x$-basis is
-%	\begin{equation}\label{Eq::gammaf}
-%		\gamma_{ba}=- \frac{2}{\hbar} {\rm Im} \big[ \bra{f,b} \hat{h}_{\rm eff}\ket{f,a} \big] ,
-%	\end{equation}
-In generating the plots for this paper, we have used a detuning of $1$nm from the $ \ket{j=1/2,f=4} $ to the $ \ket{j'=1/2,f'=3} $ transition on the lower energy side, which is much larger than the ac-Stark shifts, fine and hyperfine splittings of the excited state levels of the $ D_1 $-line transitions of $ ^{133} $Cs atoms. Therefore, the energy shifts between the hyperfine sublevels of the excited states become irrelevant to our calculation. 
-We use the averaged decay rate $ \Gamma_{f'} $ over all possible polarizations of spontaneous emissions from the $ f' $ excited hyperfine manifold (see details later). 
-The effective nonHermitian light-atom interaction Hamiltonian for one atom (labeled with superscript $ (i) $) is given by
-\begin{align}
-\hat{h}_{\rm eff}\equiv \hat{H}_{\rm eff}^{(i)} &= - \hat{\mathbf{E}}^{(-)}_{\rm in}(\mathbf{r}' ; t ) \cdot \poltens \cdot \hat{\mathbf{E}}^{(+)}_{\rm in}(\mathbf{r}' ;t ),
+\left.\dt{\hat{\rho}^{(n)}}\right|_{op} =\mathcal{D}[\hat{\rho}^{(n)}]=  -\frac{i}{\hbar}[ \hat{H}_A, \hat{\rho}^{(n)}] -\frac{2}{9} {\gamma_s}\hat{\rho}^{(n)} +\frac{\gamma_s}{18 f^2} \left(\hat{f}^{(n)}_+  \hat{\rho}^{(n)}  \hat{f}^{(n)}_- + \hat{f}^{(n)}_- \hat{\rho}^{(n)}  \hat{f}^{(n)}_+\right),
 \end{align}
-where $\charpol = -\frac{\sigma_0}{8\pi k_0\gamma_s}\frac{\Gamma_{f'}}{\Delta_{ff'}+i\Gamma_{f'}/2}$ is the complex polarizability and the polarizability operator $  \poltens=\sum_{f'}\charpol\hat{\tensor{\mathbf{A}}}(f,f')$ with elements of $ \hat{\tensor{\mathbf{A}}} $ given by
-\begin{align} \label{Eq::PolarizabilityIrrep}
-		\hat{A}_{ij}(f,f')&\equiv \hat{e}_i^*\cdot\hat{\mathbf{D}}_{ff'}\hat{\mathbf{D}}_{f'f}^\dagger \cdot \hat{e}_j \\
-		&=  C_{ff'}^{(0)} \delta_{i,j}\hat{\mathbbm{1}}+ iC_{ff'}^{(1)}\epsilon_{ijk}\hat{f}_k+ C_{ff'}^{(2)} \Big[ \smallfrac{1}{2} ( \hat{f}_i\hat{f}_j +\hat{f}_j\hat{f}_i )-\smallfrac{1}{3} \hat{\mathbf{f}}\!\cdot\!\hat{\mathbf{f}} \delta_{i,j} \Big], 
+where $\hat{f}^{(n)}_\pm = \hat{f}^{(n)}_z \pm i \hat{f}^{(n)}_y$ are the raising and lowering operators for projection of spin along the $x$-axis, and $\gamma_s = \frac{\Gamma_A^2}{4 \Delta^2} (\sigma_0 I_{in})$ is the photon scattering rate for a unit oscillator strength with intensity $I_{in}$ at the position of the atom (we assume that all atoms are trapped the same distance for the waveguide, and thus see the same intensity). The atomic Hamiltonian is $\hat{H}_A = \sum_n \hbar \Omega_0 \hat{f}^{(n)}_z + \hat{H}_{LS}$, the sum of the Zeeman interaction with a bias magnetic field, giving rise to Larmor precsion at frequency $\Omega_0$, and the light shift, $\hat{H}_{LS}$, due to the probe.  Even for far detuning, the residual tensor light shift cannot be neglected as it scales at $1/\Delta^2$, the same as $\gamma_s$ and $\kappa$.  In principle a two-color probe can remove the tensor term which would otherwise lead to a degradation of the mean spin, and thus a reduction metrologically useful squeezing~\cite{Jessen}.  We neglect this effect here.  Finally, going to the rotating frame at the Larmor frequency, $\hat{f}^{(n)}_x \rightarrow \hat{f}^{(n)}_x \cos(\Omega_0 t) + \hat{f}^{(n)}_y \sin(\Omega_0 t)$,  $\hat{f}^{(n)}_y \rightarrow \hat{f}^{(n)}_y \cos(\Omega_0 t) - \hat{f}^{(n)}_x \sin(\Omega_0 t)$, and averaging the rapidly oscillating terms (RWA), the master equation takes the form
+\begin{align}\label{eq:op_master2}
+\left.\dt{\hat{\rho}^{(n)}}\right|_{op}= \mathcal{D}[\hat{\rho}^{(n)}] \Rightarrow  -\frac{2}{9}{\gamma_s} \hat{\rho}^{(n)} +\frac{\gamma_s}{36 f^2} \left(\hat{f}^{(n)}_x  \hat{\rho}^{(n)}  \hat{f}^{(n)}_x+\hat{f}^{(n)}_y  \hat{\rho}^{(n)}  \hat{f}^{(n)}_y +2 \hat{f}^{(n)}_z  \hat{\rho}^{(n)}  \hat{f}^{(n)}_z\right).
 \end{align}
-where $\hat{\mathbf{f}}$ is the atomic spin operator in hyperfine multiplet $f$, and $ \epsilon_{ijk} $ is the Levi-Civita symbol. 
-Definitions of the irreducible rank-$ K $ interaction coefficients $ C_{ff'}^{(K)} $ can be found in Refs.~\cite{Qi2016,Deutsch2010a}, which correspond to scalar, vector and tensor atom-light interactions for $ K=0,1,2 $, respectively.
+With  atoms initially prepared in the  ``fiducial state," $\ket{\uparrow} = \ket{f=4,m_x=4}$, we include  in the dynamics the ``coupled state,"  $\ket{\downarrow} = \ket{f=4,m_x=3}$, and the ``transfer state," $\ket{T} = \ket{f=4,m_x=2}$.  Restricted to this qutrit substate, the spin projector operators $\{ \hat{f}_x,  \hat{f}_y, \hat{f}_z \}$ are given in Eqs. (\ref{eq:f_in_xbasis}).
 
-Given the geometry of the Faraday spin squeezing protocol for optical nanofiber and square waveguides discussed in this paper, the local electric field at the atom positions is linearly polarized. 
-By denoting the local field's polarization direction as the $ x$-direction and the propagation direction of the guided light as the $ z $-direction, the effective atom-light interaction Hamiltonian in a static reference frame can be written as 
-\begin{align}
-\hat{h}_{\rm eff} &= -\frac{i\hbar}{2}\sum_{f'} \gamma'_s \left[C_{ff'}^{(0)}\hat{\mathbbm{1}}+C_{ff'}^{(2)}(\hat{f}_{x}^2-\frac{\hat{\mathbf{f}}^2}{3} ) \right],
-\end{align}
-where the intrinsic photon scattering rate $ \gamma'_s\equiv \frac{\Gamma_{f'}\Omega^2}{4(\Delta_{ff'}^2+\Gamma_{f'}^2/4 )}$ and in the far-detuning regime, $\gamma'_s \approx \frac{\Gamma_{f'}\Omega^2}{4\Delta_{\rm eff}^2}=\frac{\sigma_0}{\Ain}\left(\frac{\Gamma_{f'}}{2\Delta_{\rm eff}} \right)^2\dot{N}_L $~\cite{Deutsch2010a}. Note here the vector interaction term vanishes given a linearly polarized light.
-Compared to the normal characteristic photon scattering rate $ \gamma_s $, we can see they are defined in different scales.
-In general, they are related for given $ f $ and $ f' $ by 
-\begin{align}
-\gamma'_s=\gamma_s \frac{\Delta_F^2}{\Delta_{ff'}},
-\end{align}
-and $ \frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}\pm i\Gamma_{f'}/2}\approx \frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}}=\sqrt{\gamma_s}\frac{\Delta_F}{\Delta_{ff'}} $ in the far-detuning regime.
-
-We define the Lindblad jump operators of optical pumping among ground states by~\cite{Deutsch2010a}
-	\begin{align}\label{Eq::Wq_Faraday}
-		\hat{W}_q &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'}\!\frac{\sqrt{\Gamma\!_{f'}}\Omega/2}{\Delta_{f\!f'} \!+\! i\Gamma\!_{f'}/2}\mathbf{e}_q^*\cdot(\hat{\mathbf{D}}_{f\!f'}  \hat{\mathbf{D}}^\dagger_{f'\!f} )\cdot\mathbf{e}_{\rm in} \\
-		&= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'\!\!,\,k}\! \frac{\sqrt{\Gamma\!_{f'}}\Omega/2}{\Delta_{f\!f'}\!+\!i\Gamma\!_{f'}/2} \left[\!\delta_{qx}C_{f\!f'}^{(0)}\hat{\mathbbm{1}} \!+\! iC_{f\!f'}^{(1)}\epsilon_{qxk}\hat{f}_k \!+\! C_{f\!f'}^{(2)}\left(\frac{\hat{f}_q\!\hat{f}_{x}\!+\!\hat{f}_{x}\!\hat{f}_q }{2} \!-\! \frac{\delta_{qx}}{3}\hat{\mathbf{f}}^2 \right)\! \right].
-%		&=\sum_{f',m',q',a,b} w_{baq }^{f'm'q'}\ket{b}\bra{a}.
-	\end{align}
-Each jump operator $\hat{W}_q$ is associated with absorption of the probe photon polarized along $ \mathbf{e}_{\rm in}=\mathbf{e}_x $ followed by spontaneous emission of a photon with polarization $ \mathbf{e}_q $, where $q= \{x,y,z\}$ labels the corresponding transitions in the Cartesian basis. 
-%Here the dimensionless raising operator $ \mathbf{e}_q\cdot\hat{\mathbf{D}}_{f'f}^\dagger= \sum_{m',m} o_{jf}^{j'f'} C_{f',m'}^{f,m;1, q}\ket{f',m'}\bra{f,m} $,
-%where $ C_{f',m'}^{f,m;1, q}=0 $ unless $ m'=m+q $ with $ C_{f',m+q}^{f,m;1, q}=\Braket{f',m+q}{f,m;1,q}$ being the Clebsch-Gordan coefficients, and
-%\begin{equation}
-%\big| o_{jf}^{j'f'} \big|^2=(2j'+1)(2f+2) \bigg\{
-%\begin{array}{ccc}
-%f' & 7/2 & j' \\
-% j & 1 & f
-% \end{array}
-% \bigg\}
-%\end{equation}
-%are the relative oscillator strengths determined by the relevant Wigner 6-$J$ symbol.
-%In our protocols, we assume the probe light is so far-detuned from any of the atomic resonances that the tilting of the hyperfine structure levels due to an external magnetic field becomes irrelevant and we can set $ \Delta_{ff'}^q=\Delta_{ff'} $ and $ \Delta_{ff'}\gg \Gamma_f'^q $ for arbitrary $ f' $ and $ q $.
-
-Therefore, in the static $ \left\{x,y,z \right\} $ basis, we have
-\begin{align}
-\hat{W}_{x} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2} \left[C_{ff'}^{(0)}\hat{\mathbbm{1}} + C_{ff'}^{(2)}\left(\hat{f}_{x}^2-\frac{1}{3}\hat{\mathbf{f}}^2 \right) \right]\\
-\hat{W}_{y} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2} \left(-iC_{ff'}^{(1)}\hat{f}_z + C_{ff'}^{(2)}\frac{\hat{f}_{x}\hat{f}_{y}+\hat{f}_{y}\hat{f}_{x}}{2} \right)\\
-\hat{W}_{z} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'} \frac{\sqrt{\Gamma_{f'}}\Omega/2}{\Delta_{ff'}+i\Gamma_{f'}/2} \left(iC_{ff'}^{(1)}\hat{f}_{y} + C_{ff'}^{(2)}\frac{\hat{f}_z\hat{f}_{x}+\hat{f}_{x}\hat{f}_z}{2}  \right).
-\end{align}
-
-The atomic decay rates of the excited level $ e $ are modified due to the presence of the nanophotonic structure and can be given by
-\begin{align}
-\Gamma_e &= \sum_g \bra{e}\hat{\mathbf{d}}\ket{g} \cdot \mathrm{Im}\left[\tensor{\mathbf{G}}(\br',\br';\omega_{eg}) \right]\cdot \bra{g}\hat{\mathbf{d}}\ket{e}
-\end{align}
-with the dipole operator $ \hat{\mathbf{d}} $ and the total Green's function tensor as a combination of the contributions from the guided modes and radiative modes, $ \tensor{\mathbf{G}}(\br',\br';\omega_{eg})=\tensor{\mathbf{G}}_{gyd}(\br',\br';\omega_{eg})+\tensor{\mathbf{G}}_{rad}(\br',\br';\omega_{eg}) $.
-Accordingly, the decay rates can also be decomposed into the guided and radiative modes components, or the total decay rates of a given level $ e $ can be calculated by $ \Gamma_e=\Gamma_{e,gyd}+\Gamma_{e,rad} $.
-We calculate the guided mode Green's function tensor using the local guided modes following the eigenmode decomposition formula derived in Ref.~\cite{Qi2016}. Using a house-made program based on the \textit{boundary element method} (BEM) in the frequency domain~\cite{Abajo2002,GarciadeAbajo1998Relativistic}, the radiative Green's function tensor is calculated by simulating the local unguided modes emitted by an $i$-directed (for all $ i=x,y,z $) optical dipole placed near the waveguide. We set $ \Gamma_{f'}= \int \Gamma_{f'}(\theta,\phi)\frac{d\Omega}{4\pi}=(\Gamma_{f'}^x+\Gamma_{f'}^y+\Gamma_{f'}^z)/3=(\Gamma_{f'}^{\sigma_+}+\Gamma_{f'}^{\sigma_-}+\Gamma_{f'}^\pi)/3$ as the averaged value of decay rates over the $4\pi$ photon emission steradians for this study~\cite{Novotny2012} (see Fig.~\ref{fig:decayrates} for the decomposition of decay rates in the cylindrical basis). Using the mean-value decay rate approximation may cause some small errors in our simulations but is helpful to explain the idea of using cooperativity to design QND measurement and spin squeezing protocols. 
-
-\begin{figure}[htb]
-\centering
- \begin{minipage}[h]{0.4\linewidth}
- %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
-  \subfloat[h][$ \Gamma_{\rm nanofiber}/\Gamma_0 $]{
-    %\input{fig/nanofiber_decayrates.tex}
-    \includegraphics{fig/autofig/FaradayProtocol-Figure14}
-    \label{fig:nanofiber_decayrates}
-    }
-   \end{minipage}\vfill
-   \begin{minipage}[h]{0.4\linewidth}
-    %\begin{tabular}{*{2}{b{0.2\textwidth-2\tabcolsep}}}
-     \subfloat[h][$\Gamma_{\rm square waveguide}/\Gamma_0$]{
-       %\input{fig/square waveguide_decayrates.tex}
-       \includegraphics{fig/autofig/FaradayProtocol-Figure15}
-       \label{fig:square waveguide_decayrates}
-       }
-   \end{minipage}
-   %\end{tabular}
-\caption{Polarization-dependent decay rates for the nanofiber \protect\subref*{fig:nanofiber_decayrates} and square waveguide \protect\subref*{fig:square waveguide_decayrates} as functions of the radial distance to the waveguides' symmetric centers. Line types differ the contributions from the guided and radiative modes and the combined total value; colors distinguish the polarizations of $ \sigma_\pm $, $ \pi $ and the averaged case. }\label{fig:decayrates}
-\end{figure}
-
-    
-Now, we consider a static magnetic field is applied to the atoms to fix the quantization axis to the $ \mathbf{e}_{z} $ direction pointing along the waveguide axis.
-We assume the magnetic field is strong enough so that the Larmor processing is much faster than the atomic decay and atom-photon interaction processes.
-In theory, this leads us to transfer the master equations describing the collective spin dynamics to the rotating frame determined by the fast-rotating transform operator
-\begin{align}
-\hat{U}_B(t) &= e^{-i\Omega_Bt\hat{f}_z},
-\end{align}
-where $ \Omega_B $ is the Larmor processing frequency of the external magnetic field.
-In the rotating frame, a quantum operator $ \hat{A} $ is transferred into $ \hat{A}' $ through $ \hat{A}\rightarrow \hat{A}'=\expect{\hat{U}_B^\dagger\hat{A}\hat{U}_B }_T $, where the notation $ \expect{\cdot}_T=\frac{1}{T}\int\cdot dt $ is the time average of observables in the Larmor processing period $ T $.
-The density operator preserves its form in the rotating frame.
-We can solve the transformed master equations by employing the Baker-Campbell-Hausdorff formula that $ e^{\lambda\hat{A}}\hat{B}e^{-\lambda\hat{A}}=\sum_{n=0}^\infty\frac{\lambda^n}{n!}\hat{C}_n $, where $ \hat{C}_0=\hat{B} $ and $ \hat{C}_n=\left[\hat{A},\hat{C}_{n-1} \right] $ for $ n>1 $ and $ \left[\hat{f}_m, \hat{f}_n\right]=i\sum_p\epsilon_{mnp}\hat{f}_p $.
-The following static-rotating frame transformation relationships can be proved easily:
-\begin{subequations}\label{eq:rotationtransf}
-	\begin{align}
-	\hat{U}_B^\dagger\hat{f}_{x}\hat{U}_B&=\cos(\Omega_Bt)\hat{f}_x-\sin(\Omega_Bt)\hat{f}_y,\\
-	\hat{U}_B^\dagger\hat{f}_{y}\hat{U}_B &= \sin(\Omega_Bt)\hat{f}_x+ \cos(\Omega_Bt)\hat{f}_y, \\ \hat{U}_B^\dagger\hat{f}_{z}\hat{U}_B &=\hat{f}_z,\quad \hat{U}_B^\dagger\hat{\mathbbm{1}}\hat{U}_B =\hat{\mathbbm{1}}.
-	\end{align}
-\end{subequations}
-Operators with an odd order of transverse atomic angular momentum operator will be averaged to vanish. For example, $ \hat{f}_{x}=\hat{f}_{y} \rightarrow 0 $ and $ \hat{f}_{i=x,y}\hat{f}_{z}\rightarrow 0 $.
-
-
-By using the transformation relationships of Eqs.\eqref{eq:rotationtransf} as well as relationships $ \hat{\mathbf{f}}^2=\hat{\mathbf{f}}\cdot\hat{\mathbf{f}}=f(f+1)\hat{\mathbbm{1}} $, $ \hat{f}_z =\sum_{m=1}^{2f+1}(f-m+1)\hat{\sigma}_{mm} $ and $ \hat{f}_z^2 = \sum_{m=1}^{2f+1}(f-m+1)^2\hat{\sigma}_{mm} $, the effective Hamiltonian and jump operators can be given in the rotating frame by 
-\begin{subequations}
-\begin{align}
-\hat{h}_{\rm eff} &= -\frac{i\hbar}{2} \!\sum_{f'}\! \gamma'_s \!\sum_{m=-f}^f\!\left[C_{f\!f'}^{(0)} \!+\! \frac{C_{f\!f'}^{(2) }}{6}(f(f\!+\!1)\!-\!3m^2) \right]\hat{\sigma}_{mm}\\
-\hat{W}_{x} &= \frac{1}{\sqrt{\gamma_s}}\!\sum_{f'}\! \frac{\sqrt{\Gamma\!_{f'} }\Omega/2}{\Delta_{f\!f'}\!+\!i\Gamma\!_{f'}/2 } \!\sum_{m=-f}^f\!\left[C_{f\!f'}^{(0)} \!+\! \frac{C_{f\!f'}^{(2) }}{6}(f(f\!+\!1)\!-\!3m^2) \right]\hat{\sigma}_{mm}\\
-\hat{W}_{y} &= -\frac{i}{\sqrt{\gamma_s}}\!\sum_{f'}\! \frac{\sqrt{\Gamma\!_{f'} }\Omega/2}{\Delta_{f\!f'}\!+\!i\Gamma\!_{f'}/2 } \!\sum_{m=-f}^f\! C_{f\!f'}^{(1)}m\hat{\sigma}_{mm}\\
-\hat{W}_z &=0.
-\end{align}
-\end{subequations}
-After some algebra with the results above, one can find the optical pumping master equation in the rotating frame as
-\begin{align}
-\left. \dt{\hat{\rho}}\right|_{\rm op} 
-&= - \sum_{f'} \gamma'_s \left[\left(C_{ff'}^{(0)}+\frac{f(f+1)}{12}C_{ff'}^{(2)} \right)\hat{\rho}-\frac{C_{ff'}^{(2)}}{4}(\hat{f}_z^2\hat{\rho}+\hat{\rho}\hat{f}_z^2) \right]\nn\\
-&\quad+\sum_{f',f''} \frac{\sqrt{\Gamma_{f'}\Gamma_{f''} }\Omega^2/4 }{\Delta_{ff'}\Delta_{ff''}+\Gamma_{f'}\Gamma_{f''}/4+i(\Delta_{ff''}\Gamma_{f'}-\Delta_{ff'}\Gamma_{f''} ) }\nn\\
-&\quad\cdot\left\{C_{ff'}^{(0)}C_{ff''}^{(0)}\hat{\rho}+ C_{ff'}^{(0)}C_{ff''}^{(2)}\frac{\hat{\rho}}{6}(\fo^2-3\hat{f}_z^2) + C_{ff''}^{(0)}C_{ff'}^{(2)}(\fo^2-3\hat{f}_z^2)\frac{\hat{\rho}}{6} \right.\nn\\
-&\quad\quad + \frac{1}{2}C_{ff'}^{(1)}C_{ff''}^{(1)}(\hat{f}_x\hat{\rho}\hat{f}_x+\hat{f}_y\hat{\rho}\hat{f}_y+2\hat{f}_z\hat{\rho}\hat{f}_z )\nn\\
-&\quad\quad -\frac{1}{4}C_{ff'}^{(1)}C_{ff''}^{(2)}(\fx\rhoo\fx-\fy\rhoo\fy-2i\fx\rhoo\fz\fy+2i\fy\rhoo\fx\fz )\nn\\
-&\quad\quad +\frac{1}{4}C_{ff''}^{(1)}C_{ff'}^{(2)}(\fx\rhoo\fx-\fy\rhoo\fy-2i\fz\fy\rhoo\fx+2i\fx\fz\rhoo\fy ) \nn\\
-&\quad +C_{ff'}^{(2)}C_{ff''}^{(2)}\left[\frac{1}{4}f^2(f+1)^2\rhoo-\frac{f(f+1)}{6}(\fo^2-\fz^2)\rhoo-\frac{f(f+1)}{6}\rhoo(\fo^2-\fz^2) \right.\nn\\
-&\quad\quad\quad+\frac{1}{2}\fx^2\rhoo\fx^2+\frac{1}{2}\fy^2\rhoo\fy^2+\frac{1}{4}(i\fz+2\fy\fx)\rhoo(i\fz+2\fy\fx)\nn\\
-&\left.\left.\quad\quad\quad +\frac{1}{8}(i\fy+2\fx\fz)\rhoo(i\fy+2\fx\fz)+\frac{1}{8}(i\fx+2\fz\fy)\rhoo(i\fx+2\fz\fy) \right]\right\}.\label{eq:drhodtop_rotating}
-\end{align}
-In our simulations, we use Eq.~\eqref{eq:drhodtop_rotating} as the master equation of the optical pumping process in the rotating frame and define the superoperator $ \mathcal{D} $ in Eq.~\eqref{eq:op_master} accordingly. Eq.~\eqref{eq:drhodtop_rotating} is valid as long as the decay rates are not too different from hyperfine sublevels of a given $ f' $ excited state quantum number compared to the detuning. We have also generalized this result to include the polarization-dependent modification of decay rates when the detuning is not very far from the transition resonance and validate the approximations used in this paper. 
-
-As a sanity check, we consider the far-detuning regime where the detuning on hyperfine sublevels is indistinguishable so that we can denote $ f''$ as $f' $ and ignore all tensor polarizability terms wherever $ C_{ff'}^{(2)} $ presents in Eq.~\eqref{eq:drhodtop_rotating}, and the optical pumping part of the master equation above can be simplified as
-\begin{align}\label{eq:op_fardetuning}
-\left.\dt{\rhoo}\right|_{\rm op} = \gamma'_s \sum_{f'} \left[C_{ff'}^{(0)}(C_{ff'}^{(0)}-1)\rhoo+\frac{1}{2}(C_{ff'}^{(1)})^2(\fx\rhoo\fx+\fy\rhoo\fy+2\fz\rhoo\fz ) \right],
-\end{align}
-which is a well-known result published in previous studies~\cite{Deutsch2010a,Baragiola2014}.
-
-Since the collective measurement operation is independent of the ensemble preparation, the form of the QND measurement superoperators $ \mathcal{H} $ and $ \mathcal{L} $ preserve their form in the rotating frame. With all the components of the stochastic master equation defined in Eq.~\eqref{eq:totaldrhodt} through Eq.~\eqref{op_superator}, one can derive the equations of motion of one- and two-body moments straightforwardly using the symmetric Gaussian state approximation. Some explicit results have been given in Eq.~\eqref{eq:dsigmabadc_op} through Eq.~\eqref{eq:dsigmabadc_QND}. The equation of motion for the optical pumping dynamics of the one-body moment $ \expect{\hat{\sigma}_{ba}} $, can be trivially given by
+With all the components of the stochastic master equation defined in Eq. (\ref{eq:totaldrhodt}-\ref{op_superator}), one can derive the equations of motion of one- and two-body moments straightforwardly using the symmetric Gaussian state approximation. Some explicit results have been given in Eq. (\ref{eq:dsigmabadc_op} -\ref{eq:dsigmabadc_QND}). The equation of motion for the optical pumping dynamics of the one-body moment $ \expect{\hat{\sigma}_{ba}} $, is given by
 \begin{align}
 \left.d\expect{\hat{\sigma}_{ba}}\right|_{op}&= \expect{\mathcal{D}^\dagger\left[\hat{\sigma}_{ba} \right]}dt=\sum_{c,d}\tr(\mathcal{D}^\dagger\left[\hat{\sigma}_{ba}\right]\hat{\sigma}_{dc} )\expect{\hat{\sigma}_{dc}}dt.\label{eq:dsigmaba_op_expand}
 \end{align}
-The last step is to project the expression onto the $ \expect{\hat{\sigma}_{dc}} $ qutrit basis ($ d,c\in \{\uparrow,\downarrow,T\} $) with coefficients defined in the trace form in the equation above. The equations of two-body moments of the optical pumping can be derived similarly. Continued from Eq.~\eqref{eq:dsigmabadc_op}, we have 
+%The last step is to project the expression onto the $ \expect{\hat{\sigma}_{dc}} $ qutrit basis ($ d,c\in \{\uparrow,\downarrow,T\} $) with coefficients defined in the trace form in the equation above. 
+The equations of two-body moments of the optical pumping can be derived similarly. Continued from Eq.~\eqref{eq:dsigmabadc_op}, we have 
 \begin{align}
 \left.d\expect{\!\Delta \sigma_{ba}^{(\!1\!)}\Delta\sigma_{dc}^{(\!2\!)} }_s\right|_{op} &\!\!= \expect{\Delta\mathcal{D}^\dagger[ \sigma_{ba}^{(1)}]\Delta\sigma_{dc}^{(2)} }_sdt + \expect{\Delta \sigma_{ba}^{(1)} \Delta\mathcal{D}^\dagger[\sigma_{dc}^{(2)}] }_sdt\nn \\
 &\!\!=\!\sum_{m,n}\! \tr\!\left(\mathcal{D}^\dagger[\hat{\sigma}_{ba} ]\hat{\sigma}_{mn} \right)\!\expect{\!\Delta\sigma_{mn}^{(\!1\!)}\Delta\sigma_{dc}^{(\!2\!)} }_s \!\!+\!\! \sum_{m,n}\!\tr\!\left(\mathcal{D}^\dagger[\hat{\sigma}_{dc}]\hat{\sigma}_{mn} \right)\!\expect{\!\Delta\hat{\sigma}_{ba}^{(\!1\!)}\Delta\sigma_{mn}^{(\!2\!)} }_s .\label{eq:dsigmabadc_op_expand}
 \end{align} 
-Similarly, Eqs.~\eqref{eq:dsigmaba_QND} and~\eqref{eq:dsigmabadc_QND} can be expanded easily by using $ \Delta F_z=\Delta \sum_i^{N_A} f_z^{(i)}=\sum_i^{N_A} \sqrt{\frac{f}{2}}(\Delta\sigma_{\uparrow\downarrow}^{(i)}+\Delta\sigma_{\downarrow\uparrow}^{(i)}) + \sqrt{\frac{2f-1}{2}}(\Delta \sigma_{\downarrow T}^{(i)}+\Delta\sigma_{T\downarrow}^{(i)}) $, where the subscription $ (i) $ can only be either $ (1) $ or $ (2) $ with $ 1 $ or $ N_A-1 $ copies depending on whether the $ \hat{\sigma}_{ba} $ operator is applied on the same atom as the other joint cumulants in the two-body moment variables. In deriving Eqs.~\eqref{eq:dsigmaba_QND} and~\eqref{eq:dsigmabadc_QND}, we have used the Gaussian state assumption to write three-body moments with one- and two-body moments by vanishing the corresponding third-order cumulants--that is to set, $ \expect{\Delta A\Delta B\Delta C }=\expect{(\hat{A}-\expect{\hat{A}} )(\hat{B}-\expect{\hat{B}})(\hat{C}-\expect{\hat{C}}) } =0$ or $ \expect{\hat{A}\hat{B}\hat{C}}=\expect{\hat{A}\hat{B}}\expect{\hat{C}}+ \expect{\hat{A}\hat{C} }\expect{\hat{B}}+\expect{\hat{B}\hat{C} }\expect{\hat{A}}-2\expect{\hat{A}}\expect{\hat{B}}\expect{\hat{C}} $. With all these tricks applied, Eqs.~\eqref{eq:dsigmaba_QND} and~\eqref{eq:dsigmabadc_QND} yield
+%Similarly, Eqs.~\eqref{eq:dsigmaba_QND} and~\eqref{eq:dsigmabadc_QND} can be expanded easily by using $ \Delta F_z=\Delta \sum_i^{N_A} f_z^{(n)}=\sum_i^{N_A} \sqrt{\frac{f}{2}}(\Delta\sigma_{\uparrow\downarrow}^{(n)}+\Delta\sigma_{\downarrow\uparrow}^{(n)}) + \sqrt{\frac{2f-1}{2}}(\Delta \sigma_{\downarrow T}^{(n)}+\Delta\sigma_{T\downarrow}^{(n)}) $, where the subscription $ (n) $ can only be either $ (1) $ or $ (2) $ with $ 1 $ or $ N_A-1 $ copies depending on whether the $ \hat{\sigma}_{ba} $ operator is applied on the same atom as the other joint cumulants in the two-body moment variables.
+In deriving Eqs.~\eqref{eq:dsigmaba_QND} and~\eqref{eq:dsigmabadc_QND}, we have used the Gaussian state assumption to write three-body moments in terms  one- and two-body moments, $ \expect{\hat{A}\hat{B}\hat{C}}=\expect{\hat{A}\hat{B}}\expect{\hat{C}}+ \expect{\hat{A}\hat{C} }\expect{\hat{B}}+\expect{\hat{B}\hat{C} }\expect{\hat{A}}-2\expect{\hat{A}}\expect{\hat{B}}\expect{\hat{C}} $. 
+
+We apply similar techniques to derive the equations of motion due to QND measurement Eqs.~\eqref{eq:dsigmaba_QND} and~\eqref{eq:dsigmabadc_QND} to yield
 \begin{align}\label{eq:dsigmaba_QND_expand}
 \left.d\expect{\hat{\sigma}_{ba}}\right|_{QND} &=\frac{\kappa}{4}\sum_{c,d}\tr\left(\mathcal{L}^\dagger\left[\hat{\sigma}_{ba} \right]\hat{\sigma}_{dc}\right) \expect{\hat{\sigma}_{dc}}dt + \sqrt{\frac{\kappa}{4}}\sum_{c,d}\tr\left(\mathcal{H}^\dagger\left[\hat{\sigma}_{ba} \right]\hat{\sigma}_{dc}\right) \expect{\hat{\sigma}_{dc}}dW .
 \end{align}
@@ -782,34 +660,15 @@ Similarly, Eqs.~\eqref{eq:dsigmaba_QND} and~\eqref{eq:dsigmabadc_QND} can be exp
 &\quad\quad + (N_A-1)\left[ \sqrt{\frac{f}{2}} \left(\expect{\Delta\sigma_{\uparrow\downarrow}^{(1)}\Delta\sigma_{dc}^{(2)}}_s \!+\!\expect{\Delta\sigma_{\downarrow\uparrow}^{(1)}\Delta \sigma_{dc}^{(2)}}_s\right)\right. \nn\\
 &\quad\quad\quad\quad\quad\quad\quad\left.\left. + \sqrt{\frac{2f\!-\! 1}{2}}\left(\expect{\!\Delta \sigma_{\downarrow T}^{(\!1\!)}\Delta\sigma_{dc}^{(\!2\!)}}_s \!+\!\expect{\!\Delta\sigma_{T\downarrow}^{(\! 1\! )} \Delta \sigma_{dc}^{(\!2\!)} }_s\right)\!\right]\!  \right\}dt,\label{eq:dsigmabadc_QND_expand}
 \end{align}
-Eventually, by combining the optical pumping and QND measurement parts of the Eqs.~\eqref{eq:dsigmaba_op_expand} through~\eqref{eq:dsigmabadc_QND_expand}, one can find a set of stochastic equations of a closed set of variables of $ \left\{\expect{\hat{\sigma}_{ba}},\expect{\Delta\sigma_{ba}\Delta\sigma_{dc} }_s\left|a,b,c,d\in \{\uparrow,\downarrow,T \}\right. \right\} $ in the symmetric qutrit subspace. All the coefficients in these equations can be numerically calculated on a computer, and turn out to be very sparse and close to diagonal which indicates only nearest neighboring coupling is possible in the $\left\{\expect{\hat{\sigma}_{ba}},\expect{\Delta\sigma_{ba}\Delta\sigma_{dc} }_s\right\}$ basis. The number of non-zero elements in the coefficient matrix is proportional to the number of variables. To respect the nature of the exchange symmetry in two-body moment variables, we label $ \hat{\sigma}_{ba} $ as $ \hat{\sigma}_i $ with $ i=1,2,\cdots, 9 $ for $ b$ and $a  $ counting from $ (\uparrow,\downarrow,T) $ qutrit state labels; the two-body moment variables can then be ordered in the symmetric subspace as $ \expect{\Delta\sigma_i\Delta\sigma_j} $ given $ j\ge i $ to represent $ \expect{\!\Delta \sigma_{ba}^{(\!1\!)}\! \Delta \sigma_{dc}^{(\!2\!)}}_s $ satisfying $ \expect{\!\Delta \sigma_{ba}^{(\!1\!)}\! \Delta \sigma_{dc}^{(\!2\!)}}_s=\expect{\!\Delta \sigma_{dc}^{(\!1\!)}\! \Delta \sigma_{ba}^{(\!2\!)}}_s $ under the exchange symmetry. In the symmetric qutrit subspace, we have $ 45 $ two-body moment variables and corresponding sparse second-order equations. Also note that $ n $-body moment equations of motion can be derived in a similar manner using this approach to include quantum correlations beyond Gaussian state approximation, and can be solved efficiently due to the sparse nature of the coupled equations. It may also be possible to calculate two-time correlations and \textit{out-of-time-correlators} using this approach with quantum regression theorem~\cite{Swingle2016Measuring,Swain1981Master}.
-
-To calculate up to two-body moments, we treat the system to have only two atoms, and initially each atom is prepared in the $ \ket{\Psi}=\ket{\uparrow}_x $ state. Then the initial value of $ \expect{\hat{\sigma}_{ba} } $ and $ \expect{\Delta\sigma_i\Delta\sigma_j}=\expect{\Delta\sigma_{ba}\Delta\sigma_{dc}}_s $ at time $ t=0 $ can be given by
-\begin{subequations}
-\begin{align}
-\expect{\hat{\sigma}_{ba}(0)}&=\bra{\Psi}\hat{\sigma}_{ba}\ket{\Psi}\\
-\expect{\Delta\sigma_i\Delta\sigma_j(0)} &= (\bra{\Psi}\otimes\bra{\Psi})\frac{\hat{\sigma}_{ba}^{(1)} \otimes\hat{\sigma}_{dc}^{(2)}+\hat{\sigma}_{dc}^{(1)} \otimes\hat{\sigma}_{ba}^{(2)}}{2}(\ket{\Psi}\otimes\ket{\Psi})\nn\\
-&\quad-\bra{\Psi}\hat{\sigma}_{ba}\ket{\Psi}\bra{\Psi}\hat{\sigma}_{dc}\ket{\Psi}.
-\end{align}
-\end{subequations}
-With the initial values and equations of motion given above, the stochastic time evolution of the one- and two-body moments can then be solved by evolving the equations from the initial value to arbitrary time $ t $ in a Wiener process. The collective spin squeezing dynamics can be fully described by the set of $ \{\expect{\hat{\sigma}_{ab}},\expect{\Delta\sigma_{dc}\Delta\sigma_{ba}}\} $ observables, and the spin squeezing parameter (Eq.~\eqref{eq:xi2Faraday}) can be calculated using the relationships between the collective spin quantities, $ \expect{\hat{F}_x} $ and $ \Delta F_z^2 $, and the one- and two-body moments in the following formulas. 
-\begin{subequations}
-	\begin{align}
-	\expect{\hat{F}_x} &= \sum_i^{N_A}\expect{\hat{f}_x}\nonumber\\
-	&= -N_A \left[f\expect{\sigmauu}+(f-1)\expect{\sigmadd}+(f-2)\expect{\sigmatt } \right]\label{eq:Fx_qutrit}\\
-	\expect{\Delta F_z^2} &= N_A\expect{\Delta f_z^2} + N_A(N_A-1)\expect{\Delta f_z^{(1)}\Delta f_z^{(2)} }_s\nn\\
-	&=N_A\left\{ \frac{f}{2}\left(\expect{\sigmauu}+\expect{\sigmadd}-2\expect{\sigmaud}\expect{\sigmadu}-\expect{\sigmaud}^2-\expect{\sigmadu}^2 \right)\right. \label{eq:DeltaFz2_fz}\\
-	&\quad\quad+ \frac{2f-1}{2}\left(\expect{\sigmadd}+\expect{\sigmatt}-2\expect{\sigmadt}\expect{\sigmatd}-\expect{\sigmadt}^2-\expect{\sigmatd}^2 \right)\nn\\
-	&\quad\quad +\left. \frac{\sqrt{f(2f-1)}}{2}\left[\expect{\sigmaut }+\expect{\sigmatu} -2\expect{\sigmaud}(\expect{\sigmadt}+\expect{\sigmatd}) -2\expect{\sigmadu}(\expect{\sigmadt}+\expect{\sigmatd} ) \right] \right\}\nn\\
-	&\quad +N_A(N_A-1)\left[\frac{f}{2}(\expect{\Dsigmaud^{(1)}\Dsigmaud^{(2)} }_s +2\expect{\Dsigmaud^{(1)}\Dsigmadu^{(2)} }_s+\expect{\Dsigmadu^{(1)}\Dsigmadu^{(2)} }_s )\right. \label{eq:DeltaFz2_qutrit}\\
-	&\quad\quad + \frac{2f-1}{2}(\expect{\Dsigmadt^{(1)}\Dsigmadt^{(2)} }_s +2\expect{\Dsigmadt^{(1)}\Dsigmatd^{(2)} }_s +\expect{\Dsigmatd^{(1)}\Dsigmatd^{(2)} }_s) \nn\\
-	&\quad\quad + \left. \sqrt{f(2f-1)}(\expect{\Dsigmaud^{(1)}\Dsigmadt^{(2)} }_s +\expect{\Dsigmaud^{(1)}\Dsigmatd^{(2)} }_s +\expect{\Dsigmadu^{(1)}\Dsigmadt^{(2)} }_s+\expect{\Dsigmadu^{(1)}\Dsigmatd^{(2)} }_s )\right],\nn
-	\end{align}
-\end{subequations}
-where we have used Eqs.~\eqref{eq:Ftof_squeezing} and~\eqref{eq:fxfz_xbasis}. Eq.~\eqref{eq:DeltaFz2_fz} indicates spin squeezing is generated by spin-spin correlations of the local measurement observables due to the collective measurement, while Eq.~\eqref{eq:DeltaFz2_qutrit} gives the detailed microscopic correlation expansion in the qutrit subspace.
-
-Our spin dynamics simulation results have been verified in the far-detuning regime against Eq.~\eqref{eq:op_fardetuning} and against the approximate equations of motions of one- and two-moments defined explicitly using the collective operators $ \hat{N}_A $ and $ \hat{F}_i $ ($ i=x,y,z $) following the derivation process introduced in Refs.~\cite{Qi2016} and~\cite{Norris2014}.
-
+By combining the optical pumping and QND measurement contribution to Eqs. (\ref{eq:dsigmaba_op_expand}-\ref{eq:dsigmabadc_QND_expand}), one can find a set of stochastic equations of a closed set of variables of 
+\begin{equation}
+\left\{\expect{\hat{\sigma}_{ba}},\expect{\Delta\sigma_{ba}\Delta\sigma_{dc} }_s\left|a,b,c,d\in \{\uparrow,\downarrow,T \}\right. \right\} 
+\end{equation}
+in the symmetric qutrit subspace. 
+%All the coefficients in these equations are calculated numerically. 
+The matrix of equations is sparse and close to diagonal which indicates only nearest neighboring coupling is possible in the $\left\{\expect{\hat{\sigma}_{ba}},\expect{\Delta\sigma_{ba}\Delta\sigma_{dc} }_s\right\}$ basis. 
+%The number of non-zero elements in the coefficient matrix is proportional to the number of variables. To respect the nature of the exchange symmetry in two-body moment variables, we label $ \hat{\sigma}_{ba} $ as $ \hat{\sigma}_i $ with $ i=1,2,\cdots, 9 $ for $ b$ and $a  $ counting from $ (\uparrow,\downarrow,T) $ qutrit state labels; the two-body moment variables can then be ordered in the symmetric subspace as $ \expect{\Delta\sigma_i\Delta\sigma_j} $ given $ j\ge i $ to represent $ \expect{\!\Delta \sigma_{ba}^{(\!1\!)}\! \Delta \sigma_{dc}^{(\!2\!)}}_s $ satisfying $ \expect{\!\Delta \sigma_{ba}^{(\!1\!)}\! \Delta \sigma_{dc}^{(\!2\!)}}_s=\expect{\!\Delta \sigma_{dc}^{(\!1\!)}\! \Delta \sigma_{ba}^{(\!2\!)}}_s $ under the exchange symmetry. 
+In the symmetric qutrit subspace, we have $ 45 $ two-body moment variables and corresponding sparse second-order equations., which we solve numerically. 
 
 
 \end{appendix}
