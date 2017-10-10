@@ -3,9 +3,4 @@
 *.eps
 !nanofiberswg_Hmode_E_xy.eps
 !nanofiberswg_Hmode_Ints_xy.eps
-!Fig_NanofiberSchematicFaraday.eps
-!poincaresphere_initialS1_crystal.eps
-!poincaresphere_initialS1_Faradayrot_crystal.eps
-!blochsphere_initialxFxyz_crystal_orange.eps
-!blochsphere_initialxFxyz_squeezed_crystal_orange.eps
-!stretchedstatestransitions_dashline.eps
+!FaradaySchematics.eps
