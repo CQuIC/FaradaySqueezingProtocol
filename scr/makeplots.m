@@ -164,17 +164,18 @@ sub121=subplot(1,2,1);
 % scaleE=0.5;
 colormap(hot(20))
 % colormap(cool(20))
-surf(xx./a,yy./a,Ints_H./max(Ints_H(:)));
-view(2)
+contour(xx./a,yy./a,Ints_H./max(Ints_H(:)));
+% surf(xx./a,yy./a,Ints_H./max(Ints_H(:)));
+% view(2)
 shading interp
 hold on
-plot3(pline_x, pline_y,ones(size(pline_x)),'w-','linewidth',lw-1);
-plot3([0,0],[-1.8,1.8],[1,1],'wd','linewidth',lw-0.5,'MarkerSize',4,'MarkerFaceColor','w');
+plot(pline_x, pline_y,'k-','linewidth',lw-1);%,ones(size(pline_x))
+plot([0,0],[-1.8,1.8],'k*','linewidth',lw-0.5,'MarkerSize',5,'MarkerFaceColor','k');%[1,1]
 lenxxV=length(xx_V);
 lenyyV=length(yy_V);
 lenindV=length(ind_Vline);
-quiver3(xx_V(1:stepV:lenxxV)/a,yy_V(1:stepV:lenyyV)/a,ones(size(xx_V(1:stepV:lenxxV))), ...
-    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','white');
+quiver(xx_V(1:stepV:lenxxV)/a,yy_V(1:stepV:lenyyV)/a, ... %ones(size(xx_V(1:stepV:lenxxV))),
+    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','blue');%imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,
 xlim([-max(rp/a),max(rp/a)]);
 ylim([-max(rp/a),max(rp/a)]);
 axis equal
@@ -282,18 +283,19 @@ sub122=subplot('position',[hp121(1)+hp121(3)+0.02,hp121(2)+0.15,hp121(3),hp121(4
 scaleE=0.3;
 colormap(hot(20))
 % colormap(cool(20))
-surf(xx,yy,Ints_H./max(Ints_H(:)));
-view(2)
+contour(xx,yy,Ints_H./max(Ints_H(:)));
+% surf(xx,yy,Ints_H./max(Ints_H(:)));
+% view(2)
 shading interp
 hold on
 
-plot3(x_border, y_border,ones(size(x_border)),'w-','linewidth',lw-1);
-plot3([0,0],[-300,300],[1,1],'wd','linewidth',lw-0.5,'MarkerSize',4,'MarkerFaceColor','w');
+plot(x_border, y_border,'k-','linewidth',lw-1);%ones(size(x_border)),
+plot([0,0],[-300,300],'k*','linewidth',lw-0.5,'MarkerSize',5,'MarkerFaceColor','k');%[1,1]
 lenxxV=length(xx_V);
 lenyyV=length(yy_V);
 lenindV=length(ind_Vline);
-quiver3(xx_V(1:stepV:lenxxV),yy_V(1:stepV:lenyyV),ones(size(xx_V(1:stepV:lenxxV))), ...
-    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','white');
+quiver(xx_V(1:stepV:lenxxV),yy_V(1:stepV:lenyyV), ... %ones(size(xx_V(1:stepV:lenxxV))),
+    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','blue');%imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,
 xlim([-plotwidth/2,plotwidth/2]);
 ylim([-plotheight/2,plotheight/2]);
 % axis equal
