@@ -24,6 +24,8 @@
 %  1. epsclean: https://github.com/Conclusio/matlab-epsclean
 %  2. export_fig: https://github.com/altmany/export_fig
 %  3. matlab2tikz: https://github.com/matlab2tikz/matlab2tikz
+%  4. brewermap: https://github.com/DrosteEffect/BrewerMap
+%  5. BioInformaticsToolbox from Matlab for the redbluecmap function. 
 % 
 % By Xiaodong Qi, 2017-08-15.
 
@@ -69,6 +71,7 @@ set(gcf, 'Color',[1 1 1]);
 subfigdistance=0.02;
 % Define plot quantities.
 auE=max(real(Ex_H(:)));
+auE_nanofiber=auE;
 realEx=real(Ex_H(:,:))./auE;
 realEy=real(Ey_H(:,:))./auE;
 realEz=real(Ez_H(:,:))./auE;
@@ -183,10 +186,264 @@ axis off
 % colorbar('EastOutside');
 hold off
 
+% Plot H and V modes together.
+% Plot the intensity of the H and V modes and local field vectors along the
+% y-axis.
+fig13=figure(13);
+set(gcf,'Units','inches', 'pos', widersize);
+set(gca, 'Color', [1.0 1.0 1.0]); % Sets axes background
+set(gcf, 'Color',[1 1 1]);
+sub131=subplot(1,2,1);
+hp131 = get(sub131,'Position');
+set(sub131,'visible','off')
+% stepV=3;
+% normE_field=sqrt(real(Ex_H(ind_Vline)).^2+real(Ey_H(ind_Vline)).^2+imag(Ez_H(ind_Vline)).^2);
+% normE=max(normE_field(:));
+% scaleE=0.5;
+hAxesH_nanofiber = axes;
+colormap(hAxesH_nanofiber,hot(20))
+contour(hAxesH_nanofiber,xx./a,yy./a,Ints_H./max(Ints_H(:)));
+shading interp
+hold on
+hAxesV_nanofiber = axes;
+colormap(hAxesV_nanofiber,gray(20))
+contour(hAxesV_nanofiber,yy'./a,xx'./a,Ints_H'./max(Ints_H(:)),'-');
+shading interp
+hold on
+%link the two overlaying axes so they match at all times to remain
+%accurate. We also make axes invisible and plot other lines on top.
+linkaxes([hAxesH_nanofiber,hAxesV_nanofiber]);
+set([hAxesH_nanofiber,hAxesV_nanofiber],'Position',hp131);
+set(hAxesH_nanofiber,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_nanofiber,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_nanofiber, 'XTick', []);
+set(hAxesV_nanofiber, 'YTick', []);
+plot(hAxesH_nanofiber,pline_x, pline_y,'k-','linewidth',lw-1);%,ones(size(pline_x))
+plot(hAxesH_nanofiber,[0,0],[-1.8,1.8],'k*','linewidth',lw-0.5,'MarkerSize',5,'MarkerFaceColor','k');%[1,1]
+lenxxV=length(xx_V);
+lenyyV=length(yy_V);
+lenindV=length(ind_Vline);
+quiver(hAxesH_nanofiber,xx_V(1:stepV:lenxxV)/a,yy_V(1:stepV:lenyyV)/a, ... %ones(size(xx_V(1:stepV:lenxxV))),
+    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','blue');%imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,
+xlim(hAxesH_nanofiber,[-max(rp/a),max(rp/a)]);
+ylim(hAxesH_nanofiber,[-max(rp/a),max(rp/a)]);
+axis(hAxesH_nanofiber, 'equal');
+axis(hAxesV_nanofiber, 'equal');
+hold off
 
+
+% Plot H and V modes together yet with different line style.
+% Plot the intensity of the H and V modes and local field vectors along the
+% y-axis.
+fig14=figure(14);
+set(gcf,'Units','inches', 'pos', widersize);
+set(gca, 'Color', [1.0 1.0 1.0]); % Sets axes background
+set(gcf, 'Color',[1 1 1]);
+sub141=subplot(1,2,1);
+hp141 = get(sub141,'Position');
+set(sub141,'visible','off')
+% stepV=3;
+% normE_field=sqrt(real(Ex_H(ind_Vline)).^2+real(Ey_H(ind_Vline)).^2+imag(Ez_H(ind_Vline)).^2);
+% normE=max(normE_field(:));
+% scaleE=0.5;
+hAxesH_nanofiber = axes;
+colormap(hAxesH_nanofiber,hot(20))
+contour(hAxesH_nanofiber,xx./a,yy./a,Ints_H./max(Ints_H(:)));
+shading interp
+hold on
+hAxesV_nanofiber = axes;
+% cmap = jet(39);
+% cmap = cmap(1:20,:);%flipud
+% cmap(20,:) = [1,1,1];
+cmap=bone(20);
+hmap=hot(20);
+colormap(hAxesV_nanofiber,cmap);%gray(20))
+contour(hAxesV_nanofiber,yy'./a,xx'./a,Ints_H'./max(Ints_H(:)),'-');
+shading interp
+hold on
+%link the two overlaying axes so they match at all times to remain
+%accurate. We also make axes invisible and plot other lines on top.
+linkaxes([hAxesH_nanofiber,hAxesV_nanofiber]);
+set([hAxesH_nanofiber,hAxesV_nanofiber],'Position',hp141);
+set(hAxesH_nanofiber,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_nanofiber,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_nanofiber, 'XTick', []);
+set(hAxesV_nanofiber, 'YTick', []);
+plot(hAxesH_nanofiber,pline_x, pline_y,'k-','linewidth',lw-1);%,ones(size(pline_x))
+plot(hAxesH_nanofiber,[0,0],[-1.8,1.8],'k*','linewidth',lw-0.5,'MarkerSize',5,'MarkerFaceColor','k');%[1,1]
+lenxxV=length(xx_V);
+lenyyV=length(yy_V);
+lenindV=length(ind_Vline);
+quiver(hAxesH_nanofiber,xx_V(1:stepV:lenxxV)/a,yy_V(1:stepV:lenyyV)/a, ... %ones(size(xx_V(1:stepV:lenxxV))),
+    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','blue');%imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,
+xlim(hAxesH_nanofiber,[-max(rp/a),max(rp/a)]);
+ylim(hAxesH_nanofiber,[-max(rp/a),max(rp/a)]);
+axis(hAxesH_nanofiber, 'equal');
+axis(hAxesV_nanofiber, 'equal');
+hold off
+
+
+% Plot H and V modes together yet with another line style from figures 13 and 14.
+% Plot the intensity of the H and V modes and local field vectors along the
+% y-axis.
+fig15=figure(15);
+set(gcf,'Units','inches', 'pos', widersize);
+set(gca, 'Color', [1.0 1.0 1.0]); % Sets axes background
+set(gcf, 'Color',[1 1 1]);
+sub151=subplot(1,2,1);
+hp151 = get(sub151,'Position');
+set(sub151,'visible','off')
+% stepV=3;
+% normE_field=sqrt(real(Ex_H(ind_Vline)).^2+real(Ey_H(ind_Vline)).^2+imag(Ez_H(ind_Vline)).^2);
+% normE=max(normE_field(:));
+% scaleE=0.5;
+hAxesH_nanofiber = axes;
+colormap(hAxesH_nanofiber,hot(20))
+contour(hAxesH_nanofiber,xx./a,yy./a,Ints_H./max(Ints_H(:)));
+shading interp
+hold on
+hAxesV_nanofiber = axes;
+% cmap = jet(39);
+% cmap = cmap(1:20,:);%flipud
+% cmap(20,:) = [1,1,1];
+cmap=bone(20);
+hmap=hot(20);
+colormap(hAxesV_nanofiber,cmap);%gray(20))
+contour(hAxesV_nanofiber,yy'./a,xx'./a,Ints_H'./max(Ints_H(:)),[0.08637 0.08637],'--');
+shading interp
+hold on
+%link the two overlaying axes so they match at all times to remain
+%accurate. We also make axes invisible and plot other lines on top.
+linkaxes([hAxesH_nanofiber,hAxesV_nanofiber]);
+set([hAxesH_nanofiber,hAxesV_nanofiber],'Position',hp151);
+set(hAxesH_nanofiber,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_nanofiber,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_nanofiber, 'XTick', []);
+set(hAxesV_nanofiber, 'YTick', []);
+plot(hAxesH_nanofiber,pline_x, pline_y,'k-','linewidth',lw-1);%,ones(size(pline_x))
+plot(hAxesH_nanofiber,[0,0],[-1.8,1.8],'k*','linewidth',lw-0.5,'MarkerSize',5,'MarkerFaceColor','k');%[1,1]
+lenxxV=length(xx_V);
+lenyyV=length(yy_V);
+lenindV=length(ind_Vline);
+quiver(hAxesH_nanofiber,xx_V(1:stepV:lenxxV)/a,yy_V(1:stepV:lenyyV)/a, ... %ones(size(xx_V(1:stepV:lenxxV))),
+    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','blue');%imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,
+xlim(hAxesH_nanofiber,[-max(rp/a),max(rp/a)]);
+ylim(hAxesH_nanofiber,[-max(rp/a),max(rp/a)]);
+axis(hAxesH_nanofiber, 'equal');
+axis(hAxesV_nanofiber, 'equal');
+hold off
+
+% Plot H and V modes together yet with contourf plots.
+% Plot the intensity of the H and V modes and local field vectors along the
+% y-axis.
+fig15=figure(16);
+maxInts_nanofiber=max(Ints_H(:));
+set(gcf,'Units','inches', 'pos', widersize);
+set(gca, 'Color', [1.0 1.0 1.0]); % Sets axes background
+set(gcf, 'Color',[1 1 1]);
+sub161=subplot(1,2,1);
+hp161 = get(sub161,'Position');
+set(sub161,'visible','off')
+% stepV=3;
+% normE_field=sqrt(real(Ex_H(ind_Vline)).^2+real(Ey_H(ind_Vline)).^2+imag(Ez_H(ind_Vline)).^2);
+% normE=max(normE_field(:));
+% scaleE=0.5;
+hAxesV_nanofiber = axes;
+% cmap = jet(39);
+% cmap = cmap(1:20,:);%flipud
+% cmap(20,:) = [1,1,1];
+bmap=brewermap(35,'Blues');
+rmap=brewermap(35,'Reds');
+colormap(hAxesV_nanofiber,bmap(8:end,:));%gray(20))
+[~,h1]=contourf(hAxesV_nanofiber,yy'./a,xx'./a,Ints_H'./max(Ints_H(:)),0.06:0.1:1,':');%0.08637
+shading interp
+set(h1,'LineColor','none');
+hold on
+hAxesH_nanofiber = axes;
+colormap(hAxesH_nanofiber,rmap(8:end,:))
+[~,h2]=contourf(hAxesH_nanofiber,xx./a,yy./a,Ints_H./max(Ints_H(:)),0.06:0.1:1);%0.08637
+shading interp
+set(h2,'LineColor','none');
+hold on
+%link the two overlaying axes so they match at all times to remain
+%accurate. We also make axes invisible and plot other lines on top.
+linkaxes([hAxesH_nanofiber,hAxesV_nanofiber]);
+set([hAxesH_nanofiber,hAxesV_nanofiber],'Position',hp161);
+set(hAxesH_nanofiber,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_nanofiber,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_nanofiber, 'XTick', []);
+set(hAxesV_nanofiber, 'YTick', []);
+plot(hAxesH_nanofiber,pline_x, pline_y,'k-','linewidth',lw-1);%,ones(size(pline_x))
+plot(hAxesH_nanofiber,[0,0],[-1.8,1.8],'k*','linewidth',lw-0.5,'MarkerSize',5,'MarkerFaceColor','k');%[1,1]
+lenxxV=length(xx_V);
+lenyyV=length(yy_V);
+lenindV=length(ind_Vline);
+quiver(hAxesH_nanofiber,xx_V(1:stepV:lenxxV)/a,yy_V(1:stepV:lenyyV)/a, ... %ones(size(xx_V(1:stepV:lenxxV))),
+    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','blue');%imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,
+xlim(hAxesH_nanofiber,[-max(rp/a),max(rp/a)]);
+ylim(hAxesH_nanofiber,[-max(rp/a),max(rp/a)]);
+axis(hAxesH_nanofiber, 'equal');
+axis(hAxesV_nanofiber, 'equal');
+hold off
+
+% Plot H mode intensity and the y-component square of the V mode together yet with contourf plots.
+% Plot the intensity of the H mode and the y-component of V mode square and local field vectors along the
+% y-axis.
+fig15=figure(17);
+maxInts_nanofiber=max(Ints_H(:));
+maxIntsx_nanofiber=max(Ex_H(:).^2);
+set(gcf,'Units','inches', 'pos', widersize);
+set(gca, 'Color', [1.0 1.0 1.0]); % Sets axes background
+set(gcf, 'Color',[1 1 1]);
+sub171=subplot(1,2,1);
+hp171 = get(sub171,'Position');
+set(sub171,'visible','off')
+% stepV=3;
+% normE_field=sqrt(real(Ex_H(ind_Vline)).^2+real(Ey_H(ind_Vline)).^2+imag(Ez_H(ind_Vline)).^2);
+% normE=max(normE_field(:));
+% scaleE=0.5;
+hAxesV_nanofiber = axes;
+% cmap = jet(39);
+% cmap = cmap(1:20,:);%flipud
+% cmap(20,:) = [1,1,1];
+bmap=brewermap(35,'Blues');
+rmap=brewermap(35,'Reds');
+colormap(hAxesV_nanofiber,bmap(8:end,:));%gray(20))
+[~,h1]=contourf(hAxesV_nanofiber,yy'./a,xx'./a,(Ex_H.^2)'./maxIntsx_nanofiber,0.06:0.1:1,':');%0.08637
+shading interp
+set(h1,'LineColor','none');
+hold on
+hAxesH_nanofiber = axes;
+colormap(hAxesH_nanofiber,rmap(8:end,:))
+[~,h2]=contourf(hAxesH_nanofiber,xx./a,yy./a,Ints_H./max(Ints_H(:)),0.06:0.1:1);%0.08637
+shading interp
+set(h2,'LineColor','none');
+hold on
+%link the two overlaying axes so they match at all times to remain
+%accurate. We also make axes invisible and plot other lines on top.
+linkaxes([hAxesH_nanofiber,hAxesV_nanofiber]);
+set([hAxesH_nanofiber,hAxesV_nanofiber],'Position',hp171);
+set(hAxesH_nanofiber,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_nanofiber,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_nanofiber, 'XTick', []);
+set(hAxesV_nanofiber, 'YTick', []);
+plot(hAxesH_nanofiber,pline_x, pline_y,'k-','linewidth',lw-1);%,ones(size(pline_x))
+plot(hAxesH_nanofiber,[0,0],[-1.8,1.8],'k*','linewidth',lw-0.5,'MarkerSize',5,'MarkerFaceColor','k');%[1,1]
+lenxxV=length(xx_V);
+lenyyV=length(yy_V);
+lenindV=length(ind_Vline);
+quiver(hAxesH_nanofiber,xx_V(1:stepV:lenxxV)/a,yy_V(1:stepV:lenyyV)/a, ... %ones(size(xx_V(1:stepV:lenxxV))),
+    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','blue');%imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,
+xlim(hAxesH_nanofiber,[-max(rp/a),max(rp/a)]);
+ylim(hAxesH_nanofiber,[-max(rp/a),max(rp/a)]);
+axis(hAxesH_nanofiber, 'equal');
+axis(hAxesV_nanofiber, 'equal');
+hold off
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Plot H-mode figures for the Square Waveguide.
 load('../data/swg_Hmode_d300_D1.mat')
-
+auE=auE_nanofiber*1e-9;
 realEx=real(Ex_H(:,:))./auE;
 realEy=real(Ey_H(:,:))./auE;
 realEz=real(Ez_H(:,:))./auE;
@@ -315,6 +572,317 @@ colorbar('Position', [hp122(1)+hp122(3)+0.02  hp122(2)+0.02  0.02  hp122(4)*0.95
 % saveas(fig12,'../fig/nanofiber_Hmode_Ints_xy.eps','epsc')
 export_fig('../fig/nanofiberswg_Hmode_Ints_xy','-eps','-pdf','-opengl','-m3','-q101','-transparent','-nocrop');
 % epsclean('../fig/nanofiberswg_Hmode_Ints_xy.eps','groupSoft',true); % the third parameter is for Z-order problems
+
+
+% The intensity plot for both H and V modes of SWG.
+figure(13);
+% sub132=subplot('position',[hp131(1)+hp131(3)+0.02,hp131(2),hp131(3),hp131(4)]);
+sub132=subplot('position',[hp131(1)+hp131(3)+0.02,hp131(2)+0.15,hp131(3),hp131(4)*0.65]);
+hp132 = get(sub132,'Position');
+set(sub132,'visible','off')
+% stepV=4;
+% normE_field=sqrt(real(Ex_H(ind_Vline)).^2+real(Ey_H(ind_Vline)).^2+imag(Ez_H(ind_Vline)).^2);
+% normE=max(normE_field(:));
+scaleE=0.3;
+hAxesH_swg = axes;
+colormap(hAxesH_swg,hot(20))
+contour(hAxesH_swg,xx,yy,Ints_H./max(Ints_H(:)));
+shading interp
+hold on
+hAxesV_swg = axes;
+colormap(hAxesV_swg,gray(20))
+contour(hAxesV_swg,yy',xx',Ints_H'./max(Ints_H(:)),'-');
+shading interp
+hold on
+%link the two overlaying axes so they match at all times to remain
+%accurate. We also make axes invisible and plot other lines on top.
+linkaxes([hAxesH_swg,hAxesV_swg]);
+set([hAxesH_swg,hAxesV_swg],'Position',hp132);
+set(hAxesH_swg,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_swg,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_swg, 'XTick', []);
+set(hAxesV_swg, 'YTick', []);
+plot(hAxesV_swg,x_border, y_border,'k-','linewidth',lw-1);%ones(size(x_border)),
+plot(hAxesV_swg,[0,0],[-300,300],'k*','linewidth',lw-0.5,'MarkerSize',5,'MarkerFaceColor','k');%[1,1]
+lenxxV=length(xx_V);
+lenyyV=length(yy_V);
+lenindV=length(ind_Vline);
+quiver(hAxesV_swg,xx_V(1:stepV:lenxxV),yy_V(1:stepV:lenyyV), ... %ones(size(xx_V(1:stepV:lenxxV))),
+    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','blue');%imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,
+xlim(hAxesH_swg,[-plotwidth/2,plotwidth/2]);
+ylim(hAxesH_swg,[-plotheight/2,plotheight/2]);
+xlim(hAxesV_swg,[-plotwidth/2,plotwidth/2]);
+ylim(hAxesV_swg,[-plotheight/2,plotheight/2]);
+% axis equal
+axis(hAxesH_swg, 'square');
+axis(hAxesV_swg, 'square');
+hold off
+
+% Plot a colorbar.
+cb_H=colorbar(hAxesH_swg,'Position', [hp132(1)+hp132(3)+0.02  hp132(2)+0.02  0.02  hp132(4)*0.95]);
+cb_H.YTick=[];
+title(cb_H,'H');
+cb_V=colorbar(hAxesV_swg,'Position', [hp132(1)+hp132(3)+0.05  hp132(2)+0.02  0.02  hp132(4)*0.95]);
+title(cb_V,'V');
+% cleanfigure;
+% matlab2tikz('filename','../fig/nanofiber_Hmode_Ints_xy.tex','floatFormat','%.4f','showInfo', false, ...
+%         'parseStrings',false,'standalone', false, ...
+%         'height', '1.4in', 'width','1.4in');
+% print('../fig/nanofiber_Hmode_Ints_xy','-opengl','-depsc')
+% set(gcf,'renderer','opengl')
+% saveas(fig12,'../fig/nanofiber_Hmode_Ints_xy.eps','epsc')
+export_fig('../fig/nanofiberswg_HVmode_Ints_xy','-eps','-pdf','-opengl','-m3','-q101','-transparent','-nocrop');
+% epsclean('../fig/nanofiberswg_HVmode_Ints_xy.eps','groupSoft',true); % the third parameter is for Z-order problems
+
+
+% The intensity plot for both H and V modes of SWG yet with a different line style from figure 13.
+figure(14);
+% sub132=subplot('position',[hp131(1)+hp131(3)+0.02,hp131(2),hp131(3),hp131(4)]);
+sub142=subplot('position',[hp141(1)+hp141(3)+0.02,hp141(2)+0.15,hp141(3),hp141(4)*0.65]);
+hp142 = get(sub142,'Position');
+set(sub142,'visible','off')
+% stepV=4;
+% normE_field=sqrt(real(Ex_H(ind_Vline)).^2+real(Ey_H(ind_Vline)).^2+imag(Ez_H(ind_Vline)).^2);
+% normE=max(normE_field(:));
+scaleE=0.3;
+hAxesH_swg = axes;
+colormap(hAxesH_swg,hot(20))
+contour(hAxesH_swg,xx,yy,Ints_H./max(Ints_H(:)));
+shading interp
+hold on
+hAxesV_swg = axes;
+colormap(hAxesV_swg,cmap);%gray(20))
+contour(hAxesV_swg,yy',xx',Ints_H'./max(Ints_H(:)),'-');
+shading interp
+hold on
+%link the two overlaying axes so they match at all times to remain
+%accurate. We also make axes invisible and plot other lines on top.
+linkaxes([hAxesH_swg,hAxesV_swg]);
+set([hAxesH_swg,hAxesV_swg],'Position',hp142);
+set(hAxesH_swg,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_swg,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_swg, 'XTick', []);
+set(hAxesV_swg, 'YTick', []);
+plot(hAxesV_swg,x_border, y_border,'k-','linewidth',lw-1);%ones(size(x_border)),
+plot(hAxesV_swg,[0,0],[-300,300],'k*','linewidth',lw-0.5,'MarkerSize',5,'MarkerFaceColor','k');%[1,1]
+lenxxV=length(xx_V);
+lenyyV=length(yy_V);
+lenindV=length(ind_Vline);
+quiver(hAxesV_swg,xx_V(1:stepV:lenxxV),yy_V(1:stepV:lenyyV), ... %ones(size(xx_V(1:stepV:lenxxV))),
+    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','blue');%imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,
+xlim(hAxesH_swg,[-plotwidth/2,plotwidth/2]);
+ylim(hAxesH_swg,[-plotheight/2,plotheight/2]);
+xlim(hAxesV_swg,[-plotwidth/2,plotwidth/2]);
+ylim(hAxesV_swg,[-plotheight/2,plotheight/2]);
+% axis equal
+axis(hAxesH_swg, 'square');
+axis(hAxesV_swg, 'square');
+hold off
+
+% Plot a colorbar.
+cb_H=colorbar(hAxesH_swg,'Position', [hp142(1)+hp142(3)+0.02  hp142(2)+0.02  0.02  hp142(4)*0.95]);
+cb_H.YTick=[];
+title(cb_H,'H');
+cb_V=colorbar(hAxesV_swg,'Position', [hp142(1)+hp142(3)+0.05  hp142(2)+0.02  0.02  hp142(4)*0.95]);
+title(cb_V,'V');
+% cleanfigure;
+% matlab2tikz('filename','../fig/nanofiber_Hmode_Ints_xy.tex','floatFormat','%.4f','showInfo', false, ...
+%         'parseStrings',false,'standalone', false, ...
+%         'height', '1.4in', 'width','1.4in');
+% print('../fig/nanofiber_Hmode_Ints_xy','-opengl','-depsc')
+% set(gcf,'renderer','opengl')
+% saveas(fig12,'../fig/nanofiber_Hmode_Ints_xy.eps','epsc')
+export_fig('../fig/nanofiberswg_HVmode_Ints_xy_blueV','-eps','-pdf','-opengl','-m3','-q101','-transparent','-nocrop');
+% epsclean('../fig/nanofiberswg_HVmode_Ints_xy_blueV.eps','groupSoft',true); % the third parameter is for Z-order problems
+
+
+% The intensity plot for both H and V modes of SWG yet with another line style from figures 13 and 14.
+figure(15);
+% sub132=subplot('position',[hp131(1)+hp131(3)+0.02,hp131(2),hp131(3),hp131(4)]);
+sub152=subplot('position',[hp151(1)+hp151(3)+0.02,hp151(2)+0.15,hp151(3),hp151(4)*0.65]);
+hp152 = get(sub152,'Position');
+set(sub152,'visible','off')
+% stepV=4;
+% normE_field=sqrt(real(Ex_H(ind_Vline)).^2+real(Ey_H(ind_Vline)).^2+imag(Ez_H(ind_Vline)).^2);
+% normE=max(normE_field(:));
+scaleE=0.3;
+hAxesH_swg = axes;
+colormap(hAxesH_swg,hot(20))
+contour(hAxesH_swg,xx,yy,Ints_H./max(Ints_H(:)));
+shading interp
+hold on
+hAxesV_swg = axes;
+colormap(hAxesV_swg,cmap);%gray(20))
+contour(hAxesV_swg,yy',xx',Ints_H'./max(Ints_H(:)),[0.108 0.108],'--');
+shading interp
+hold on
+%link the two overlaying axes so they match at all times to remain
+%accurate. We also make axes invisible and plot other lines on top.
+linkaxes([hAxesH_swg,hAxesV_swg]);
+set([hAxesH_swg,hAxesV_swg],'Position',hp152);
+set(hAxesH_swg,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_swg,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_swg, 'XTick', []);
+set(hAxesV_swg, 'YTick', []);
+plot(hAxesV_swg,x_border, y_border,'k-','linewidth',lw-1);%ones(size(x_border)),
+plot(hAxesV_swg,[0,0],[-300,300],'k*','linewidth',lw-0.5,'MarkerSize',5,'MarkerFaceColor','k');%[1,1]
+lenxxV=length(xx_V);
+lenyyV=length(yy_V);
+lenindV=length(ind_Vline);
+quiver(hAxesV_swg,xx_V(1:stepV:lenxxV),yy_V(1:stepV:lenyyV), ... %ones(size(xx_V(1:stepV:lenxxV))),
+    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','blue');%imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,
+xlim(hAxesH_swg,[-plotwidth/2,plotwidth/2]);
+ylim(hAxesH_swg,[-plotheight/2,plotheight/2]);
+xlim(hAxesV_swg,[-plotwidth/2,plotwidth/2]);
+ylim(hAxesV_swg,[-plotheight/2,plotheight/2]);
+% axis equal
+axis(hAxesH_swg, 'square');
+axis(hAxesV_swg, 'square');
+hold off
+
+% Plot a colorbar.
+cb_H=colorbar(hAxesH_swg,'Position', [hp152(1)+hp152(3)+0.02  hp152(2)+0.02  0.02  hp152(4)*0.95]);
+% cb_H.YTick=[];
+title(cb_H,'H');
+% cb_V=colorbar(hAxesV_swg,'Position', [hp152(1)+hp152(3)+0.05  hp152(2)+0.02  0.02  hp152(4)*0.95]);
+% title(cb_V,'V');
+% cleanfigure;
+% matlab2tikz('filename','../fig/nanofiber_Hmode_Ints_xy.tex','floatFormat','%.4f','showInfo', false, ...
+%         'parseStrings',false,'standalone', false, ...
+%         'height', '1.4in', 'width','1.4in');
+% print('../fig/nanofiber_Hmode_Ints_xy','-opengl','-depsc')
+% set(gcf,'renderer','opengl')
+% saveas(fig12,'../fig/nanofiber_Hmode_Ints_xy.eps','epsc')
+export_fig('../fig/nanofiberswg_HVmode_Ints_xy_onelineV','-eps','-pdf','-opengl','-m3','-q101','-transparent','-nocrop');
+% epsclean('../fig/nanofiberswg_HVmode_Ints_xy_onelineV.eps','groupSoft',true); % the third parameter is for Z-order problems
+
+% The intensity plot for both H and V modes of SWG yet with contourf.
+figure(16);
+maxInts_swg=max(Ints_H(:));
+% sub132=subplot('position',[hp131(1)+hp131(3)+0.02,hp131(2),hp131(3),hp131(4)]);
+sub162=subplot('position',[hp161(1)+hp161(3)+0.02,hp161(2)+0.15,hp161(3),hp161(4)*0.65]);
+hp162 = get(sub162,'Position');
+set(sub162,'visible','off')
+% stepV=4;
+% normE_field=sqrt(real(Ex_H(ind_Vline)).^2+real(Ey_H(ind_Vline)).^2+imag(Ez_H(ind_Vline)).^2);
+% normE=max(normE_field(:));
+scaleE=0.3;
+hAxesV_swg = axes;
+colormap(hAxesV_swg,bmap(8:end,:));%gray(20))
+% caxis([0.05,1]);
+[~,h1]=contourf(hAxesV_swg,yy',xx',Ints_H'./maxInts_nanofiber*1e18,0.06:0.1:1,':');%0.108 max(Ints_H(:))
+shading interp
+set(h1,'LineColor','none');
+hold on
+hAxesH_swg = axes;
+colormap(hAxesH_swg,rmap(8:end,:))
+[~,h2]=contourf(hAxesH_swg,xx,yy,Ints_H./maxInts_nanofiber*1e18,0.06:0.1:1);%0.108 max(Ints_H(:))
+shading flat
+set(h2,'LineColor','none');
+hold on
+%link the two overlaying axes so they match at all times to remain
+%accurate. We also make axes invisible and plot other lines on top.
+linkaxes([hAxesH_swg,hAxesV_swg]);
+set([hAxesH_swg,hAxesV_swg],'Position',hp162);
+set(hAxesH_swg,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_swg,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_swg, 'XTick', []);
+set(hAxesV_swg, 'YTick', []);
+plot(hAxesH_swg,x_border, y_border,'k-','linewidth',lw-1);%ones(size(x_border)),
+plot(hAxesH_swg,[0,0],[-300,300],'k*','linewidth',lw-0.5,'MarkerSize',5,'MarkerFaceColor','k');%[1,1]
+lenxxV=length(xx_V);
+lenyyV=length(yy_V);
+lenindV=length(ind_Vline);
+quiver(hAxesH_swg,xx_V(1:stepV:lenxxV),yy_V(1:stepV:lenyyV), ... %ones(size(xx_V(1:stepV:lenxxV))),
+    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','blue');%imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,
+xlim(hAxesH_swg,[-plotwidth/2.1,plotwidth/2.1]);
+ylim(hAxesH_swg,[-plotheight/2.1,plotheight/2.1]);
+xlim(hAxesV_swg,[-plotwidth/2.1,plotwidth/2.1]);
+ylim(hAxesV_swg,[-plotheight/2.1,plotheight/2.1]);
+% axis equal
+axis(hAxesH_swg, 'square');
+axis(hAxesV_swg, 'square');
+hold off
+
+% Plot a colorbar.
+cb_H=colorbar(hAxesH_swg,'Position', [hp162(1)+hp162(3)+0.02  hp162(2)+0.02  0.02  hp162(4)*0.95]);
+cb_H.YTick=[];
+title(cb_H,'H');
+cb_V=colorbar(hAxesV_swg,'Position', [hp162(1)+hp162(3)+0.05  hp162(2)+0.02  0.02  hp162(4)*0.95]);
+title(cb_V,'V');
+% cleanfigure;
+% matlab2tikz('filename','../fig/nanofiber_Hmode_Ints_xy.tex','floatFormat','%.4f','showInfo', false, ...
+%         'parseStrings',false,'standalone', false, ...
+%         'height', '1.4in', 'width','1.4in');
+% print('../fig/nanofiber_Hmode_Ints_xy','-opengl','-depsc')
+% set(gcf,'renderer','opengl')
+% saveas(fig12,'../fig/nanofiber_Hmode_Ints_xy.eps','epsc')
+export_fig('../fig/nanofiberswg_HVmode_Ints_xy_contourf','-eps','-pdf','-opengl','-m3','-q101','-transparent','-nocrop');
+% epsclean('../fig/nanofiberswg_HVmode_Ints_xy_contourf.eps','groupSoft',true); % the third parameter is for Z-order problems
+
+% The intensity plot for both H mode intensity and the y-component of the V mode square of SWG with contourf.
+figure(17);
+% maxInts_swg=max(Ints_H(:));
+% sub132=subplot('position',[hp131(1)+hp131(3)+0.02,hp131(2),hp131(3),hp131(4)]);
+sub172=subplot('position',[hp171(1)+hp171(3)+0.02,hp171(2)+0.15,hp171(3),hp171(4)*0.65]);
+hp172 = get(sub172,'Position');
+set(sub172,'visible','off')
+% stepV=4;
+% normE_field=sqrt(real(Ex_H(ind_Vline)).^2+real(Ey_H(ind_Vline)).^2+imag(Ez_H(ind_Vline)).^2);
+% normE=max(normE_field(:));
+scaleE=0.3;
+hAxesV_swg = axes;
+colormap(hAxesV_swg,bmap(8:end,:));%gray(20))
+% caxis([0.05,1]);
+[~,h1]=contourf(hAxesV_swg,yy',xx',(Ex_H.^2)'./maxIntsx_nanofiber*1e18,0.06:0.1:1,':');%0.108 max(Ints_H(:))
+shading interp
+set(h1,'LineColor','none');
+hold on
+hAxesH_swg = axes;
+colormap(hAxesH_swg,rmap(8:end,:))
+[~,h2]=contourf(hAxesH_swg,xx,yy,Ints_H./maxInts_nanofiber*1e18,0.06:0.1:1);%0.108 max(Ints_H(:))
+shading flat
+set(h2,'LineColor','none');
+hold on
+%link the two overlaying axes so they match at all times to remain
+%accurate. We also make axes invisible and plot other lines on top.
+linkaxes([hAxesH_swg,hAxesV_swg]);
+set([hAxesH_swg,hAxesV_swg],'Position',hp172);
+set(hAxesH_swg,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_swg,'visible','off')% Make the axis invisible so the axis became transparent.
+set(hAxesV_swg, 'XTick', []);
+set(hAxesV_swg, 'YTick', []);
+plot(hAxesH_swg,x_border, y_border,'k-','linewidth',lw-1);%ones(size(x_border)),
+plot(hAxesH_swg,[0,0],[-300,300],'k*','linewidth',lw-0.5,'MarkerSize',5,'MarkerFaceColor','k');%[1,1]
+lenxxV=length(xx_V);
+lenyyV=length(yy_V);
+lenindV=length(ind_Vline);
+quiver(hAxesH_swg,xx_V(1:stepV:lenxxV),yy_V(1:stepV:lenyyV), ... %ones(size(xx_V(1:stepV:lenxxV))),
+    real(Ex_H(ind_Vline(1:stepV:lenindV)))./normE,real(Ey_H(ind_Vline(1:stepV:lenindV)))./normE,scaleE,'Marker','.','Color','blue');%imag(Ez_H(ind_Vline(1:stepV:lenindV)))./normE,
+xlim(hAxesH_swg,[-plotwidth/2.1,plotwidth/2.1]);
+ylim(hAxesH_swg,[-plotheight/2.1,plotheight/2.1]);
+xlim(hAxesV_swg,[-plotwidth/2.1,plotwidth/2.1]);
+ylim(hAxesV_swg,[-plotheight/2.1,plotheight/2.1]);
+% axis equal
+axis(hAxesH_swg, 'square');
+axis(hAxesV_swg, 'square');
+hold off
+
+% Plot a colorbar.
+cb_H=colorbar(hAxesH_swg,'Position', [hp172(1)+hp172(3)+0.02  hp172(2)+0.02  0.02  hp172(4)*0.95]);
+cb_H.YTick=[];
+title(cb_H,'H');
+cb_V=colorbar(hAxesV_swg,'Position', [hp172(1)+hp172(3)+0.05  hp172(2)+0.02  0.02  hp172(4)*0.95]);
+title(cb_V,'V');
+% cleanfigure;
+% matlab2tikz('filename','../fig/nanofiber_Hmode_Ints_xy.tex','floatFormat','%.4f','showInfo', false, ...
+%         'parseStrings',false,'standalone', false, ...
+%         'height', '1.4in', 'width','1.4in');
+% print('../fig/nanofiber_Hmode_Ints_xy','-opengl','-depsc')
+% set(gcf,'renderer','opengl')
+% saveas(fig12,'../fig/nanofiber_Hmode_Ints_xy.eps','epsc')
+export_fig('../fig/nanofiberswg_HVymode_Ints_xy_contourf','-eps','-pdf','-opengl','-m3','-q101','-transparent','-nocrop');
+% epsclean('../fig/nanofiberswg_HVymode_Ints_xy_contourf.eps','groupSoft',true); % the third parameter is for Z-order problems
 
 %% Plots for effective mode areas and cooperativity in the xy-plane for the square waveguide case.
 load('../data/swg_modes_d300_lambda895_Aeff.mat');
