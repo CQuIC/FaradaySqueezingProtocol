@@ -207,7 +207,7 @@ shading interp
 hold on
 hAxesV_nanofiber = axes;
 colormap(hAxesV_nanofiber,gray(20))
-contour(hAxesV_nanofiber,yy'./a,xx'./a,Ints_H'./max(Ints_H(:)),'-');
+contour(hAxesV_nanofiber,yy'./a,xx'./a,Ints_H'./max(Ints_H(:)),'--');
 shading interp
 hold on
 %link the two overlaying axes so they match at all times to remain
@@ -570,7 +570,7 @@ colorbar('Position', [hp122(1)+hp122(3)+0.02  hp122(2)+0.02  0.02  hp122(4)*0.95
 % print('../fig/nanofiber_Hmode_Ints_xy','-opengl','-depsc')
 % set(gcf,'renderer','opengl')
 % saveas(fig12,'../fig/nanofiber_Hmode_Ints_xy.eps','epsc')
-export_fig('../fig/nanofiberswg_Hmode_Ints_xy','-eps','-pdf','-opengl','-m3','-q101','-transparent','-nocrop');
+export_fig('../fig/nanofiberswg_Hmode_Ints_xy','-eps','-pdf','-painters','-m3','-q101','-transparent','-nocrop');
 % epsclean('../fig/nanofiberswg_Hmode_Ints_xy.eps','groupSoft',true); % the third parameter is for Z-order problems
 
 
@@ -591,7 +591,7 @@ shading interp
 hold on
 hAxesV_swg = axes;
 colormap(hAxesV_swg,gray(20))
-contour(hAxesV_swg,yy',xx',Ints_H'./max(Ints_H(:)),'-');
+contour(hAxesV_swg,yy',xx',Ints_H'./max(Ints_H(:)),'--');
 shading interp
 hold on
 %link the two overlaying axes so they match at all times to remain
@@ -631,7 +631,7 @@ title(cb_V,'V');
 % print('../fig/nanofiber_Hmode_Ints_xy','-opengl','-depsc')
 % set(gcf,'renderer','opengl')
 % saveas(fig12,'../fig/nanofiber_Hmode_Ints_xy.eps','epsc')
-export_fig('../fig/nanofiberswg_HVmode_Ints_xy','-eps','-pdf','-opengl','-m3','-q101','-transparent','-nocrop');
+export_fig('../fig/nanofiberswg_HVmode_Ints_xy','-eps','-pdf','-painters','-m3','-q101','-transparent','-nocrop');
 % epsclean('../fig/nanofiberswg_HVmode_Ints_xy.eps','groupSoft',true); % the third parameter is for Z-order problems
 
 
@@ -692,7 +692,7 @@ title(cb_V,'V');
 % print('../fig/nanofiber_Hmode_Ints_xy','-opengl','-depsc')
 % set(gcf,'renderer','opengl')
 % saveas(fig12,'../fig/nanofiber_Hmode_Ints_xy.eps','epsc')
-export_fig('../fig/nanofiberswg_HVmode_Ints_xy_blueV','-eps','-pdf','-opengl','-m3','-q101','-transparent','-nocrop');
+export_fig('../fig/nanofiberswg_HVmode_Ints_xy_blueV','-eps','-pdf','-painters','-m3','-q101','-transparent','-nocrop');
 % epsclean('../fig/nanofiberswg_HVmode_Ints_xy_blueV.eps','groupSoft',true); % the third parameter is for Z-order problems
 
 
@@ -753,7 +753,7 @@ title(cb_H,'H');
 % print('../fig/nanofiber_Hmode_Ints_xy','-opengl','-depsc')
 % set(gcf,'renderer','opengl')
 % saveas(fig12,'../fig/nanofiber_Hmode_Ints_xy.eps','epsc')
-export_fig('../fig/nanofiberswg_HVmode_Ints_xy_onelineV','-eps','-pdf','-opengl','-m3','-q101','-transparent','-nocrop');
+export_fig('../fig/nanofiberswg_HVmode_Ints_xy_onelineV','-eps','-pdf','-painters','-m3','-q101','-transparent','-nocrop');
 % epsclean('../fig/nanofiberswg_HVmode_Ints_xy_onelineV.eps','groupSoft',true); % the third parameter is for Z-order problems
 
 % The intensity plot for both H and V modes of SWG yet with contourf.
