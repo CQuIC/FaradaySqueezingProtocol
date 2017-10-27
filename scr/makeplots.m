@@ -1238,11 +1238,11 @@ xlabel('$N_A$');
 ylabel('$\xi^{-2}_{peak}$ (dB)');
 hold on
 xlim([500,5000])
-ylim([2.0,8.2])
+ylim([2.0,8.5])
 xticks([500,1500,2500,3500,4500])
 xticklabels({'500','1500','2500','3500','4500'});
-yticks([3,5,7,9])
-yticklabels({'3','5','7','9'});
+yticks([3,5,6,7,8])
+yticklabels({'3','5','6','7','8'});
 legend('hide')
 grid on
 set(gca, 'fontsize',fs);
@@ -1283,11 +1283,11 @@ xlabel('$N_A$');
 ylabel('$\xi^{-2}_{peak}$ (dB)');
 hold on
 xlim([500,5000])
-ylim([8,15])
+ylim([8,15.5])
 xticks([500,1500,2500,3500,4500])
 xticklabels({'500','1500','2500','3500','4500'});
-yticks([10,12,13,14,16])
-yticklabels({'10','12','13','14','16'});
+yticks([10,12,13,14,15])
+yticklabels({'10','12','13','14','15'});
 legend('hide')
 grid on
 set(gca,'fontsize',fs)
