@@ -5,19 +5,22 @@
 % versioned on 2017-09-25:
 % 1. NanofiberTrappedCsAtoms/fiberModesStudy.m --> H-mode profile of the
 % nanofiber.
-% 3. Waveguidemodes/rectwg_TETMlow_fullvector.m --> SWG Aeff;
-% 4. NanofiberTrappedCsAtoms/Example_FiberModeProfile.m --> nanofiber Aeff;
-% 5. NanofiberTrappedCsAtoms/Example_SpinSqueezing_FaradaySCS_nanofiber.m
+% 2. Waveguidemodes/rectwg_TETMlow_fullvector.m --> H-mode profile and 
+% effective mode areas of the square waveguide (SWG);
+% 3. NanofiberTrappedCsAtoms/Example_FiberModeProfile.m --> nanofiber Aeff;
+% 4. NanofiberTrappedCsAtoms/Example_SpinSqueezing_FaradaySCS_nanofiber.m
 % --> peak $\xi^{-2}$ of nanofiber;
-% 6. NanofiberTrappedCsAtoms/Example_SpinSqueezing_FaradaySCS_SWG.m
+% 5. NanofiberTrappedCsAtoms/Example_SpinSqueezing_FaradaySCS_SWG.m
 % --> peak $\xi^{-2}$ of SWG;
-% 7. NanofiberTrappedCsAtoms/QutritFaradaySqueezing/
-% SpinSqueezing_Faraday_SCS_qutrit_generalgamma.m --> spin squeezing
+% 6. NanofiberTrappedCsAtoms/QutritFaradaySqueezing/
+% SpinSqueezing_Faraday_SCS_qutrit_generalgamma.m and 
+% SpinSqueezing_Faraday_SCS_qutrit_generalgamma_D2.m --> spin squeezing
 % dynamics with the nanofiber;
-% 8. IntegratedWaveguideTrappedCsAtoms/Squarewg/
-% SpinSqueezing_Faraday_SCS_CsD1_qutrit_squarewg.m --> spin squeezing
+% 7. IntegratedWaveguideTrappedCsAtoms/Squarewg/
+% SpinSqueezing_Faraday_SCS_CsD1_qutrit_squarewg.m and 
+% SpinSqueezing_Faraday_SCS_CsD1_qutrit_squarewg_D2.m--> spin squeezing
 % dynamics with the SWG.
-% 9. NanofiberTrappedCsAtoms/Example_waveguide_GFT_decayrates.m -->
+% 8. NanofiberTrappedCsAtoms/Example_waveguide_GFT_decayrates.m -->
 % polarization-dependent decay rates for both nanofiber and SWG.
 %
 % Used external packages for making these plots:
@@ -31,6 +34,9 @@
 
 clear all
 close all
+
+% Set if to use D1-line or D2-line probe.
+D1line=0; % 1: use D1-line signal; 0: use D2-line signal.
 
 % Define default parameters for plots.
 lw=1.5;        % Line width. Use 2 for presentations.
@@ -60,7 +66,11 @@ widersize = [left, bottom, fgwidth*1.6, fgheight];
 set(0, 'defaultFigurePaperPosition', defsize);
 
 %% Plot the H modes of the nanofiber and the SWG to demonstrate the foundamental properties of the waveguide modes.
-load('../data/nanofiber_Hmode_a225_D1.mat')
+if D1line==1
+    load('../data/nanofiber_Hmode_a225_D1.mat')
+else
+    load('../data/nanofiber_Hmode_a225_D2.mat')
+end
 
 % The real and imaginary parts of the x-, y-, and z-components of the H
 % mode of a nanofiber.
@@ -488,7 +498,11 @@ hold off
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Plot H-mode figures for the Square Waveguide.
-load('../data/swg_Hmode_d300_D1.mat')
+if D1line==1
+    load('../data/swg_Hmode_d300_D1.mat')
+else
+    load('../data/swg_Hmode_d300_D2.mat')
+end
 auE=auE_nanofiber*1e-9;
 realEx=real(Ex_H(:,:))./auE;
 realEy=real(Ey_H(:,:))./auE;
@@ -992,7 +1006,11 @@ export_fig('../fig/nanofiberswg_HVmode_Ints_xy_Vdashgrey','-eps','-pdf','-painte
 % epsclean('../fig/nanofiberswg_HVmode_Ints_xy_Vdotgrey.eps','groupSoft',true); % the third parameter is for Z-order problems
 
 %% Plots for effective mode areas and cooperativity in the xy-plane for the square waveguide case.
-load('../data/swg_modes_d300_lambda895_Aeff.mat');
+if D1line==1
+    load('../data/swg_modes_d300_lambda895_Aeff.mat');
+else
+    load('../data/swg_modes_d300_lambda852_Aeff.mat');
+end
 figure(51);
 colormap(hot)
 % subplot(234)
@@ -1006,6 +1024,7 @@ axis equal
 % ylim([min(yc),max(yc)]/d);
 xlim([-1.2,1.2]);
 ylim([-1.2,1.2]);
+legend('hide')
 % colorbar('WestOutside')
 cleanfigure;
 matlab2tikz('filename','../fig/swg_invA_Far_xy.tex','floatFormat','%.4f','showInfo', false, ...
@@ -1024,6 +1043,7 @@ line(x_border/d,y_border/d,'Color','k');
 axis equal
 xlim([-1.2,1.2]);
 ylim([-1.2,1.2]);
+legend('hide')
 % colorbar('WestOutside')
 cleanfigure;
 matlab2tikz('filename','../fig/swg_invA_in_xy.tex','floatFormat','%.4f','showInfo', false, ...
@@ -1052,6 +1072,7 @@ line([-1.2,0],[-1.0,-1.0],'linestyle','--','Color',[0.1,0.1,0.1],'linewidth',0.5
 line([-1.2,0],[-0.9,-0.9],'linestyle','--','color',[0.2,0.2,0.2],'linewidth',0.5);
 line([-1.2,0],[-0.8,-0.8],'linestyle','--','color',[0.3,0.3,0.3],'linewidth',0.5);
 line([-1.2,0],[-0.7,-0.7],'linestyle','--','color',[0.4,0.4,0.4],'linewidth',0.5);
+legend('hide')
 cleanfigure;
 matlab2tikz('filename','../fig/swg_C1_xy.tex','floatFormat','%.4f','showInfo', false, ...
         'parseStrings',false,'standalone', false, ...
@@ -1065,7 +1086,8 @@ hold on
 xlabel('$r_\perp/d$')
 ylabel('$\log_{10}(C_1)$')
 xlim([0.5,2.0])
-ylim([-2.4,0.5])
+% ylim([-2.4,0.5])
+legend('hide')
 grid on
 cleanfigure;
 matlab2tikz('filename','../fig/swg_C1_y.tex','floatFormat','%.4f','showInfo', false, ...
@@ -1073,8 +1095,20 @@ matlab2tikz('filename','../fig/swg_C1_y.tex','floatFormat','%.4f','showInfo', fa
         'height', '5cm', 'width','6cm');
 hold off
 
+% Find the relationship between $C_1$ and $r_\perp$.
+figure(55);
+plot(y_atom/d,C1_atom,'r-');
+hold on
+plot(y_atom/d,1./(y_atom./d).^2.5/7.e1,'b-.');
+plot(y_atom/d,exp(-4.27*y_atom/d)/1.17,'k:');
+hold off
+
 %% Plot effective mode areas and cooperativity parameters for the nanofiber case.
-load('../data/nanofiber_modes_a225_lambda895_Aeff.mat')
+if D1line==1
+    load('../data/nanofiber_modes_a225_lambda895_Aeff.mat');
+else
+    load('../data/nanofiber_modes_a225_lambda852_Aeff.mat');
+end
 
 cgstep=1; % Step length for the Coarse-grain of the data in plots.
 
@@ -1089,6 +1123,7 @@ viscircles([0,0],1,'Color','k');
 axis equal
 xlim([-2.2,2.2]);
 ylim([-2.2,2.2]);
+legend('hide')
 % colorbar('WestOutside')
 cleanfigure;
 matlab2tikz('filename','../fig/nanofiber_invA_Far_xy.tex','floatFormat','%.4f','showInfo', false, ...
@@ -1107,6 +1142,7 @@ viscircles([0,0],1,'Color','k');
 axis equal
 xlim([-2.2,2.2]);
 ylim([-2.2,2.2]);
+legend('hide')
 % colorbar('WestOutside')
 cleanfigure;
 matlab2tikz('filename','../fig/nanofiber_invA_in_xy.tex','floatFormat','%.4f','showInfo', false, ...
@@ -1136,6 +1172,7 @@ line([-2.2,0],[-2.0,-2.0],'linestyle','--','Color',[0.1,0.1,0.1],'linewidth',0.5
 % line([-2.2,0],[-1.9,-1.9],'linestyle','--','color',[0.2,0.2,0.2],'linewidth',0.5);
 line([-2.2,0],[-1.8,-1.8],'linestyle','--','color',[0.3,0.3,0.3],'linewidth',0.5);
 line([-2.2,0],[-1.5,-1.5],'linestyle','--','color',[0.4,0.4,0.4],'linewidth',0.5);
+legend('hide')
 cleanfigure;
 matlab2tikz('filename','../fig/nanofiber_C1_xy.tex','floatFormat','%.4f','showInfo', false, ...
         'parseStrings',false,'standalone', false, ...
@@ -1152,7 +1189,8 @@ ylabel('$\log_{10}(C_1)$')
 xticks([1.0,1.5,1.8,2.0,2.5])
 xticklabels({'1.0','1.5','1.8','2.0','2.5'});
 xlim([1.0,2.5])
-ylim([-1.4,-0.2])
+% ylim([-1.4,-0.2])
+legend('hide')
 grid on
 cleanfigure;
 matlab2tikz('filename','../fig/nanofiber_C1_y.tex','floatFormat','%.4f','showInfo', false, ...
@@ -1160,8 +1198,20 @@ matlab2tikz('filename','../fig/nanofiber_C1_y.tex','floatFormat','%.4f','showInf
         'height', '5cm', 'width','6cm');
 hold off
 
+% Check the relation between $C_1$ and $r_\perp$.
+figure(405);
+plot(r_atom(ind_rstart:end)/a,C1_r(ind_rstart:end),'r-');
+hold on
+plot(r_atom(ind_rstart:end)/a,1./(r_atom(ind_rstart:end)./a).^2.5/7.e1,'b-.');
+plot(r_atom(ind_rstart:end)/a,exp(-1.65*r_atom(ind_rstart:end)/a)/12.5,'k:');
+hold off
+
 %% Peak squeezing as a function of NA and atom position for both Nanofiber and SWG.
-load('../data/nanofiber_peakxi_a225_lambda895.mat');
+if D1line==1
+    load('../data/nanofiber_peakxi_a225_lambda895.mat');
+else
+    load('../data/nanofiber_peakxi_a225_lambda852.mat');
+end
 
 figure(501); % For the peak spin squeezing parameter using the full dynamics as a function of $r_\perp$.
 plot(rp0_test/a_fiber,xi_peak(5,:),'r-','linewidth',lw);
@@ -1172,7 +1222,7 @@ xlim([1.0,2.5])
 % ylim([0,15])
 xticks([1.0,1.5,1.8,2.0,2.5])
 xticklabels({'1.0','1.5','1.8','2.0','2.5'});
-
+legend('hide')
 grid on
 set(gca,'fontsize',fs)
 cleanfigure;
@@ -1188,11 +1238,12 @@ xlabel('$N_A$');
 ylabel('$\xi^{-2}_{peak}$ (dB)');
 hold on
 xlim([500,5000])
-ylim([2.8,9])
+ylim([2.0,8.2])
 xticks([500,1500,2500,3500,4500])
 xticklabels({'500','1500','2500','3500','4500'});
 yticks([3,5,7,9])
 yticklabels({'3','5','7','9'});
+legend('hide')
 grid on
 set(gca, 'fontsize',fs);
 cleanfigure;
@@ -1201,7 +1252,11 @@ matlab2tikz('filename','../fig/nanofiber_peakxi_NA_rp1d8a.tex','floatFormat','%.
         'height', '5cm', 'width','6cm');
 hold off
 
-load('../data/swg_peakxi_d300_lambda895.mat')
+if D1line==1
+    load('../data/swg_peakxi_d300_lambda895.mat');
+else
+    load('../data/swg_peakxi_d300_lambda852.mat');
+end
 
 figure(503); % For the peak spin squeezing parameter using the full dynamics as a function of $r_\perp$.
 deltaa=2; % Step to select $r_\perp$ for a smooth curve.
@@ -1210,10 +1265,10 @@ xlabel('$r_\perp/d$');
 ylabel('$\xi^{-2}_{peak}$ (dB)');
 hold on
 xlim([0.5,2.0])
-% ylim([0,15])
+% ylim([2,18])
 xticks([0.5,1.0,1.5,2.0])
 xticklabels({'0.5','1.0','1.5','2.0'});
-
+legend('hide')
 grid on
 set(gca,'fontsize',fs)
 cleanfigure;
@@ -1223,16 +1278,17 @@ matlab2tikz('filename','../fig/swg_peakxi_rp_NA2500.tex','floatFormat','%.4f','s
 hold off
 
 figure(504); % For the peak spin squeezing parameter using the full dynamics as a function of NA.
-plot(log10(NAlist),xi_peak(:,ind_atomposition)','r-','linewidth',lw);
+plot((NAlist),xi_peak(:,ind_atomposition)','r-','linewidth',lw);
 xlabel('$N_A$');
 ylabel('$\xi^{-2}_{peak}$ (dB)');
 hold on
 xlim([500,5000])
-ylim([9,16])
+ylim([8,15])
 xticks([500,1500,2500,3500,4500])
 xticklabels({'500','1500','2500','3500','4500'});
 yticks([10,12,13,14,16])
 yticklabels({'10','12','13','14','16'});
+legend('hide')
 grid on
 set(gca,'fontsize',fs)
 cleanfigure;
@@ -1252,18 +1308,25 @@ hold off
 %% Plot spin squeezing parameter as a function of time.
 
 % Plot the best spin squeezing process for nanofiber.
-load('../data/nanofiber_xi_t_a225_lambda895_rp1d8a_NA2500.mat');
+if D1line==1
+    load('../data/nanofiber_xi_t_a225_lambda895_rp1d8a_NA2500.mat');
+else
+    load('../data/nanofiber_xi_t_a225_lambda852_rp1d8a_NA2500.mat');
+end
+f=4;
+gamma_op=2*f^2; % Normalization factor relative to the gamma_s defined before.
 figure(601);
-plot(tlist(1:steptjump:end),xi_atom_rotatingframe(1:steptjump:end),'r-','linewidth',lw);
-xlabel('$\gamma_st$');
+plot(gamma_op*tlist(1:steptjump:end),xi_atom_rotatingframe(1:steptjump:end),'r-','linewidth',lw);
+xlabel('$\gamma_{op}t$');
 ylabel('$\xi^{-2}$ (dB)');
 hold on
-xlim([0,0.02])
-ylim([0,8])
-yticks([0,3,5,7,8])
-yticklabels({'0','3','5','7','8'});
+xlim([0,0.02]*gamma_op)
+ylim([0,7])
+yticks([0,3,5,6,7,8])
+yticklabels({'0','3','5','6','7','8'});
 grid on
 set(gca, 'fontsize',fs);
+legend('hide');
 cleanfigure;
 matlab2tikz('filename','../fig/nanofiber_xi_t_rp1d8a_NA2500.tex','floatFormat','%.4f','showInfo', false, ...
         'parseStrings',false,'standalone', false, ...
@@ -1271,18 +1334,23 @@ matlab2tikz('filename','../fig/nanofiber_xi_t_rp1d8a_NA2500.tex','floatFormat','
 hold off
 
 % Plot the best spin squeezing process for nanofiber.
-load('../data/swg_xi_t_d300_lambda895_rp1d_NA2500.mat');
+if D1line==1
+    load('../data/swg_xi_t_d300_lambda895_rp1d_NA2500.mat');
+else
+    load('../data/swg_xi_t_d300_lambda852_rp1d_NA2500.mat');
+end
 figure(602);
-plot(tlist(1:steptjump:end),xi_atom_rotatingframe(1:steptjump:end),'r-','linewidth',lw);
-xlabel('$\gamma_st$');
+plot(gamma_op*tlist(1:steptjump:end),xi_atom_rotatingframe(1:steptjump:end),'r-','linewidth',lw);
+xlabel('$\gamma_{op}t$');
 ylabel('$\xi^{-2}$ (dB)');
 hold on
-xlim([0,0.02])
+xlim([0,0.02]*gamma_op)
 % ylim([0,8])
 yticks([0,5,10,13,15])
 yticklabels({'0','5','10','13','15'});
 grid on
 set(gca, 'fontsize',fs);
+legend('hide');
 cleanfigure;
 matlab2tikz('filename','../fig/swg_xi_t_rp1d_NA2500.tex','floatFormat','%.4f','showInfo', false, ...
         'parseStrings',false,'standalone', false, ...
@@ -1291,7 +1359,11 @@ hold off
 
 %% Plot out the polarization-dependent decay rates.
 % Decay rates for the nanofiber case.
-load('../data/nanofiber_decayrates.mat');
+if D1line==1
+    load('../data/nanofiber_decayrates_D1.mat');
+else
+    load('../data/nanofiber_decayrates_D2.mat');
+end
 
 figure(701);
 set(gcf,'Units','inches',...
@@ -1349,7 +1421,7 @@ text(x1-linwid/4,y1+0.1,'average','fontsize',fs-2);
 text(x2+linwid/4,y1+0.1,'$\sigma_\pm$');
 text(x3+linwid/3,y1+0.1,'$\pi$');
 line([outx1,outx1,outx2,outx2,outx1],[outy1,outy2,outy2,outy1,outy1],'Color','black','LineStyle','-','LineWidth',1);
-
+legend('hide');
 % title('Modified decay rates in presence of a nanofiber','fontsize',10)
 cleanfigure;
 matlab2tikz('filename','../fig/nanofiber_decayrates.tex','floatFormat','%.4f','showInfo', false, ...
@@ -1357,8 +1429,11 @@ matlab2tikz('filename','../fig/nanofiber_decayrates.tex','floatFormat','%.4f','s
         'height', '2.5in');
 hold off
 
-load('../data/swg_decayrates.mat');
-
+if D1line==1
+    load('../data/swg_decayrates_D1.mat');
+else
+    load('../data/swg_decayrates_D2.mat');
+end
 % Same plot for SWG.
 figure(702);
 set(gcf,'Units','inches',...
@@ -1422,7 +1497,7 @@ text(x1-linwid/4,y1+0.1,'average','fontsize',fs-2);
 text(x2+linwid/4,y1+0.1,'$\sigma_\pm$');
 text(x3+linwid/3,y1+0.1,'$\pi$');
 line([outx1,outx1,outx2,outx2,outx1],[outy1,outy2,outy2,outy1,outy1],'Color','black','LineStyle','-','LineWidth',1);
-
+legend('hide');
 % title('Modified decay rates in presence of a square waveguide','fontsize',10)
 cleanfigure;
 matlab2tikz('filename','../fig/swg_decayrates.tex','floatFormat','%.4f','showInfo', false, ...
