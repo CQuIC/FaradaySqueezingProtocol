@@ -471,8 +471,8 @@ shading interp
 hold on
 hAxesV_nanofiber = axes;
 gmap=gray(20);
-colormap(hAxesV_nanofiber,gmap(12,:));
-contour(hAxesV_nanofiber,yy'./a,xx'./a,Ints_H'./max(Ints_H(:)),'--');
+colormap(hAxesV_nanofiber,gmap(13,:));
+contour(hAxesV_nanofiber,yy'./a,xx'./a,Ints_H'./max(Ints_H(:)),':');
 shading interp
 hold on
 %link the two overlaying axes so they match at all times to remain
@@ -961,8 +961,8 @@ contour(hAxesH_swg,xx,yy,Ints_H./max(Ints_H(:)));
 shading interp
 hold on
 hAxesV_swg = axes;
-colormap(hAxesV_swg,gmap(12,:))
-contour(hAxesV_swg,yy',xx',Ints_H'./max(Ints_H(:)),'--');
+colormap(hAxesV_swg,gmap(13,:))
+contour(hAxesV_swg,yy',xx',Ints_H'./max(Ints_H(:)),':');
 shading interp
 hold on
 %link the two overlaying axes so they match at all times to remain
@@ -1002,7 +1002,8 @@ cb_H=colorbar(hAxesH_swg,'Position', [hp182(1)+hp182(3)+0.02  hp182(2)+0.02  0.0
 % print('../fig/nanofiber_Hmode_Ints_xy','-opengl','-depsc')
 % set(gcf,'renderer','opengl')
 % saveas(fig12,'../fig/nanofiber_Hmode_Ints_xy.eps','epsc')
-export_fig('../fig/nanofiberswg_HVmode_Ints_xy_Vdashgrey','-eps','-pdf','-painters','-m3','-q101','-transparent','-nocrop');
+% export_fig('../fig/nanofiberswg_HVmode_Ints_xy_Vdashgrey','-eps','-pdf','-painters','-m3','-q101','-transparent','-nocrop');
+export_fig('../fig/nanofiberswg_HVmode_Ints_xy_Vdotgrey','-eps','-pdf','-painters','-m3','-q101','-transparent','-nocrop');
 % epsclean('../fig/nanofiberswg_HVmode_Ints_xy_Vdotgrey.eps','groupSoft',true); % the third parameter is for Z-order problems
 
 %% Plots for effective mode areas and cooperativity in the xy-plane for the square waveguide case.
