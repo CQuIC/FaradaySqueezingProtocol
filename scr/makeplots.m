@@ -1084,7 +1084,7 @@ figure(54);
 plot(y_atom/d,log10(C1_atom),'r-');
 hold on
 % title('C_1(r)')
-xlabel('$r_\perp/d$')
+xlabel('$r_\perp/w$')
 ylabel('$\log_{10}(C_1)$')
 xlim([0.5,2.0])
 % ylim([-2.4,0.5])
@@ -1262,7 +1262,7 @@ end
 figure(503); % For the peak spin squeezing parameter using the full dynamics as a function of $r_\perp$.
 deltaa=2; % Step to select $r_\perp$ for a smooth curve.
 plot(rp0_test(1:deltaa:end)/d_wg,xi_peak(5,1:deltaa:end),'r-','linewidth',lw);
-xlabel('$r_\perp/d$');
+xlabel('$r_\perp/w$');
 ylabel('$\xi^{-2}_{peak}$ (dB)');
 hold on
 xlim([0.5,2.0])
