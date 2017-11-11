@@ -362,6 +362,14 @@ If we define an effective cooperativity or optical depth (OD) per atom quantity 
 \end{align}
 the peaking spin squeezing dynamics can then be characterized by $\frac{\mathrm{OD}_{\rm eff}}{N_A}$, and the geometry of the spin squeezing protocol can then be roughly designed with the goal to maximize $\frac{\mathrm{OD}_{\rm eff}}{N_A}$ by minimizing $A_{in}$ and maximizing $A_{int}$.  
 
+The full expression for the cooperativity is
+\begin{align}\label{eq:c1_bound}
+C_1(\mbf{r}'_\perp) = n_g\sigma_0\frac{ \left\vert \text{Re} \left[ \mbf{u}^*_V (\mbf{r}'_\perp) \times \mbf{u}_H (\mbf{r}'_\perp) \right]\right\vert^2}{\vert \mbf{u}_H (\mbf{r}'_\perp) \vert ^2} \le n_g  \sigma_0 \vert \mbf{u}_V (\mbf{r}'_\perp) \vert ^2.
+\end{align}
+The upper bound is typically not achieved for a nanophotonic waveguide due to the out-of-phase $z $-component of the modes at arbitrary positions.  In free-space, or for approximate TEM modes of a waveguide, $ C_1\propto\sigma_0/\Ai=\sigma_0 u(r'_\perp)^2$, where $ \vert \mbf{u}_H (\mbf{r}'_\perp) \vert ^2=\vert \mbf{u}_V (\mbf{r}'_\perp) \vert ^2 = u(r'_\perp)^2 $ independent of azimuthal angle. 
+%The upper bound may also be saturated with pure TEM modes of a waveguide when the longitudinal mode component vanishes. 
+Even with the longitudinal component, however, by proper choice of the atomic position for the waveguide geometry, the cooperativity can be strongly enhanced over free space, due to the tight and anisotropic confinement of the modes the waveguide guides,  as we  show below.
+
 We can bring in the spin coherence operator $\hat{\sigma}_{ba}=\ket{b}\bra{a}$ to represent the matrix element of any atomic angular momentum operator $ \hat{f}_m $ ($ m=x,y,z $) of a single atom, and hence the spin squeezing dynamics can be characterized by the expectation value of single-body spin coherence operators $\expect{\hat{\sigma}_{ba}}$ and the symmetric two-body covariances $\expect{\Delta \sigma_{ba}^{(1)}\Delta\sigma_{dc}^{(2)} }_s$. 
 %the symmetric three-body correlations $\expect{\Delta \sigma^{(1)}_{b_1a_1}\Delta \sigma^{(2)}_{b_2a_2}\Delta \sigma^{(3)}_{b_3a_3} }_s$ and so on. 
 %As higher-order correlations becomes negligible, one can cut off the correlation terms at a certain order.
