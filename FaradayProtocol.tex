@@ -1179,13 +1179,15 @@ For the decay rate equations above, whenever we sum over $ f $-levels, we should
 
 Due to the photon reflection from the dielectric interface, the frequency of the emitted light from the $ e\rightarrow g $ transition will also be shifted from the atomic resonance by 
 \begin{align}
-\Delta_0=\omega-\omega_{eg}= \frac{1}{\hbar} \bra{g}\hat{\mathbf{d}}\ket{e}\cdot \mathrm{Re}\left[ \tensor{\mathbf{G}}_{ind,rad}(\br',\br';\omega_{eg})+\tensor{\mathbf{G}}_{gyd}(\br',\br';\omega_{eg})\right]\cdot \bra{e}\hat{\mathbf{d}}\ket{g}.
+\delta\omega_{eg}=\omega-\omega_{eg}= \frac{1}{\hbar} \bra{g}\hat{\mathbf{d}}\ket{e}\cdot \mathrm{Re}\left[ \tensor{\mathbf{G}}_{ind,rad}(\br',\br';\omega_{eg})+\tensor{\mathbf{G}}_{gyd}(\br',\br';\omega_{eg})\right]\cdot \bra{e}\hat{\mathbf{d}}\ket{g}.
 \end{align}
-By noting the scattered electrical field $ \mathbf{E}_{scatt}(\br)=\tensor{\mathbf{G}}(\br,\br')\cdot \bra{e}\hat{\mathbf{d}}\ket{g} $, one can rewrite the normalized frequency shift to be
+By noting the scattered electrical field $ \mathbf{E}_{scatt}(\br)=\tensor{\mathbf{G}}(\br,\br')\cdot \bra{e}\hat{\mathbf{d}}\ket{g} $, one can rewrite the normalized frequency shift $ \delta\omega_{m'm} $ to be
 \begin{align}
-\frac{\Delta_0}{\Gamma_0} &= \frac{1}{2} \frac{\mathrm{Re}\left[ \bra{g}\hat{\mathbf{d}}\ket{e}\cdot\left(\mathbf{E}_{ind,rad}(\br')+\mathbf{E}_{scatt,gyd}(\br')\right)\right]}{|d|^2G_0(\br',\br')}.
+\frac{\delta\omega_{m'm}}{\Gamma_0} &= \frac{1}{2} \frac{\left|o_{jf}^{j'f'}C_{f'm'}^{f,m;1,q=m'-m}\right|^2 \mathrm{Re}\left[ \mathbf{e}_q\cdot\left(\tensor{\mathbf{G}}_{ind,rad}(\br')+\tensor{\mathbf{G}}_{ind,gyd}(\br')\right)\cdot\mathbf{e}_q^*\right]}{G_0(\br',\br')}\\
+&=\frac{1}{2} \frac{\left|o_{jf}^{j'f'}C_{f'm'}^{f,m;1,q=m'-m}\right|^2 \mathrm{Re}\left[ \mathbf{e}_q\cdot\left(\mathbf{E}_{ind,rad}^{(q^*)}(\br')+\mathbf{E}_{ind,gyd}^{(q^*)}(\br')\right)\right]}{G_0(\br',\br')},
 \end{align}
-Since the scattered field is proportional to the magnitude of the dipole moment, the normalized frequency shift is independent of the dipole moment.
+where $ \mathbf{E}_{ind,rad/gyd}^{(q^*)}(\br') $ is the induced radiative/guided mode component of the local electrical field due to a dipole polarized along $ \mathbf{e}_q^* $ direction, which can be calculated using the BEM simulation. 
+By definition, this is the Lamb shift due to the light scattering from the dielectric interface and has excluded the propagating field in vacuum. 
 
  
 The collective spin dynamics in the QND measurement and spin squeezing process is described by the stochastic master equation defined in Eq.~\eqref{eq:totaldrhodt}. The optical pumping dynamics of the $ j $-th atom are governed by 
