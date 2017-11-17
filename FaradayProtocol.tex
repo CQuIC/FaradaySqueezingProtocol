@@ -803,6 +803,15 @@ Coupling strength, decoherence, and spin squeezing analysis based on the modes o
 Relation of OD$ /N_A $ to cooling efficiency and fictitious magnetic field applications.
 
 
+\section{A two-color spin squeezing protocol to cancel the tensor light shift}
+As illustrated in Enrique Montano's PhD dissertation work, the tensor light shift due to the external field can be canceled in a free-space spin squeezing setup, we will generalize this idea to the nanophotonic waveguide case.
+
+From Eq.~\eqref{eq:Heff_Faraday_C02}, the state-dependent tensor light shift (the term proportional to $ \hat{f}_x^2 $) is proportional to 
+\begin{align}
+\delta E_T &= \sum_{f'} \frac{\Gamma_{f'}^x\Omega^2}{\Delta_{ff'}^2+(\Gamma_{f'}^x)^2/4}C_{ff'}^{(2)}\\
+&\approx \sum_{f'}\frac{\Gamma_{f'}^x\Omega^2}{\Delta_{ff'}^2}C_{ff'}^{(2)} = \sum_{f'}\frac{\sigma_0}{\Ain}\left(\frac{\Gamma_{f'}^x}{\Delta_{ff'}} \right)^2 \dot{N}_L C_{ff'}^{(2)}
+\end{align}
+
 
 
 %====== SECTION: Summary and outlook ======%
@@ -1167,9 +1176,10 @@ Given that the natural linewidth of the alkali atoms is determined by the quantu
 \end{align}
 and 
 \begin{align}
-\frac{\Gamma_{f'\!,rad}}{\Gamma_0} &= 1+ \sum_f |o_{jf}^{j'f'}|^2\sum_{m',m,q=m'-m} \left|C_{f'm'}^{f,m;1,q}\right|^2\frac{\mathbf{e}_q\cdot \mathrm{Im}\left[\tensor{\mathbf{G}}_{ind,rad}(\mathbf{r}',\mathbf{r}')\right]\cdot \mathbf{e}_q^*}{G_0(\mathbf{r}',\mathbf{r}')}\\
-\frac{\Gamma_{f'\!,gyd}}{\Gamma_0} &= \sum_f |o_{jf}^{j'f'}|^2\sum_{m',m,q=m'-m} \left|C_{f'm'}^{f,m;1,q}\right|^2 \frac{\mathbf{e}_q\cdot \mathrm{Im}\left[ \tensor{\mathbf{G}}_{gyd}(\mathbf{r}',\mathbf{r}')\right]\cdot \mathbf{e}_q^*}{ G_0(\mathbf{r}',\mathbf{r}')}.
+\frac{\Gamma_{f'\!,rad}}{\Gamma_0} &= 1+ \frac{1}{2f'+1}\sum_f |o_{jf}^{j'f'}|^2\sum_{m',m,q=m'-m} \left|C_{f'm'}^{f,m;1,q}\right|^2\frac{\mathbf{e}_q\cdot \mathrm{Im}\left[\tensor{\mathbf{G}}_{ind,rad}(\mathbf{r}',\mathbf{r}')\right]\cdot \mathbf{e}_q^*}{G_0(\mathbf{r}',\mathbf{r}')}\\
+\frac{\Gamma_{f'\!,gyd}}{\Gamma_0} &= \frac{1}{2f'+1}\sum_f |o_{jf}^{j'f'}|^2\sum_{m',m,q=m'-m} \left|C_{f'm'}^{f,m;1,q}\right|^2 \frac{\mathbf{e}_q\cdot \mathrm{Im}\left[ \tensor{\mathbf{G}}_{gyd}(\mathbf{r}',\mathbf{r}')\right]\cdot \mathbf{e}_q^*}{ G_0(\mathbf{r}',\mathbf{r}')},
 \end{align}
+where the last two equations calculate the averaged decay rates for the $ f' $ sublevels due to the radiative and guided modes. 
 In general, the dielectric modified atomic decay rate due to the transition $ \ket{f'm'} \rightarrow \ket{fm}$ can be given by 
 \begin{align}
 \frac{\Gamma_{m'\rightarrow m\!,rad}}{\Gamma_0} &= 1+ |o_{jf}^{j'f'}|^2\sum_{q=m'-m} \left|C_{f'm'}^{f,m;1,q}\right|^2\frac{\mathbf{e}_q\cdot \mathrm{Im}\left[\tensor{\mathbf{G}}_{ind,rad}(\mathbf{r}',\mathbf{r}')\right]\cdot \mathbf{e}_q^*}{G_0(\mathbf{r}',\mathbf{r}')}\\
@@ -1188,6 +1198,8 @@ By noting the scattered electrical field $ \mathbf{E}_{scatt}(\br)=\tensor{\math
 \end{align}
 where $ \mathbf{E}_{ind,rad/gyd}^{(q^*)}(\br') $ is the induced radiative/guided mode component of the local electrical field due to a dipole polarized along $ \mathbf{e}_q^* $ direction, which can be calculated using the BEM simulation. 
 By definition, this is the Lamb shift due to the light scattering from the dielectric interface and has excluded the propagating field in vacuum. 
+
+In another way, the Lamb shift can also be calculated through evaluating the real part of the medium's Green's function tensors from their imaginary parts using the Kramers-Kronig relations~\cite{Dzsotjan2011}. In that case, the total Green's function tensor and the vacuum Green's function tensor may be required to be evaluated accordingly, but the approximate solution for a cylindrical waveguide geometry has been given in Ref.~\cite{Dzsotjan2011} which works pretty well when the atoms are not too close to the waveguide surface as the Lamb shift decays on the order of $ 1/(r_\perp-r_\perp^0)^3 $ where $ r_\perp^0 $ is the radial coordinate of the waveguide surface. One can use the approximate solution for a cylindrical waveguide to validate the accuracy of the Lamb shift calculation using the BEM approach. 
 
  
 The collective spin dynamics in the QND measurement and spin squeezing process is described by the stochastic master equation defined in Eq.~\eqref{eq:totaldrhodt}. The optical pumping dynamics of the $ j $-th atom are governed by 
@@ -1217,7 +1229,7 @@ Definitions of the interaction coefficients $ C_{ff'}^{(n)} $ can be found in Re
 Given the geometry of the Faraday spin squeezing protocol for optical nanofiber and square waveguides discussed in this paper, the local electric field at the atom positions is linearly polarized. 
 By denoting the local field's polarization direction as the $ x$-direction and the propagation direction of the guided light as the $ z $-direction, the effective atom-light interaction Hamiltonian in a static reference frame can be written as 
 \begin{align}
-\hat{h}_{\rm eff} &= -\frac{i\hbar}{2}\sum_{f'} \gamma'_s \left[C_{ff'}^{(0)}\hat{\mathbbm{1}}+C_{ff'}^{(2)}(\hat{f}_{x}^2-\frac{\hat{\mathbf{f}}^2}{3} ) \right],
+\hat{h}_{\rm eff} &= -\frac{i\hbar}{2}\sum_{f'} \gamma'_s \left[C_{ff'}^{(0)}\hat{\mathbbm{1}}+C_{ff'}^{(2)}(\hat{f}_{x}^2-\frac{\hat{\mathbf{f}}^2}{3} ) \right],\label{eq:Heff_Faraday_C02}
 \end{align}
 where the intrinsic photon scattering rate $ \gamma'_s\equiv \frac{\Gamma_{f'}^x\Omega^2}{4(\Delta_{ff'}^2+\left(\Gamma_{f'}^x\right)^2/4 )}$ and in the far-detuning regime, $\gamma'_s \approx \frac{\Gamma_{f'}^x\Omega^2}{4\Delta_{\rm eff}^2}=\frac{\sigma_0}{\Ain}\left(\frac{\Gamma_{f'}^x}{2\Delta_{\rm eff}} \right)^2\dot{N}_L $. Note here the vector interaction term vanishes given a linearly polarized light; we have ignored the energy shift, which is valid when the detuning is much larger than the hyperfine level splitting.
 In our simulations of spin squeezing in this paper, we have used the decay rate $ \Gamma_{f',q} $ to indicate the decay rates from the hyperfine $ f' $ manifold sublevels of excited states with a photon emission polarized along the $ \mathbf{e}_q $ direction; the effective detuning is also an averaged detuning from the fine structure excited level $ j' $ to the ground fine structure manifold $ j $ with resonant frequency $ \omega_D $ of $ D_1 $ line transitions--that is $ \Delta_{\rm eff}=\omega -\omega_D $ with probe frequency at $ \omega $ in vacuum given a far-detuned $ \sim 1 $nm of detuning from the $ D_1 $ line transition of $ ^{133}Cs $ atoms. 
