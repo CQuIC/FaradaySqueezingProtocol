@@ -1025,6 +1025,8 @@ axis equal
 % ylim([min(yc),max(yc)]/d);
 xlim([-1.2,1.2]);
 ylim([-1.2,1.2]);
+xlabel('$x/d$')
+ylabel('$y/d$')
 legend('hide')
 % colorbar('WestOutside')
 cleanfigure;
@@ -1044,6 +1046,8 @@ line(x_border/d,y_border/d,'Color','k');
 axis equal
 xlim([-1.2,1.2]);
 ylim([-1.2,1.2]);
+xlabel('$x/d$')
+ylabel('$y/d$')
 legend('hide')
 % colorbar('WestOutside')
 cleanfigure;
@@ -1073,6 +1077,8 @@ line([-1.2,0],[-1.0,-1.0],'linestyle','--','Color',[0.1,0.1,0.1],'linewidth',0.5
 line([-1.2,0],[-0.9,-0.9],'linestyle','--','color',[0.2,0.2,0.2],'linewidth',0.5);
 line([-1.2,0],[-0.8,-0.8],'linestyle','--','color',[0.3,0.3,0.3],'linewidth',0.5);
 line([-1.2,0],[-0.7,-0.7],'linestyle','--','color',[0.4,0.4,0.4],'linewidth',0.5);
+xlabel('$x/d$')
+ylabel('$y/d$')
 legend('hide')
 cleanfigure;
 matlab2tikz('filename','../fig/swg_C1_xy.tex','floatFormat','%.4f','showInfo', false, ...
@@ -1088,6 +1094,8 @@ xlabel('$r_\perp/w$')
 ylabel('$\log_{10}(C_1)$')
 xlim([0.5,2.0])
 % ylim([-2.4,0.5])
+xlabel('$x/d$')
+ylabel('$y/d$')
 legend('hide')
 grid on
 cleanfigure;
@@ -1124,6 +1132,8 @@ viscircles([0,0],1,'Color','k');
 axis equal
 xlim([-2.2,2.2]);
 ylim([-2.2,2.2]);
+xlabel('$x/a$')
+ylabel('$y/a$')
 legend('hide')
 % colorbar('WestOutside')
 cleanfigure;
@@ -1143,6 +1153,8 @@ viscircles([0,0],1,'Color','k');
 axis equal
 xlim([-2.2,2.2]);
 ylim([-2.2,2.2]);
+xlabel('$x/a$')
+ylabel('$y/a$')
 legend('hide')
 % colorbar('WestOutside')
 cleanfigure;
@@ -1173,6 +1185,8 @@ line([-2.2,0],[-2.0,-2.0],'linestyle','--','Color',[0.1,0.1,0.1],'linewidth',0.5
 % line([-2.2,0],[-1.9,-1.9],'linestyle','--','color',[0.2,0.2,0.2],'linewidth',0.5);
 line([-2.2,0],[-1.8,-1.8],'linestyle','--','color',[0.3,0.3,0.3],'linewidth',0.5);
 line([-2.2,0],[-1.5,-1.5],'linestyle','--','color',[0.4,0.4,0.4],'linewidth',0.5);
+xlabel('$x/a$')
+ylabel('$y/a$')
 legend('hide')
 cleanfigure;
 matlab2tikz('filename','../fig/nanofiber_C1_xy.tex','floatFormat','%.4f','showInfo', false, ...
@@ -1191,6 +1205,8 @@ xticks([1.0,1.5,1.8,2.0,2.5])
 xticklabels({'1.0','1.5','1.8','2.0','2.5'});
 xlim([1.0,2.5])
 % ylim([-1.4,-0.2])
+xlabel('$x/a$')
+ylabel('$y/a$')
 legend('hide')
 grid on
 cleanfigure;
