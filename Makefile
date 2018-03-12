@@ -5,7 +5,7 @@
 # where /MINGW is where MinGW is installed. The line ending should be LF.
 PROJECT=FaradayProtocol CooperativityEnhancement
 LATEXFLAGS?=-interaction=nonstopmode -file-line-error -shell-escape
-TEMPSUFFS=ps log aux out dvi bbl blg auxlock
+TEMPSUFFS=ps log aux out dvi blg auxlock
 
 #pdf: ps
 #	$(foreach proj,$(PROJECT),ps2pdf ${proj}.ps;)
