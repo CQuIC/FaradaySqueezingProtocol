@@ -13,6 +13,7 @@ Editorial
 *.synctex.gz
 *.out
 *.blg
+
 *.dvi
 *.bak
 *~
